@@ -9,9 +9,13 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "keen-slider": "^6.8.6",
+    "next": "14.2.12",
     "react": "^18",
+    "react-animated-slider": "^1.1.4",
+    "react-awesome-reveal": "^4.2.14",
     "react-dom": "^18",
-    "next": "14.2.12"
+    "shimmer-effects-react": "^1.0.4"
   },
   "devDependencies": {
     "eslint": "^8",

@@ -1,0 +1,49 @@
+.slider-wrapper {
+    height: 70vh;
+    overflow: hidden;
+    position: relative;
+}
+.slider-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.inner {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60%;
+}
+.slider-mini-image {
+    position: absolute;
+    top: 10%;
+    left: 30%;
+}
+.slider {
+    position: relative;
+}
+.inner h1, .inner p {
+    color: white;
+    text-align: center;
+}
+.slide-button {
+    z-index: 100;
+}
+.inner p {
+    font-size: 24px;
+    width: 100%;
+    line-height: 1.4;
+}
+.inner {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: start;
+    width: 60vw;
+}
+.slider-container {
+    width: 100vw;
+    height: 100vh;
+}
+
