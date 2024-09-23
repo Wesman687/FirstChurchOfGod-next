@@ -1,3 +1,5 @@
+import AboutSlider from '@/components/slides/AboutSlider'
+import Link from 'next/link'
 import React from 'react'
 
 function About() {
@@ -7,12 +9,13 @@ function About() {
                 <div class="content_wrap">
                     <h1 class="page_title about-header">About First Church of God</h1>
                     <div class="breadcrumbs">
-                        <a class="breadcrumbs_item home about-header" href="index.html">Home</a>
+                        <Link href={'/'}><li class="breadcrumbs_item home about-header" href="index.html">Home</li></Link>
                         <span class="breadcrumbs_delimiter about-header"></span>
-                        <span class="breadcrumbs_item current about-header">About Us</span>
+                        <span class="breadcrumbs_item menu-item current-link about-header light-blue">About Us</span>
                     </div>
                 </div>
             </div>
+            <AboutSlider />
         </div>
     )
 }

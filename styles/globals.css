@@ -32,6 +32,47 @@
 .about-header {
 	color: #2e2e2e !important;
 }
+.menu_main_nav {
+	display: flex;
+	gap: 12px;
+}
+.light-blue {
+	color: #3799AB !important;
+}
+.current-link {
+	text-decoration: underline;
+}
+.about-slider-image {
+	width: 10vw;
+	border-radius: 2px;
+}
+.about-slider-container {
+	padding-top: 24px;	
+	width: 70vw;
+	display: flex;
+	overflow: hidden;
+	
+}
+.about-slide-row {
+	background-color: rgba(207, 207, 207, 0.75);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.about-slider-wrapper {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 24px;
+	padding-right: 24px;
+}
+.about-slide-desc-wrapper {
+	width: 25vw;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+}
+
 
 
 .about-us-header{ background-image: url('../images/cross-in-sky.png'); }
@@ -75,7 +116,7 @@ h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
 del, dfn, em, font, ins, kbd, q, s, samp,
 small, strike, strong, sub, sup, tt, var,
-dl, dt, dd, ol, ul, li,
+dl, dt, dd, ol, ul, li, Link,
 fieldset, form, label, legend,input,textarea,button,
 table, caption, tbody, tfoot, thead, tr, th, td,
 article, aside, address, section, video, audio {
@@ -145,16 +186,14 @@ li > p+p { margin-top:0.5em; }
 ol, ul {
 	padding-left:1.5em;
 }
-
-
 /* Links */
-a {
+a, Link {
 	text-decoration:none;
 	background:transparent;
 }
-a,
-a:hover,
-a:focus,
+a, 
+a:hover, 
+a:focus, 
 a:active {
 	outline: 0;
 }
