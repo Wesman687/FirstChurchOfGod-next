@@ -16,7 +16,7 @@ function HomeToAction() {
                             <div class="sc_call_to_action_descr sc_item_descr">We’re passionate about Jesus and leading others to worship Him! We hope these resources help equip you and your team as you lead worship.</div>
                             <div class="sc_call_to_action_buttons sc_item_buttons">
                                 <div class="sc_call_to_action_button sc_item_button">
-                                    <a href="#" class="sc_button sc_button_square sc_button_style_filled sc_button_color_style_2 sc_button_size_large">view more</a>
+                                    <a href="#" class="sc_button sc_button_square sc_button_style_filled sc_button_color_style_2 sc_button_size_large orange-btn">view more</a>
                                 </div>
                             </div>
                         </div>

@@ -16,8 +16,9 @@ function HomeBottom() {
                                 </h4>
                             </div>
                         </div>
-                    </div><div class="column-1_4 sc_column_item sc_column_item_4 even text_align_center margin_top_0_5em">
-                        <a href="#" class="sc_button sc_button_square sc_button_style_border sc_button_color_style_4 sc_button_size_large margin_left_0_0833">JOIN GROUP</a>
+                    </div>
+                    <div class="column-1_4 sc_column_item sc_column_item_4 even text_align_center margin_top_0_5em">
+                        <div class="outline-button">JOIN GROUP</div>
                     </div>
                 </div>
             </div>

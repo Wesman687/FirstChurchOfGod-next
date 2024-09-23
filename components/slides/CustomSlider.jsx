@@ -3,10 +3,11 @@ import React, { useRef } from 'react'
 import slide1 from '@/images/slider1-3.jpg'
 import slide2 from '@/images/slider1-2.jpg'
 import slide3 from '@/images/home1_sl2.jpg'
+import slide4 from '@/images/sundaybanner.jpg'
 import miniSlide2 from '@/images/slider1-1_layer.webp'
 import Slider from "react-animated-slider";
 import "react-animated-slider/build/horizontal.css";
-import { Fade, Roll, Slide } from 'react-awesome-reveal'
+import {  Fade,  Slide } from 'react-awesome-reveal'
 
 const content = [
   {
@@ -20,9 +21,14 @@ const content = [
     title: "",
     description:
       "",
+    image: slide4.src,
+  },
+  {
+    title: "",
+    description:
+      "",
     image: slide2.src,
-    user: "Erich Behrens",
-    userProfile: miniSlide2
+    secondaryImage: miniSlide2
   },
   {
     title: "Wednesday Studies",
@@ -48,18 +54,20 @@ export default function CustomSlider() {
           style={{ background: `url('${item.image}') no-repeat center` }}
         >
           <div className="inner">
+          <Fade cascade>
             <Slide direction='down'>
-            <Fade cascade>
             <h1>{item.title}</h1>
             <p>{item.description}</p>
-            </Fade>
-            </Slide>
-            
+            </Slide>        
+            </Fade>    
           </div>
           <section>
-            <Image className='slider-mini-image' src={item.userProfile} alt={item.user} />           
+            <Fade duration={6500}>
+            <Image className='slider-mini-image' src={item.secondaryImage} alt='' />   
+            </Fade>        
           </section>
-          {item.button && <button className='slide-button design-button'>{item.button}</button>}
+          
+          {item.button && <button className='slide-button orange-btn design-button'>{item.button}</button>}
           
         
         </div>       

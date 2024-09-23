@@ -1,10 +1,6 @@
 @charset "utf-8";
 @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap');
-.slider-content {
-	display: flex;
-	flex-direction: column;
-	height: 100%;
-}
+
 .sc_testimonial_author_position {
 	margin: 0px !important;
 }
@@ -38,13 +34,27 @@
 }
 .menu_main_nav {
 	display: flex;
-	gap: 12px;
+	gap: 24px;
+	font-size: 18px;
+	align-items: center;
 }
+.donate-btn {
+	margin-left: 32px;
+	padding: 4px 48px;
+	background-color: #1DC6DF;
+	color: #FFFFFF !important;
+}
+.menu-item {
+	color: #212121;
+	font-weight: 500;
+}
+
 .light-blue {
 	color: #3799AB !important;
 }
 .current-link {
 	text-decoration: underline;
+	color: #3799AB !important;
 }
 .about-slider-image {
 	width: 10vw;
@@ -2174,33 +2184,6 @@ body .top_panel_style_5 .top_panel_position_over .top_panel_top{
 	content: '\e80a';
 }
 
-/* search */
-.header_mobile .search_wrap {
-    max-width: 100%;
-	padding: 10px 35px;
-	padding-right: 54px;
-}
-.header_mobile .search_wrap:before {
-    content: '\e8f4';
-    font-family: 'fontello';
-    position: absolute;
-    right: 28px;
-    top: 10px;
-    font-size: 12px;
-}
-.header_mobile .search_wrap .search_field {
-    padding: 0;
-	font-size: 14px;
-    line-height: 29px;
-	border: none !important;
-}
-.header_mobile .search_wrap form {
-    padding-left: 0;
-}
-.header_mobile .search_wrap .search_submit,
-.header_mobile .search_wrap .search_results {
-	display: none !important;
-}
 
 
 /* contact info */
@@ -4621,335 +4604,44 @@ body .booked-calendar-wrap{
 }
 
 
-/* Widget with list */
-.widget_categories .widget_title,
-.widget_archive .widget_title,
-.widget_pages .widget_title,
-.widget_subcategories .widget_title,
-.widget_product_categories .widget_title{
-    margin: 0 0 0.7778em;
-}
-.widget_categories ul,
-.widget_archive ul,
-.widget_pages ul,
-.widget_subcategories ul,
-.widget_product_categories ul{
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-.widget_categories li,
-.widget_archive li,
-.widget_pages li,
-.widget_subcategories li,
-.widget_product_categories li{
-    position: relative;
-    border-top: solid 1px #e3e9ed !important;
-    margin: 0;
-    padding: 13px 0 14px !important;
-    color: #999999;
-    text-align: right;
-    overflow: hidden;
-}
-.widget_categories li:first-child,
-.widget_archive li:first-child,
-.widget_pages li:first-child,
-.widget_subcategories li:first-child,
-.widget_product_categories li:first-child{
-    border: none !important;
-}
-.widget_categories li:before,
-.widget_archive li:before,
-.widget_pages li:before,
-.widget_subcategories li:before,
-.widget_product_categories li:before{
-    display: none;
-    content: '';
-}
-.widget_categories li a,
-.widget_archive li a,
-.widget_pages li a,
-.widget_subcategories li a,
-.widget_product_categories li a{
-    color: #555555 !important;
-    text-decoration: none;
-    float: left;
-    max-width: 80%;
-    text-align: left;
-}
-.widget_categories li a:hover,
-.widget_archive li a:hover,
-.widget_pages li a:hover,
-.widget_subcategories li a:hover,
-.widget_product_categories li a:hover{
-    color: #48c7de !important;
-}
 
-/* Widget: Upcoming Events */
-#tribe-events-bar{
-    margin-bottom: 2.7857em;
-}
-#tribe-bar-form #tribe-bar-views + .tribe-bar-filters{
-    width: 69.2857em !important;
-    left: auto;
-    right: auto;
-    top: auto;
-    bottom: auto;
-}
-.tribe-bar-date-filter{
-    width: 27.5em;
-    padding: 1.9286em 1.0714em 2.1429em 2.1429em;
-}
-.tribe-bar-search-filter{
-    width: 27.5em;
-    padding: 1.9286em 2.1429em 2.1429em 1.0714em;
-}
-.tribe-bar-submit{
-    padding: 2.9286em 0 1.9286em 2.1429em;
-    margin: 0;
-    width: 12.0714em;
-}
-#tribe-bar-date,
-#tribe-bar-search {
-    border: none !important;
-    margin: 0 !important;
-    padding: 0;
-    font-size: 1em !important;
-    height: 1.8571em !important;
-}
-#tribe-bar-date::-webkit-input-placeholder,
-#tribe-bar-search::-webkit-input-placeholder{
-    -moz-opacity:1;
-    -khtml-opacity:1;
-    opacity:1;
-}
-#tribe-bar-date::-moz-placeholder,
-#tribe-bar-search::-moz-placeholder{
-    -moz-opacity:1;
-    -khtml-opacity:1;
-    opacity:1;
-}
-#tribe-bar-date:-moz-placeholder,
-#tribe-bar-search:-moz-placeholder{
-    -moz-opacity:1;
-    -khtml-opacity:1;
-    opacity:1;
-}
-#tribe-bar-date:-ms-input-placeholder,
-#tribe-bar-search:-ms-input-placeholder{
-    -moz-opacity:1;
-    -khtml-opacity:1;
-    opacity:1;
-}
-
-#tribe-bar-form label{
-    text-transform: none;
-    font-size: 1.0714em;
-    font-weight: 700;
-}
-.tribe-events-button{
-    font: 700 0.7143em 'Lato', sans-serif !important;
-    padding: 1.3em 1em 1.1em !important;
-}
-.scheme_original .tribe-events-gcal,
-.scheme_original .tribe-events-gcal:hover{
-    margin: 0 5px 5px 0 !important;
-}
-.scheme_original .tribe-events-ical,
-.scheme_original .tribe-events-ical:hover{
-    margin: 0 0 5px !important;
-}
-#tribe-bar-views{
-    width: 13.2143em !important;
-    padding: 0 !important;
-    float: right !important;
-    left: auto !important;
-}
-#tribe-bar-views .tribe-bar-views-inner{
-    padding: 1.9286em 0 2.1429em 1.0714em;
-    background: none;
-}
-#tribe-bar-form .tribe-bar-views-inner label{
-    padding: 0;
-}
-#tribe-bar-views .tribe-bar-views-list{
-    margin: 0;
-    padding: 0;
-}
-#tribe-bar-views .tribe-bar-views-list .tribe-bar-views-option a{
-    background: none;
-    padding: 5px 15px;
-}
-.tribe-icon-list{
-    background-size: 14px 9px !important;
-    background-position: 1px 2px !important;
-    padding-left: 20px !important;
-}
-.tribe-icon-month{
-    background-size: 14px 15px !important;
-    background-position: 1px 0 !important;
-    padding-left: 20px !important;
-}
-.tribe-icon-day{
-    background-size: 14px 15px !important;
-    background-position: 1px 2px !important;
-    padding-left: 20px !important;
-}
-.tribe-events-list h2.tribe-events-page-title{
-    font-size: 2.2857em;
-    font-weight: 700;
-    margin-bottom: 0;
-}
-.tribe-events-list-separator-month{
-    font-size: 1.7143em;
-    font-weight: 700 !important;
-    text-align: center;
-    display: block;
-    margin: 0;
-    padding: 1.5em 0 1.9583em;
-    background: none;
-    text-transform: none;
-}
-.type-tribe_events{
-    padding: 2.7143em 0 3.5714em !important;
-    border-top: solid 2px #e7e7e7 !important;
-}
-.tribe-events-list-event-title{
-    font-size: 2.2857em !important;
-    font-weight: 400;
-    margin: 0 0 0.4062em !important;
-    display: block !important;
-}
-.tribe-events-event-meta{
-    font-size: 0.9286em !important;
-    line-height: 1.5385em !important;
-    font-family: 'Lato', sans-serif;
-    margin: 0 0 1.4615em !important;
-}
-.tribe-events-event-meta *{
-    font-size: inherit !important;
-    line-height: inherit !important;
-}
-.tribe-event-schedule-details{
-    margin-bottom: 0.7692em;
-}
-.tribe-events-content{
-    font-size: 1em;
-    line-height: 1.7143em;
-    width: 65.8119% !important;
-    padding: 0 !important;
-}
-.tribe-events-content p{
-    margin: 0 0 1.7143em !important;
-}
-.tribe-events-event-image,
-#tribe-mobile-container .type-tribe_events .tribe-events-event-image{
-    width: 31.5385% !important;
-    margin: 0.4286em 2.6496% 0 0 !important;
-}
-.tribe_events .tribe-events-event-image{
-    margin: 0.4286em 0 0 2.6496% !important;
-}
-.tribe-events-read-more{
-    margin: 0 !important;
-    padding: 1.3em 4.1em 1.2em !important;
-    letter-spacing: normal !important;
-}
-#tribe-events-footer{
-    margin: 0 !important;
-    padding: 2.5714em 0 2.4286em;
-    border-top: solid 1px #e7e7e7;
-    border-top-width: 1px !important;
-    border-top-style: solid !important;
-}
-.tribe-events-sub-nav li .sc_button{
-    margin: 0 !important;
-    padding: 1.3em 4.1em 1.2em !important;
-    letter-spacing: normal !important;
-}
-#tribe-events .tribe-events-button.tribe-events-ical{
-    -webkit-border-radius: 0 !important;
-    -moz-border-radius: 0 !important;
-    border-radius: 0 !important;
-}
-#tribe-events .tribe-events-button.tribe-events-gcal{
-    -webkit-border-radius: 0 !important;
-    -moz-border-radius: 0 !important;
-    border-radius: 0 !important;
-}
-.tribe-events-list-widget ol li{
-    margin: 0 0 1.4286em !important;
-}
-.tribe-event-title,
-.tribe-event-duration{
-    font-size: 1em;
-    line-height: inherit;
-    margin: 0;
-    padding: 0;
-}
-.tribe-event-duration{
-    color: #999999;
-}
-.tribe-events-widget-link{
-    margin: 0;
-}
-ul.tribe-events-sub-nav a,
-.tribe-events-back a,
-.tribe-events-list-widget .tribe-events-widget-link a,
-.tribe-events-adv-list-widget .tribe-events-widget-link a{
-    font-size: 0.7142em !important;
-    margin-left: 0 !important;
-}
-#tribe-events-footer .tribe-events-sub-nav .tribe-events-nav-previous,
-#tribe-events-header .tribe-events-sub-nav li{
-    margin-right: 0 !important;
-}
-.tribe-bar-views-list span.tribe-icon-day,
-.tribe-select2-results-views span.tribe-icon-day {
-    background-position: 1px 0 !important;
-}
-.esg-center.eg-gallery-element-0-a {
-    margin: 0 !important;
-}
-
-input[type="submit"],
-input[type="reset"],
-input[type="button"],
-.design-button:not(.search_submit),
-.sc_button,
-body a.sc_button,
-.top_panel_wrap:not(.top_panel_style_5) .menu_main_nav > li.donate-btn > a,
-
-#tribe-events .tribe-events-button,
-.tribe-events-button,
-.timeline .timeline_items .item .read_more.sc_button,
-
-body .body_wrap #booked-profile-page input.button-primary[type="submit"],
-body .body_wrap table.booked-calendar input.button-primary[type="submit"],
-body .body_wrap .booked-modal input.button-primary[type="submit"],
-body .body_wrap table.booked-calendar .booked-appt-list .timeslot .timeslot-people button,
-body .body_wrap #booked-profile-page .booked-profile-appt-list .appt-block .google-cal-button,
-
-body .body_wrap #booked-profile-page input[type="submit"],
-body .body_wrap #booked-profile-page button,
-body .body_wrap table.booked-calendar input[type="submit"],
-body .body_wrap table.booked-calendar button,
-body .body_wrap .booked-modal input[type="submit"],
-body .body_wrap .booked-modal button,
 
 body #booked-profile-page input.button-primary[type="submit"],
 body table.booked-calendar input.button-primary[type="submit"],
-body .booked-modal .bm-window input.button-primary[type="submit"],
+body .booked-modal .bm-window input.button-primary[type="submit"], .donate-btn:hover,
 body table.booked-calendar .booked-appt-list .timeslot .timeslot-people button,
 body #booked-profile-page .booked-profile-appt-list .appt-block .google-cal-button{
     overflow: hidden;
     white-space: nowrap;
     position: relative;
-    -webkit-transition: all 0.37s ease 0s;
-       -moz-transition: all 0.37s ease 0s;
-        -ms-transition: all 0.37s ease 0s;
-         -o-transition: all 0.37s ease 0s;
-            transition: all 0.37s ease 0s;
+    -webkit-transition: all 0.70s ease 0s;
+       -moz-transition: all 0.70s ease 0s;
+        -ms-transition: all 0.70s ease 0s;
+         -o-transition: all 0.70s ease 0s;
+            transition: all 0.70s ease 0s;
+    z-index: 1;
+    background-image: linear-gradient(270deg, #ffa800 0%, #ffa800 50%, #1DC6DF 50%, #1DC6DF 100%) !important;
+    background-position: 98% 0 !important;
+    color: #FFFFFF !important;
+    -webkit-background-size: 210% 100%;
+       -moz-background-size: 210% 100%;
+        -ms-background-size: 210% 100%;
+         -o-background-size: 210% 100%;
+            background-size: 210% 100% ;
+    border: none !important;
+}
+.orange-btn {
+	background-color: #ffa800;
+}
+.orange-btn:hover {
+	overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+    -webkit-transition: all 0.70s ease 0s;
+       -moz-transition: all 0.70s ease 0s;
+        -ms-transition: all 0.70s ease 0s;
+         -o-transition: all 0.70s ease 0s;
+            transition: all 0.70s ease 0s;
     z-index: 1;
     background-image: linear-gradient(90deg, #ffa800 0%, #ffa800 50%, #1DC6DF 50%, #1DC6DF 100%) !important;
     background-position: 98% 0 !important;
@@ -4960,168 +4652,38 @@ body #booked-profile-page .booked-profile-appt-list .appt-block .google-cal-butt
          -o-background-size: 210% 100%;
             background-size: 210% 100% ;
     border: none !important;
-}
-input[type="submit"]:hover,
-input[type="reset"]:hover,
-input[type="button"]:hover,
-.design-button:not(.search_submit):hover,
-.sc_button:hover,
-body a.sc_button:hover,
-.top_panel_wrap:not(.top_panel_style_5) .menu_main_nav > li.donate-btn > a:hover,
 
-
-#tribe-events .tribe-events-button:hover,
-.tribe-events-button:hover,
-.timeline .timeline_items .item .read_more.sc_button:hover,
-body .body_wrap #booked-profile-page input.button-primary[type="submit"]:hover,
-body .body_wrap table.booked-calendar input.button-primary[type="submit"]:hover,
-body .body_wrap .booked-modal input.button-primary[type="submit"]:hover,
-body .body_wrap table.booked-calendar .booked-appt-list .timeslot .timeslot-people button:hover,
-body .body_wrap #booked-profile-page .booked-profile-appt-list .appt-block .google-cal-button,
-
-body .body_wrap #booked-profile-page input[type="submit"]:hover,
-body .body_wrap #booked-profile-page button:hover,
-body .body_wrap table.booked-calendar input[type="submit"]:hover,
-body .body_wrap table.booked-calendar button:hover,
-body .body_wrap .booked-modal input[type="submit"]:hover,
-body .body_wrap .booked-modal button:hover,
-
-body #booked-profile-page input.button-primary[type="submit"]:hover,
-body table.booked-calendar input.button-primary[type="submit"]:hover,
-body .booked-modal .bm-window input.button-primary[type="submit"]:hover,
-body table.booked-calendar .booked-appt-list .timeslot .timeslot-people button:hover,
-body #booked-profile-page .booked-profile-appt-list .appt-block .google-cal-button:hover {
-    background-position: 0 0 !important;
-    background-image: linear-gradient(90deg, #ffa800 0%, #ffa800 50%, #1DC6DF 50%, #1DC6DF 100%) !important;
-    color: #FFFFFF;
 }
 
-.sc_button.sc_button_style_filled.sc_button_color_style_1,
-.sc_button.sc_button_style_filled.sc_button_color_style_1:hover{
-    background-image: linear-gradient(90deg, #3799AB 0%, #3799AB 50%, #1DC6DF 50%, #1DC6DF 100%) !important;
+.outline-button { 
+	cursor: pointer;
+	color: #FFFFFF !important;
+	border: 1px solid #FFFFFF;
+	padding: 8px 32px;
+	width: fit-content;
 }
-.sc_button.sc_button_style_filled.sc_button_color_style_2,
-.sc_button.sc_button_style_filled.sc_button_color_style_2:hover {
-    background-image: linear-gradient(90deg, #ffa800 0%, #ffa800 50%, #1DC6DF 50%, #1DC6DF 100%) !important;
-}
-.sc_button.sc_button_style_filled.sc_button_color_style_3,
-.sc_button.sc_button_style_filled.sc_button_color_style_3:hover,
-.woocommerce .button.checkout,
-.woocommerce .button.checkout:hover{
-    background-image: linear-gradient(90deg, #1DC6DF 0%, #1DC6DF 50%, #fca44a 50%, #fca44a 100%) !important;
-}
-.sc_button.sc_button_style_filled.sc_button_color_style_4 {
+.outline-button:hover {	
+	overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+    -webkit-transition: all 0.70s ease 0s;
+       -moz-transition: all 0.70s ease 0s;
+        -ms-transition: all 0.70s ease 0s;
+         -o-transition: all 0.70s ease 0s;
+            transition: all 0.70s ease 0s;
+    z-index: 1;
     background-image: linear-gradient(90deg, #1DC6DF 0%, #1DC6DF 50%, #ffffff 50%, #ffffff 100%) !important;
-    color: #1DC6DF !important;
-}
-.sc_button.sc_button_style_filled.sc_button_color_style_4:hover {
-    background-image: linear-gradient(90deg, #1DC6DF 0%, #1DC6DF 50%, #ffffff 50%, #ffffff 100%) !important;
-    color: #ffffff !important;
-}
-.woocommerce .button.add_to_cart_button,
-.sc_price_block .sc_button.sc_button_style_filled.sc_button_color_style_4{
-    background-image: linear-gradient(90deg, #ffa800 0%, #ffa800 50%, #ffffff 50%, #ffffff 100%) !important;
-    color: #1DC6DF !important;
-}
-.woocommerce .button.add_to_cart_button:hover,
-.sc_price_block .sc_button.sc_button_style_filled.sc_button_color_style_4:hover{
-    background-image: linear-gradient(90deg, #ffa800 0%, #ffa800 50%, #ffffff 50%, #ffffff 100%) !important;
-    color: #ffffff !important;
-}
-
-
-.sc_button.sc_button_style_border,
-body a.sc_button.sc_button_style_border,
-.sc_button.sc_button_style_border:hover,
-body a.sc_button.sc_button_style_border:hover{
-    border-width: 2px !important;
-    border-style: solid !important;
-}
-
-.sc_button.sc_button_style_border.sc_button_color_style_1{
-    background-image: linear-gradient(90deg, #1DC6DF 0%, #1DC6DF 50%, rgba(29, 198, 223, 0) 50%, rgba(29, 198, 223, 0) 100%) !important;
-    color: #1DC6DF !important;
-    border-color: #1DC6DF !important;
-}
-.sc_button.sc_button_style_border.sc_button_color_style_1:hover{
-    background-image: linear-gradient(90deg, #1DC6DF 0%, #1DC6DF 50%, rgba(29, 198, 223, 0) 50%, rgba(29, 198, 223, 0) 100%) !important;
-    color: #ffffff !important;
-    border-color: #1DC6DF !important;
-}
-.sc_button.sc_button_style_border.sc_button_color_style_2{
-    background-image: linear-gradient(90deg, #fca44a 0%, #fca44a 50%, rgba(29, 198, 223, 0) 50%, rgba(29, 198, 223, 0) 100%) !important;
-    color: #1DC6DF !important;
-    border-color: #1DC6DF !important;
-}
-.sc_button.sc_button_style_border.sc_button_color_style_2:hover{
-    background-image: linear-gradient(90deg, #fca44a 0%, #fca44a 50%, rgba(29, 198, 223, 0) 50%, rgba(29, 198, 223, 0) 100%) !important;
-    color: #ffffff !important;
-    border-color: #fca44a !important;
-}
-.sc_button.sc_button_style_border.sc_button_color_style_3{
-    background-image: linear-gradient(90deg, #1DC6DF 0%, #1DC6DF 50%, rgba(29, 198, 223, 0) 50%, rgba(29, 198, 223, 0) 100%) !important;
-    color: #fca44a !important;
-    border-color: #fca44a !important;
-}
-.sc_button.sc_button_style_border.sc_button_color_style_3:hover{
-    background-image: linear-gradient(90deg, #1DC6DF 0%, #1DC6DF 50%, rgba(29, 198, 223, 0) 50%, rgba(29, 198, 223, 0) 100%) !important;
-    color: #ffffff !important;
-    border-color: #1DC6DF !important;
-}
-.sc_button.sc_button_style_border.sc_button_color_style_4{
-    background-image: linear-gradient(90deg, #ffffff 0%, #ffffff 50%, rgba(29, 198, 223, 0) 50%, rgba(29, 198, 223, 0) 100%) !important;
-    color: #ffffff !important;
-    border-color: rgba(255, 255, 255, 0.5) !important;
-}
-.sc_button.sc_button_style_border.sc_button_color_style_4:hover{
-    background-image: linear-gradient(90deg, #ffffff 0%, #ffffff 50%, rgba(29, 198, 223, 0) 50%, rgba(29, 198, 223, 0) 100%) !important;
     color: #1DC6DF !important;
     border-color: #ffffff !important;
+	background-position: 98% 0 !important;
+    -webkit-background-size: 210% 100%;
+       -moz-background-size: 210% 100%;
+        -ms-background-size: 210% 100%;
+         -o-background-size: 210% 100%;
+            background-size: 210% 100% ;
 }
 
 
-/* Widget: Custom Menu */
-
-.widget_nav_menu ul{
-    margin: 0;
-    padding: 0;
-}
-.widget_nav_menu ul ul{
-    margin: 0 0 0 1em;
-}
-.widget_nav_menu li{
-    position: relative;
-    color: #999999;
-}
-.widget_nav_menu li:before{
-    color: #48c7de !important;
-}
-.widget_nav_menu li a{
-    color: #212121 !important;
-    font-weight: 700;
-}
-.widget_nav_menu li a:hover{
-    color: #48c7de !important;
-}
-.widget_nav_menu ul ul li:before{
-    content: '-';
-    top: -3px;
-}
-.widget_nav_menu ul ul li a{
-    font-weight: 400;
-}
-
-/* Widget: Price Filter */
-.woocommerce .button{
-    overflow: hidden !important;
-}
-.price_slider_wrapper{
-    padding: 1.3571em 0 0;
-}
-.scheme_original .woocommerce .widget_price_filter .ui-slider .ui-slider-range,
-.scheme_original .woocommerce-page .widget_price_filter .ui-slider .ui-slider-range{
-    background-color: #b2b9bd !important;
-}
 
 /* Highlighted text */
 .sc_highlight{

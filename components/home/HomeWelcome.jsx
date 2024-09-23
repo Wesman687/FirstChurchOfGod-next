@@ -20,7 +20,7 @@ function HomeWelcome() {
                             <div className="sc_services sc_services_style_services-5 sc_services_type_icons sc_slider_nopagination sc_slider_nocontrols width_100_per" data-interval="5040" data-slides-min-width="250">
                                 <h6 className="sc_services_subtitle sc_item_subtitle">Welcome</h6>
                                 <h2 className="sc_services_title sc_item_title">Loving God, Loving Others and Serving the Lord</h2>
-                                <div className="sc_services_descr sc_item_descr">We’d love to meet you! Come check us out this SUNDAY where you can meet us and see if New Life Church might be a good fit for you. Our heart and soul is to introduce and connect people with the living and powerful God.</div>
+                                <div className="sc_services_descr sc_item_descr"> We’d love to meet you! Come check us out this SUNDAY where you can meet us and see if The <span className='bold'>First Church of God</span>  might be a good fit for you. Our heart and soul is to introduce and connect people with the living and powerful God.</div>
                                 <div className="sc_services_item sc_services_item_1 odd first">
                                     <span className="sc_icon icon-house306"></span>
                                     <div className="sc_services_item_content">
