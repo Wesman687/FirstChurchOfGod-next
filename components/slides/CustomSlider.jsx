@@ -54,13 +54,12 @@ export default function CustomSlider() {
             <p>{item.description}</p>
             </Fade>
             </Slide>
-            {item.button && <button className='slide-button design-button'>{item.button}</button>}
             
           </div>
           <section>
             <Image className='slider-mini-image' src={item.userProfile} alt={item.user} />           
           </section>
-          <div className='shine'></div>
+          {item.button && <button className='slide-button design-button'>{item.button}</button>}
           
         
         </div>       
