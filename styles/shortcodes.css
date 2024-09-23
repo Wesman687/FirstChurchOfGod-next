@@ -302,7 +302,7 @@
 -------------------------------------------------------------- */
 input[type="submit"],
 input[type="button"],
-button,
+.design-button,
 .sc_button {
 	display:inline-block;
     vertical-align: middle;
@@ -325,7 +325,7 @@ button,
 }
 input[type="submit"]:before,
 input[type="button"]:before,
-button:before,
+.design-button:before,
 .sc_button:before {
 	margin-right:10px;
 }

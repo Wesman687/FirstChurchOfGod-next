@@ -18,15 +18,6 @@
 	.body_style_fullwide.sidebar_left  .content, .body_style_fullscreen.sidebar_left  .content { padding-left:  330px; }
 	.body_style_fullwide.sidebar_left  .sidebar, .body_style_fullscreen.sidebar_left  .sidebar { margin-right:-300px; }
 
-	/* WooCommerce: Content and Sidebar */
-	.woocommerce.sidebar_show .content { width: 690px; }
-	.woocommerce .sidebar { 			 width: 280px; }
-
-	/* WooCommerce: Fullwide or Fullscreen with sidebar */
-	.woocommerce.body_style_fullwide.sidebar_right .content, .woocommerce.body_style_fullscreen.sidebar_right .content { padding-right: 310px; }
-	.woocommerce.body_style_fullwide.sidebar_right .sidebar, .woocommerce.body_style_fullscreen.sidebar_right .sidebar { margin-left: -280px; }
-	.woocommerce.body_style_fullwide.sidebar_left  .content, .woocommerce.body_style_fullscreen.sidebar_left  .content { padding-left:  310px; }
-	.woocommerce.body_style_fullwide.sidebar_left  .sidebar, .woocommerce.body_style_fullscreen.sidebar_left  .sidebar { margin-right:-280px; }
 
 	.article_style_boxed .sidebar_inner,
 	.body_filled .sidebar[class*="scheme_"] .sidebar_inner {
@@ -75,13 +66,7 @@
 		width: 257px;
 	}
 	
-	/* Widgets */
-	.widget_area .sc_tabs.sc_tabs_style_2 .sc_tabs_titles li + li {
-		margin-left:0.4em;
-	}
-	.widget_area .sc_tabs.sc_tabs_style_2 .sc_tabs_titles li a {
-		padding: 2px 0.5em;
-	}
+
 
 }
 

@@ -1,3 +1,4 @@
+import Footer from "@/components/Footer";
 import Nav from "@/components/Nav";
 import { Html, Head, Main, NextScript } from "next/document";
 
@@ -15,6 +16,7 @@ export default function Document() {
           </div>
         </div>
       </body>
+      <Footer />
     </Html>
   );
 }

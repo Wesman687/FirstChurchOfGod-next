@@ -1,7 +1,40 @@
 @charset "utf-8";
 @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap');
 
+.sc_testimonial_author_position {
+	margin: 0px !important;
+}
+.sc_testimonial_author_name {
+	margin: 12px 0 !important;
+}
+.sc_testimonial_avatar {
+	display: flex;
+	gap: 24px;
+	align-items: center;
+	justify-content: center;
+}
+.testimonial-image {
+	border: 2px solid transparent;
+	border-radius: 48px;
+}
+.footer-container {
+	background-color: #2f2f2f;
+}
+.footer-wrapper {
+	display: flex;	
+	align-items: center;
+	justify-content: center;
+}
+.footer-wrapper span {
+	color: #ddd !important;
+	margin: 12px 24px;
+}
+.about-header {
+	color: #2e2e2e !important;
+}
 
+
+.about-us-header{ background-image: url('../images/cross-in-sky.png'); }
 /* TABLE OF CONTENTS:
 
 1. Reset tags
@@ -128,7 +161,7 @@ a:active {
 a img { border: none; }
 
 a,
-button {
+.design-button {
   -webkit-transition: all 0.3s ease 0s;
   -moz-transition: all 0.3s ease 0s;
   -ms-transition: all 0.3s ease 0s;
@@ -280,20 +313,20 @@ iframe, video, embed {
 
 /* 3. Form fields settings
 -------------------------------------------------------------- */
-button, input, optgroup, select, textarea {
+.design-button, input, optgroup, select, textarea {
 	font-family: inherit;
 	font-size: 1em;				/* Corrects font size not being inherited in all browsers */
 	line-height: 1.7857em !important;
 	margin: 0;					/* Addresses margins set differently in IE6/7, F3/4, S5, Chrome */
 	vertical-align: baseline;	/* Improves appearance and consistency in all browsers */
 }
-button, input {
+.design-button, input {
 	line-height: normal;
 }
-button {
+.design-button {
 	overflow: visible; 
 }
-button,
+.design-button,
 input[type="button"],
 input[type="reset"],
 input[type="submit"] {
@@ -312,7 +345,7 @@ button[disabled],
 html input[disabled] {
 	cursor: default;
 }
-button::-moz-focus-inner,
+.design-button::-moz-focus-inner,
 input::-moz-focus-inner {
 	border: 0;
 	padding: 0;
@@ -377,10 +410,10 @@ textarea {
 	     -o-transition: all ease .3s;
 	        transition: all ease .3s;
 }
-button::-moz-focus-inner { 
+.design-button::-moz-focus-inner { 
 	border: 0;
 }
-button:focus,
+.design-button:focus,
 input[type="text"]:focus,
 input[type="email"]:focus,
 input[type="password"]:focus,
@@ -4839,16 +4872,10 @@ ul.tribe-events-sub-nav a,
 input[type="submit"],
 input[type="reset"],
 input[type="button"],
-button:not(.search_submit),
+.design-button:not(.search_submit),
 .sc_button,
 body a.sc_button,
 .top_panel_wrap:not(.top_panel_style_5) .menu_main_nav > li.donate-btn > a,
-
-.woocommerce .button,
-.woocommerce #respond input#submit,
-.woocommerce a.button,
-.woocommerce button.button,
-.woocommerce input.button,
 
 #tribe-events .tribe-events-button,
 .tribe-events-button,
@@ -4894,16 +4921,11 @@ body #booked-profile-page .booked-profile-appt-list .appt-block .google-cal-butt
 input[type="submit"]:hover,
 input[type="reset"]:hover,
 input[type="button"]:hover,
-button:not(.search_submit):hover,
+.design-button:not(.search_submit):hover,
 .sc_button:hover,
 body a.sc_button:hover,
 .top_panel_wrap:not(.top_panel_style_5) .menu_main_nav > li.donate-btn > a:hover,
 
-.woocommerce .button:hover,
-.woocommerce #respond input#submit:hover,
-.woocommerce a.button:hover,
-.woocommerce button.button:hover,
-.woocommerce input.button:hover,
 
 #tribe-events .tribe-events-button:hover,
 .tribe-events-button:hover,
@@ -5056,116 +5078,6 @@ body a.sc_button.sc_button_style_border:hover{
 .scheme_original .woocommerce .widget_price_filter .ui-slider .ui-slider-range,
 .scheme_original .woocommerce-page .widget_price_filter .ui-slider .ui-slider-range{
     background-color: #b2b9bd !important;
-}
-.woocommerce .widget_price_filter .ui-slider .ui-slider-handle{
-    width: 0.6429em;
-    height: 0.6429em;
-    border: solid 2px #b2b9bd;
-}
-.woocommerce .widget_price_filter .price_slider_amount .button,
-.woocommerce-page .widget_price_filter .price_slider_amount .button{
-    font: 700 0.7143em "Lato", sans-serif !important;
-    text-transform: uppercase;
-    margin-right: 3em;
-}
-.woocommerce .widget_price_filter .price_slider_amount{
-    font-size: 1em;
-    text-align: left;
-    white-space: nowrap;
-}
-
-.woocommerce #respond input#submit, .woocommerce a.button, .woocommerce button.button, .woocommerce input.button{
-    -webkit-border-radius: 0;
-    -moz-border-radius: 0;
-    border-radius: 0;
-}
-.woocommerce .widget_price_filter .price_label{
-    color: #777777;
-    font-weight: 700;
-}
-
-
-/* Widget: Cart */
-.sidebar aside.widget_shopping_cart + aside{
-    margin-top: 7.8571em;
-    padding-top: 0;
-}
-.sidebar aside.widget_shopping_cart + aside:before{
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 2.1429em;
-    background-color: #ffffff;
-    left: 0;
-    margin-top: -5em;
-}
-.sidebar aside.widget_shopping_cart ul.product_list_widget li.empty{
-    padding: 0;
-}
-
-.woocommerce ul.cart_list li a,
-.woocommerce ul.product_list_widget li a,
-.woocommerce-page ul.cart_list li a,
-.woocommerce-page ul.product_list_widget li a{
-    color: #212121 !important;
-    font-weight: 700;
-}
-.woocommerce ul.cart_list li a:hover,
-.woocommerce ul.product_list_widget li a:hover,
-.woocommerce-page ul.cart_list li a:hover,
-.woocommerce-page ul.product_list_widget li a:hover{
-    color: #1dc6df !important;
-}
-.woocommerce.widget_shopping_cart .quantity,
-.woocommerce .widget_shopping_cart .quantity,
-.woocommerce-page.widget_shopping_cart .quantity,
-.woocommerce-page .widget_shopping_cart .quantity,
-.widget_shopping_cart .quantity .amount{
-    font-family: "Lato", sans-serif;
-    color: #999999 !important;
-}
-.woocommerce.widget_shopping_cart .total{
-    border-top: solid 1px #e3e9ed !important;
-    margin-bottom: 1.6429em;
-}
-.widget_shopping_cart .total .amount{
-    color: #1dc6df !important;
-}
-
-/* Widget: Products */
-.woocommerce ul.cart_list li, .woocommerce ul.product_list_widget li{
-    padding: 0 0 6px 0;
-}
-.woocommerce.widget_products .amount{
-    color: #999999 !important;
-}
-.widget_products .widget_title{
-    margin-bottom: 1.6667em;
-}
-.products .post_item_wrap{
-    max-width: 300px;
-    margin: 0 auto;
-}
-
-/* Widget: Top Rated Products */
-.woocommerce.widget_top_rated_products .amount{
-    color: #999999 !important;
-}
-.widget_top_rated_products .widget_title{
-    margin-bottom: 1.6667em;
-}
-
-/* Widget: Instagram */
-.instagram-pics{
-    overflow: hidden;
-}
-.widget_area ul.instagram-pics li{
-    width: 25% !important;
-    margin: 0 !important;
-    padding: 0 3px 3px 0 !important;
-}
-.footer_wrap.widget_area .null-instagram-feed .widget_title{
-    margin-bottom: 1.8889em !important;
 }
 
 /* Highlighted text */
@@ -5828,72 +5740,6 @@ footer.twitter_wrap .sc_section_overlay {
 
 
 
-/* 13. Third party plugins
------------------------------------------------------------------------------------- */
-.slider_wrap #toc{
-    width: 100%;
-}
-#slider-bottom-arrow{
-    text-align: center;
-    font-size: 3.5714em;
-    display: block;
-}
-
-
-/* 13.1 Media player
-------------------------------------------------------- */
-.mejs-controls button:hover,
-.mejs-controls button:active { background-color:transparent !important; }
-
-
-/* 13.2 Magnific popup
--------------------------------------------------------- */
-.mfp-figure figcaption {
-	margin-bottom:40px !important;
-	height:40px;
-	padding:0 16px;
-	overflow:hidden;
-}
-.mfp-figure figcaption .mfp-bottom-bar {
-	left: 16px;
-	right:16px;
-	margin-top:-30px;
-	width:auto;
-}
-
-
-/* 13.3 Google conversion 
----------------------------------------------------------- */
-iframe[name="google_conversion_frame"] { height:1px; min-height:0px; display:none; }
-
-
-/* 13.4 Booked calendar */
-
-body table.booked-calendar .booked-appt-list h2{
-	font-size: 20px !important;
-}
-body table.booked-calendar .booked-appt-list .timeslot .timeslot-people button,
-body #booked-profile-page input.button-primary[type="submit"],
-body table.booked-calendar input.button-primary[type="submit"]{
-	border: none !important;
-	padding: 1.2em 1.8em 1.1em;
-	font: 700 10px/1 'Raleway', sans-serif !important;
-}
-body #booked-profile-page input[type="submit"],
-body #booked-profile-page button,
-body table.booked-calendar input[type="submit"],
-body table.booked-calendar button,
-body .booked-modal input[type="submit"],
-body .booked-modal button{
-	padding: 1.1em 1.7em 1em;
-	font: 700 10px/1 'Raleway', sans-serif !important;
-}
-body .booked-form{
-	padding: 15px 0;
-}
-body .booked-modal .booked-form{
-	padding: 0 0 15px;
-}
 
 
 /* 14. Predefined classes for users
@@ -6114,7 +5960,6 @@ body .booked-modal .booked-form{
 /* Breadcrumbs block backgrounds */
 .breadcrumbs_block_bg1{	background-image: url(http://placehold.it/1920x348); }
 .breadcrumbs_block_bg2{	background-image: url(http://placehold.it/1920x348); }
-.breadcrumbs_block_bg3{ background-image: url(http://placehold.it/1920x348); }
 .breadcrumbs_block_bg4{ background-image: url(http://placehold.it/1920x348); }
 .breadcrumbs_block_bg5{ background-image: url(http://placehold.it/1920x348); }
 .breadcrumbs_block_bg6{ background-image: url(http://placehold.it/1920x348); }
@@ -6232,7 +6077,7 @@ body .booked-modal .booked-form{
 
 /* Testimonials Section */
 .hp1_testimonials_section{
-	background-image: url(/images/testimonials.jpg);
+	background-image: url('../images/testimonials.jpg');
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -6265,16 +6110,6 @@ body .booked-modal .booked-form{
 	color: #ffffff;
 }
 
-/*** Homepage 2 ***/
-
-/* Banner section */
-.hp2_banner_section{
-	line-height: 1.6111em !important;
-	font-size:1.2857em;
-	font-weight:400;
-	padding-top: 3.5em;
-	padding-bottom: 2em;
-}
 
 /* Info section */
 .hp2_info_section {

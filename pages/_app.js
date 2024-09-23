@@ -7,6 +7,7 @@ import '@/styles/tpl-essential-grids.css'
 import '@/styles/core.animation.css'
 import '@/styles/plugin.revslider.css'
 import '@/styles/custom.slider.css'
+import '@/styles/fontello/css/fontello.css'
 
 
 

@@ -3,8 +3,6 @@ import React, { useRef } from 'react'
 import slide1 from '@/images/slider1-3.jpg'
 import slide2 from '@/images/slider1-2.jpg'
 import slide3 from '@/images/home1_sl2.jpg'
-import slide4 from '@/images/slider1_1.jpg'
-import miniSlide1 from '@/images/slider1-2_layer.webp'
 import miniSlide2 from '@/images/slider1-1_layer.webp'
 import Slider from "react-animated-slider";
 import "react-animated-slider/build/horizontal.css";
@@ -31,6 +29,7 @@ const content = [
     description:
       "Come join us on Wednesday's for movies, games and other fun wholesome activites",
     image: slide3.src,
+    button: "Visit Us",
   }
 ];
 
@@ -55,7 +54,7 @@ export default function CustomSlider() {
             <p>{item.description}</p>
             </Fade>
             </Slide>
-            {item.button > 0 && <button className='slide-button'>{item.button}</button>}
+            {item.button && <button className='slide-button design-button'>{item.button}</button>}
             
           </div>
           <section>
