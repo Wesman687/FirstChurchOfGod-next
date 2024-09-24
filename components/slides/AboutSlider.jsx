@@ -18,7 +18,6 @@ const content = [{
     title: 'Who We Are',
     comment: `We are committed to being and making disciples. Disciples are people who are excited about the word and want to share it with others.`
 }
-
 ]
 
 function AboutSlider() {
@@ -71,8 +70,7 @@ function AboutSlider() {
     return (
         <div className="about-slide-row">
             <div ref={sliderRef} className="about-slider-container keen-slider">
-                {content.map((item, index) => (
-                    <>
+                {content.map((item, index) => (                    
                         <div key={index} className={`keen-slider__slide about-keen number-slide${content.length + 1}`}>
                             <div className="about-slider-wrapper">
                                 <div className="sc_services_item_featured post_featured">
@@ -89,8 +87,7 @@ function AboutSlider() {
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </>
+                        </div>                    
                 ))}
             </div>
         </div>

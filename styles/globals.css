@@ -58,6 +58,9 @@
 	text-decoration: underline;
 	color: #3799AB !important;
 }
+.home:hover {
+	color: #3799AB !important;
+}
 .about-slider-image {
 	width: 10vw;
 	border-radius: 2px;
@@ -88,9 +91,28 @@
 	justify-content: center;
 	flex-direction: column;
 }
+/***** Gallery */
+.esg-entry-media {
+	width: 250px;
+	cursor: pointer;
+	position: relative;
+}
+.esg-entry-media:hover {
+	transform: scale(150%);
+	z-index: 10;
+}
+.gallery-image-container {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 24px;
+}
+.esg-grid {
+	display: flex;
+	flex-direction: column;
+}
 
 
-
+.gallery-header {background-image: url('../images/palatka-bridge.jpg'); }
 .about-us-header{ background-image: url('../images/cross-in-sky.png'); }
 /* TABLE OF CONTENTS:
 
@@ -605,6 +627,7 @@ textarea::-webkit-input-placeholder {
     opacity:0.6;
     filter: alpha(opacity=60);
 }
+
 
 
 /* 4. General styles

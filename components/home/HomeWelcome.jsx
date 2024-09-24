@@ -8,10 +8,8 @@ function HomeWelcome() {
             <div className="content_wrap">
                 <div className="columns_wrap">
                     <div className="column-1_2 sc_column_item sc_column_item_1 odd first">
-                        <figure className="sc_image sc_image_shape_square">
-                            <a href="service-single.html">
-                                <Image src={ChurchImage} alt="" />
-                            </a>
+                        <figure className="sc_image sc_image_shape_square">                            
+                                <Image src={ChurchImage} alt="" />                            
                         </figure>
                     </div>
                     <div className="column-1_2 sc_column_item sc_column_item_2 even">
@@ -25,7 +23,7 @@ function HomeWelcome() {
                                     <span className="sc_icon icon-house306"></span>
                                     <div className="sc_services_item_content">
                                         <h4 className="sc_services_item_title">
-                                            <a href="service-single.html">Follow with us</a>
+                                            Follow with us
                                         </h4>
                                         <div className="sc_services_item_description">
                                             <p>We would love to see you and your family &amp; friends this weekend in our church at 10 am.</p>
@@ -36,7 +34,7 @@ function HomeWelcome() {
                                     <span className="sc_icon icon-open-book6"></span>
                                     <div className="sc_services_item_content">
                                         <h4 className="sc_services_item_title">
-                                            <a href="service-single.html">What We Believe</a></h4>
+                                            What We Believe</h4>
                                         <div className="sc_services_item_description">
                                             <p>We believe that the Bible is God’s Word. It is accurate, authoritative and applicable to our everyday lives.</p>
                                         </div>
@@ -46,7 +44,7 @@ function HomeWelcome() {
                                     <span className="sc_icon icon-avatar110"></span>
                                     <div className="sc_services_item_content">
                                         <h4 className="sc_services_item_title">
-                                            <a href="service-single.html">New Here?</a>
+                                            New Here?
                                         </h4>
                                         <div className="sc_services_item_description">
                                             <p>Tell us about yourself to begin your journey with connecting to our community.</p>
