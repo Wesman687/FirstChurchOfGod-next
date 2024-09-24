@@ -37,6 +37,9 @@ h4 {
   margin-top: 2.45em;
   margin-bottom: 1.2em;
 }
+.bold {
+  font-weight: bold;
+}
 h5 {
   font-size: 1.2857em;
   line-height: 1.3333em;

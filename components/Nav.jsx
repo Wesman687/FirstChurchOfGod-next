@@ -1,9 +1,16 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import logo from '@/images/logo.svg'
 import Image from 'next/image'
 import Link from 'next/link'
 
-export default function Nav() {
+export default function Nav() {   
+    
+  const [pathname, setPathName] = useState("");
+  console.log(pathname, 'pathname')
+  useEffect(() => {
+    setPathName(window.location.pathname);
+    console.log('is this running')
+  }, []);
     return (
         <>
             <header className="top_panel_wrap top_panel_style_3 scheme_original">
@@ -21,28 +28,28 @@ export default function Nav() {
                                 <nav className="menu_main_nav_area">
                                     <ul id="menu_main" className="menu_main_nav">
                                         <Link href={'/'} className='a-link'>
-                                            <li className="menu-item current-menu-ancestor">
+                                            <li className={pathname === '/' ? 'current-link' : 'menu-item'}>
                                                 Home
                                             </li>
                                         </Link>
                                         <Link href={'/about-us'}>
-                                            <li className="menu-item">
+                                        <li className={pathname === '/about-us' ? 'current-link' : 'menu-item'}>
                                                 About Us
                                             </li>
                                         </Link>
                                         
                                         <Link href={'/contacts'}>
-                                            <li className="menu-item">
+                                        <li className={pathname === '/contacts' ? 'current-link' : 'menu-item'}>
                                             Contact Us
                                             </li>
                                         </Link>
                                         <Link href={'/gallery'}>
-                                            <li className="menu-item">
+                                        <li className={pathname === '/gallery' ? 'current-link' : 'menu-item'}>
                                             Gallery
                                             </li>
                                         </Link>
-                                        <Link href={'/gallery'}>
-                                        <li class="donate-btn menu-item">
+                                        <Link href={'/donate'}>
+                                        <li className={pathname === '/donate' ? 'current-link donate-btn' : 'menu-item donate-btn'}>
                                             Give
                                             </li>
                                         </Link>

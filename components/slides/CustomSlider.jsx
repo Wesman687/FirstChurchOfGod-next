@@ -63,7 +63,7 @@ export default function CustomSlider() {
           </div>
           <section>
             <Fade duration={6500}>
-            <Image className='slider-mini-image' src={item.secondaryImage} alt='' />   
+            {item.secondaryImage && <Image src={item.secondaryImage} className='slider-mini-image'  alt='' />}   
             </Fade>        
           </section>
           

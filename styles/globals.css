@@ -48,7 +48,9 @@
 	color: #212121;
 	font-weight: 500;
 }
-
+.menu-item:hover {
+	color: #1DC6DF;
+}
 .light-blue {
 	color: #3799AB !important;
 }

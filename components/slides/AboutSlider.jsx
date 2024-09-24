@@ -32,7 +32,7 @@ function AboutSlider() {
         loop: true,
         slides: {
             perView: 2,
-          },
+        },
         created() {
             setLoaded(true)
         },
@@ -70,29 +70,29 @@ function AboutSlider() {
 
     return (
         <div className="about-slide-row">
-        <div ref={sliderRef} className="about-slider-container keen-slider">
-                {content.map((item, index) => (                   
-                     <>
+            <div ref={sliderRef} className="about-slider-container keen-slider">
+                {content.map((item, index) => (
+                    <>
                         <div key={index} className={`keen-slider__slide about-keen number-slide${content.length + 1}`}>
                             <div className="about-slider-wrapper">
-                            <div className="sc_services_item_featured post_featured">
-                                <div className="about-slider-image" data-title="About Our Mission">
-                                    <Image alt="" className='about-slider-image' src={item.image} />
+                                <div className="sc_services_item_featured post_featured">
+                                    <div className="about-slider-image" data-title="About Our Mission">
+                                        <Image src={item.image} alt="" className='about-slider-image' />
+                                    </div>
                                 </div>
-                            </div>
-                            <div className="sc_services_item_content about-slide-desc-wrapper">
-                                <h4 className="sc_services_item_title">
-                                    <li>{item.title}</li>
-                                </h4>
-                                <div className="sc_services_item_description">
-                                    <p>{item.comment}</p>
-                                </div>
+                                <div className="sc_services_item_content about-slide-desc-wrapper">
+                                    <h4 className="sc_services_item_title">
+                                        <li>{item.title}</li>
+                                    </h4>
+                                    <div className="sc_services_item_description">
+                                        <p>{item.comment}</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </>
                 ))}
-        </div>
+            </div>
         </div>
     )
 }

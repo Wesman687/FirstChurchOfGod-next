@@ -3,6 +3,7 @@ import HomeMission from "@/components/home/HomeMission";
 import HomeToAction from "@/components/home/HomeToAction";
 import HomeWelcome from "@/components/home/HomeWelcome";
 import Testimonial from "@/components/home/Testimonial";
+import Layout from "@/components/Layout";
 import HeaderSlide from "@/components/slides/HeaderSlide";
 
 
@@ -10,11 +11,11 @@ import HeaderSlide from "@/components/slides/HeaderSlide";
 export default function Home() {
   return (
     <>
-
-      <div class="page_content_wrap page_paddings_no">
-        <div class="content">
-          <article class="post_item post_item_single page">
-            <section class="post_content">
+      <Layout>
+      <div className="page_content_wrap page_paddings_no">
+        <div className="content">
+          <article className="post_item post_item_single page">
+            <section className="post_content">
               <HeaderSlide />
               <HomeWelcome />
               <HomeMission />
@@ -25,6 +26,7 @@ export default function Home() {
           </article>
         </div>
       </div>
+      </Layout>
     </>
   );
 }
