@@ -47,10 +47,13 @@ export default function Nav() {
                                             </li>
                                         </Link>
                                         <Link href={'/donate'}>
-                                        <li className={pathname === '/donate' ? 'current-link donate-btn' : 'menu-item donate-btn'}>
+                                        <li className='donate-btn'>
                                             Give
                                             </li>
                                         </Link>
+                                        <button className='orange-btn login'>
+                                            Login
+                                        </button>
                                     </ul>
                                 </nav>
                             </div>
