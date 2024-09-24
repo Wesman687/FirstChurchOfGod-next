@@ -18,9 +18,9 @@ function TeamSection() {
                                 </div>
                                 <div className="sc_team_item_info">
                                     <h5 className="sc_team_item_title">
-                                        Elmer Black
+                                        Bruce Siegar
                                     </h5>
-                                    <div className="sc_team_item_position">Lead Teaching Pastor</div>
+                                    <div className="sc_team_item_position">Pastor</div>
                                     
                                 </div>
                             </div>
@@ -34,9 +34,9 @@ function TeamSection() {
                                 </div>
                                 <div className="sc_team_item_info">
                                     <h5 className="sc_team_item_title">
-                                        Herbert Wright
+                                        Susan Miracle
                                     </h5>
-                                    <div className="sc_team_item_position">Executive Pastor</div>
+                                    <div className="sc_team_item_position">Christian Education Chairman & Children and youth ministry</div>
                                     
                                 </div>
                             </div>
