@@ -5,21 +5,34 @@ import React, { useState } from 'react'
 
 const imageArray = [{
     image: 'http://placehold.it/2400x1600',
-    category: 'events'
+    category: 'EVENTS'
 }, {
     image: 'https://newlife-church-html.axiomthemes.com/images/gallery-post-4.jpg',
-    category: 'events'
+    category: 'EVENTS'
 }, {
     image: 'https://newlife-church-html.axiomthemes.com/images/participate-with-us.jpg',
-    category: 'worship'
+    category: 'WORSHIP'
 }, {
     image: 'https://newlife-church-html.axiomthemes.com/images/our-community.jpg',
-    category: 'worship'
+    category: 'WORSHIP'
 }
 ]
+const filters = ['ALL', 'EVENTS', 'WORSHIP' ]
 
 function Gallery() {
-    const [filter, setFilter] = useState('all')
+    const [filter, setFilter] = useState('ALL')
+    const [displayedImages, setDisplayedImages] = useState(imageArray || [])
+    function handleFilter(e){
+        const value = e.target.value
+        setFilter(value)
+        if (value === 'ALL') {
+            setDisplayedImages(imageArray)
+        }
+        else {
+            setDisplayedImages(imageArray.filter((item)=> item.category === value))
+        }     
+    }
+
     return (
         <>
             <Layout>
@@ -45,13 +58,15 @@ function Gallery() {
                                         <div id="esg-grid-2-1" className="esg-grid">
                                             <article className="esg-filters esg-singlefilters grid-filters margin_bottom_20">
                                                 <div className="esg-filter-wrapper esg-fgc-2 margin_right_3 margin_left_3">
-                                                    <select>
-
+                                                    <select onChange={(e)=>handleFilter(e)} value={filter} className='gallery-filter-box'>
+                                                        <option value='ALL'>All</option>
+                                                        <option value='EVENTS'>EVENTS</option>
+                                                        <option value='WORSHIP'>WORSHIP</option>
                                                     </select>
                                                 </div>
                                             </article>
                                             <div className='gallery-image-container'>
-                                                {imageArray.length > 0 && imageArray.map((item, index) => (
+                                                {imageArray.length > 0 && displayedImages.map((item, index) => (
                                                     <div className="esg-media-cover-wrapper" key={index}>
                                                         <div className="esg-entry-media">
                                                             <img src={item.image} alt="" />

@@ -232,68 +232,7 @@ h6 {
 .scheme_original ::-moz-selection {
   color: #ffffff;
 }
-input[type="text"],
-input[type="number"],
-input[type="email"],
-input[type="search"],
-input[type="password"],
-input[type="tel"],
-select,
-textarea {
-  font-size: 1em;
-  line-height: 1.7857em;
-}
-.scheme_original input[type="text"],
-.scheme_original input[type="number"],
-.scheme_original input[type="email"],
-.scheme_original input[type="search"],
-.scheme_original input[type="password"],
-.scheme_original input[type="tel"],
-.scheme_original select,
-.scheme_original textarea {
-  color: #555555;
-}
-.scheme_original input[type="text"],
-.scheme_original input[type="number"],
-.scheme_original input[type="email"],
-.scheme_original input[type="search"],
-.scheme_original input[type="password"],
-.scheme_original input[type="tel"],
-.scheme_original select,
-.scheme_original textarea {
-  background-color: #F3F5F8;
-}
-.scheme_original input[type="text"]:focus,
-.scheme_original input[type="number"]:focus,
-.scheme_original input[type="email"]:focus,
-.scheme_original input[type="search"]:focus,
-.scheme_original input[type="password"]:focus,
-.scheme_original input[type="tel"]:focus,
-.scheme_original textarea:focus {
-  color: #212121;
-}
-.scheme_original input[type="text"]:focus,
-.scheme_original input[type="number"]:focus,
-.scheme_original input[type="email"]:focus,
-.scheme_original input[type="search"]:focus,
-.scheme_original input[type="password"]:focus,
-.scheme_original input[type="tel"]:focus,
-.scheme_original textarea:focus {
-  background-color: #B2B9BD;
-}
-.scheme_original input::-webkit-input-placeholder,
-.scheme_original textarea::-webkit-input-placeholder {
-  color: #999999;
-}
-.scheme_original input[type="text"].error_fields_class,
-.scheme_original input[type="number"].error_fields_class,
-.scheme_original input[type="email"].error_fields_class,
-.scheme_original input[type="search"].error_fields_class,
-.scheme_original input[type="password"].error_fields_class,
-.scheme_original input[type="tel"].error_fields_class,
-.scheme_original textarea.error_fields_class {
-  border-color: #FE464D;
-}
+
 .scheme_original label.required:after {
   color: #FE464D;
 }
