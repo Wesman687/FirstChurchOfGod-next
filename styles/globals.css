@@ -310,7 +310,11 @@
 }
 
 /**** Accout Setting ****/ 
-
+.displayed-photourl {
+	border-radius: 50%;
+	width: 45px;
+	border: 2px solid #0000002f;
+}
 .disable__submit {    
     width: 100%;
     border: 0;

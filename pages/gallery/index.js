@@ -79,7 +79,7 @@ function Gallery() {
 
                                                     <div className="nav_link admin">
                                                         {user.firstName ? (
-                                                            <p className="nav_link admin__link">{user.firstName}</p>
+                                                            <img src={user.photoUrl} className='displayed-photourl' />
                                                         ) : ( <Login />)}
                                                         {user.email && (
                                                             <div className="admin_dropdown ">
