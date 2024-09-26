@@ -3,10 +3,12 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
     username: null,
-    name: null,
+    firstName: null,
+    lastName: null,
     email: null,
     uid: null,
-    photoUrl: null
+    photoUrl: null,
+    phone: null,
 
 }
 
@@ -17,18 +19,22 @@ const userSlice = createSlice({
 
     setUser: (state, action) => {
         state.username = action.payload.username,
-        state.name = action.payload.name,
+        state.firstName = action.payload.firstName,
+        state.lastName = action.payload.lastName,
         state.email = action.payload.email,
         state.uid = action.payload.uid,
+        state.phone = action.payload.phone,
         state.photoUrl = action.payload.photoUrl
     },
 
     signOutUser : (state) =>{
         state.username = null
-        state.name = null
+        state.firstName = null
+        state.lastName = null
         state.email = null
         state.uid = null
         state.photoUrl = null
+        state.phone = null
     }
   }
 });

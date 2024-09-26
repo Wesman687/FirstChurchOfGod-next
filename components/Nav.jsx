@@ -2,10 +2,14 @@ import React, { useEffect, useState } from 'react'
 import logo from '@/images/logo.svg'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useDispatch } from 'react-redux';
+import { openLoginModal } from '@/redux/modalSlice';
+import Login from './modals/Login';
 
 export default function Nav() {   
     
   const [pathname, setPathName] = useState("");
+  const dispatch = useDispatch()
   useEffect(() => {
     setPathName(window.location.pathname);
   }, []);
@@ -19,7 +23,6 @@ export default function Nav() {
                             <div className="contact_logo">
                                 <div className="logo">
                                     <Image src={logo} className="logo_main" alt="" />
-                                    <Image src={logo} className="logo_fixed" alt="" />
                                 </div>
                             </div>
                             <div className="menu_main_wrap">
@@ -51,9 +54,6 @@ export default function Nav() {
                                             Give
                                             </li>
                                         </Link>
-                                        <button className='orange-btn login'>
-                                            Login
-                                        </button>
                                     </ul>
                                 </nav>
                             </div>

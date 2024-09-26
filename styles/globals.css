@@ -44,6 +44,9 @@
 	background-color: #1DC6DF;
 	color: #FFFFFF !important;
 }
+.logo {
+	width: 250px;
+}
 .login {
 	padding: 4px 24px;
 	font-size: 18px;
@@ -57,7 +60,7 @@
 	color: #1DC6DF;
 }
 .light-blue {
-	color: #3799AB !important;
+	color: #1DC6DF !important;
 }
 .current-link {
 	text-decoration: underline;
@@ -111,6 +114,16 @@
 	flex-wrap: wrap;
 	gap: 24px;
 }
+.esg-filter-wrapper {
+	display: flex;
+	justify-content: space-between;
+}
+.login-link:hover {
+	color: #000 !important;
+}
+.login-link {
+	cursor: pointer;
+}
 .esg-grid {
 	display: flex;
 	flex-direction: column;
@@ -123,10 +136,239 @@
 	cursor: pointer;
 	margin-bottom: 32px;
 }
+.admin_dropdown {
+    position: absolute;
+    width: max-content;
+    background: #191919;
+    padding: 18px 22px;
+    border-radius: 2px;
+    z-index: 1;
+    display: none;
+    align-items: center;
+    justify-content: center;
 
+}
+.admin_dropdown p {
+    font-size: 16px;
+}
+.admin_dropdown h1 {
+    text-decoration: underline;
+    font-size: 28px;
+    margin-bottom: 48px;
+    font-weight: bold;
+}
+.admin:hover .admin_dropdown {
+    display: block;
+    color: #1cbed6;
+}
 
 .gallery-header {background-image: url('../images/palatka-bridge.jpg'); }
 .about-us-header{ background-image: url('../images/cross-in-sky.png'); }
+
+
+/**** Login *****/
+.nav_link {
+	cursor: pointer;
+}
+.login__container {
+	width: 100vw;
+	height: 100vh;
+	position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.login-close-container {
+	width: fit-content;
+}
+.login__x {
+    position: absolute;
+    top: 6px;
+    right: 5px;
+    color: white;
+	width: 48px;
+	font-weight: bold;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+	z-index: 250;
+}
+.xicon {
+	width: 48px;
+}
+.login__x:hover {
+    color: #3799AB;
+}
+.login__modal {
+    position: relative;
+    width: 100%;
+    top: 0;
+    bottom: 50;
+}
+.login__button {
+    position: relative;
+    background-color: transparent;
+    color: white;
+    cursor: pointer;
+    padding: 8px 16px;
+    border-radius: 14px;
+    border-color: white;
+}
+.login__button:hover {
+    background-color: white;
+    color: black;
+}
+.login-logo {
+    width: 150px;
+}
+
+.login-form {
+	position: relative;
+    width: 450px;
+    background: rgba(0,0,0,0.75);
+    border-radius: 4px;
+    padding: 16px;
+    margin: auto;
+	overflow: hidden;
+}
+.login-form h1 {
+    font-size: 32px;
+    font-weight: 500;
+	color: #1cbed6;
+}
+.login-form input {
+    width: 100%;
+	max-width: 100%;
+    color: #000;
+    border: 0;
+    margin: 12px 0;
+    outline: 0;
+    padding: 8px;
+    font-size: 16px;
+    font-weight: 500;
+}
+.login-form input::placeholder {
+    font-size: 16px;
+    font-weight: 500;
+}
+.login-form button {
+    width: 100%;
+    border: 0;
+    outline: 0;
+    padding: 16px;
+    background: linear-gradient(to bottom, rgb(115, 198, 247), rgb(24, 160, 250));
+    color: #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 500;
+    margin-top: 20px;
+    cursor: pointer;
+}
+.submit__disabled {
+    background-color: rgb(2, 65, 2) !important;
+    color: #ddd !important;
+    cursor: not-allowed !important;
+}
+.input-container {
+	width: 100%;
+	overflow: hidden;
+}
+.input-container p {
+	margin: 0;
+	color: #ddd ;
+}
+.input-upload-image {
+	height: 75px;
+	width: 75px;
+	cursor: pointer;
+}
+.submit:hover {
+            background: linear-gradient(to bottom, rgb(10, 126, 204), rgb(1, 46, 66));    
+ 
+}
+.form-help {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #b3b3b3;
+    font-size: 13px;
+}
+.form-switch {
+    margin-top: 12px;
+    color: #3799AB;
+    font-weight: 500;
+    cursor: pointer;
+}
+.switch-text {
+    margin-left: 6px;
+    color: #1cbed6;
+    font-weight: 500px;
+    cursor: pointer;
+}
+.admin__link {
+    text-decoration: underline;
+}
+
+/**** Accout Setting ****/ 
+
+.disable__submit {    
+    width: 100%;
+    border: 0;
+    outline: 0;
+    padding: 16px;
+    background: rgba(2, 94, 2, 0.712);
+    color: rgb(151, 151, 151);
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 500;
+    margin: 12px 0 0 0;
+    cursor: not-allowed;
+}
+.account-image-preview{
+	width: 75px;
+	position: relative;
+	cursor: pointer;
+}
+.photourl-container {
+	display: flex;
+	gap: 24px;
+}
+.x-image-preview {
+	width: 16px;
+	color: #1cbed6;
+	position: absolute;
+	cursor: pointer;
+	top: 0;
+	right: 0;
+}
+.x-image-preview:hover {
+	color: #000;
+}
+
+.select {
+    padding: 16px 0px;
+}
+.settings_form {
+	position: relative;
+}
+.select:focus {
+    background: #333;
+    
+    border: 2px solid rgba(0, 255, 0, 0.712);
+}
+@media (max-width: 500px) {
+    .login {
+        padding: 15px 5%;
+    }
+    .login-form {
+        padding: 20px;
+        margin-top: 30px;
+    }
+}
+
+
+
+
 /* TABLE OF CONTENTS:
 
 1. Reset tags

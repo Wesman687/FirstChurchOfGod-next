@@ -1,7 +1,13 @@
 import Layout from '@/components/Layout'
+import AccountInfo from '@/components/modals/AccountInfo'
+import Login from '@/components/modals/Login'
+import { auth } from '@/firebase'
+import { signOutUser } from '@/redux/userSlice'
+import { signOut } from 'firebase/auth'
 import Image from 'next/image'
 import Link from 'next/link'
 import React, { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 
 const imageArray = [{
     image: 'http://placehold.it/2400x1600',
@@ -17,20 +23,26 @@ const imageArray = [{
     category: 'WORSHIP'
 }
 ]
-const filters = ['ALL', 'EVENTS', 'WORSHIP' ]
+const filters = ['ALL', 'EVENTS', 'WORSHIP']
 
 function Gallery() {
     const [filter, setFilter] = useState('ALL')
     const [displayedImages, setDisplayedImages] = useState(imageArray || [])
-    function handleFilter(e){
+    const user = useSelector((state) => state.user)
+    const dispatch = useDispatch()
+    async function logOut(){
+        await signOut(auth)
+        dispatch(signOutUser())
+    }
+    function handleFilter(e) {
         const value = e.target.value
         setFilter(value)
         if (value === 'ALL') {
             setDisplayedImages(imageArray)
         }
         else {
-            setDisplayedImages(imageArray.filter((item)=> item.category === value))
-        }     
+            setDisplayedImages(imageArray.filter((item) => item.category === value))
+        }
     }
 
     return (
@@ -58,11 +70,28 @@ function Gallery() {
                                         <div id="esg-grid-2-1" className="esg-grid">
                                             <article className="esg-filters esg-singlefilters grid-filters margin_bottom_20">
                                                 <div className="esg-filter-wrapper esg-fgc-2 margin_right_3 margin_left_3">
-                                                    <select onChange={(e)=>handleFilter(e)} value={filter} className='gallery-filter-box'>
+
+                                                    <select onChange={(e) => handleFilter(e)} value={filter} className='gallery-filter-box'>
                                                         <option value='ALL'>All</option>
                                                         <option value='EVENTS'>EVENTS</option>
                                                         <option value='WORSHIP'>WORSHIP</option>
                                                     </select>
+
+                                                    <div className="nav_link admin">
+                                                        {user.firstName ? (
+                                                            <p className="nav_link admin__link">{user.firstName}</p>
+                                                        ) : ( <Login />)}
+                                                        {user.email && (
+                                                            <div className="admin_dropdown ">
+                                                                <>                                                                    
+                                                                    <AccountInfo />
+                                                                    <p className="sb__link " onClick={() => logOut()}>
+                                                                        Log Out
+                                                                    </p>
+                                                                </>
+                                                            </div>
+                                                        )}
+                                                    </div>
                                                 </div>
                                             </article>
                                             <div className='gallery-image-container'>
