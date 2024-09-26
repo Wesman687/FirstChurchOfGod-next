@@ -93,7 +93,8 @@ function checkCredentials(){
           lastName: userInfo.lastName,
           email: userInfo.email,
           uid: userInfo.uid,
-          phone: userInfo.phone
+          phone: userInfo.phone,
+          photoUrl: userInfo.photoUrl
         })
       );
 
