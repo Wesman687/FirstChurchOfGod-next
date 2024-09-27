@@ -161,6 +161,109 @@
     display: block;
     color: #1cbed6;
 }
+.manage-filter-container {
+	display: flex;
+	gap: 24px;
+}
+.gallery-back-arrow {
+	width: 18px;
+}
+.manage-filter-arrow-container {
+	display: flex;
+	gap: 12px;
+}
+.manage-filters-label {
+	color: #1cbed6;
+	cursor: pointer;
+	border: 1px solid lightgray;
+	border-radius: 8px;
+	padding: 4px 8px;
+	font-weight: 500;
+	background: linear-gradient(90deg, #ebebeb, #d6d1d1bb, #ebebeb, #d3cdcdbb);
+}
+.manage-filters-label:hover {
+	color: #000;
+	background: linear-gradient(90deg, hsl(194, 97%, 64%), #00eeffbb, #4be1fc, #01accabb);
+	overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+    -webkit-transition: all 0.70s ease 0s;
+       -moz-transition: all 0.70s ease 0s;
+        -ms-transition: all 0.70s ease 0s;
+         -o-transition: all 0.70s ease 0s;
+            transition: all 0.70s ease 0s;
+    z-index: 1;
+    background-image: linear-gradient(90deg, hsl(194, 97%, 64%), #00eeffbb, #4be1fc, #01accabb) !important;
+    background-position: 98% 0 !important;
+    color: #FFFFFF !important;
+    -webkit-background-size: 210% 100%;
+       -moz-background-size: 210% 100%;
+        -ms-background-size: 210% 100%;
+         -o-background-size: 210% 100%;
+            background-size: 210% 100% ;
+    border: none !important;
+}
+
+
+/********* Filters **********/ 
+.manage-gallery-section {
+	width: 100%;
+}
+.filter-input-label {
+	font-size: 18px;
+	font-weight: 500;
+}
+.filter-input {
+	font-size: 18px;
+	padding: 4px 8px;
+	border-radius: 4px;
+	
+	
+}
+.filter-input-container {
+	display: flex;
+	gap: 24px;
+	align-items: center;
+	text-wrap: nowrap;
+}
+.filter-input-w-button {
+	width: 100%;
+	border: 1px solid #999999;
+	border-radius: 4px;
+	display: flex;
+	justify-content: space-between;
+	padding: 4px;
+}
+.filter-add {
+	background: linear-gradient(90deg, hsl(194, 98%, 63%), #2df1ffbb, #4be1fc, #61e6fabb);
+	border-radius: 4px;
+	border: 2px solid #0000;
+	cursor: pointer;
+}
+
+.filter-add:hover {
+	color: #000;
+	background: linear-gradient(90deg, hsl(194, 98%, 63%), #2df1ffbb, #4be1fc, #61e6fabb);
+	overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+    -webkit-transition: all 0.70s ease 0s;
+       -moz-transition: all 0.70s ease 0s;
+        -ms-transition: all 0.70s ease 0s;
+         -o-transition: all 0.70s ease 0s;
+            transition: all 0.70s ease 0s;
+    z-index: 1;
+    background-image: linear-gradient(90deg, hsl(194, 97%, 64%), #2df1ffbb, #4be1fc, #61e6fabb) !important;
+    background-position: 98% 0 !important;
+    color: #FFFFFF !important;
+    -webkit-background-size: 210% 100%;
+       -moz-background-size: 210% 100%;
+        -ms-background-size: 210% 100%;
+         -o-background-size: 210% 100%;
+            background-size: 210% 100% ;
+    
+	border: 2px solid #0000;
+}
 
 .gallery-header {background-image: url('../images/palatka-bridge.jpg'); }
 .about-us-header{ background-image: url('../images/cross-in-sky.png'); }
@@ -328,6 +431,7 @@
     margin: 12px 0 0 0;
     cursor: not-allowed;
 }
+
 .account-image-preview{
 	width: 75px;
 	position: relative;
@@ -336,6 +440,7 @@
 .photourl-container {
 	display: flex;
 	gap: 24px;
+	justify-content: space-between;
 }
 .x-image-preview {
 	width: 16px;
@@ -348,6 +453,151 @@
 .x-image-preview:hover {
 	color: #000;
 }
+.account-settings-check {
+	color: green;
+	width: 24px;
+}
+.account-check-container {
+	display: flex;
+}
+
+/****** Filters *****/
+.filters-list-container {
+	padding-top: 32px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+}
+.filters-list-container table {
+	width: 50%;
+}
+.filters-list-container table thead td {
+	background-color: rgba(142, 199, 253, 0.541);
+	text-align: center;
+}
+.filters-list-container table tbody td {
+	text-align: center;
+	font-size: 18px;
+}
+.clear-edit-container {
+	display: flex;
+	gap: 12px;
+	padding: 0 12px;
+}
+.input-left-icon {
+	width: 24px;
+	cursor: pointer;
+}
+.input-left-icon:hover {
+	color: #000;
+}
+
+.edit-remove-column {
+	width: 50%;
+	display: flex;
+	gap: 6px;
+}
+.edit-remove-column label svg {
+	width: 18px;
+}
+.edit-remove-column label {
+	font-size: 16px;
+	padding: 4px 8px;
+	display: flex;
+	align-items: center;
+	width: fit-content;
+}
+.edit-remove-column {
+	padding: 4px 8px;
+}
+.filter-edit-button {	
+	color: #000;
+	border: 1px solid #1cbed6;
+	background: linear-gradient(90deg, hsl(194, 98%, 63%), #2df1ffbb, #4be1fc, #61e6fabb);
+	cursor: pointer;
+}
+.filter-remove-button {	
+	color: #000;
+	border: 1px solid #f80000;
+	background: linear-gradient(90deg, hsl(0, 100%, 78%), #ff6969bb, #ff7d7d, #fc6060bb);
+	cursor: pointer;
+}
+.filter-remove-button:hover {
+	color: white;
+	background: linear-gradient(90deg, hsl(0, 95%, 58%), #db1313bb, #ca0505, #ff0303bb);
+	overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+    -webkit-transition: all 0.70s ease 0s;
+       -moz-transition: all 0.70s ease 0s;
+        -ms-transition: all 0.70s ease 0s;
+         -o-transition: all 0.70s ease 0s;
+            transition: all 0.70s ease 0s;
+    z-index: 1;
+    background-image: linear-gradient(90deg, hsl(0, 94%, 49%), #db1313bb, #ca0505, +#e90101) !important;
+    background-position: 98% 0 !important;
+    color: #FFFFFF !important;
+    -webkit-background-size: 210% 100%;
+       -moz-background-size: 210% 100%;
+        -ms-background-size: 210% 100%;
+         -o-background-size: 210% 100%;
+            background-size: 210% 100% ;
+    
+}
+.filter-edit-button:hover {
+	color: white;
+	background: linear-gradient(90deg, hsl(194, 98%, 63%), #2df1ffbb, #4be1fc, #61e6fabb);
+	overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+    -webkit-transition: all 0.70s ease 0s;
+       -moz-transition: all 0.70s ease 0s;
+        -ms-transition: all 0.70s ease 0s;
+         -o-transition: all 0.70s ease 0s;
+            transition: all 0.70s ease 0s;
+    z-index: 1;
+    background-image: linear-gradient(90deg, hsl(194, 97%, 64%), #2df1ffbb, #4be1fc, #61e6fabb) !important;
+    background-position: 98% 0 !important;
+    color: #FFFFFF !important;
+    -webkit-background-size: 210% 100%;
+       -moz-background-size: 210% 100%;
+        -ms-background-size: 210% 100%;
+         -o-background-size: 210% 100%;
+            background-size: 210% 100% ;
+    
+
+}
+.filter-add {
+	background: linear-gradient(90deg, hsl(194, 98%, 63%), #2df1ffbb, #4be1fc, #61e6fabb);
+	border-radius: 4px;
+	border: 2px solid #0000;
+	cursor: pointer;
+}
+
+.filter-add:hover {
+	color: #000;
+	background: linear-gradient(90deg, hsl(194, 98%, 63%), #2df1ffbb, #4be1fc, #61e6fabb);
+	overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+    -webkit-transition: all 0.70s ease 0s;
+       -moz-transition: all 0.70s ease 0s;
+        -ms-transition: all 0.70s ease 0s;
+         -o-transition: all 0.70s ease 0s;
+            transition: all 0.70s ease 0s;
+    z-index: 1;
+    background-image: linear-gradient(90deg, hsl(194, 97%, 64%), #2df1ffbb, #4be1fc, #61e6fabb) !important;
+    background-position: 98% 0 !important;
+    color: #FFFFFF !important;
+    -webkit-background-size: 210% 100%;
+       -moz-background-size: 210% 100%;
+        -ms-background-size: 210% 100%;
+         -o-background-size: 210% 100%;
+            background-size: 210% 100% ;
+    
+	border: 2px solid #0000;
+}
 
 .select {
     padding: 16px 0px;
@@ -358,7 +608,7 @@
 .select:focus {
     background: #333;
     
-    border: 2px solid rgba(0, 255, 0, 0.712);
+    border: 2px solid #1bbad2;
 }
 @media (max-width: 500px) {
     .login {
@@ -473,12 +723,8 @@ h1:first-child{
     margin-top: -0.119em;
 }
 dt, b, strong {	font-weight: 500; }
-p, ul, ol, dl, blockquote, address { margin-bottom: 1.4286em; }
 li > ol, li > ul { margin-bottom:0; }
-ul>li, ol>li, dl>dd { margin-bottom:0.5em; }
-li>ul, li>ol, dd>dl { margin-top:0.5em; }
 li > p { margin-bottom:0; }
-li > p+p { margin-top:0.5em; }
 
 ol, ul {
 	padding-left:1.5em;
@@ -760,10 +1006,6 @@ textarea {
 	overflow: auto;			/* Removes default vertical scrollbar in IE6/7/8/9 */
 	vertical-align: top;	/* Improves readability and alignment in all browsers */
 	min-height:5em;
-}
-label{
-    display: block;
-    margin-bottom: 0.2857em;
 }
 .popup_form_field label{
     display: inline;

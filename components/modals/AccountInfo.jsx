@@ -16,6 +16,7 @@ import { setUser } from "@/redux/userSlice";
 import XIcon from "../icons/XIcon";
 import Image from "next/image";
 import upload from '@/images/upload_area.png'
+import CheckIcon from "../icons/CheckIcon";
 
 const AccountInfo = () => {
     const isOpen = useSelector((state) => state.modals.accountModalOpen);
@@ -23,18 +24,10 @@ const AccountInfo = () => {
     const [newFirstName, setFirstName] = useState(user.firstName || '');
     const [newLastName, setLastName] = useState(user.lastName || '');
     const [newPhone, setPhone] = useState(user.phone || '');
-    const [photoUrl, setPhotoUrl] = useState(user.photoUrl || '')
     const [loading, setLoading] = useState(false);
-    const [image, setImage] = useState(null)
+    const [image, setImage] = useState(user.photoUrl || null)
     const filePickerRef = useRef(null)
     const dispatch = useDispatch();
-    const checkDisable = () => {
-        return (
-            user.firstName === newFirstName &&
-            user.lastName === newLastName &&
-            user.phone === newPhone
-        );
-    };
     function addImage(e) {
         const reader = new FileReader()
         if (e.target.files[0]) {
@@ -57,7 +50,7 @@ const AccountInfo = () => {
                 const uploadImage = await uploadString(imageRef, image, "data_url")
                 downloadURL = await getDownloadURL(imageRef)
             }
-            console.log(downloadURL)
+
             const userRef = await query(
                 collection(db, "user"),
                 where("uid", "==", user.uid)
@@ -163,10 +156,20 @@ const AccountInfo = () => {
                                                         </div>
                                                         </>
                                                         }
+                                                        {user.isAdmin && 
+                                                        <div className="account-check-container">
+                                                        <label className="account-settings-admin light-blue">
+                                                            Admin                                                            
+                                                            </label>
+                                                            <div className="account-settings-check">
+                                                            <CheckIcon />
+                                                            </div>
+                                                            </div>
+                                                            }
                                                 </div>
 
                                                 <button
-                                                    className="contact__submit"
+                                                    className="contact__submit submit"
                                                     onClick={(e) => updateUser(e)}
                                                     type="submit"
                                                 >
@@ -177,7 +180,6 @@ const AccountInfo = () => {
 
                                         </div>
                                     </>
-
                                 )}
                             </div>
                         </div>

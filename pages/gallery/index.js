@@ -1,10 +1,11 @@
+import ManageFilters from '@/components/gallery/ManageFilters'
+import ArrowUturnLeft from '@/components/icons/ArrowUturnLeftIcon'
 import Layout from '@/components/Layout'
 import AccountInfo from '@/components/modals/AccountInfo'
 import Login from '@/components/modals/Login'
 import { auth } from '@/firebase'
 import { signOutUser } from '@/redux/userSlice'
 import { signOut } from 'firebase/auth'
-import Image from 'next/image'
 import Link from 'next/link'
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
@@ -30,6 +31,8 @@ function Gallery() {
     const [displayedImages, setDisplayedImages] = useState(imageArray || [])
     const user = useSelector((state) => state.user)
     const dispatch = useDispatch()
+    const [displayGallery, setDisplayGallery] = useState(true)
+    const [displayFilters, setDisplayFilters] = useState('')
     async function logOut(){
         await signOut(auth)
         dispatch(signOutUser())
@@ -43,6 +46,17 @@ function Gallery() {
         else {
             setDisplayedImages(imageArray.filter((item) => item.category === value))
         }
+    }
+    function handleManageFilters(){
+        if (user.isAdmin){
+            setDisplayGallery(false)
+            setDisplayFilters(true)
+        }
+        
+    }
+    function goBack(){
+        setDisplayGallery(true)
+        setDisplayFilters(false)
     }
 
     return (
@@ -70,12 +84,27 @@ function Gallery() {
                                         <div id="esg-grid-2-1" className="esg-grid">
                                             <article className="esg-filters esg-singlefilters grid-filters margin_bottom_20">
                                                 <div className="esg-filter-wrapper esg-fgc-2 margin_right_3 margin_left_3">
-
+                                                    <div className='manage-filter-container'>
                                                     <select onChange={(e) => handleFilter(e)} value={filter} className='gallery-filter-box'>
                                                         <option value='ALL'>All</option>
                                                         <option value='EVENTS'>EVENTS</option>
                                                         <option value='WORSHIP'>WORSHIP</option>
                                                     </select>
+                                                    <div className='manage-filter-arrow-container'>
+                                                        <div>
+                                                    {user.isAdmin && <label className='manage-filters-label' onClick={handleManageFilters}>Manage Filters</label>}
+                                                    </div>
+                                                    
+                                                    {displayFilters && 
+                                                    <>                                                    
+                                                    <div className='gallery-back-arrow' onClick={goBack}>
+                                                        <ArrowUturnLeft />
+                                                    </div>
+                                                    </>}
+                                                    </div>
+                                                    
+                                                    </div>
+                                                    
 
                                                     <div className="nav_link admin">
                                                         {user.firstName ? (
@@ -95,13 +124,14 @@ function Gallery() {
                                                 </div>
                                             </article>
                                             <div className='gallery-image-container'>
-                                                {imageArray.length > 0 && displayedImages.map((item, index) => (
+                                                {(imageArray.length > 0 && displayGallery) && displayedImages.map((item, index) => (
                                                     <div className="esg-media-cover-wrapper" key={index}>
                                                         <div className="esg-entry-media">
                                                             <img src={item.image} alt="" />
                                                         </div>
                                                     </div>
                                                 ))}
+                                                {displayFilters && <ManageFilters />}
                                             </div>
                                         </div>
                                     </article>

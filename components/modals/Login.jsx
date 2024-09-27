@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Modal from "@mui/material/Modal";
 import { useDispatch, useSelector } from "react-redux";
@@ -9,10 +9,11 @@ import {
 } from "firebase/auth";
 import { setUser } from "@/redux/userSlice.js";
 import { addDoc, collection, where, getDocs, query } from "firebase/firestore";
-import { auth, db } from "@/firebase";
+import { auth, db, storage } from "@/firebase";
 import XIcon from "../icons/XIcon";
 import upload from '@/images/upload_area.png'
 import Image from "next/image";
+import { getDownloadURL, ref, uploadString } from "firebase/storage";
 
 
 const Login = () => {
@@ -21,12 +22,24 @@ const Login = () => {
   const [firstName, setFirstName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [photoURL, setPhotoURL] = useState('')
+  const [photoUrl, setPhotoUrl] = useState('')
   const [phone, setPhone] = useState("");
   const [loading, setLoading] = useState(false);
   const isOpen = useSelector((state) => state.modals.loginModalOpen);
   const dispatch = useDispatch();
   const user = useSelector((state)=> state.user)
+  const filePickerRef = useRef(null)
+
+  function addImage(e) {
+    const reader = new FileReader()
+    if (e.target.files[0]) {
+        reader.readAsDataURL(e.target.files[0])
+    }
+
+    reader.addEventListener("load", e => {
+        setPhotoUrl(e.target.result)
+    })
+}
   async function handleOpen() {
     dispatch(openLoginModal())
   }
@@ -35,29 +48,50 @@ const Login = () => {
     e.preventDefault();
     setLoading(true)
     let res    
-    try {
+    let downloadURL            
+            
+    
       const userCredentials = await createUserWithEmailAndPassword(
         auth,
         email,
         password
       )
-      res = userCredentials.user;
-      console.log(res, 'user sign up')
-    } catch (error) {
-      alert(error.code.split('/')[1].split('-').join(" "))
-      setLoading(false)
-      return
-    }
-    
+      res = userCredentials.user;   
+      if (photoUrl) {
+        const imageRef = await ref(storage, `photos/${res.uid}`)
+        const uploadImage = await uploadString(imageRef, photoUrl, "data_url")
+        downloadURL = await getDownloadURL(imageRef)
+    }     
+      
     
     dispatch(closeLoginModal());
-    await addDoc(collection(db, `user`), {
+    const doc = await addDoc(collection(db, `user`), {
       uid: res.uid,
       firstName: firstName,
       lastName: lastName,
       email: email,
       phone: phone,
+      photoUrl: downloadURL,
     });
+    if (doc) {
+      dispatch(
+        setUser({
+          username: email.split("@")[0],
+          firstName: firstName,
+          lastName: lastName,
+          email: email,
+          uid: uid,
+          phone: phone,
+          photoUrl: photoUrl,
+          isAdmin: false
+        })
+      );
+    }
+    else {
+      alert('Something went wrong, please try to sign up again, or login and check account credentials.')
+    }
+    
+
     setLoading(false)
   }
   const login = async (email, password) => {
@@ -66,7 +100,7 @@ const Login = () => {
         await signInWithEmailAndPassword(auth, email, password)
 
     } catch (error) {
-        alert(error.code.split('/')[1].split('-').join(" "))
+        alert(error.code?.split('/')[1].split('-').join(" "))
 
     }
     setLoading(false)    
@@ -79,6 +113,7 @@ function checkCredentials(){
       if (!currentUser) {
         return;
       }
+      console.log(user)
       const userRef = await query(collection(db, "user"), where('uid', '==', currentUser.uid))
       const data  = await getDocs(userRef)
       if (data.empty) {
@@ -94,7 +129,8 @@ function checkCredentials(){
           email: userInfo.email,
           uid: userInfo.uid,
           phone: userInfo.phone,
-          photoUrl: userInfo.photoUrl
+          photoUrl: userInfo.photoUrl,
+          isAdmin: userInfo.isAdmin
         })
       );
 
@@ -198,9 +234,24 @@ function checkCredentials(){
                       placeholder="Phone"
                     />
                     
-                  <div className="input-photourl">
-                      <Image src={upload} className="input-upload-image" alt="upload" />
-                    </div>
+                    <div className="photourl-container">
+                                                    {photoUrl ?
+                                                        
+                                                            
+                                                            <div className="account-image-preview">
+                                                                <div className='x-image-preview' onClick={() => setPhotoUrl(null)}><XIcon />
+                                                                </div> <img src={photoUrl} className="preview-image" />
+                                                            </div>
+                                                        
+                                                        :
+                                                        <>
+                                                        <div className="input-photourl" onClick={() => filePickerRef.current.click()}>
+                                                        <Image src={upload} className="input-upload-image" alt="upload" />
+                                                        <input onChange={addImage} ref={filePickerRef} className="hidden" type="file" />
+                                                        </div>
+                                                        </>
+                                                        }
+                                                </div>
                   </>
                 )}
                 {signState === "Sign Up" ? (<>
