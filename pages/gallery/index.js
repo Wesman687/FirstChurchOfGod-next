@@ -220,10 +220,10 @@ function Gallery() {
                                                         <div className="esg-entry-media">
                                                             <img src={item.link} alt="" />
                                                         </div>
-                                                        <div>
+                                                        {user.isAdmin && <div>
                                                             <label className='gallery-image-label' onClick={()=>handleEdit(item)}>Edit</label>
                                                             <label className='gallery-image-label' onClick={()=>handleDelete(item)}>Delete</label>
-                                                        </div>
+                                                        </div>}
                                                     </div>
                                                 ))}
                                                 {displayFilters && <ManageFilters />}
