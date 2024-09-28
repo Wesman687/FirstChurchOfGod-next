@@ -44,14 +44,14 @@ export default function Nav() {
                                             Contact Us
                                             </li>
                                         </Link>
+                                        <Link href={'/cwc'}>
+                                        <li className={pathname === '/cwc' ? 'current-link' : 'menu-item'}>
+                                            CWC
+                                            </li>
+                                        </Link>
                                         <Link href={'/gallery'}>
                                         <li className={pathname === '/gallery' ? 'current-link' : 'menu-item'}>
                                             Gallery
-                                            </li>
-                                        </Link>
-                                        <Link href={'/donate'}>
-                                        <li className='donate-btn'>
-                                            Give
                                             </li>
                                         </Link>
                                     </ul>

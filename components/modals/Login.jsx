@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Modal from "@mui/material/Modal";
 import { useDispatch, useSelector } from "react-redux";
 import { openLoginModal, closeLoginModal } from "@/redux/modalSlice.js";
-import {  
+import {
   onAuthStateChanged, createUserWithEmailAndPassword,
   signInWithEmailAndPassword
 } from "firebase/auth";
@@ -27,43 +27,46 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   const isOpen = useSelector((state) => state.modals.loginModalOpen);
   const dispatch = useDispatch();
-  const user = useSelector((state)=> state.user)
+  const user = useSelector((state) => state.user)
   const filePickerRef = useRef(null)
 
   function addImage(e) {
     const reader = new FileReader()
     if (e.target.files[0]) {
-        reader.readAsDataURL(e.target.files[0])
+      reader.readAsDataURL(e.target.files[0])
     }
 
     reader.addEventListener("load", e => {
-        setPhotoUrl(e.target.result)
+      setPhotoUrl(e.target.result)
     })
-}
+  }
   async function handleOpen() {
     dispatch(openLoginModal())
   }
-  
+
   async function handleSignUp(e) {
     e.preventDefault();
     setLoading(true)
-    let res    
-    let downloadURL            
-            
+    let res
+    let downloadURL
+
+
+    const userCredentials = await createUserWithEmailAndPassword(
+      auth,
+      email,
+      password
+    )
+    res = userCredentials.user;
+    if (!photoUrl) {
+      return
+    }
     
-      const userCredentials = await createUserWithEmailAndPassword(
-        auth,
-        email,
-        password
-      )
-      res = userCredentials.user;   
-      if (photoUrl) {
-        const imageRef = await ref(storage, `photos/${res.uid}`)
-        const uploadImage = await uploadString(imageRef, photoUrl, "data_url")
-        downloadURL = await getDownloadURL(imageRef)
-    }     
-      
+    const imageRef = await ref(storage, `photos/${res.uid}`)
+    const uploadImage = await uploadString(imageRef, photoUrl, "data_url")
+    downloadURL = await getDownloadURL(imageRef)
     
+
+
     dispatch(closeLoginModal());
     const doc = await addDoc(collection(db, `user`), {
       uid: res.uid,
@@ -90,24 +93,24 @@ const Login = () => {
     else {
       alert('Something went wrong, please try to sign up again, or login and check account credentials.')
     }
-    
+
 
     setLoading(false)
   }
   const login = async (email, password) => {
     setLoading(true)
-    try{
-        await signInWithEmailAndPassword(auth, email, password)
+    try {
+      await signInWithEmailAndPassword(auth, email, password)
 
     } catch (error) {
-        alert(error.code?.split('/')[1].split('-').join(" "))
+      alert(error.code?.split('/')[1].split('-').join(" "))
 
     }
-    setLoading(false)    
-}
-function checkCredentials(){
-  return false
-}
+    setLoading(false)
+  }
+  function checkCredentials() {
+    return false
+  }
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
       if (!currentUser) {
@@ -115,188 +118,188 @@ function checkCredentials(){
       }
       console.log(user)
       const userRef = await query(collection(db, "user"), where('uid', '==', currentUser.uid))
-      const data  = await getDocs(userRef)
+      const data = await getDocs(userRef)
       if (data.empty) {
         console.log("nothing", data.docs, currentUser.uid)
       }
       else {
         const userInfo = data.docs.map(doc => doc.data())[0]
-      dispatch(
-        setUser({
-          username: userInfo.email.split("@")[0],
-          firstName: userInfo.firstName,
-          lastName: userInfo.lastName,
-          email: userInfo.email,
-          uid: userInfo.uid,
-          phone: userInfo.phone,
-          photoUrl: userInfo.photoUrl,
-          isAdmin: userInfo.isAdmin
-        })
-      );
+        dispatch(
+          setUser({
+            username: userInfo.email.split("@")[0],
+            firstName: userInfo.firstName,
+            lastName: userInfo.lastName,
+            email: userInfo.email,
+            uid: userInfo.uid,
+            phone: userInfo.phone,
+            photoUrl: userInfo.photoUrl,
+            isAdmin: userInfo.isAdmin
+          })
+        );
 
       }
-      
-      
+
+
     });
 
     return unsubscribe;
-  }, []);  
+  }, []);
 
   return (
     <>
-      
-        <p className="login-link light-blue"
-          onClick={() => handleOpen()}
-        >
-          Log In
-        </p>
-      
+
+      <p className="login-link light-blue"
+        onClick={() => handleOpen()}
+      >
+        Log In
+      </p>
+
       <Modal
         open={isOpen}
         onClose={() => dispatch(closeLoginModal())}
         className="login__modal"
       >
         <div className="login__container">
-        {loading ? (
-          <div className="login-spinner">
-            <FontAwesomeIcon icon="fas fa-spinner"></FontAwesomeIcon>            
-          </div>
-        ) : (
-          <div className="login">           
+          {loading ? (
+            <div className="login-spinner">
+              <FontAwesomeIcon icon="fas fa-spinner"></FontAwesomeIcon>
+            </div>
+          ) : (
+            <div className="login">
 
-            <div className="login-form">
-              
+              <div className="login-form">
+
                 <div className="login-close-container">
-                     <div
-                        className="login__x"
+                  <div
+                    className="login__x"
                     onClick={() => dispatch(closeLoginModal())}
                   >
                     <XIcon />
                   </div>
                 </div>
-              <h1>{signState}</h1>
-              <form>
-                <div className="input-container">
-                {signState === "Sign Up" ? (
-                  <>
-                  <p>First Name</p>
-                  <input
-                    value={firstName}
-                    onChange={(event) => {
-                      setFirstName(event.target.value);
-                    }}
-                    type="text"
-                    placeholder="First Name"
-                  />
-                  <p>Last Name</p>
-                  <input
-                    value={lastName}
-                    onChange={(event) => {
-                      setLastName(event.target.value);
-                    }}
-                    type="text"
-                    placeholder="Last Name"
-                  />
-                  </>
-                ) : (
-                  <></>
-                )}
+                <h1>{signState}</h1>
+                <form>
+                  <div className="input-container">
+                    {signState === "Sign Up" ? (
+                      <>
+                        <p>First Name</p>
+                        <input
+                          value={firstName}
+                          onChange={(event) => {
+                            setFirstName(event.target.value);
+                          }}
+                          type="text"
+                          placeholder="First Name"
+                        />
+                        <p>Last Name</p>
+                        <input
+                          value={lastName}
+                          onChange={(event) => {
+                            setLastName(event.target.value);
+                          }}
+                          type="text"
+                          placeholder="Last Name"
+                        />
+                      </>
+                    ) : (
+                      <></>
+                    )}
 
-                  <p>Email</p>
-                <input
-                  value={email}
-                  onChange={(event) => {
-                    setEmail(event.target.value);
-                  }}
-                  type="email"
-                  placeholder="Email"
-                />
-                
-                <p>Password</p>
-                <input
-                  value={password}
-                  onChange={(event) => {
-                    setPassword(event.target.value);
-                  }}
-                  type="password"
-                  placeholder="Password"
-                />
-                
-                {signState === "Sign Up" && (
-                  <>                    
-                  <p>Phone</p>
-                  <input
-                      value={phone}
+                    <p>Email</p>
+                    <input
+                      value={email}
                       onChange={(event) => {
-                        setPhone(event.target.value);
+                        setEmail(event.target.value);
                       }}
-                      type="phone"
-                      placeholder="Phone"
+                      type="email"
+                      placeholder="Email"
                     />
-                    
-                    <div className="photourl-container">
-                                                    {photoUrl ?
-                                                        
-                                                            
-                                                            <div className="account-image-preview">
-                                                                <div className='x-image-preview' onClick={() => setPhotoUrl(null)}><XIcon />
-                                                                </div> <img src={photoUrl} className="preview-image" />
-                                                            </div>
-                                                        
-                                                        :
-                                                        <>
-                                                        <div className="input-photourl" onClick={() => filePickerRef.current.click()}>
-                                                        <Image src={upload} className="input-upload-image" alt="upload" />
-                                                        <input onChange={addImage} ref={filePickerRef} className="hidden" type="file" />
-                                                        </div>
-                                                        </>
-                                                        }
-                                                </div>
-                  </>
-                )}
-                {signState === "Sign Up" ? (<>
-                  {!(checkCredentials()) ? <button className="submit" onClick={handleSignUp}>Sign Up</button> : <button className="submit__disabled">Fill out all Fields</button> }
-                  </>
-                ) : (
-                  <>
-                  <button type="submit" className="submit" onClick={(e) => {
-                    e.preventDefault()
-                    login(email, password)
-                    dispatch(closeLoginModal())
-                    }}>
-                    Sign In
-                  </button>                  
-              </>
-                )}
+
+                    <p>Password</p>
+                    <input
+                      value={password}
+                      onChange={(event) => {
+                        setPassword(event.target.value);
+                      }}
+                      type="password"
+                      placeholder="Password"
+                    />
+
+                    {signState === "Sign Up" && (
+                      <>
+                        <p>Phone</p>
+                        <input
+                          value={phone}
+                          onChange={(event) => {
+                            setPhone(event.target.value);
+                          }}
+                          type="phone"
+                          placeholder="Phone"
+                        />
+
+                        <div className="photourl-container">
+                          {photoUrl ?
+
+
+                            <div className="account-image-preview">
+                              <div className='x-image-preview' onClick={() => setPhotoUrl(null)}><XIcon />
+                              </div> <img src={photoUrl} className="preview-image" />
+                            </div>
+
+                            :
+                            <>
+                              <div className="input-photourl" onClick={() => filePickerRef.current.click()}>
+                                <Image src={upload} className="input-upload-image" alt="upload" />
+                                <input onChange={addImage} ref={filePickerRef} className="hidden" type="file" />
+                              </div>
+                            </>
+                          }
+                        </div>
+                      </>
+                    )}
+                    {signState === "Sign Up" ? (<>
+                      {!(checkCredentials()) ? <button className="submit" onClick={handleSignUp}>Sign Up</button> : <button className="submit__disabled">Fill out all Fields</button>}
+                    </>
+                    ) : (
+                      <>
+                        <button type="submit" className="submit" onClick={(e) => {
+                          e.preventDefault()
+                          login(email, password)
+                          dispatch(closeLoginModal())
+                        }}>
+                          Sign In
+                        </button>
+                      </>
+                    )}
+                  </div>
+                </form>
+                <div className="form-switch">
+                  {signState === "Sign In" ? (
+                    <p>
+                      New Account{" "}
+                      <span
+                        onClick={() => setSignState("Sign Up")}
+                        className="switch-text"
+                      >
+                        Sign Up Now
+                      </span>
+                    </p>
+                  ) : (
+                    <p>
+                      Already have account?{" "}
+                      <span
+                        onClick={() => setSignState("Sign In")}
+                        className="switch-text"
+                      >
+                        Sign In
+                      </span>
+                    </p>
+                  )}
                 </div>
-              </form>
-              <div className="form-switch">
-                {signState === "Sign In" ? (
-                  <p>
-                    New Account{" "}
-                    <span
-                      onClick={() => setSignState("Sign Up")}
-                      className="switch-text"
-                    >
-                      Sign Up Now
-                    </span>
-                  </p>
-                ) : (
-                  <p>
-                    Already have account?{" "}
-                    <span
-                      onClick={() => setSignState("Sign In")}
-                      className="switch-text"
-                    >
-                      Sign In
-                    </span>
-                  </p>
-                )}
               </div>
             </div>
-          </div>
-          
-        )}
+
+          )}
         </div>
       </Modal>
     </>

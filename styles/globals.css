@@ -332,9 +332,11 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	flex-direction: column;
 }
 .cwc-bg-image {
-	border: 1px solid #333;
+	border: 1px solid #1dc6df;
+	box-shadow: 0px 1px 1px 1px #034e7073;
 }
 .cwc-wrapper {
 	display: flex;
@@ -359,6 +361,22 @@
 .cwc-homepage-image {
 	border: 1px solid #333;
 	border-radius: 4px;
+}
+.cwc-body-text {
+	text-align: center;
+	width: 80%;
+	line-height: 1.9;
+}
+.cwc-mission-wrapper {
+	background-color: #48c7de;
+	padding: 32px;
+	border-radius: 4px;
+	border: 2px solid #000;
+	width: 50%;
+}
+.cwc-mission-wrapper h3, .cwc-mission-wrapper h4 {
+	color: #ffffff !important;
+	
 }
 
 
