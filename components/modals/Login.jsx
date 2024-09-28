@@ -49,51 +49,57 @@ const Login = () => {
     setLoading(true)
     let res
     let downloadURL
-
-
-    const userCredentials = await createUserWithEmailAndPassword(
-      auth,
-      email,
-      password
-    )
-    res = userCredentials.user;
     if (!photoUrl) {
+      alert('Please include a photo')
+      setLoading(false)
       return
     }
-    
-    const imageRef = await ref(storage, `photos/${res.uid}`)
-    const uploadImage = await uploadString(imageRef, photoUrl, "data_url")
-    downloadURL = await getDownloadURL(imageRef)
-    
+    try {
+      const userCredentials = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      )
+      res = userCredentials.user;
+      console.log(res)
 
 
-    dispatch(closeLoginModal());
-    const doc = await addDoc(collection(db, `user`), {
-      uid: res.uid,
-      firstName: firstName,
-      lastName: lastName,
-      email: email,
-      phone: phone,
-      photoUrl: downloadURL,
-    });
-    if (doc) {
-      dispatch(
-        setUser({
-          username: email.split("@")[0],
-          firstName: firstName,
-          lastName: lastName,
-          email: email,
-          uid: uid,
-          phone: phone,
-          photoUrl: photoUrl,
-          isAdmin: false
-        })
-      );
+      const imageRef = await ref(storage, `photos/${res.uid}`)
+      const uploadImage = await uploadString(imageRef, photoUrl, "data_url")
+      downloadURL = await getDownloadURL(imageRef)
+
+
+
+      const doc = await addDoc(collection(db, `user`), {
+        uid: res.uid,
+        firstName: firstName,
+        lastName: lastName,
+        email: email,
+        phone: phone,
+        photoUrl: downloadURL,
+      });
+      if (doc) {
+        dispatch(
+          setUser({
+            username: email.split("@")[0],
+            firstName: firstName,
+            lastName: lastName,
+            email: email,
+            uid: res.uid,
+            phone: phone,
+            photoUrl: photoUrl,
+            isAdmin: false
+          })
+        );
+
+      }
+      else {
+        alert('Something went wrong, please try to sign up again, or login and check account credentials.')
+      }
+      dispatch(closeLoginModal());
+    } catch (error) {
+      alert("Check credentials and try again")
     }
-    else {
-      alert('Something went wrong, please try to sign up again, or login and check account credentials.')
-    }
-
 
     setLoading(false)
   }
