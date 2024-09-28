@@ -1,6 +1,8 @@
 import Image from 'next/image'
 import React from 'react'
 import Image1 from '@/images/guitarhero.jpg'
+import cwc from '@/images/cwc/CWC-Mission-Slides-1.jpg'
+import Link from 'next/link'
 
 function HomeToAction() {
     return (
@@ -9,14 +11,16 @@ function HomeToAction() {
                 <div className="content_wrap">
                     <div className="columns_wrap">
                         <div className="sc_call_to_action_featured column-1_2">
-                            <Image src={Image1} alt=""  />
+                            <Image src={cwc} className='cwc-homepage-image' alt=""  />
                         </div><div className="sc_call_to_action_info column-1_2">
-                            <h6 className="sc_call_to_action_subtitle sc_item_subtitle">Lyrics, Chords & Translations</h6>
-                            <h2 className="sc_call_to_action_title sc_item_title">Worship Team Resources</h2>
-                            <div className="sc_call_to_action_descr sc_item_descr">We’re passionate about Jesus and leading others to worship Him! We hope these resources help equip you and your team as you lead worship.</div>
+                            
+                            <h2 className="sc_call_to_action_title sc_item_title">Christian Women Connection</h2>
+                            <div className="sc_call_to_action_descr sc_item_descr">Discover a global network of women ready to live out their calling.</div>
                             <div className="sc_call_to_action_buttons sc_item_buttons">
                                 <div className="sc_call_to_action_button sc_item_button">
-                                    <a href="#" className="sc_button sc_button_square sc_button_style_filled sc_button_color_style_2 sc_button_size_large orange-btn">view more</a>
+                                    <Link href={'/cwc'}>
+                                    <label className="click sc_button sc_button_square sc_button_style_filled sc_button_color_style_2 sc_button_size_large orange-btn">view more</label>
+                                    </Link>
                                 </div>
                             </div>
                         </div>

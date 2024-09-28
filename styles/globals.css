@@ -263,14 +263,14 @@
 	display: flex;
 	gap: 12px;
 }
-.filter-add {
+.filter-add, .light-blue-button {
 	background: linear-gradient(90deg, hsl(194, 98%, 63%), #2df1ffbb, #4be1fc, #61e6fabb);
 	border-radius: 4px;
-	border: 2px solid #0000;
 	cursor: pointer;
+	box-shadow: 0px 1px 1px 1px #03afffa6
 }
 
-.filter-add:hover {
+.filter-add:hover, .light-blue-button:hover {
 	color: #000;
 	background: linear-gradient(90deg, hsl(194, 98%, 63%), #2df1ffbb, #4be1fc, #61e6fabb);
 	overflow: hidden;
@@ -284,14 +284,14 @@
     z-index: 1;
     background-image: linear-gradient(90deg, hsl(194, 97%, 64%), #2df1ffbb, #4be1fc, #61e6fabb) !important;
     background-position: 98% 0 !important;
-    color: #FFFFFF !important;
+    color: #0090a7 !important;
     -webkit-background-size: 210% 100%;
        -moz-background-size: 210% 100%;
         -ms-background-size: 210% 100%;
          -o-background-size: 210% 100%;
             background-size: 210% 100% ;
-    
-	border: 2px solid #0000;
+			
+	box-shadow: 0px 1px 1px 1px #03afffa6
 	
 }
 .manage-filters-label-active {
@@ -321,9 +321,41 @@
 
 }
 
+/********* CWC *******/
+.cwc-header {
+	border: 1px solid #3a3a3a !important;
+	margin: 0 32px;
+	box-shadow: 0px 1px 1px 1px #034e7073;
+}
+.cwc-container {
+	padding: 64px 32px 64px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.cwc-wrapper {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	width: 50%;
+}
+.cwc-member-button {
+	padding: 4px 8px;
+	font-size: 18px;
+}
+.cwc-homepage-image {
+	border: 1px solid #333;
+	border-radius: 4px;
+}
+
+
 .gallery-header {background-image: url('../images/palatka-bridge.jpg'); }
 .about-us-header{ background-image: url('../images/cross-in-sky.png'); }
+.cwc-header { background-image: url('../images/cwc/christian-womens-connection.jpg');}
 
+.click {
+	cursor: pointer;
+}
 
 /**** Login *****/
 .nav_link {
