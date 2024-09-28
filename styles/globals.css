@@ -38,6 +38,15 @@
 	font-size: 18px;
 	align-items: center;
 }
+.home {
+	padding-top: 64px;
+}
+.nav-panel {
+	position: fixed;
+	z-index: 100;
+	width: 100%;
+	border-bottom: 2px solid #33333327;
+}
 .donate-btn {
 	margin-left: 16px;
 	padding: 4px 48px;
@@ -100,9 +109,9 @@
 	flex-direction: column;
 }
 /***** Gallery */
-.post_content {
+.post_content-2 {
 	width: 100% !important;
-	padding: 64px 0 128px !important;
+	padding: 0px 0 128px !important;
 }
 .esg-entry-media {
 	width: 225px;
@@ -334,10 +343,6 @@
 	justify-content: center;
 	flex-direction: column;
 }
-.cwc-bg-image {
-	border: 1px solid #1dc6df;
-	box-shadow: 0px 1px 1px 1px #034e7073;
-}
 .cwc-wrapper {
 	display: flex;
 	align-items: center;	
@@ -422,6 +427,13 @@
 
 }
 
+/************** Contact ************///
+.contact-header-text {
+	color: #ffffff !important;
+}
+
+
+.contact-header { background-image: url('../images/contact-bg.jpg');}
 .gallery-header {background-image: url('../images/palatka-bridge.jpg'); }
 .about-us-header{ background-image: url('../images/cross-in-sky.png'); }
 .cwc-header { background-image: url('../images/cwc/christian-womens-connection.jpg');}

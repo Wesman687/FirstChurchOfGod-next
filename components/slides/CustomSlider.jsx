@@ -50,7 +50,7 @@ export default function CustomSlider() {
         <div
           key={index}
           
-          className="slider-content"
+          className="slider-content welcome-banner"
           style={{ background: `url('${item.image}') no-repeat center` }}
         >
           <div className="inner">

@@ -101,4 +101,7 @@
     fill: #fff;
     cursor: pointer;
   }
+  .welcome-banner {
+    border: 1px solid #c5c5c5;
+  }
   

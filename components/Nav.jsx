@@ -16,7 +16,7 @@ export default function Nav() {
     return (
         <>
             <header className="top_panel_wrap top_panel_style_3 scheme_original">
-                <div className="top_panel_wrap_inner top_panel_inner_style_3 top_panel_position_above">
+                <div className="top_panel_wrap_inner top_panel_inner_style_3 top_panel_position_above nav-panel">
                     <div className="top_panel_fixed_wrap"></div>
                     <div className="top_panel_middle">
                         <div className="content_wrap">
