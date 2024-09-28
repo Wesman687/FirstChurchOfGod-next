@@ -1,6 +1,5 @@
 import Image from 'next/image'
 import React from 'react'
-import Image1 from '@/images/guitarhero.jpg'
 import cwc from '@/images/cwc/CWC-Mission-Slides-1.jpg'
 import Link from 'next/link'
 

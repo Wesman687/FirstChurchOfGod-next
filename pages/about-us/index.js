@@ -1,5 +1,4 @@
 import TeamSection from '@/components/about/TeamSection'
-import XIcon from '@/components/icons/XIcon'
 import Layout from '@/components/Layout'
 import AboutSlider from '@/components/slides/AboutSlider'
 import Link from 'next/link'

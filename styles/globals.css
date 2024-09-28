@@ -333,15 +333,28 @@
 	align-items: center;
 	justify-content: center;
 }
+.cwc-bg-image {
+	border: 1px solid #333;
+}
 .cwc-wrapper {
 	display: flex;
-	align-items: center;
+	align-items: center;	
+	gap: 48px;
+	padding: 0 64px;
+}
+.cwc-intro-image {
+	width: 450px;
+}
+.cwc-intro-wrapper {
+	display: flex;
 	flex-direction: column;
-	width: 50%;
+	text-align: center;
 }
 .cwc-member-button {
 	padding: 4px 8px;
 	font-size: 18px;
+	width: fit-content;
+	align-self: center;
 }
 .cwc-homepage-image {
 	border: 1px solid #333;
