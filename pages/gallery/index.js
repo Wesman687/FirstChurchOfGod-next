@@ -26,10 +26,7 @@ function Gallery() {
     const [displayFilters, setDisplayFilters] = useState(false)
     const [displayAddImages, setDisplayAddImages] = useState()
     const [filters, setFilters] = useState([])
-    async function logOut(){
-        await signOut(auth)
-        dispatch(signOutUser())
-    }
+    
     function handleEdit(){
         
 
@@ -139,11 +136,6 @@ function Gallery() {
                     <div className="top_panel_title_inner top_panel_inner_style_3 gallery-header breadcrumbs_block_bg3">
                         <div className="content_wrap">
                             <h1 className="page_title">Gallery</h1>
-                            <div className="breadcrumbs">
-                                <Link href={'/'}><li className="breadcrumbs_item home about-header" href="index.html">Home</li></Link>
-                                <span className="breadcrumbs_delimiter about-header"></span>
-                                <span className="breadcrumbs_item menu-item current-link about-header light-blue">Gallery</span>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -197,21 +189,7 @@ function Gallery() {
                                                     </div>
                                                     
 
-                                                    <div className="nav_link admin">
-                                                        {user.firstName ? (
-                                                            <img src={user.photoUrl} className='displayed-photourl' />
-                                                        ) : ( <Login />)}
-                                                        {user.email && (
-                                                            <div className="admin_dropdown ">
-                                                                <>                                                                    
-                                                                    <AccountInfo />
-                                                                    <p className="sb__link " onClick={() => logOut()}>
-                                                                        Log Out
-                                                                    </p>
-                                                                </>
-                                                            </div>
-                                                        )}
-                                                    </div>
+                                                    
                                                 </div>
                                             </article>
                                             <div className='gallery-image-container'>

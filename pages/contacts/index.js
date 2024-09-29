@@ -1,4 +1,4 @@
-import Map from '@/components/google/Map'
+import Map from '@/components/programs/Map'
 import Layout from '@/components/Layout'
 import React from 'react'
 
@@ -18,7 +18,7 @@ function Contacts() {
                     <div id="sc_form_1" className="sc_form sc_form_style_form_2 aligncenter">
                         <h6 className="sc_form_subtitle sc_item_subtitle">Contact Form</h6>
                         <h2 className="sc_form_title sc_item_title">Get in Touch With Us</h2>
-                        <div className="sc_form_descr sc_item_descr">We welcome visitors at NewLife Church and would love to have you join us in church this weekend.</div>
+                        <div className="sc_form_descr sc_item_descr">We welcome visitors at First Church of God and would love to have you join us in church this weekend.</div>
                         <div className="sc_columns columns_wrap">
                             <div className="sc_form_address column-1_3">
                                 <div className="sc_form_address_field sc_form_address_field_icon_address">

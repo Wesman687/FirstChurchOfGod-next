@@ -1,6 +1,29 @@
 @charset "utf-8";
 @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap');
 
+.modal label {
+	color: #1bbad2;
+}
+.calender-am-pm {
+	display: flex;
+	background-color: #F3F5F8;
+	margin: 12px 0;
+}
+.calender-am-pm input {
+	margin: 0 !important;
+}
+.calendar-am-select {
+	margin: 10px 0;
+	border: none;
+}
+.calendar-container {
+
+	padding: 64px;
+}
+.time-inputs {
+	display: flex; 
+	gap: 24px;
+}
 .sc_testimonial_author_position {
 	margin: 0px !important;
 }
@@ -527,19 +550,7 @@
     font-size: 16px;
     font-weight: 500;
 }
-.login-form button {
-    width: 100%;
-    border: 0;
-    outline: 0;
-    padding: 16px;
-    background: linear-gradient(to bottom, rgb(115, 198, 247), rgb(24, 160, 250));
-    color: #ddd;
-    border-radius: 4px;
-    font-size: 16px;
-    font-weight: 500;
-    margin-top: 20px;
-    cursor: pointer;
-}
+
 .submit__disabled {
     background-color: rgb(2, 65, 2) !important;
     color: #ddd !important;
@@ -558,10 +569,7 @@
 	width: 75px;
 	cursor: pointer;
 }
-.submit:hover {
-            background: linear-gradient(to bottom, rgb(10, 126, 204), rgb(1, 46, 66));    
- 
-}
+
 .form-help {
     display: flex;
     align-items: center;
@@ -684,21 +692,106 @@
 .edit-remove-column {
 	padding: 4px 8px;
 }
-.filter-edit-button {	
-	color: #000;
-	border: 1px solid #1cbed6;
+
+.select {
+    padding: 16px 0px;
+}
+.settings_form {
+	position: relative;
+}
+.select:focus {
+    background: #333;
+    
+    border: 2px solid #1bbad2;
+}
+
+/******** Add Images *****/
+.add-image-container {
+	display: flex;
+	width: 100%;
+	gap: 24px;
+}
+.add-image-template {
+	width: 225px;
+	height: 150px;
+	background-color: #c9c9c9;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+}
+.new-image {
+	width: 225px;
+	border: 1px solid #909090;
+}
+.add-image-upload-wrapper {
+	width: 50px;
+	position: absolute;
+	top: 60%;
+	right: 40%;
+}
+.add-image-wrapper {
+	cursor: pointer;
+}
+.add-image-template-wrapper {
+	position: relative;
+}
+.add-image-details-wrapper {
+	display: flex;
+	justify-content: space-around;
+}
+
+.add-image-labels {
+	font-size: 18px;
+	margin-right: 12px;
+}
+.add-image-desc {
+	border: 1px solid #3a3a3a;
+	width: 100%;
+}
+.add-image-details-container div {
+	display: flex;
+}
+.add-image-details-container {
+	width: 70%;
+}
+
+@media (max-width: 500px) {
+    .login {
+        padding: 15px 5%;
+    }
+    .login-form {
+        padding: 20px;
+        margin-top: 30px;
+    }
+}
+
+/******** Buttons *********/
+
+.submit, .red-button {
+    width: 100%;
+    border: 0;
+    outline: 0;
+    padding: 16px;
+    color: #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 500;
+    margin-top: 20px;
+    cursor: pointer;
+}
+.submit {	
+	border: 2px solid #1cbed6;
+    background: linear-gradient(to bottom, rgb(115, 198, 247), rgb(24, 160, 250));
+}
+.filter-remove-button, .red-button {	
+	color: #ffffff;
+	border: 1px solid #940101;
+	background: linear-gradient(90deg, hsl(0, 96%, 48%), #f30a0abb, #e20909, #ff0101bb);
+	cursor: pointer;
+}
+.submit:hover {
 	background: linear-gradient(90deg, hsl(194, 98%, 63%), #2df1ffbb, #4be1fc, #61e6fabb);
-	cursor: pointer;
-}
-.filter-remove-button {	
-	color: #000;
-	border: 1px solid #f80000;
-	background: linear-gradient(90deg, hsl(0, 100%, 78%), #ff6969bb, #ff7d7d, #fc6060bb);
-	cursor: pointer;
-}
-.filter-remove-button:hover {
-	color: white;
-	background: linear-gradient(90deg, hsl(0, 95%, 58%), #db1313bb, #ca0505, #ff0303bb);
 	overflow: hidden;
     white-space: nowrap;
     position: relative;
@@ -708,9 +801,32 @@
          -o-transition: all 0.70s ease 0s;
             transition: all 0.70s ease 0s;
     z-index: 1;
-    background-image: linear-gradient(90deg, hsl(0, 94%, 49%), #db1313bb, #ca0505, +#e90101) !important;
+    background-image: linear-gradient(90deg, hsl(194, 97%, 64%), #2df1ffbb, #4be1fc, #61e6fabb) !important;
     background-position: 98% 0 !important;
-    color: #FFFFFF !important;
+    color: #000 !important;
+    -webkit-background-size: 210% 100%;
+       -moz-background-size: 210% 100%;
+        -ms-background-size: 210% 100%;
+         -o-background-size: 210% 100%;
+            background-size: 210% 100% ;
+    
+	border: 2px solid #0000;   
+ 
+}
+.filter-remove-button:hover, .red-button:hover {
+	color: white;
+	background: linear-gradient(270deg, hsl(0, 94%, 50%), #ff6969bb, #ff7d7d, #fc6060bb) ;	
+    white-space: nowrap;
+    position: relative;
+    -webkit-transition: all 0.70s ease 0s;
+       -moz-transition: all 0.70s ease 0s;
+        -ms-transition: all 0.70s ease 0s;
+         -o-transition: all 0.70s ease 0s;
+            transition: all 0.70s ease 0s;
+    z-index: 1;
+    background-image: linear-gradient(270deg, hsl(0, 98%, 58%), #f31818bb, #f80202, #ff1e1ebb)  !important;
+    background-position: 98% 0 !important;
+    color: #000 !important;
     -webkit-background-size: 210% 100%;
        -moz-background-size: 210% 100%;
         -ms-background-size: 210% 100%;
@@ -718,6 +834,14 @@
             background-size: 210% 100% ;
     
 }
+.filter-edit-button {	
+	color: #000;
+	border: 1px solid #1cbed6;
+	background: linear-gradient(90deg, hsl(194, 98%, 63%), #2df1ffbb, #4be1fc, #61e6fabb);
+	cursor: pointer;
+}
+
+
 .filter-edit-button:hover, .add-image-button:hover {
 	color: white;
 	background: linear-gradient(90deg, hsl(194, 98%, 63%), #2df1ffbb, #4be1fc, #61e6fabb);
@@ -771,54 +895,6 @@
     
 	border: 2px solid #0000;
 }
-
-.select {
-    padding: 16px 0px;
-}
-.settings_form {
-	position: relative;
-}
-.select:focus {
-    background: #333;
-    
-    border: 2px solid #1bbad2;
-}
-
-/******** Add Images *****/
-.add-image-container {
-	display: flex;
-	width: 100%;
-	gap: 24px;
-}
-.add-image-template {
-	width: 225px;
-	height: 150px;
-	background-color: #c9c9c9;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	cursor: pointer;
-}
-.new-image {
-	width: 225px;
-	border: 1px solid #909090;
-}
-.add-image-upload-wrapper {
-	width: 50px;
-	position: absolute;
-	top: 60%;
-	right: 40%;
-}
-.add-image-wrapper {
-	cursor: pointer;
-}
-.add-image-template-wrapper {
-	position: relative;
-}
-.add-image-details-wrapper {
-	display: flex;
-	justify-content: space-around;
-}
 .add-image-button {
 	border: 1px solid #1DC6DF;
 	color: #dddbdb;
@@ -830,32 +906,6 @@
 	background: linear-gradient(90deg, hsl(194, 98%, 63%), #2df1ffbb, #4be1fc, #61e6fabb);
 	cursor: pointer;
 }
-.add-image-labels {
-	font-size: 18px;
-	margin-right: 12px;
-}
-.add-image-desc {
-	border: 1px solid #3a3a3a;
-	width: 100%;
-}
-.add-image-details-container div {
-	display: flex;
-}
-.add-image-details-container {
-	width: 70%;
-}
-
-@media (max-width: 500px) {
-    .login {
-        padding: 15px 5%;
-    }
-    .login-form {
-        padding: 20px;
-        margin-top: 30px;
-    }
-}
-
-
 
 
 /* TABLE OF CONTENTS:

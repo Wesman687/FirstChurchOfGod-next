@@ -139,7 +139,8 @@ const Login = () => {
             uid: userInfo.uid,
             phone: userInfo.phone,
             photoUrl: userInfo.photoUrl,
-            isAdmin: userInfo.isAdmin
+            isAdmin: userInfo.isAdmin,
+            isMember: userInfo.isMember
           })
         );
 

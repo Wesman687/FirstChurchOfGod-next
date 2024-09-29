@@ -10,6 +10,7 @@ const initialState = {
     photoUrl: null,
     phone: null,
     isAdmin: false,
+    isMember: false,
 
 }
 
@@ -27,6 +28,7 @@ const userSlice = createSlice({
         state.phone = action.payload.phone,
         state.photoUrl = action.payload.photoUrl
         state.isAdmin = action.payload.isAdmin
+        state.isMember = action.payload.isMember
     },
 
     signOutUser : (state) =>{
@@ -38,6 +40,7 @@ const userSlice = createSlice({
         state.photoUrl = null
         state.phone = null
         state.isAdmin = null
+        state.isMember = null
     }
   }
 });
