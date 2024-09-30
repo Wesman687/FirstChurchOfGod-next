@@ -5,14 +5,17 @@ import { useDispatch, useSelector } from 'react-redux'
 import { addDoc, collection, doc, getDoc, updateDoc } from 'firebase/firestore'
 import { db } from '@/firebase'
 import { setUser } from '@/redux/userSlice'
+import { useRouter } from 'next/navigation'
+import RingSpinner from '../RingSpinner'
 
 function HomeComment() {
     const [comment, setComment] = useState('')
     const [position, setPosition] = useState('Member')
+    const [loading, setLoading] = useState(false)
     const [originalComment, setOriginalCOmment] = useState('')
+    const router = useRouter()
     const dispatch = useDispatch()
     const user = useSelector(state => state.user)
-    console.log(user)
     function handleComment(e) {
         if (comment.length > 200){
             toast.warning('Maximum Characters exceeded')
@@ -33,6 +36,11 @@ function HomeComment() {
         }
     }
     async function handleSubmit() {
+        if (!user.isMember){
+            toast.warning('Only Members can place a comment, please sign up first.')
+            router.push('/')
+        }
+        setLoading(true)
         const docRef = await addDoc(collection(db, 'testimonial'), {
             comment,
             position,
@@ -44,9 +52,11 @@ function HomeComment() {
         dispatch(setUser({
             commentRef: docRef.id
         }))
-        toast.success('Created Testimonial')       
+        toast.success('Created Testimonial')      
+        setLoading(false) 
     }
     async function handleUpdate() {
+        setLoading(true)
         try {
           if (!user.commentRef) {
             toast.error('No testimonial found to update');
@@ -69,9 +79,11 @@ function HomeComment() {
           console.error('Error updating testimonial:', error);
           toast.error('Failed to update testimonial');
         }
+        setLoading(false)
       }
       
     useEffect(()=>{
+        setLoading(true)        
         const fetchComment = async () => {
             if (user.commentRef) {
               try {
@@ -95,15 +107,17 @@ function HomeComment() {
           };
       
           fetchComment()
+          setLoading(false)
     },[user.commentRef])
   return (
     <div className='homecomment-container'>
         <h4 className='homecomment-header'>As a member you may have one Testimonial for the home page.  This is not required, but we hope you take the time out to tell everyone how much you love our Church.  This comment will be displayed on the home page, so please make sure it's well though out, and editted properly.  You will be able to update/edit this comment anytime you wish.  Only members are allowed to make a comment on the home page.</h4>
-        <div className='homecomment-comment-wrapper'>
+        <div className='homecomment-comment-wrapper'>            
         <textarea className='homecomment-comment-text' placeholder='Maximum Characters of 200' onChange={(e)=>handleComment(e)} value={comment} />
             <span className='homecomment-comment-length'>(Max Characters: 200)  <span className={handleCharWarning()}>{comment.length} chars</span> </span>
         </div>
         <div className='homecomment-button-wrapper'>
+            
             <div className='homecomment-input-label'>
                 <div>
                 <label>Position: </label>
@@ -111,6 +125,7 @@ function HomeComment() {
                 </div>
                 <span>Default Member, only change this is if you feel the position you're adding is a verified position.</span>
             </div>
+            {loading && <RingSpinner />}
         {!user.commentRef ? <button className={comment.length > 0 ? 'filter-add homecomment-submit-buttom' : 'homecomment-submit-buttom'} onClick={handleSubmit}>Submit</button> :
         <button className={!(originalComment === comment) ? 'filter-add homecomment-submit-buttom' : 'homecomment-submit-buttom'} onClick={handleUpdate}>Update</button> }
         </div>
@@ -119,7 +134,6 @@ function HomeComment() {
         <div className="sc_testimonial_item">
                 <TestiMonialInput comment={comment} image={user.photoUrl} position={position} user={user.firstName + ' ' + user.lastName} />
         </div>
-        
     </div>
     </div>
     <h4 className='homecomment-preview-text'>Comment Preview</h4>

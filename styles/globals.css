@@ -380,6 +380,9 @@
 	justify-content: center;
 	flex-direction: column;
 }
+.cwc-bg-image {
+	padding-top: 64px;
+}
 .cwc-wrapper {
 	display: flex;
 	align-items: center;	
@@ -549,6 +552,12 @@
     font-weight: 500;
 	color: #1cbed6;
 }
+.login-setting {
+	height: 48vh;
+}
+.login-setting-signup {
+	height: 85vh;
+}
 .login-form input {
     width: 100%;
 	max-width: 100%;
@@ -612,6 +621,16 @@
 	border-radius: 50%;
 	width: 45px;
 	border: 2px solid #0000002f;
+}
+.account-settings{
+	height: 50vh;
+}
+.settings-ring-container {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 .disable__submit {    
     width: 100%;

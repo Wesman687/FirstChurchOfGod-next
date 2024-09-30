@@ -17,6 +17,7 @@ import XIcon from "../icons/XIcon";
 import Image from "next/image";
 import upload from '@/images/upload_area.png'
 import CheckIcon from "../icons/CheckIcon";
+import RingSpinner from "../RingSpinner";
 
 const AccountInfo = () => {
     const isOpen = useSelector((state) => state.modals.accountModalOpen);
@@ -90,6 +91,7 @@ const AccountInfo = () => {
                 >
                     Settings
                 </p>
+                            
                 <Modal
                     open={isOpen}
                     onClose={() => dispatch(closeAccountModal())}
@@ -97,7 +99,8 @@ const AccountInfo = () => {
                 >
                     <div className="login__container">
                         <div className="login">
-                            <div className="login-form">
+                            
+                            <div className="login-form account-settings">
                                 <div className="login-close-container">
                                     <div
                                         className="login__x"
@@ -106,9 +109,8 @@ const AccountInfo = () => {
                                         <XIcon />
                                     </div>
                                 </div>
-                                {loading ? (
-                                    <div className="login-spinner">
-                                    </div>
+                                {loading ? (                                    
+                                        <div className="settings-ring-container"><RingSpinner />   </div>                                 
                                 ) : (
                                     <>
                                         <div className="input-container">

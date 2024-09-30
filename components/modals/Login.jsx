@@ -14,6 +14,7 @@ import XIcon from "../icons/XIcon";
 import upload from '@/images/upload_area.png'
 import Image from "next/image";
 import { getDownloadURL, ref, uploadString } from "firebase/storage";
+import RingSpinner from "../RingSpinner";
 
 
 const Login = ({defaultState}) => {
@@ -41,6 +42,7 @@ const Login = ({defaultState}) => {
     })
   }
   async function handleOpen() {
+    setSignState('Sign In')
     dispatch(openLoginModal())
   }
 
@@ -119,10 +121,11 @@ const Login = ({defaultState}) => {
   }
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
+      setLoading(true)
       if (!currentUser) {
+        setLoading(false)
         return;
       }
-      console.log(user)
       const userRef = await query(collection(db, "user"), where('uid', '==', currentUser.uid))
       const data = await getDocs(userRef)
       if (data.empty) {
@@ -147,10 +150,10 @@ const Login = ({defaultState}) => {
           })
         );
 
-      }
-
-
+      }      
+      setLoading(false)
     });
+    
 
     return unsubscribe;
   }, []);
@@ -172,15 +175,14 @@ const Login = ({defaultState}) => {
         className="login__modal"
       >
         <div className="login__container">
-          {loading ? (
-            <div className="login-spinner">
-              <FontAwesomeIcon icon="fas fa-spinner"></FontAwesomeIcon>
-            </div>
-          ) : (
+          
             <div className="login">
 
-              <div className="login-form">
-
+              <div className={signState === 'Sign In' ? 'login-form login-setting' : 'login-form login-setting-signup'}>
+              {loading ? (                                    
+                                        <div className="settings-ring-container"><RingSpinner />   </div>                                 
+                                ) :
+                                <>
                 <div className="login-close-container">
                   <div
                     className="login__x"
@@ -307,11 +309,10 @@ const Login = ({defaultState}) => {
                       </span>
                     </p>
                   )}
-                </div>
+                </div></>}
               </div>
             </div>
-
-          )}
+            
         </div>
       </Modal>
     </>
