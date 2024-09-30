@@ -111,7 +111,7 @@ function HomeComment() {
     },[user.commentRef])
   return (
     <div className='homecomment-container'>
-        <h4 className='homecomment-header'>As a member you may have one Testimonial for the home page.  This is not required, but we hope you take the time out to tell everyone how much you love our Church.  This comment will be displayed on the home page, so please make sure it's well though out, and editted properly.  You will be able to update/edit this comment anytime you wish.  Only members are allowed to make a comment on the home page.</h4>
+        <h4 className='homecomment-header'>As a member you may have one Testimonial for the home page.  This is not required, but we hope you take the time out to tell everyone how much you love our Church.  This comment will be displayed on the home page, so please make sure it is well though out, and editted properly.  You will be able to update/edit this comment anytime you wish.  Only members are allowed to make a comment on the home page.</h4>
         <div className='homecomment-comment-wrapper'>            
         <textarea className='homecomment-comment-text' placeholder='Maximum Characters of 200' onChange={(e)=>handleComment(e)} value={comment} />
             <span className='homecomment-comment-length'>(Max Characters: 200)  <span className={handleCharWarning()}>{comment.length} chars</span> </span>
@@ -123,7 +123,7 @@ function HomeComment() {
                 <label>Position: </label>
                 <input placeholder='Member' className='homecomment-position' value={position} onChange={(e)=>setPosition(e.target.value)} />
                 </div>
-                <span>Default Member, only change this is if you feel the position you're adding is a verified position.</span>
+                <span>Default Member, only change this is if you feel the position you are adding is a verified position.</span>
             </div>
             {loading && <RingSpinner />}
         {!user.commentRef ? <button className={comment.length > 0 ? 'filter-add homecomment-submit-buttom' : 'homecomment-submit-buttom'} onClick={handleSubmit}>Submit</button> :
