@@ -140,7 +140,10 @@ const Login = ({defaultState}) => {
             phone: userInfo.phone,
             photoUrl: userInfo.photoUrl,
             isAdmin: userInfo.isAdmin,
-            isMember: userInfo.isMember
+            isMember: userInfo.isMember,
+            userRef: data.docs[0].id,
+            isSuper: userInfo.isSuper,
+            commentRef: userInfo.commentRef
           })
         );
 

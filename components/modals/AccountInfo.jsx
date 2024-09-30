@@ -26,6 +26,7 @@ const AccountInfo = () => {
     const [newPhone, setPhone] = useState(user.phone || '');
     const [loading, setLoading] = useState(false);
     const [image, setImage] = useState(user.photoUrl || null)
+    const [newImage, setNewImage] = useState(false)
     const filePickerRef = useRef(null)
     const dispatch = useDispatch();
     function addImage(e) {
@@ -37,6 +38,7 @@ const AccountInfo = () => {
         reader.addEventListener("load", e => {
             setImage(e.target.result)
         })
+        setNewImage(true)
     }
     const updateUser = async (e) => {
         e.preventDefault();
@@ -45,7 +47,7 @@ const AccountInfo = () => {
 
         
             let downloadURL
-            if (image) {
+            if (image && newImage) {
                 const imageRef = await ref(storage, `photos/${user.uid}`)
                 const uploadImage = await uploadString(imageRef, image, "data_url")
                 downloadURL = await getDownloadURL(imageRef)
@@ -65,8 +67,9 @@ const AccountInfo = () => {
                 lastName: newLastName,
                 phone: newPhone,
                 email: userInfo.email,
-                photoUrl: downloadURL,
-                uid: userInfo.uid
+                photoUrl: newImage ? downloadURL : image,
+                uid: userInfo.uid,
+                userRef: data.docs[0].id
             };
             const docRef = doc(db, "user", data.docs[0].id);
             await updateDoc(docRef, userData);

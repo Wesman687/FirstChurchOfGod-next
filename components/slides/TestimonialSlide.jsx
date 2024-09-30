@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import { useKeenSlider } from "keen-slider/react"
 import "keen-slider/keen-slider.min.css"
 import Image from "next/image"
+import TestiMonialInput from "../TestiMonialInputs"
 
 export default function KeenSlide({ slides }) {
   const [currentSlide, setCurrentSlide] = useState(0)
@@ -52,17 +53,8 @@ export default function KeenSlide({ slides }) {
         <div ref={sliderRef} className="keen-slider">
           {slides.length > 0 && slides.map((item, index) => (
             <div key={index} className={`keen-slider__slide number-slide${slides.length + 1}`}>
-              <div className="sc_testimonial_content">
-                <p>{item.comment}</p>
-              </div>
-              <div className="sc_testimonial_avatar">
-                <Image src={item.image} className="testimonial-image" alt="Community" />
+              <TestiMonialInput comment={item.comment} image={item.image} user={item.user} position={item.position} />
               
-              <div className="sc_testimonial_author">
-                <h3 className="sc_testimonial_author_name">{item.user}</h3>
-                <h4 className="sc_testimonial_author_position">{item.position}</h4>
-              </div>
-              </div>
             </div>
           ))}
 

@@ -4218,27 +4218,27 @@ body.sidebar_hide .sc_recent_news_style_news-announce .post_size_small { height:
 }
 
 /* Style 1 */
-.sc_testimonials_style_testimonials-1 .sc_testimonial_content p:first-child:before,
-.sc_testimonials_style_testimonials-1 .sc_testimonial_content p:last-child:after {
+.sc_testimonial_content p:first-child:before,
+.sc_testimonial_content p:last-child:after {
 	content: '"';
 }
-.sc_testimonials_style_testimonials-1 .sc_testimonial_content {
+.sc_testimonial_content {
 	margin-bottom:1.0588em;
 }
-.sc_testimonials_style_testimonials-1 .sc_testimonial_avatar,
-.sc_testimonials_style_testimonials-1 .sc_testimonial_author {
+.sc_testimonial_avatar,
+.sc_testimonial_author {
 	display: inline-block;
 	vertical-align:middle;
 }
-.sc_testimonials_style_testimonials-1 .sc_testimonial_avatar {
+.sc_testimonial_avatar {
 	margin-right:1.5em;
 }
-.sc_testimonials_style_testimonials-1 .sc_testimonial_author_name,
-.sc_testimonials_style_testimonials-1 .sc_testimonial_author_position {
+.sc_testimonial_author_name,
+.sc_testimonial_author_position {
 	display:block;
 	text-align:left;
 }
-.sc_testimonials_style_testimonials-1 .sc_testimonial_author_name{
+.sc_testimonial_author_name{
     font-weight: 700;
     font-size: 1.2857em;
     line-height: 1.2222em;

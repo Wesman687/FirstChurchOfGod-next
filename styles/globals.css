@@ -34,15 +34,17 @@
 .sc_testimonial_author_name {
 	margin: 12px 0 !important;
 }
-.sc_testimonial_avatar {
+.sc_testimonial_avatar-info {
 	display: flex;
 	gap: 24px;
 	align-items: center;
 	justify-content: center;
+	height: 80px;
 }
 .testimonial-image {
 	border: 2px solid transparent;
-	border-radius: 48px;
+	border-radius: 50%;
+	width: 50px;
 }
 .footer-container {
 	background-color: #2f2f2f;
@@ -97,6 +99,15 @@
 }
 .light-blue {
 	color: #1DC6DF !important;
+}
+.red {
+	color: #940101;
+}
+.green {
+	color: rgb(3, 165, 3);
+}
+.yellow {
+	color: #ffa800;
 }
 .current-link {
 	text-decoration: underline;
@@ -769,6 +780,62 @@
         margin-top: 30px;
     }
 }
+/******** Members Area *****/
+
+/***** Home Comment ****/
+.homecomment-container {
+	padding: 124px 64px;
+}
+
+.homecomment-header {
+	text-align: center;
+}
+.homecomment-comment-wrapper {
+	display: flex;
+	flex-direction: column;
+}
+.homecomment-comment-text {
+	background-color: #ddd !important;
+	padding: 16px;
+	font-size: 24px;
+}
+.homecomment-comment-length {
+	color: #1dc6df;
+}
+.homecomment-position {
+	background-color: #f3f2f2;
+	font-size: 24px;
+	width: 150px;
+	text-align: center;
+}
+.homecomment-button-wrapper {
+	padding: 64px 0;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+}
+.homecomment-input-label {
+	font-size: 24px;
+	display: flex;
+	flex-direction: column;
+	width: 30%;
+}
+.homecomment-submit-buttom {
+	width: 250px;
+	font-size: 24px;
+}
+.homecomment-input-label span {
+	font-size: 14px;
+	padding-top: 8px;
+	color: #cccccc;
+}
+.homecomment-preview-text {
+	text-align: center;
+}
+
+
+
+
 
 /******** Buttons *********/
 
