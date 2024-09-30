@@ -16,8 +16,8 @@ import Image from "next/image";
 import { getDownloadURL, ref, uploadString } from "firebase/storage";
 
 
-const Login = () => {
-  const [signState, setSignState] = useState("Sign In");
+const Login = ({defaultState}) => {
+  const [signState, setSignState] = useState(defaultState || "Sign In");
   const [lastName, setLastName] = useState("")
   const [firstName, setFirstName] = useState("");
   const [email, setEmail] = useState("");
@@ -155,11 +155,13 @@ const Login = () => {
   return (
     <>
 
-      <p className="login-link light-blue"
+      {defaultState ?  
+      <label className="click" onClick={() => handleOpen()}>Sign Up</label>
+      : <p className="login-link light-blue"
         onClick={() => handleOpen()}
       >
         Log In
-      </p>
+      </p>}
 
       <Modal
         open={isOpen}

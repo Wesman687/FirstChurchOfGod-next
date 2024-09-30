@@ -89,8 +89,12 @@ function ManageFilters() {
                             
                             <td>{item.data().filter}</td>
                         <td className='edit-remove-column'>
+                            <div>
                             <label className='filter-edit-button' onClick={()=>handleEdit({index})} ><EditIcon /> Edit</label>
+                            </div>
+                            <div>
                             <label className='filter-remove-button red-button' onClick={()=>handleRemove({index})}><TrashIcon /> Remove</label>
+                            </div>
                         </td>
                         
                         </tr>

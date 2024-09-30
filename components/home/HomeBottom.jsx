@@ -1,4 +1,5 @@
 import React from 'react'
+import Login from '../modals/Login'
 
 function HomeBottom() {
     return (
@@ -6,7 +7,7 @@ function HomeBottom() {
             <div className="content_wrap">
                 <div className="columns_wrap sc_columns columns_nofluid sc_columns_count_4 column_resizer">
                     <div className="column-2_4 sc_column_item sc_column_item_1 odd first span_2">
-                        <h2 className="hp1_join_us_info custom_heading_1">If you are interested in joining a small group please fill out the Small Group form, or email us directly »</h2>
+                        <h2 className="hp1_join_us_info custom_heading_1">If you are interested in Becoming a member, Sign Up here, and we will get back with you shortly.</h2>
                     </div><div className="column-1_4 sc_column_item sc_column_item_3 odd after_span_2">
                         <div className="sc_section join_us_custom_block_1">
                             <div className="sc_section_inner">
@@ -18,7 +19,7 @@ function HomeBottom() {
                         </div>
                     </div>
                     <div className="column-1_4 sc_column_item sc_column_item_4 even text_align_center margin_top_0_5em">
-                        <div className="outline-button">JOIN GROUP</div>
+                        <div className="outline-button"><Login defaultState={'Sign Up'} /></div>
                     </div>
                 </div>
             </div>

@@ -585,7 +585,7 @@
 }
 .switch-text {
     margin-left: 6px;
-    color: #1cbed6;
+    color: #ddd;
     font-weight: 500px;
     cursor: pointer;
 }
@@ -678,6 +678,7 @@
 	width: 50%;
 	display: flex;
 	gap: 6px;
+	align-items: center;
 }
 .edit-remove-column label svg {
 	width: 18px;
@@ -789,6 +790,7 @@
 	border: 1px solid #940101;
 	background: linear-gradient(90deg, hsl(0, 96%, 48%), #f30a0abb, #e20909, #ff0101bb);
 	cursor: pointer;
+	margin: 0 !important;
 }
 .submit:hover {
 	background: linear-gradient(90deg, hsl(194, 98%, 63%), #2df1ffbb, #4be1fc, #61e6fabb);
@@ -839,6 +841,7 @@
 	border: 1px solid #1cbed6;
 	background: linear-gradient(90deg, hsl(194, 98%, 63%), #2df1ffbb, #4be1fc, #61e6fabb);
 	cursor: pointer;
+	border-radius: 4px;
 }
 
 
