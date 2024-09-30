@@ -3,7 +3,9 @@ import { RingLoader } from 'react-spinners'
 
 function RingSpinner() {
   return (
-    <RingLoader color={'#1DC6DF'}  speedMultiplier={2}/>
+    <div className="settings-ring-container"><RingLoader color={'#1DC6DF'}  speedMultiplier={2}/></div>
+
+    
   )
 }
 

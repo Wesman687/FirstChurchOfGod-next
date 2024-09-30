@@ -721,10 +721,67 @@
     }
 }
 /******** Members Area *****/
+.members-toolbar {
+	display: flex;
+	justify-content: center;
+	padding-top: 24px;
+}
+.members-toolbar label {
+	margin-right: 12px;
+}
+.members-toolbar div label {
+	cursor: pointer;
+}
+.members-toolbar div label:hover {
+	font-size: 22px;
+}
+.manage-members-active {
+	font-size: 22px;
+}
+/****** Manage Members *****/
+.managemembers-container {
+	padding: 64px 64px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.managemembers-table {
+	width: 100%;
+}
+.managemembers-table-thead-row {
+	background-image: linear-gradient(90deg, hsl(194, 100%, 60%), #0ae0f0bb, #16c8e7, #09cbe9bb);
+}
+.managemembers-table-thead-row td {
+	color: #FFFFFF;
+	text-align: center;
+	font-size: 20px;
+}
+.managemembers-table-thead-row td {
+	
+	text-shadow:
+	-1px -1px 0 #0000001a,  
+	 1px -1px 0 #0000001a,
+	 -1px 1px 0 #0000001a,
+	  1px 1px 0 #0000001a;
+
+}
+.managemembers-table-tbody-row td svg {
+	width: 25px;
+}
+.managemembers-table-tbody-row td {
+		color: #16c8e7;
+}
+.text-center {	
+	text-align: center;
+}
+.managemembers-image {
+	border-radius: 50%;
+	width: 50px;
+}
 
 /***** Home Comment ****/
 .homecomment-container {
-	padding: 124px 64px;
+	padding: 64px 64px;
 }
 
 .homecomment-header {
@@ -852,6 +909,7 @@
 	background: linear-gradient(90deg, hsl(194, 98%, 63%), #2df1ffbb, #4be1fc, #61e6fabb);
 	cursor: pointer;
 	border-radius: 4px;
+	
 }
 
 
@@ -1004,6 +1062,11 @@
 			border-radius: 8px !important;
 			border: 2px solid #0000;
 			padding: 4px;
+			text-shadow:
+			-1px -1px 0 #0000001a,  
+			 1px -1px 0 #0000001a,
+			 -1px 1px 0 #0000001a,
+			  1px 1px 0 #0000001a;
 }
 .outline-button { 
 	cursor: pointer;

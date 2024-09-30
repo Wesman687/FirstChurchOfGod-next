@@ -110,7 +110,7 @@ const AccountInfo = () => {
                                     </div>
                                 </div>
                                 {loading ? (                                    
-                                        <div className="settings-ring-container"><RingSpinner />   </div>                                 
+                                        <RingSpinner />                               
                                 ) : (
                                     <>
                                         <div className="input-container">

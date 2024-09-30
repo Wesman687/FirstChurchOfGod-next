@@ -180,7 +180,7 @@ const Login = ({defaultState}) => {
 
               <div className={signState === 'Sign In' ? 'login-form login-setting' : 'login-form login-setting-signup'}>
               {loading ? (                                    
-                                        <div className="settings-ring-container"><RingSpinner />   </div>                                 
+                                        <RingSpinner />                                 
                                 ) :
                                 <>
                 <div className="login-close-container">
