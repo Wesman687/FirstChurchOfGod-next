@@ -1,6 +1,10 @@
 @charset "utf-8";
 @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap');
 
+.color-picker-container {
+	border-radius: 50%;
+	margin-bottom: 6px;
+}
 .modal label {
 	color: #1bbad2;
 }
@@ -350,7 +354,6 @@
 			border-radius: 8px !important;
 			border: 2px solid #0000;
 			padding: 4px;
-
 }
 
 /********* CWC *******/
@@ -433,11 +436,11 @@
 
 .cwc-mission-wrapper:hover {
     position: relative;
-    -webkit-transition: all 0.70s ease 0s;
-       -moz-transition: all 0.70s ease 0s;
-        -ms-transition: all 0.70s ease 0s;
-         -o-transition: all 0.70s ease 0s;
-            transition: all 0.70s ease 0s;
+    -webkit-transition: all 1.70s ease 0s;
+       -moz-transition: all 1.70s ease 0s;
+        -ms-transition: all 1.70s ease 0s;
+         -o-transition: all 1.70s ease 0s;
+            transition: all 1.70s ease 0s;
     z-index: 1;
     background-image: linear-gradient(270deg, #ffa800 0%, #ffa800 50%, #1DC6DF 50%, #1DC6DF 100%) !important;
     background-position: 98% 0 !important;

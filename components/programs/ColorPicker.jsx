@@ -14,6 +14,7 @@ export const ColorPicker = ({ onColorSelect, defaultColor }) => {
       {colors.map((color) => (
         <div
           key={color}
+          className='color-picker-container'
           onClick={() => handleColorClick(color)}
           style={{
             width: '40px',

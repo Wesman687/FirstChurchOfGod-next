@@ -69,6 +69,7 @@ export default function Nav() {
                                             {user.email && (
                                                 <div className="admin_dropdown ">
                                                     <>
+                                                    <Link href={'/members'}><p className='sb__link'>Members Area</p></Link>
                                                         <Link href={'/calendar'}><p className='sb__link'>Calendar</p></Link>
                                                         <AccountInfo />
                                                         <p className="sb__link " onClick={() => logOut()}>

@@ -172,22 +172,18 @@ const FullCalendarComponent = () => {
     startTime = newEventData.startTime + startAMPM;
     let formattedStartTime
     let newEvent = {};
-    if (startTime.length === 7) {
-      formattedStartTime = handleTime(startTime);
-    }
-
+    
+    formattedStartTime = handleTime(startTime);
+    
     // Check if both start and end times are provided and valid
     if (title) {
       newEvent = {
         title,
         id: events.length + 1,
-        start: (selectedDate && selectedDate.startStr.length > 7)
-          ? selectedDate.startStr
-          : `${selectedDate.startStr}T${formattedStartTime}`,
+        start: `${selectedDate.startStr}T${formattedStartTime}`,         
 
-        end: (selectedDate && selectedDate.endStr.length > 7)
-          ? selectedDate.endStr
-          : `${subtractOneDay(selectedDate.endStr)}T${formattedStartTime}`,
+        end: ((selectedDate.startStr !== subtractOneDay(selectedDate.endStr)) && `${subtractOneDay(selectedDate.endStr)}T${formattedStartTime}`),
+        
         backgroundColor: bgColor,
         textColor: textColor,
         url: URL || '',
@@ -197,6 +193,7 @@ const FullCalendarComponent = () => {
           location,
         },
       };
+    
 
       setEvents((prevEvents) => [...prevEvents, newEvent]);
 
@@ -225,9 +222,7 @@ const FullCalendarComponent = () => {
   return (
     <ThemeProvider theme={customTheme}>
       <CssBaseline />
-
       <div>
-
         <FullCalendar
           ref={calendarRef}
           plugins={[dayGridPlugin, timeGridPlugin, listPlugin, interactionPlugin]}
@@ -299,16 +294,7 @@ const FullCalendarComponent = () => {
                             <option value={'PM'}>PM</option>
                           </select>
                         </div>
-                      </label>}
-
-                      <label>
-                        URL:
-                        <input
-                          type="text"
-                          value={newEventData.URL}
-                          onChange={(e) => setNewEventData({ ...newEventData, URL: e.target.value })}
-                        />
-                      </label>
+                      </label>}                      
                     </div>
                     <div style={{ padding: '2px', backgroundColor: bgColor, color: textColor }}>
                       <ColorPicker onColorSelect={handleTextColorChange} defaultColor={textColor} />
