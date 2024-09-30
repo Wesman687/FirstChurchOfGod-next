@@ -1,6 +1,7 @@
 import Map from '@/components/programs/Map'
 import Layout from '@/components/Layout'
 import React from 'react'
+import ContactForm from '@/components/programs/ContactForm'
 
 
 function Contacts() {
@@ -38,26 +39,7 @@ function Contacts() {
                                     <span className="sc_form_address_data">Sunday 10AM - 2PM, Wed 2PM-4:40PM</span>
                                 </div>
                             </div><div className="sc_form_fields column-2_3">
-                                <form id="sc_form_1_form" data-formtype="form_2" method="post" action="include/sendmail.php">
-                                    <div className="sc_form_info">
-                                        <div className="sc_form_item sc_form_field label_over">
-                                            <label className="required" for="sc_form_username">Name</label>
-                                            <input id="sc_form_username" type="text" name="username" placeholder="Name" />
-                                        </div>
-                                        <div className="sc_form_item sc_form_field label_over">
-                                            <label className="required" for="sc_form_email">E-mail</label>
-                                            <input id="sc_form_email" type="text" name="email" placeholder="Email" />
-                                        </div>
-                                    </div>
-                                    <div className="sc_form_item sc_form_message label_over">
-                                        <label className="required" for="sc_form_message">Message</label>
-                                        <textarea id="sc_form_message" name="message" placeholder="Message"></textarea>
-                                    </div>
-                                    <div className="sc_form_item sc_form_button">
-                                        <button className="sc_button sc_button_square sc_button_style_filled sc_button_color_style_2 sc_button_size_large light-blue-button">Send Message</button>
-                                    </div>
-                                    <div className="result sc_infobox"></div>
-                                </form>
+                                    <ContactForm />
                             </div>
                         </div>
                     </div>
