@@ -39,7 +39,7 @@ function MemberModal({ member, onClose }) {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setLoading(true);
-
+        console.log(firstName, lastName, email, phone, isMember, isAdmin, isSuper, newImage, member.photoUrl, image)
         try {
             const memberRef = doc(db, 'user', member.userRef); 
 
@@ -92,6 +92,20 @@ function MemberModal({ member, onClose }) {
     const cancelDelete = () => {
         setShowConfirm(false); // Hide the confirmation modal
     };
+    const handleMember = (checked) => {
+        if (member.isAdmin) {
+            toast.warning('Must Remove Admin Status First')
+            return
+        }
+        setIsMember(checked)
+    }
+    const handleAdmin = (checked) => {
+        if (member.isSuper) {
+            toast.warning('Must Remove Super Status First')
+            return
+        }
+        setIsAdmin(checked)
+    }
 
     return (
         <div className='modal-overlay'>
@@ -162,7 +176,7 @@ function MemberModal({ member, onClose }) {
                         <input
                             type="checkbox"
                             checked={isMember}
-                            onChange={(e) => setIsMember(e.target.checked)}
+                            onChange={(e) => handleMember(e.target.checked)}
                         />
                     </div>
                     {user.isSuper && (
@@ -171,7 +185,7 @@ function MemberModal({ member, onClose }) {
                             <input
                                 type="checkbox"
                                 checked={isAdmin}
-                                onChange={(e) => setIsAdmin(e.target.checked)}
+                                onChange={(e) => handleAdmin(e.target.checked)}
                             />
                         </div>
                     )}

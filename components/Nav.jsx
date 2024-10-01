@@ -70,7 +70,7 @@ export default function Nav() {
                                                 <div className="admin_dropdown ">
                                                     <>
                                                     {user.isMember && <>
-                                                        <Link href={'/members'}><p className='sb__link'>Testimonial</p></Link>
+                                                        <Link href={'/members'}><p className='sb__link'>Member Area</p></Link>
                                                         <Link href={'/calendar'}><p className='sb__link'>Calendar</p></Link>
                                                         </>}
                                                         <AccountInfo />
