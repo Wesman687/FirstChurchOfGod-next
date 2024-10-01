@@ -23,6 +23,21 @@ function MemberModal({ member, onClose }) {
     const [loading, setLoading] = useState(false);
     const [showConfirm, setShowConfirm] = useState(false); // State for showing the confirmation modal
     const filePickerRef = useRef(null);
+    const [ripples, setRipples] = useState([]);
+
+    const createRipple = (e) => {
+    const modalRect = e.currentTarget.getBoundingClientRect();
+    const x = e.clientX - modalRect.left;
+    const y = e.clientY - modalRect.top;
+
+    const newRipple = { x, y, id: Date.now() };
+    setRipples((prev) => [...prev, newRipple]);
+
+    // Remove ripple after animation completes
+    setTimeout(() => {
+      setRipples((prev) => prev.filter((ripple) => ripple.id !== newRipple.id));
+    }, 600); // Match the animation duration
+  };
     const user = useSelector(state => state.user);
 
     function addImage(e) {
@@ -73,6 +88,10 @@ function MemberModal({ member, onClose }) {
     const handleDelete = async () => {
         try {
             setLoading(true);
+            if (member.commentRef){
+                const commentDocRef = doc(db, 'testimonial', member.commentRef)
+                await deleteDoc(commentDocRef)
+            }
             const memberRef = doc(db, 'user', member.userRef);
             await deleteDoc(memberRef);
             toast.success('Member removed successfully');
@@ -109,7 +128,26 @@ function MemberModal({ member, onClose }) {
 
     return (
         <div className='modal-overlay'>
-            <div className='modal-box'>
+            <div className='modal-box modal'
+      onMouseMove={createRipple}
+      style={{
+        width: "500px",
+        height: "500px",
+        border: "1px solid #ccc",
+        position: "relative",
+        overflow: "hidden",
+      }}
+    >
+        {ripples.map((ripple) => (
+        <span
+          key={ripple.id}
+          className="ripple"
+          style={{
+            left: ripple.x,
+            top: ripple.y,
+          }}
+        ></span>
+      ))}
                 <button className='close-button' onClick={onClose}>X</button>
                 <h3>Edit Member: {firstName} {lastName}</h3>
 

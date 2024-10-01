@@ -171,6 +171,26 @@ const AccountInfo = () => {
                                                             </div>
                                                             </div>
                                                             }
+                                                            {user.isSuper && 
+                                                        <div className="account-check-container">
+                                                        <label className="account-settings-admin light-blue">
+                                                            Super Admin                                                            
+                                                            </label>
+                                                            <div className="account-settings-check">
+                                                            <CheckIcon />
+                                                            </div>
+                                                            </div>
+                                                            }
+                                                            {user.isSuperSuper && 
+                                                        <div className="account-check-container">
+                                                        <label className="account-settings-admin light-blue">
+                                                            Owner                                                            
+                                                            </label>
+                                                            <div className="account-settings-check">
+                                                            <CheckIcon />
+                                                            </div>
+                                                            </div>
+                                                            }
                                                 </div>
 
                                                 <button

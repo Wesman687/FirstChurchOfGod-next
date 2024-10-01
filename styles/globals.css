@@ -462,6 +462,7 @@
 .login-form {
 	position: relative;
     width: 450px;
+	height: 475px !important;
     background: rgba(0,0,0,0.75);
     border-radius: 4px;
     padding: 16px;
@@ -805,6 +806,23 @@
     align-items: center;
     z-index: 1000;
 }
+.ripple {
+	position: absolute;
+	width: 5px;
+	height: 5px;
+	background: #02d6f7;
+	border-radius: 50%;
+	pointer-events: none;
+	transform: scale(0);
+	animation: ripple-animation 0.6s ease-out;
+  }
+  
+  @keyframes ripple-animation {
+	to {
+	  transform: scale(50);
+	  opacity: 0;
+	}
+  }
 
 .modal-box {
     background-color: white;
@@ -828,6 +846,7 @@
 	justify-content: center;
 }
 .modal-box h3 {
+	z-index: 50;
 	font-size: 22px;
 	color: #ffffff !important;
 	text-shadow:
@@ -840,8 +859,11 @@
 	display: flex;
 	align-items: center;
 	gap: 6px;
+	z-index: 50;
+	cursor: wait;
 }
 .modal-box form div label {
+	z-index: 50;
 	color: #ffffff;
 	font-size: 22px;
 	text-shadow:
@@ -851,6 +873,7 @@
 	  1px 1px 0 #0000001a;
 }
 .modal-box form div input {
+	z-index: 50;
 	font-size: 22px;
     color: rgba(255, 255, 255, 0.6); /* Lighter white for placeholders */
 	background-color: transparent !important;
@@ -888,6 +911,7 @@
 
 .modal-image {
     border-radius: 50%;
+	border: 1px solid #ddd;
 }
 .member-modal-preview {
 	width: 100px !important;
@@ -981,7 +1005,13 @@
 	color: #ffffff !important;
 }
 
-
+/******* Pray Request *******/
+.prayerrequest-container {
+	padding: 64px 64px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
 
 
 /***** Home Comment ****/
