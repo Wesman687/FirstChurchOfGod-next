@@ -30,8 +30,8 @@ function Members() {
                     {!testimonial ? <label className='manage-filters-label' onClick={handleManageTestimonials}>Testimonial</label> :
                         <label className='manage-filters-label-active manage-members-active'>Testimonial</label>
                     }
-                    {!manageMembers ? <label className='manage-filters-label' onClick={handleManageMembers}>Manage Members</label> :
-                        <label className='manage-filters-label-active manage-members-active'>Manage Members</label>
+                    {!manageMembers ? <label className='manage-filters-label' onClick={handleManageMembers}>{user.isAdmin ? 'Manage Members' : 'Show Members'}</label> :
+                        <label className='manage-filters-label-active manage-members-active'>{user.isAdmin ? 'Manage Members' : 'Show Members'}</label>
                     }
                 </div>
             </div>

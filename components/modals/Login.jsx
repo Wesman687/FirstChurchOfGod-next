@@ -146,6 +146,7 @@ const Login = ({defaultState}) => {
             isMember: userInfo.isMember,
             userRef: data.docs[0].id,
             isSuper: userInfo.isSuper,
+            isSuperSuper: userInfo.isSuperSuper,
             commentRef: userInfo.commentRef
           })
         );

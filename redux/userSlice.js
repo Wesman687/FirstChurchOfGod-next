@@ -12,6 +12,7 @@ const initialState = {
     isAdmin: false,
     isMember: false,
     isSuper: false,
+    isSuperSuper: false,
     userRef: null,
     commentRef: null,
 
@@ -35,6 +36,7 @@ const userSlice = createSlice({
         state.isSuper = action.payload.isSuper
         state.userRef = action.payload.userRef
         state.commentRef = action.payload.commentRef
+        state.isSuperSuper = action.payload.isSuperSuper
     },
 
     signOutUser : (state) =>{
@@ -50,6 +52,7 @@ const userSlice = createSlice({
         state.isSuper = null
         state.userRef = null
         state.commentRef = null
+        state.isSuperSuper = null
     }
   }
 });

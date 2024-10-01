@@ -4,11 +4,27 @@ import React, { useEffect, useState } from 'react'
 import RingSpinner from '../RingSpinner'
 import CheckIcon from '../icons/CheckIcon'
 import XIcon from '../icons/XIcon'
+import { useSelector } from 'react-redux'
+import MemberModal from '../modals/MemberModal'
+import { toast } from 'react-toastify'
 
 function ManageMembers() {
     const [memberList, setMemberList] = useState([])
     const [loading, setLoading] = useState(false)
-    console.log(memberList)
+    const user = useSelector(state => state.user)
+    const [selectedMember, setSelectedMember] = useState(null); // To store clicked member
+    const [modalVisible, setModalVisible] = useState(false); // Control modal visibility    
+    const handleMemberClick = (member) => {
+        if (!user.isAdmin){
+            return
+        }
+        setSelectedMember(member); // Set the selected member
+        setModalVisible(true); // Show the modal
+    };
+    const closeModal = () => {
+        setModalVisible(false);
+        setSelectedMember(null); // Reset when modal is closed
+    };
     useEffect(()=>{
         const q = query(collection(db, 'user'))        
         const unsubscribe = onSnapshot(q, (snapshot) =>{
@@ -35,19 +51,22 @@ function ManageMembers() {
             <tbody>
                 {memberList.map((item, index)=> (
                   <>
-                <tr className='managemembers-table-tbody-row'>
-                    <td>{item.firstName + ' ' + item.lastName}</td>
+                <tr className='managemembers-table-tbody-row' onClick={() => handleMemberClick(item)}>
+                    <td className='click' onClick={() => handleMemberClick(item)}>{item.firstName + ' ' + item.lastName}</td>
                     <td>{item.email}</td>
-                    <td className='text-center'><img src={item.photoUrl} className='managemembers-image' /></td>
-                    <td className='text-center'>Phone</td>
-                    <td className='text-center'>Member</td>
-                    <td className='text-center'>{<XIcon classes={'red'} />}</td>
-                    <td className='text-center'>{<CheckIcon classes={'green'} />}</td>
+                    <td className='text-center click'><img src={item.photoUrl} className='managemembers-image' /></td>
+                    <td className='text-center click'>{item.phone}</td>
+                    <td className='text-center click'>{item.isMember ? <CheckIcon classes={'green'} /> : <XIcon classes={'red'} /> }</td>
+                    <td className='text-center click'>{item.isAdmin ? <CheckIcon classes={'green'} /> : <XIcon classes={'red'} /> }</td>
+                    <td className='text-center click'>{item.isSuper ? <CheckIcon classes={'green'} /> : <XIcon classes={'red'} /> }</td>
                 </tr>
                 </>
                 ))}
             </tbody>
         </table>
+        {modalVisible && (
+                        <MemberModal member={selectedMember} onClose={closeModal} />
+                    )}
         <div className='managemembers-wrapper'>
             
         </div>  
