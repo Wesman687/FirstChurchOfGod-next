@@ -152,10 +152,10 @@ function MemberModal({ member, onClose }) {
                 <h3>Edit Member: {firstName} {lastName}</h3>
 
                 <form onSubmit={handleSubmit}>
-                    <div className='member-modal-photo-wrapper'>
+                    <div className='member-modal-photo-wrapper click'>
                         {image ? (
-                            <div className="account-image-preview">
-                                <div className='member-modal-preview' onClick={() => setImage(null)}>
+                            <div className="account-image-preview click">
+                                <div className='member-modal-preview click' onClick={() => setImage(null)}>
                                     <img src={image} className="preview-image modal-image" />
                                 </div>
                             </div>

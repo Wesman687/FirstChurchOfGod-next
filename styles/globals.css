@@ -809,19 +809,31 @@
 .ripple {
 	position: absolute;
 	width: 5px;
-	height: 5px;
-	background: #02d6f7;
-	border-radius: 50%;
+	height: 7px;
+	background: #15ddfc;
+	border-radius: 35%;
 	pointer-events: none;
 	transform: scale(0);
-	animation: ripple-animation 0.6s ease-out;
+	animation: ripple-animation 1.5s ease-in-out;
   }
   
   @keyframes ripple-animation {
-	to {
-	  transform: scale(50);
-	  opacity: 0;
+	0% {
+	  transform: scale(150);
+	  opacity: .2;
 	}
+	25% {
+		transform: scale(50);
+		opacity: .6;
+	  }
+	  75% {
+		transform: scale(150);
+		opacity: .2;
+	  }
+	  100% {
+		transform: scale(50);
+		opacity: .6;
+	  }
   }
 
 .modal-box {
@@ -837,7 +849,7 @@
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
-	background-image: linear-gradient(90deg, hsl(194, 100%, 60%), #0ae0f0bb, #16c8e7, #09cbe9bb)
+	background-image: linear-gradient(90deg, hsl(194, 100%, 60%), #31f1ff, #24dbfc, #25e2ff)
 }
 .member-modal-photo-wrapper {
 	width: 100%;
