@@ -48,7 +48,7 @@ function ManageMembers() {
                     <td>Super Admin</td>
                 </tr>
             </thead>
-            <tbody>
+            <tbody clas>
                 {memberList.map((item, index)=> (
                   <>
                 <tr className='managemembers-table-tbody-row' onClick={() => handleMemberClick(item)}>
@@ -56,9 +56,9 @@ function ManageMembers() {
                     <td>{item.email}</td>
                     <td className='text-center click'><img src={item.photoUrl} className='managemembers-image' /></td>
                     <td className='text-center click'>{item.phone}</td>
-                    <td className='text-center click'>{item.isMember ? <CheckIcon classes={'green'} /> : <XIcon classes={'red'} /> }</td>
-                    <td className='text-center click'>{item.isAdmin ? <CheckIcon classes={'green'} /> : <XIcon classes={'red'} /> }</td>
-                    <td className='text-center click'>{item.isSuper ? <CheckIcon classes={'green'} /> : <XIcon classes={'red'} /> }</td>
+                    <td className='text-center click'>{item.isMember ? <CheckIcon classes={'green '} /> : <XIcon classes={'bright-red xicon-shadow'} /> }</td>
+                    <td className='text-center click'>{item.isAdmin ? <CheckIcon classes={'green '} /> : <XIcon classes={'bright-red xicon-shadow'} /> }</td>
+                    <td className='text-center click'>{item.isSuper ? <CheckIcon classes={'green '} /> : <XIcon classes={'bright-red xicon-shadow'} /> }</td>
                 </tr>
                 </>
                 ))}

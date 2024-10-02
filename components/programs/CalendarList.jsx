@@ -251,7 +251,7 @@ const FullCalendarComponent = () => {
         >
           <div className="login__container">
             <div className="login">
-              <div className="login-form">
+              <div className="login-form calender-container">
                 <div className="modal">
                   <form onSubmit={handleFormSubmit}>
                     <label>
@@ -301,7 +301,7 @@ const FullCalendarComponent = () => {
                       <ColorPicker onColorSelect={handleBgColorChange} defaultColor={bgColor} />
                       <p>Select text and background colors!</p>
                     </div>
-
+                        <div className='calendar-button-container'>
                     {selectedEvent ?
                       <>
                         <button type="button" className="red-button" onClick={handleEventRemove}>
@@ -319,6 +319,7 @@ const FullCalendarComponent = () => {
                         <button type="button" className='red-button' onClick={() => dispatch(closeEventModal())}>
                           Cancel
                         </button></>}
+                        </div>
                   </form>
                 </div>
               </div>

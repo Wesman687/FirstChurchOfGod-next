@@ -15,22 +15,7 @@
 .modal label {
 	color: #1bbad2;
 }
-.calender-am-pm {
-	display: flex;
-	background-color: #F3F5F8;
-	margin: 12px 0;
-}
-.calender-am-pm input {
-	margin: 0 !important;
-}
-.calendar-am-select {
-	margin: 10px 0;
-	border: none;
-}
-.calendar-container {
 
-	padding: 64px;
-}
 .time-inputs {
 	display: flex; 
 	gap: 24px;
@@ -109,6 +94,12 @@
 }
 .red {
 	color: #940101;
+}
+.bright-red {
+	color: #ff0303;
+}
+.bright-green {
+	color: #00ff00;
 }
 .green {
 	color: #05a305;
@@ -358,6 +349,10 @@
 	margin-top: 64px !important;
 	padding: 8px 16px;
 	font-size: 18px;
+	border: 1px solid #000;
+}
+.cwc-visit-button:hover {
+	border: 1px solid #1dc6df;
 }
 .cwc-mission-wrapper {
 	margin-top: 32px;
@@ -462,12 +457,16 @@
 .login-form {
 	position: relative;
     width: 450px;
-	height: 475px !important;
     background: rgba(0,0,0,0.75);
     border-radius: 4px;
     padding: 16px;
     margin: auto;
 	overflow: hidden;
+	border: 1px solid #c7f2fda6;
+}
+.calender-container {
+	height: 650px !important;
+    background: rgba(0,0,0,0.75);
 }
 .login-form h1 {
     font-size: 32px;
@@ -475,10 +474,10 @@
 	color: #1cbed6;
 }
 .login-setting {
-	height: 48vh;
+	height: 45vh;
 }
 .login-setting-signup {
-	height: 85vh;
+	height: 82vh;
 }
 .login-form input {
     width: 100%;
@@ -545,7 +544,7 @@
 	border: 2px solid #0000002f;
 }
 .account-settings{
-	height: 50vh;
+	height: 55vh;
 }
 .settings-ring-container {
 	width: 100%;
@@ -720,8 +719,99 @@
     .login-form {
         padding: 20px;
         margin-top: 30px;
+		color: #1dc6df;
     }
 }
+
+/************** Full Calendar ********/
+.calender-am-pm {
+	display: flex;
+	background-color: #F3F5F8;
+	margin: 12px 0;
+}
+.calender-am-pm input {
+	margin: 0 !important;
+}
+.calendar-am-select {
+	margin: 10px 0;
+	border: none;
+}
+.calendar-button-container {
+	gap: 14px;
+	padding-top: 16px;
+}
+.calendar-button-container button {
+	margin-top: 12px;
+}
+.calendar-container {
+
+	padding: 64px;
+}
+.fc {
+	--fc-border-color:  #01b2ce; /* Change border colors */
+	--fc-event-bg-color: #2196F3; /* Change background color of events */
+	--fc-event-text-color: #011013; /* Change event text color */
+	color: #000;
+  }
+  .fc-col-header-cell {
+	background-color: #cce8ff; /* Background color for the day headers */
+	font-weight: bold; /* Optional: Make the text bold */
+	border-bottom: 1px solid #ddd; /* Optional: Add a border under the headers */
+	color: #ffffff !important;
+	
+  }
+  
+  .fc-toolbar {
+	background-color: #cce8ff93; /* Customize toolbar background */
+	border-bottom: 1px solid #ddd;
+  }
+  .fc-daygrid-day-number {
+	color: #000 !important; /* Set your desired text color */
+	font-weight: bold;
+  }
+  .fc-toolbar-title {
+	color: #011013; /* Set the toolbar title text color */
+	font-size: 18px; /* Adjust font size */
+}
+  .fc .fc-daygrid-day {
+	background-color: linear-gradient(90deg, hsl(194, 100%, 60%), #0ae0f0bb, #16c8e7, #09cbe9bb); /* Customize day grid background */
+	background-image: linear-gradient(90deg, #10e9f8, #1bdffdfa);
+	padding-right: 16px;
+	
+	color: #000;
+  }
+  .fc-button {
+	background-color: #007bff !important; /* Button background */
+	color: white; /* Button text color */
+	border-radius: 5px; /* Optional rounded corners */
+	font-weight: bold;
+}
+.fc-button:hover {
+	background-color: #0056b3 !important; /* Darker blue on hover */
+	color: #f5f5f5; /* Lighter color on hover */
+	
+}
+.fc-button:active {
+	background-color: #004085; /* Change background color when clicked */
+	color: #ffffff; /* Change text color when clicked */
+	border: none !important; /* Optional: Change border color on click */
+	box-shadow: none !important;
+  }
+  
+  .fc-event {
+	background-color: #00c853 !important; /* Customize event color */
+	border: none; /* Remove event borders */
+  }
+  .fc-button.fc-button-active {
+	background-color: #0056b3 !important; /* Active button background color */
+	color: #ffffff !important; /* Active button text color */
+	border-color: #004085 !important; /* Optional: Change border color for active state */
+	border: none !important;
+	box-shadow: none !important;
+  }
+  
+
+
 /******** Members Area *****/
 .members-toolbar {
 	display: flex;
@@ -739,6 +829,7 @@
 }
 .manage-members-active {
 	font-size: 22px;
+	box-shadow: 1px 1px 1px 1px #005397a8
 }
 /****** Manage Members *****/
 .managemembers-container {
@@ -749,14 +840,19 @@
 }
 .managemembers-table {
 	width: 100%;
+	border: 2px solid #1dc6df;
+	box-shadow: 1px 1px 1px 2px #005397a8;
+	border-radius: 4px;
 }
 .managemembers-table-thead-row {
 	background-image: linear-gradient(90deg, hsl(194, 100%, 60%), #0ae0f0bb, #16c8e7, #09cbe9bb);
+	;
 }
 .managemembers-table-thead-row td {
 	color: #FFFFFF;
 	text-align: center;
 	font-size: 20px;
+	border: 1px solid #24e2ff
 }
 .managemembers-table-thead-row td {
 	
@@ -767,11 +863,23 @@
 	  1px 1px 0 #0000001a;
 
 }
+
+.managemembers-table-tbody-row {
+	background-image: linear-gradient(90deg, hsl(194, 94%, 79%), #a4f2f8, #9af0ff, #99ebf8);
+}
 .managemembers-table-tbody-row td svg {
 	width: 25px;
 }
 .managemembers-table-tbody-row td {
-		color: #16c8e7;
+	border: 1px solid #15ddfc;
+		font-size: 18px;
+		color: #050505;
+		text-align: center;
+		text-shadow:
+	-1px -1px 0 #055bfa0c,  
+	 1px -1px 0 #055bfa0c,
+	 -1px 1px 0 #055bfa0c,
+	  1px 1px 0 #055bfa0c;
 }
 .text-center {	
 	text-align: center;
@@ -779,6 +887,7 @@
 .managemembers-image {
 	border-radius: 50%;
 	width: 50px;
+	border: 1px solid #ddd;
 }
 .member-modal-button-wrapper {
 	margin-top: 12px;
@@ -808,13 +917,13 @@
 }
 .ripple {
 	position: absolute;
-	width: 5px;
-	height: 7px;
+	width: 2px;
+	height: 3px;
 	background: #15ddfc;
 	border-radius: 35%;
 	pointer-events: none;
 	transform: scale(0);
-	animation: ripple-animation 1.5s ease-in-out;
+	animation: ripple-animation 5s ease-in-out;
   }
   
   @keyframes ripple-animation {
@@ -5242,7 +5351,6 @@ body #booked-profile-page .booked-profile-appt-list .appt-block .google-cal-butt
         -ms-background-size: 210% 100%;
          -o-background-size: 210% 100%;
             background-size: 210% 100% ;
-    border: none !important;
 
 }
 

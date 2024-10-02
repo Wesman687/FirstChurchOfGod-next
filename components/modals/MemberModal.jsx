@@ -36,7 +36,7 @@ function MemberModal({ member, onClose }) {
     // Remove ripple after animation completes
     setTimeout(() => {
       setRipples((prev) => prev.filter((ripple) => ripple.id !== newRipple.id));
-    }, 600); // Match the animation duration
+    }, 5000); // Match the animation duration
   };
     const user = useSelector(state => state.user);
 
