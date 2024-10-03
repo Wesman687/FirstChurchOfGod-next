@@ -799,13 +799,13 @@
   }
   
   .fc-event {
-	background-color: #00c853 !important; /* Customize event color */
-	border: none; /* Remove event borders */
+	background-color: #00c853 !important; 
+	border: none; 
   }
   .fc-button.fc-button-active {
-	background-color: #0056b3 !important; /* Active button background color */
-	color: #ffffff !important; /* Active button text color */
-	border-color: #004085 !important; /* Optional: Change border color for active state */
+	background-color: #0056b3 !important; 
+	color: #ffffff !important;
+	border-color: #004085 !important; 
 	border: none !important;
 	box-shadow: none !important;
   }
