@@ -71,6 +71,7 @@ export default function Nav() {
                                                     <>
                                                     {user.isMember && <>
                                                         <Link href={'/members'}><p className='sb__link'>Member Area</p></Link>
+                                                        <Link href={'/prayer-request'}><p className='sb__link'>Prayer Request</p></Link>
                                                         <Link href={'/calendar'}><p className='sb__link'>Calendar</p></Link>
                                                         </>}
                                                         <AccountInfo />

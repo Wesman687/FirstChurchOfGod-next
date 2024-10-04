@@ -29,7 +29,7 @@
     text-align: center;
 }
 .slide-button {
-    z-index: 100;
+    z-index: 10;
     margin-top: 64px;
 }
 .inner p {

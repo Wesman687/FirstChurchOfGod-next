@@ -544,6 +544,7 @@
 .displayed-photourl {
 	border-radius: 50%;
 	width: 45px;
+	max-height: 45px;
 	border: 2px solid #0000002f;
 }
 .account-settings{
@@ -888,6 +889,8 @@
 .managemembers-image {
 	border-radius: 50%;
 	width: 50px;
+	max-height: 50px;
+	overflow: hidden;
 	border: 1px solid #ddd;
 }
 .member-modal-button-wrapper {
@@ -1083,7 +1086,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 2000;
+    z-index: 200;
 }
 
 /* Modal box styling */
@@ -1093,6 +1096,7 @@
     padding: 20px;
     max-width: 500px;
     width: 100%;
+	z-index: 500;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     position: relative;
 }
@@ -1106,6 +1110,7 @@
 .confirmation-box {
     text-align: center;
     padding: 20px;
+	z-index: 500;
 }
 
 .confirmation-box p {
@@ -1125,14 +1130,6 @@
 }
 .confirm-button {
 	color: #ffffff !important;
-}
-
-/******* Pray Request *******/
-.prayerrequest-container {
-	padding: 64px 64px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
 }
 
 
@@ -1188,7 +1185,21 @@
 	
 }
 
-/********* My prayer request ******/
+/******* Prayer Request *******/
+.prayerrequest-container {
+	padding: 64px 64px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.request-page-container {
+	width: 100%;
+	padding-top: 64px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
 .collapse-prayer-wrapper, .collapse-prayer-wrapper-collapsed {
 	width: 100%;
 	display: flex;
@@ -1243,6 +1254,7 @@
 	width: 100%;
 	border: 1px solid #c6c6c7;
 	padding: 4px;
+	height: 30px !important;
 }
 .prayer-add-button {
 	font-size: 24px;
@@ -1279,7 +1291,7 @@
 	position: absolute;
 	z-index: 100;
 	font-size: 12px;
-	background-color: #5555552d;
+	background-color: #555555;
 	color: #1DC6DF;
 	display: none;
 	flex-direction: column;
@@ -1312,7 +1324,8 @@
 	background-color: transparent !important;
 	border: none !important;
 	font-size: 22px;
-	overflow: none;
+	overflow: hidden; /* Hide the scrollbar */
+    min-height: 50px; /* Optional: Set a minimum height */
 	width: 100%;
 	resize: none;
 }
@@ -1322,6 +1335,52 @@
 .list-prayer-disclaimer {
 	text-align: center;
 }
+
+/***** Prayer Weekly *****/ 
+.prayer-weekly-container {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	width: 90%;
+	padding: 64px 0;		
+	gap: 24px;
+}
+.prayer-weekly-item {	
+	display: flex;
+	gap: 24px;
+}
+.prayer-table-head {
+	color: #000;
+	background-color: #61d7e9;
+	text-align: center;
+	font-size: 26px;
+}
+
+.prayer-table-body {
+	background-color: #1bbad2;
+	color: #FFFFFF;
+	font-size: 22px;
+}
+.prayer-weekly-container thead tr td {
+	padding: 8px 16px;
+	border: none;
+}
+.prayer-weekly-container tbody tr td {
+	padding: 16px;
+	border: none;
+}
+.prayer-weekly-container {
+	gap: 2px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.prayer-weekly-container button {
+	width: 150px;
+	font-size: 16px;
+	padding: 4px 8px;
+}
+
 
 /******** Buttons *********/
 
