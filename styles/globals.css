@@ -1341,9 +1341,9 @@
 	display: flex;
 	justify-content: center;
 	flex-direction: column;
-	width: 90%;
-	padding: 64px 0;		
-	gap: 24px;
+	width: 90%;		
+	padding: 32px 0 64px 0;
+	text-align: center;
 }
 .prayer-weekly-item {	
 	display: flex;
@@ -1369,18 +1369,20 @@
 	padding: 16px;
 	border: none;
 }
-.prayer-weekly-container {
-	gap: 2px;
+
+.filter-controls {
+	width: 100%;
 	display: flex;
-	justify-content: center;
-	align-items: center;
+	justify-content: space-between;
 }
 .prayer-weekly-container button {
 	width: 150px;
 	font-size: 16px;
 	padding: 4px 8px;
 }
-
+.filter-controls {
+	padding: 0;
+}
 
 /******** Buttons *********/
 
