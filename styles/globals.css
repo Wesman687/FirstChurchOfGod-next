@@ -107,6 +107,9 @@
 .yellow {
 	color: #ffa800;
 }
+.icon-small {
+	width: 35px;
+}
 .current-link {
 	text-decoration: underline;
 	color: #3799AB !important;
@@ -810,8 +813,6 @@
 	box-shadow: none !important;
   }
   
-
-
 /******** Members Area *****/
 .members-toolbar {
 	display: flex;
@@ -1184,11 +1185,143 @@
 }
 .homecomment-preview-text {
 	text-align: center;
+	
 }
 
-
-
-
+/********* My prayer request ******/
+.collapse-prayer-wrapper, .collapse-prayer-wrapper-collapsed {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+	flex-direction: column;	
+	transition: all 1350ms ease;
+}
+.prayerrequest-container h4 {
+	text-align: center;
+}
+.collapse-prayer-wrapper-collapsed {
+	border-bottom: 1px solid #cccccc;
+}
+.collapse-prayer-wrapper {
+		border: 1px solid #cccccc;
+}
+.prayerrequest-container {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	padding: 64px;
+	gap: 64px;
+}
+.prayer-chevron {
+	position: absolute;
+	width: 100%;
+	top: 0;
+	left: 95%;
+	z-index: 50;
+}
+.prayer-add-wrapper {
+	width: 70%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	gap: 12px;
+	padding-bottom: 32px;
+}
+.prayer-add-wrapper div {
+	display: flex;
+	gap: 12px;
+	width: 100%;
+}
+.prayer-add-wrapper div label {
+	font-size: 22px;
+	font-weight: bold;
+}
+.prayer-add-wrapper div input, .prayer-add-wrapper div textarea {
+	width: 100%;
+	border: 1px solid #c6c6c7;
+	padding: 4px;
+}
+.prayer-add-button {
+	font-size: 24px;
+	padding: 4px 16px;
+}
+.list-prayer-container {
+	width: 80%;
+}
+.list-prayer-item {
+	display: flex;
+	flex-direction: column;
+	border: 1px solid #c9c9c9;
+	margin-bottom: 32px;
+	border-radius: 4px;
+}
+.list-prayer-item div label {
+	font-size: 22px;
+}
+.list-prayer-item-desc {
+	padding: 32px;
+	text-align: center;
+}
+.list-prayer-item-title {
+	display: flex;
+	justify-content: space-between;
+	background-color: #c6f7ff;
+	align-items: center;
+	text-align: center;
+	color: #000;
+	padding: 8px 16px;
+}
+.list-prayer-item-addremove {
+	width: 150px;
+	position: absolute;
+	z-index: 100;
+	font-size: 12px;
+	background-color: #5555552d;
+	color: #1DC6DF;
+	display: none;
+	flex-direction: column;
+	gap: 12px;
+	padding: 12px 0;
+	top: 100%; /* Position below the chevron */
+	right: 0;
+}
+.list-prayer-dropdown:hover .list-prayer-item-addremove {
+	display: flex;
+}
+.list-prayer-item-chevron {
+	cursor: pointer;
+}
+.list-prayer-dropdown {
+	position: relative;	
+	border-bottom: 1px solid #5555552d;
+}
+.list-prayer-item-addremove label {
+	cursor: pointer;
+}
+.list-prayer-item-addremove label:hover {
+	color: #1dc5df9d;
+}
+.list-prayer-input {
+	background-color: #c6f7ff;
+	width: max-content;
+}
+.list-prayer-textarea {
+	background-color: transparent !important;
+	border: none !important;
+	font-size: 22px;
+	overflow: none;
+	width: 100%;
+	resize: none;
+}
+.list-prayer-textarea:active {
+	background-color: transparent;
+}
+.list-prayer-disclaimer {
+	text-align: center;
+}
 
 /******** Buttons *********/
 
@@ -1260,7 +1393,7 @@
     
 }
 .filter-edit-button, .light-blue-button {	
-	color: #000;
+	color: #ffffff;
 	border: 1px solid #1cbed6;
 	background: linear-gradient(90deg, hsl(194, 98%, 63%), #2df1ffbb, #4be1fc, #61e6fabb);
 	cursor: pointer;
@@ -1269,8 +1402,7 @@
 }
 
 
-.filter-edit-button:hover, .add-image-button:hover, .light-blue-button:hover {
-	color: white;
+.filter-edit-button:hover, .add-image-button:hover, .light-blue-button:hover {	
 	background: linear-gradient(90deg, hsl(194, 98%, 63%), #2df1ffbb, #4be1fc, #61e6fabb);
 	overflow: hidden;
     white-space: nowrap;
@@ -1490,39 +1622,6 @@
 
 
 
-/* TABLE OF CONTENTS:
-
-1. Reset tags
-2. Default tag's settings
-3. Form fields settings
-4. General styles
-5. Template grid
-6. Page layouts
-7. Section's decorations
-   7.1 Header
-   7.2 Main Slider
-   7.3 Page top: page title and breadcrumbs
-   7.4 Main content wrapper
-   7.5 Post Formats
-   7.6 Post Layouts
-   7.7 Paginations
-8. Single page parts
-   8.1 Attachment and Portfolio post navigation
-   8.2 Post author
-   8.3 Comments
-   8.4 Page 404
-   8.5 Team member
-9. Sidebars
-10. Footer areas
-11. Utils
-12. Registration and Login popups
-13. Third part plugins
-14. Predefined classes for users
-
--------------------------------------------------------------- */
-
-
-
 /* 1. Reset tags
 -------------------------------------------------------------- */
 html, body, div, span, applet, object, iframe,
@@ -1559,9 +1658,7 @@ html {
 	    -ms-text-size-adjust: 100%; 	/* www.456bereastreet.com/archive/201012/controlling_text_size_in_safari_for_ios_without_disabling_user_zoom/ */
 	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
-body {
-	/* height: 100%; */					/* Commented, because it conflict with overflow-x: hidden - appear second scrollbar while tooltip is display in the Booked plugin */
-}
+
 
 
 

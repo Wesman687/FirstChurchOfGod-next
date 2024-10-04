@@ -1,7 +1,7 @@
 import Layout from '@/components/Layout'
 import HomeComment from '@/components/members/HomeComment'
 import ManageMembers from '@/components/members/ManageMembers'
-import PrayerRequest from '@/components/members/PrayerRequest'
+import MyPrayerRequest from '@/components/members/MyPrayerRequest'
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 
@@ -42,14 +42,14 @@ function Members() {
                     {!manageMembers ? <label className='manage-filters-label' onClick={handleManageMembers}>{user.isAdmin ? 'Manage Members' : 'Show Members'}</label> :
                         <label className='manage-filters-label-active manage-members-active'>{user.isAdmin ? 'Manage Members' : 'Show Members'}</label>
                     }
-                    {!prayerRequest ? <label className='manage-filters-label' onClick={handlePrayerRequest}>Prayer Request</label> :
-                        <label className='manage-filters-label-active manage-members-active'>Prayer Request</label>
+                    {!prayerRequest ? <label className='manage-filters-label' onClick={handlePrayerRequest}>My Prayer Request</label> :
+                        <label className='manage-filters-label-active manage-members-active'>My Prayer Request</label>
                     }
                 </div>
             </div>
             {testimonial && <HomeComment />}
             {manageMembers && <ManageMembers />}
-            {prayerRequest && <PrayerRequest />}
+            {prayerRequest && <MyPrayerRequest />}
         </Layout>
     )
 }
