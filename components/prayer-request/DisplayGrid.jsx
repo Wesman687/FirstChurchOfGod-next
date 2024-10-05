@@ -34,7 +34,7 @@ function DisplayPrayerRequests({ start, end }) {
 
   return (
     <>        
-      {loading && <RingSpinner />}
+      
       {prayerRequest.length > 0 ?<table>
         <thead>
           <tr className='prayer-table-head'>
@@ -43,14 +43,17 @@ function DisplayPrayerRequests({ start, end }) {
           </tr>
         </thead>
         <tbody>
-          {prayerRequest.map((item, index) => (
+          {!loading && prayerRequest.map((item, index) => (
               <tr key={index} className='prayer-table-body'>
                 <td><label>{item.who}</label></td>
                 <td><label>{item.prayerRequest}</label></td>
               </tr>
             ))}
         </tbody>
+        
       </table> : <h2>Prayer Request List Empty</h2>}
+      
+      {loading && <RingSpinner classes={'center'} />}
     </>
   );
 }

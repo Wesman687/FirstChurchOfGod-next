@@ -25,11 +25,11 @@ function PrayerRequest() {
             </div>
             <div className='manage-buttons-container members-toolbar'>
                 <div>
-                    {!displayList ? <label className='manage-filters-label' onClick={handleManageDisplayList}>Full List</label> :
+                    {!displayList ? <label className='manage-filters-label' onClick={handleManageDisplayList}>Prayer Request by </label> :
                         <label className='manage-filters-label-active manage-members-active'>Full List</label>
                     }
-                    {!displayWeekly ? <label className='manage-filters-label' onClick={handleManageWeekly}>Weekly</label> :
-                        <label className='manage-filters-label-active manage-members-active'>Weekly</label>
+                    {!displayWeekly ? <label className='manage-filters-label' onClick={handleManageWeekly}>Compact List</label> :
+                        <label className='manage-filters-label-active manage-members-active'>Compact List</label>
                     }
                     
                 </div>

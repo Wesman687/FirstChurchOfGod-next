@@ -5,6 +5,7 @@ function DisplayWeekly() {
   const [timeRange, setTimeRange] = useState(1);
   const [unit, setUnit] = useState('weeks'); // Default to weeks
   const [weeks, setWeeks] = useState(1);
+  const [months, setMonths] = useState(1);
   const [start, setStart] = useState();
   const [end, setEnd] = useState();
 
@@ -24,7 +25,8 @@ function DisplayWeekly() {
       endDate.setHours(23, 59, 59, 999); // Set to end of the day (23:59)
     } else if (unit === 'months') {
       // Go back to the start of the month we are going to
-      startDate = new Date(now.setMonth(now.getMonth() - timeRange));
+      startDate = new Date(now); // Create a copy of the current date
+      startDate.setMonth(now.getMonth() - (timeRange - 1)); // Adjust timeRange to start on the current month
       startDate.setDate(1); // Set to the first day of the month
       startDate.setHours(0, 0, 0, 0); // Set to start of the day
 
@@ -41,8 +43,8 @@ function DisplayWeekly() {
 
   const thisWeek = () => {
     setUnit('weeks');
-    setTimeRange(1);
     setWeeks(1);
+    setTimeRange(1); // Reset timeRange for this week
   };
 
   const prevWeek = () => {
@@ -53,6 +55,7 @@ function DisplayWeekly() {
       return newWeeks;
     });
   };
+
   const formatDate = (date) => {
     return date ? date.toLocaleDateString("en-US", {
       year: "numeric",
@@ -60,24 +63,33 @@ function DisplayWeekly() {
       day: "numeric",
     }) : '';
   };
-  
 
-  const handleMonthClick = (months) => {
+  const thisMonth = () => {
     setUnit('months');
-    setTimeRange(months);
+    setMonths(1);
+    setTimeRange(1); // Reset timeRange for this month
+  };
+
+  const prevMonth = () => {
+    setUnit('months');
+    setMonths(prevMonths => {
+      const newMonths = prevMonths + 1; // Increase the number of months to go back
+      setTimeRange(newMonths); // Update `timeRange` to match the newMonths
+      return newMonths;
+    });
   };
 
   return (
     <div className='prayer-weekly-container'>
-        <h4>Displaying requests from <span className='light-blue bold'>{formatDate(start)}</span> to <span className='light-blue'>{formatDate(end)}</span></h4>
+      <h4>Displaying requests from <span className='light-blue bold'>{formatDate(start)}</span> to <span className='light-blue'>{formatDate(end)}</span></h4>
       <div className="filter-controls">
         <div>
-        <button className='light-blue-button' onClick={thisWeek}>This Week</button>
-        <button className='red-button' onClick={prevWeek}>Last Week</button>
+          {unit === 'weeks' && timeRange === 1 ? <button className='' onClick={thisWeek}>This Week</button> : <button className='light-blue-button' onClick={thisWeek}>This Week</button>}
+          <button className='red-button' onClick={prevWeek}>Last Week</button>
         </div>
         <div>
-        <button className='light-blue-button' onClick={() => handleMonthClick(1)}>This Month</button>
-        <button className='red-button' onClick={() => handleMonthClick(2)}>Last Month</button>
+          {unit === 'months' && timeRange === 1 ? <button className='' onClick={thisMonth}>This Month</button> : <button className='light-blue-button' onClick={thisMonth}>This Month</button>}
+          <button className='red-button' onClick={prevMonth}>Last Month</button>
         </div>
       </div>
 
