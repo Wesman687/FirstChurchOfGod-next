@@ -5,10 +5,11 @@ import { useSelector } from 'react-redux'
 import { toast } from 'react-toastify'
 import RingSpinner from '../RingSpinner'
 
-function InputPrayerRequest() {
+function InputPrayerRequest({action}) {
     const [whoPrayerRequest, setWhoPrayerRequest] = useState('')
     const [prayerRequest, setPrayerRequest] = useState('')
     const [loading, setLoading] = useState(false)
+    const [church, setChurch] = useState(action === 'church' ? true : false)
     const user = useSelector(state => state.user)
     async function handleSubmit() {
       if (!user.isMember){
@@ -19,9 +20,9 @@ function InputPrayerRequest() {
       const docRef = await addDoc(collection(db, 'prayer-request'), {
           prayerRequest,
           who: whoPrayerRequest,
-          author: (user.firstName + ' ' + user.lastName),
+          author: church ? 'First Church Of God' : (user.firstName + ' ' + user.lastName),
           createdAt: serverTimestamp(),
-          authorUserRef: user.userRef                
+          authorUserRef: church ? 'admin' : user.userRef                
       })
       
       toast.success('Created Prayer Request')      
@@ -32,7 +33,7 @@ function InputPrayerRequest() {
         {loading ?   <><RingSpinner /></> :
             <div className='prayer-add-wrapper'>          
           <div>
-              <label>Who do you want us to Pray for?</label>
+              <label>{church ? 'Who does the Church want to pray for?' : 'Who do you want us to Pray for?'}</label>
               <input value={whoPrayerRequest} onChange={(e)=>setWhoPrayerRequest(e.target.value)} placeholder='Put name of who to pray for' />
           </div>
           <div>

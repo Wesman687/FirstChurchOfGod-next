@@ -68,6 +68,9 @@ function ListPrayerRequest({ action }) {
             if (action === 'self') {
                 data = data.filter(item => user.userRef === item.authorUserRef)
             }
+            else if (action === 'church') {
+                data = data.filter(item => 'admin' === item.authorUserRef)
+            }
             setPrayerRequestList(data)
             setLoading(false)
         })

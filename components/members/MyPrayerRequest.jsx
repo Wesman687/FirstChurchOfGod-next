@@ -5,7 +5,7 @@ import ListPrayerRequest from '../prayer-request/ListPrayerRequest'
 import ChevronUpIcon from '../icons/ChevronUpIcon'
 import ChevronDownIcon from '../icons/ChevronDownIcon'
 
-function MyPrayerRequest() {
+function MyPrayerRequest({action}) {
   const [collapseInput, setCollapseInput] = useState(false)
   return (
     <div className='prayerrequest-container'>
@@ -14,10 +14,10 @@ function MyPrayerRequest() {
         <div className='prayer-chevron prayer-chevron-up click' onClick={()=>setCollapseInput((prev)=> !prev)}>
           {collapseInput ? <ChevronDownIcon classes={'red icon-small'} />  : <ChevronUpIcon classes={'red icon-small '} />}
         </div>
-            {!collapseInput && <InputPrayerRequest />}
+            {!collapseInput && <InputPrayerRequest action={action} />}
       </div>
       
-      <ListPrayerRequest  action={'self'} />
+      <ListPrayerRequest  action={action ? action : 'self'} />
     </div>
   )
 }
