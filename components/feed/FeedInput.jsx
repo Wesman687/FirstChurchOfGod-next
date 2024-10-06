@@ -8,14 +8,14 @@ import { db, storage } from '@/firebase';
 import { addDoc, collection } from 'firebase/firestore';
 import RingSpinner from '../RingSpinner';
 
-function FeedInput() {
+function FeedInput({user}) {
+    console.log(user)
     const [loading, setLoading] = useState(false)
     const [postContent, setPostContent] = useState('');
     const [image, setImage] = useState();
     const [showConfirmation, setShowConfirmation] = useState(false); // State to control the confirmation modal
     const [uploadSuccess, setUploadSuccess] = useState(true); // To track whether the post was successful
     const filePickerRef = useRef(null);
-    const user = useSelector(state => state.user);
 
     function addImage(e) {
         const reader = new FileReader();
@@ -64,7 +64,7 @@ function FeedInput() {
     return (
         <div className='feedinput-container'>Feed
             <div className='feedinput-wrapper'>
-                <img src={user.photoUrl} className='feedinput-image' alt='Picture of yourself' />
+                <img src={user.photoUrl} className='feedinput-image'alt={'photo url'} />
                 <div className='feedinput-input-wrapper'>
                     <div className="feedinput-textandimage-wrapper">
                         {loading ? (
@@ -105,7 +105,7 @@ function FeedInput() {
                             <EmojiModal setPostContent={setPostContent} postContent={postContent} />
                             <input onChange={addImage} ref={filePickerRef} className="hidden" type="file" />
                         </div>
-                        <button className='light-blue-button' onClick={handleAdd}>Post</button>
+                        <button className='orange-btn click' onClick={handleAdd}>Post</button>
                     </div>
                 </div>
             </div>
