@@ -760,6 +760,10 @@
   .fc-scroller {
 	scrollbar-width: none;
   }
+  .fc .fc-highlight {
+	background-color: rgba(0, 0, 0, 0.3) !important; /* Example: a semi-transparent dark background */
+	border: none; /* Remove any border (optional) */
+  }
 
 .custom-cal {
 	width: 100%;
@@ -768,6 +772,9 @@
     box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Add a subtle shadow */
     padding: 5px;
 	text-align: center;
+  }
+  .fc-col-header-cell {
+	background-image: linear-gradient(90deg, #4245fffa, #1102e9f6, #4245fffa);
   }
   
   .fc-toolbar {
