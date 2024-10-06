@@ -4,10 +4,9 @@ import React, { useEffect, useState } from 'react'
 import RingSpinner from '../RingSpinner';
 import Post from './Post';
 
-function FeedPosts() {
+function FeedPosts({user}) {
     const [loading, setLoading] = useState(false)
     const [posts, setPosts] = useState([])
-    console.log(posts)
     useEffect(() => {
         setLoading(true)
         const q = query(collection(db, 'posts'), orderBy('timeStamp', 'desc'));
@@ -28,7 +27,7 @@ function FeedPosts() {
 
         </>}
         <div className="feedposts-wrapper">
-            {posts.length > 0 && posts.map((item, index) => <Post post={item} key={index} />)}
+            {posts.length > 0 && posts.map((item, index) => <Post post={item} key={index} user={user} />)}
             
         </div>
 

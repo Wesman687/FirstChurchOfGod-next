@@ -113,6 +113,9 @@
 .yellow {
 	color: #ffa800;
 }
+.xs-icon {
+	width: 20px;
+}
 .icon-small, .sm-icon {
 	width: 35px;
 }
@@ -473,10 +476,6 @@
 	overflow: hidden;
 	border: 1px solid #c7f2fda6;
 }
-.calender-container {
-	height: 650px !important;
-    background: rgba(0,0,0,0.75);
-}
 .login-form h1 {
     font-size: 32px;
     font-weight: 500;
@@ -733,12 +732,16 @@
 	margin: 10px 0;
 	border: none;
 }
-.calendar-button-container {
+.calendar-button-container {	
 	gap: 14px;
 	padding-top: 16px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 .calendar-button-container button {
-	margin-top: 12px;
+	width: 350px;
+	height: 75px;
 }
 .calendar-container {
 	background-color: #fff;
@@ -746,9 +749,6 @@
 }
 .fc {
 	--fc-border-color:  #01b2ce; /* Change border colors */
-	--fc-event-bg-color: #2196F3; /* Change background color of events */
-	--fc-event-text-color: #011013; /* Change event text color */
-	color: #000;
   }
   .fc-col-header-cell {
 	background-color: #cce8ff; /* Background color for the day headers */
@@ -757,13 +757,24 @@
 	color: #ffffff !important;
 	
   }
+  .fc-scroller {
+	scrollbar-width: none;
+  }
+
+.custom-cal {
+	width: 100%;
+	text-wrap: wrap;
+	border-radius: 5px; /* Add rounded corners */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Add a subtle shadow */
+    padding: 5px;
+	text-align: center;
+  }
   
   .fc-toolbar {
 	background-color: #cce8ff93; /* Customize toolbar background */
 	border-bottom: 1px solid #ddd;
   }
   .fc-daygrid-day-number {
-	color: #000 !important; /* Set your desired text color */
 	font-weight: bold;
   }
   .fc-toolbar-title {
@@ -771,11 +782,11 @@
 	font-size: 18px; /* Adjust font size */
 }
   .fc .fc-daygrid-day {
+	position: relative;
 	background-color: linear-gradient(90deg, hsl(194, 100%, 60%), #68f2fcbb, #16c8e7, #09cbe9bb); /* Customize day grid background */
 	background-image: linear-gradient(90deg, #81f4fc, #91ecfafa);
 	padding-right: 16px;
-	
-	color: #000;
+	height: 150px;
   }
   .fc-button {
 	background-color: #007bff !important; /* Button background */
@@ -795,10 +806,6 @@
 	box-shadow: none !important;
   }
   
-  .fc-event {
-	background-color: #00c853 !important; 
-	border: none; 
-  }
   .fc-button.fc-button-active {
 	background-color: #0056b3 !important; 
 	color: #ffffff !important;
@@ -806,7 +813,6 @@
 	border: none !important;
 	box-shadow: none !important;
   }
-  
 /******** Members Area *****/
 .members-toolbar {
 	display: flex;
@@ -1468,10 +1474,6 @@
 	align-items: center;
 	justify-content: center;
 }
-.feedposts-container {
-	width: 100%;
-	height: 60vh;
-}
 
 /************* Feed Input ******/
 .feedinput-image {
@@ -1556,10 +1558,43 @@
 }
 /******* Feed Posts *****/ 
 
+.feedposts-container {
+	width: 100%;
+	height: 60vh;
+	overflow-y: scroll;   
+    scrollbar-width: none;  /* Firefox: hide scrollbar */
+    -ms-overflow-style: none; 
+}
 .feedposts-wrapper {
 	padding: 12px;
 	gap: 24px;
 }
+.post-dropdown {
+	display: flex;
+	position: relative;	
+	background-color: transparent;
+}
+.post-dropdown:hover .post-prayer-menudropdown {
+	display: flex;
+}
+.post-prayer-menudropdown {
+	width: 150px;
+	position: absolute;
+	z-index: 100;
+	font-size: 18px;
+	background-color: #000000b6;
+	color: #00ddff;
+	display: none;
+	flex-direction: column;
+	gap: 12px;
+	padding: 12px 12px;
+	top: 100%; /* Position below the chevron */
+	right: 0;
+}
+.post-prayer-menudropdown label:hover {
+	color: #ddd;
+}
+
 .post-container {
 	padding: 8px 12px;
 	margin-bottom: 24px;
@@ -1584,7 +1619,7 @@
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	color: #ffffff;
+	color: lightgray;
 	text-wrap: nowrap;
 	height: fit-content;
 	gap: 12px;
@@ -1596,6 +1631,11 @@
 }
 .post-owner-container h4, .post-owner-container h5 {
 	margin: 0 !important;
+	font-size: 24px;
+  background: -webkit-linear-gradient(#020f7e, #003af8, #021c72);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  
 }
 .posts-owner-photourl {
 	width: 50px;
@@ -1615,6 +1655,29 @@
 	width: 100%;
 	border-bottom: 1px solid lightgrey;
 }
+.post-footer {
+	display: flex;
+	flex-direction: column;
+	padding-top: 12px;
+}
+.post-like-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-top: 1px solid lightgray;
+	display: flex;
+	gap: 32px;
+	font-size: 18px;
+}
+.post-like-container div {
+	display: flex;
+	gap: 8px;
+}
+.post-like-container div:hover {
+	color: #007bff;
+}
+
+
 /******* Emoji Modal *****/ 
 .resizable-modal {
 	background-color: white;
@@ -2054,7 +2117,6 @@ ol, ul {
 /* Links */
 a, Link {
 	text-decoration:none;
-	background:transparent;
 }
 a, 
 a:hover, 

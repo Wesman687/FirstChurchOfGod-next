@@ -8,8 +8,7 @@ import { db, storage } from '@/firebase';
 import { addDoc, collection } from 'firebase/firestore';
 import RingSpinner from '../RingSpinner';
 
-function FeedInput({user}) {
-    console.log(user)
+function FeedInput({user}) {    
     const [loading, setLoading] = useState(false)
     const [postContent, setPostContent] = useState('');
     const [image, setImage] = useState();

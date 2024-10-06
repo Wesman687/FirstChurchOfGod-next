@@ -11,32 +11,11 @@ import { toast } from 'react-toastify';
 import { ColorPicker } from './ColorPicker';
 import { addDoc, collection, deleteDoc, doc, getDocs, onSnapshot, query, where } from 'firebase/firestore';
 import { db } from '@/firebase';
-import { ThemeProvider } from '@emotion/react';
 
-const testEvents = [
-  {
-    id: '1',
-    title: 'Project Meeting',
-    start: '2024-09-29T15:00:00',
-    url: 'https://example.com/event-details',
-    backgroundColor: '#ff0000',
-    textColor: '#ffffff',
-    classNames: ['custom-event-class'],
-    editable: true,
-    durationEditable: true,
-    startEditable: true,
-    extendedProps: {
-      department: 'Engineering',
-      manager: 'John Doe',
-      description: 'Discuss project milestones',
-      location: 'Conference Room A'
-    }
-  }
-];
 
 const FullCalendarComponent = () => {
   const calendarRef = useRef(null); // Reference to access FullCalendar instance
-  const [events, setEvents] = useState([testEvents]);
+  const [events, setEvents] = useState([]);
   const [startAMPM, setStartAMPM] = useState('AM')
   const [disableTime, setDisableTime] = useState(false)
   const [newEventData, setNewEventData] = useState({ title: '', description: '', location: '' });
@@ -112,23 +91,7 @@ const FullCalendarComponent = () => {
       dispatch(openEventModal()); // Open the modal for input
     };
   }
-  const customTheme = createTheme({
-    palette: {
-      mode: 'light', // You can switch to 'dark' mode if needed
-      primary: {
-        main: '#000000', // Primary color
-      },
-      secondary: {
-        main: '#000000', // Secondary color
-      },
-      background: {
-        default: '#000000', // Background color
-      },
-      text: {
-        primary: '#000000', // Text color
-      },
-    },
-  });
+
 
   function handleTime(temp) {
     let finalTime
@@ -166,7 +129,7 @@ const FullCalendarComponent = () => {
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     let startTime = '';
-    let { title, description, location, URL } = newEventData;
+    let { title, description, location} = newEventData;
 
     // Handle AM/PM conversion using your handleTime function
     startTime = newEventData.startTime + startAMPM;
@@ -184,9 +147,10 @@ const FullCalendarComponent = () => {
 
         end: ((selectedDate.startStr !== subtractOneDay(selectedDate.endStr)) && `${subtractOneDay(selectedDate.endStr)}T${formattedStartTime}`),
         
+        eventBackgroundColor: bgColor,
+        eventTextColor: textColor,
         backgroundColor: bgColor,
         textColor: textColor,
-        url: URL || '',
         allDay: false, // Ensure the event is not marked as all-day
         extendedProps: {
           description,
@@ -210,6 +174,28 @@ const FullCalendarComponent = () => {
       toast.warning('Please provide a valid title and time.');
     }
   };
+  const eventContent = (arg) => {
+    // Check if start is available and format it
+    const startDate = arg.event.start ? new Date(arg.event.start).toLocaleString("en-US", {     
+      
+      hour: "numeric",
+      minute: "numeric",
+      hour12: true, // Optional: to show 12-hour format
+    }) : '';
+    return (
+      <div className='custom-cal' style={{ 
+        backgroundColor: arg.event.backgroundColor, 
+        color: arg.event.textColor, 
+        padding: '5px' 
+      }}>
+        <div>{startDate}</div> {/* Display formatted start date */}
+        <div>Event: {arg.event.title}</div> {/* Display event title */}     
+        <div>Location: {arg.event._def.extendedProps.location}</div>   
+        <div>Desc: {arg.event._def.extendedProps.description}</div>
+      </div>
+    );
+  };
+  
   useEffect(() => {
     const q = query(collection(db, 'events'))
     const unsubscribe = onSnapshot(q, (snapshot) => {
@@ -218,11 +204,9 @@ const FullCalendarComponent = () => {
     })
     return unsubscribe
   }, [])
-
   return (
-    <ThemeProvider theme={customTheme}>
-      <CssBaseline />
       <div>
+        
         <FullCalendar
           ref={calendarRef}
           plugins={[dayGridPlugin, timeGridPlugin, listPlugin, interactionPlugin]}
@@ -242,6 +226,7 @@ const FullCalendarComponent = () => {
             listDay: { buttonText: 'Daily List' },
           }}
           events={events}
+          eventContent={eventContent} 
           eventClick={handleEventClick} // Attach eventClick handler
         />
         <Modal
@@ -307,7 +292,7 @@ const FullCalendarComponent = () => {
                         <button type="button" className="red-button" onClick={handleEventRemove}>
                           Delete Event
                         </button>
-                        <button type="button" className="cancel-button submit" onClick={() => {
+                        <button type="button" className="cancel-button filter-edit-button" onClick={() => {
                           dispatch(closeEventModal())
                           setSelectedEvent(null)
                           setNewEventData('')
@@ -315,7 +300,7 @@ const FullCalendarComponent = () => {
                           Cancel
                         </button>
                       </>
-                      : <><button type="submit" className='submit'>Add Event</button>
+                      : <><button type="submit" className='filter-edit-button'>Add Event</button>
                         <button type="button" className='red-button' onClick={() => dispatch(closeEventModal())}>
                           Cancel
                         </button></>}
@@ -327,7 +312,6 @@ const FullCalendarComponent = () => {
           </div>
         </Modal>
       </div>
-    </ThemeProvider>
   );
 };
 
