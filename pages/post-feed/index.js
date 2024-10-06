@@ -7,7 +7,6 @@ import React from 'react'
 function PostFeed() {
   return (
     <>
-    <Nav />
         <div className='postfeed-page-wrapper'>
         <SideBar />
         <Feed />
