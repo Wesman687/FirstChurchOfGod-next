@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { deleteDoc, doc, getDoc } from 'firebase/firestore';
-import { db } from '@/firebase'; // Import Firestore instance
+import { db, storage } from '@/firebase'; // Import Firestore instance
 import ChevronDownIcon from '../icons/ChevronDownIcon';
 import ChevronUpIcon from '../icons/ChevronUpIcon';
 import DotsIcon from '../icons/DotsIcon';
@@ -10,6 +10,8 @@ import ThumbsUpIcon from '../icons/ThumbsUpIcon';
 import ThumbsDownIcon from '../icons/ThumbsDownIcon';
 import ChatIcon from '../icons/ChatIcon';
 import ShareIcon from '../icons/ShareIcon';
+import { deleteObject, ref } from 'firebase/storage';
+import { toast } from 'react-toastify';
 
 function Post({ post }) {
     const [owner, setOwner] = useState(null);
@@ -45,6 +47,18 @@ function Post({ post }) {
         setShowConfirm(false); // Hide the confirmation modal
     };
     async function handleRemove() {
+        if (post.image) {
+            // Get a reference to the image in Firebase Storage
+            const imageRef = ref(storage, post.image);
+
+            // Delete the image from Firebase Storage
+            await deleteObject(imageRef).then(() => {
+                console.log('Image deleted successfully from Firebase Storage');
+            }).catch((error) => {
+                console.error('Error deleting image from Firebase Storage:', error);
+                toast.error('Error deleting image');
+            });
+        }
         try {
             await deleteDoc(doc(db, 'posts', post.id));
 
@@ -106,11 +120,7 @@ function Post({ post }) {
                         <div className='post-like-container'>
                             <div className='click'>
                                 <ThumbsUpIcon classes={'xs-icon'} />
-                                <label className='click'> Likes</label>
-                            </div>
-                            <div className='click'>
-                                <ThumbsDownIcon classes={'xs-icon'} />
-                                <label className='click'>DisLikes</label>
+                                <label className='click'> Like</label>
                             </div>
                             <div className='click'>
                                 <ChatIcon classes={'xs-icon'} />
