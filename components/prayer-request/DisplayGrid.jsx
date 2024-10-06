@@ -3,13 +3,11 @@ import { collection, onSnapshot, query, orderBy, where } from 'firebase/firestor
 import React, { useEffect, useState } from 'react';
 import RingSpinner from '../RingSpinner';
 
-function DisplayPrayerRequests({ start, end }) {
+function DisplayPrayerRequests({ start, end, blackAndWhite }) {
   const [prayerRequest, setPrayerRequest] = useState([]);
   const [loading, setLoading] = useState(false);
   useEffect(() => {
-    setLoading(true);
-
-    
+    setLoading(true);    
     const q = query(
       collection(db, 'prayer-request'),
       where('createdAt', '>=', start), // Only include documents from start date
@@ -22,29 +20,25 @@ function DisplayPrayerRequests({ start, end }) {
         id: doc.id,
         ...doc.data(),
       }));
-
       setPrayerRequest(data);
       setLoading(false);
     });
-
     return unsubscribe;
-  }, [start, end]);
-  
-  console.log(start, end)
+  }, [start, end]);  
 
   return (
     <>        
       
       {prayerRequest.length > 0 ?<table>
         <thead>
-          <tr className='prayer-table-head'>
+          <tr className={blackAndWhite ? 'prayer-table-head blackandwhite-head' : 'prayer-table-head bluebg-head'}>
             <td>Pray For</td>
             <td>Description</td>
           </tr>
         </thead>
         <tbody>
           {!loading && prayerRequest.map((item, index) => (
-              <tr key={index} className='prayer-table-body'>
+              <tr key={index} className={blackAndWhite ? 'prayer-table-body blackandwhite-body' : 'prayer-table-body bluebg-body'}>
                 <td><label>{item.who}</label></td>
                 <td><label>{item.prayerRequest}</label></td>
               </tr>

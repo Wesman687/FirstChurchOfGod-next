@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import DisplayGrid from './DisplayGrid';
 
-function DisplayWeekly() {
+function DisplayCompact() {
   const [timeRange, setTimeRange] = useState(1);
   const [unit, setUnit] = useState('weeks'); // Default to weeks
   const [weeks, setWeeks] = useState(1);
   const [months, setMonths] = useState(1);
+  const [blackAndWhite, setBlackAndWhite] = useState(false) 
   const [start, setStart] = useState();
   const [end, setEnd] = useState();
 
@@ -78,6 +79,9 @@ function DisplayWeekly() {
       return newMonths;
     });
   };
+  const BlackAndWhite = () =>{
+    setBlackAndWhite(prev => !prev)
+  }
 
   return (
     <div className='prayer-weekly-container'>
@@ -86,6 +90,7 @@ function DisplayWeekly() {
         <div>
           {unit === 'weeks' && timeRange === 1 ? <button className='' onClick={thisWeek}>This Week</button> : <button className='light-blue-button' onClick={thisWeek}>This Week</button>}
           <button className='red-button' onClick={prevWeek}>Last Week</button>
+          {blackAndWhite ? <button className='black-button black-button-active' onClick={BlackAndWhite}>B&W</button> : <button className='black-button' onClick={BlackAndWhite}>B&W</button>}
         </div>
         <div>
           {unit === 'months' && timeRange === 1 ? <button className='' onClick={thisMonth}>This Month</button> : <button className='light-blue-button' onClick={thisMonth}>This Month</button>}
@@ -94,9 +99,10 @@ function DisplayWeekly() {
       </div>
 
       {/* Pass the calculated start and end dates to the DisplayGrid component */}
-      {start && end && <DisplayGrid start={start} end={end} />}
+      {start && end && <DisplayGrid start={start} end={end} blackAndWhite={blackAndWhite} />}
     </div>
+    
   );
 }
 
-export default DisplayWeekly;
+export default DisplayCompact;

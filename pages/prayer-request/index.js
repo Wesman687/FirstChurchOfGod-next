@@ -1,29 +1,22 @@
 import Layout from '@/components/Layout'
 import MyPrayerRequest from '@/components/members/MyPrayerRequest'
-import DisplayWeekly from '@/components/prayer-request/DisplayWeekly'
-import InputPrayerRequest from '@/components/prayer-request/InputPrayerRequest'
+import DisplayCompact from '@/components/prayer-request/DisplayCompact'
 import ListPrayerRequest from '@/components/prayer-request/ListPrayerRequest'
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 
 function PrayerRequest() {
-    const [displayWeekly, setDisplayWeekly] = useState(false)
+    const [displayCompact, setDisplayCompact] = useState(false)
     const [displayList, setDisplayList] = useState(true)
     const [displayAdmin, setDisplayAdmin] = useState(false)
+    const [displayPost, setDisplayPost] = useState(false)
     const user = useSelector(state => state.user)
-    function handleManageWeekly() {
-        enableAndDisable('Weekly')
-    }
-    function handleManageDisplayList() {
-        enableAndDisable('List')
-    }
-    function handleAdmin() {
-        enableAndDisable('Admin')
-    }
+    
     function enableAndDisable(page) {
         setDisplayList(page === 'List' ? true : false)
         setDisplayAdmin(page === 'Admin' ? true : false)
-        setDisplayWeekly(page === 'Weekly' ? true : false)
+        setDisplayCompact(page === 'Compact' ? true : false)
+        setDisplayPost(page === 'Post' ? true : false)
     }
     return (
         <Layout>
@@ -36,15 +29,19 @@ function PrayerRequest() {
             </div>
             <div className='manage-buttons-container members-toolbar'>
                 <div>
-                    {!displayList ? <label className='manage-filters-label' onClick={handleManageDisplayList}>Full List</label> :
+                    {!displayList ? <label className='manage-filters-label' onClick={()=> enableAndDisable('List')}>Full List</label> :
                         <label className='manage-filters-label-active manage-members-active'>Full List</label>
                     }
-                    {!displayWeekly ? <label className='manage-filters-label' onClick={handleManageWeekly}>Compact List</label> :
+                    {!displayCompact ? <label className='manage-filters-label' onClick={()=> enableAndDisable('Compact')}>Compact List</label> :
                         <label className='manage-filters-label-active manage-members-active'>Compact List</label>
+                    }
+                    
+                    {!displayPost ? <label className='manage-filters-label' onClick={()=> enableAndDisable('Post')}>Post a Request</label> :
+                        <label className='manage-filters-label-active manage-members-active'>Post a Request</label>
                     }
                     {user.isAdmin && (
                         !displayAdmin ? (
-                            <label className='manage-filters-label' onClick={handleAdmin}>
+                            <label className='manage-filters-label' onClick={()=> enableAndDisable('Admin')}>
                                 Post As Church
                             </label>
                         ) : (
@@ -59,8 +56,9 @@ function PrayerRequest() {
             </div>
             <div className='request-page-container'>
                 {displayList && <ListPrayerRequest action={'list'} />}
-                {displayWeekly && <DisplayWeekly />}
+                {displayCompact && <DisplayCompact />}
                 {displayAdmin && <><MyPrayerRequest action={'church'} /></>}
+                {displayPost && <MyPrayerRequest action={'self'} />}
             </div>
         </Layout>
     )

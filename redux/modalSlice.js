@@ -5,6 +5,7 @@ const initialState = {
     loginModalOpen: false,
     eventModalOpen: false,
     commentModalOpen: false,
+    emojiModalOpen: false,
     commentTweetDetails: {
         id: null,
         tweet: null,
@@ -37,6 +38,12 @@ const modalSlice = createSlice({
     closeEventModal: (state) => {
         state.eventModalOpen = false
     },
+    openEmojiModal: (state) => {
+        state.emojiModalOpen = true
+    },
+    closeEmojiModal: (state) => {
+        state.emojiModalOpen = false
+    },
     openCommentModal: (state) => {
         state.commentModalOpen = true
     },
@@ -53,6 +60,8 @@ const modalSlice = createSlice({
   }
 });
 
-export const { openAccountModal, closeAccountModal, openLoginModal, closeLoginModal, openCommentModal, closeCommentModal, setCommentTweet, openEventModal, closeEventModal  } = modalSlice.actions
+export const { openAccountModal, closeAccountModal, openLoginModal, closeLoginModal, openCommentModal, closeCommentModal, setCommentTweet, openEventModal, closeEventModal,
+    openEmojiModal, closeEmojiModal,
+  } = modalSlice.actions
 
 export default modalSlice.reducer

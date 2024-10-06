@@ -107,7 +107,7 @@
 .yellow {
 	color: #ffa800;
 }
-.icon-small {
+.icon-small, .sm-icon {
 	width: 35px;
 }
 .current-link {
@@ -296,7 +296,7 @@
 	flex-direction: column;
 }
 .cwc-bg-image {
-	padding-top: 64px;
+	padding-top: 128px;
 }
 .cwc-wrapper {
 	display: flex;
@@ -735,7 +735,7 @@
 	margin-top: 12px;
 }
 .calendar-container {
-
+	background-color: #fff;
 	padding: 64px;
 }
 .fc {
@@ -765,8 +765,8 @@
 	font-size: 18px; /* Adjust font size */
 }
   .fc .fc-daygrid-day {
-	background-color: linear-gradient(90deg, hsl(194, 100%, 60%), #0ae0f0bb, #16c8e7, #09cbe9bb); /* Customize day grid background */
-	background-image: linear-gradient(90deg, #10e9f8, #1bdffdfa);
+	background-color: linear-gradient(90deg, hsl(194, 100%, 60%), #68f2fcbb, #16c8e7, #09cbe9bb); /* Customize day grid background */
+	background-image: linear-gradient(90deg, #81f4fc, #91ecfafa);
 	padding-right: 16px;
 	
 	color: #000;
@@ -869,6 +869,7 @@
 	 1px -1px 0 #055bfa0c,
 	 -1px 1px 0 #055bfa0c,
 	  1px 1px 0 #055bfa0c;
+	  
 }
 .text-center {	
 	text-align: center;
@@ -1175,6 +1176,7 @@
 /******* Prayer Request *******/
 .prayerrequest-container {
 	padding: 64px 64px;
+	width: 90%;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -1271,9 +1273,8 @@
 	justify-content: space-between;
 	background-color: #c6f7ff;
 	align-items: center;
-	text-align: center;
 	color: #000;
-	padding: 8px 16px;
+	padding: 8px 4px;
 }
 .list-prayer-item-addremove {
 	width: 150px;
@@ -1285,7 +1286,7 @@
 	display: none;
 	flex-direction: column;
 	gap: 12px;
-	padding: 12px 0;
+	padding: 12px 12px;
 	top: 100%; /* Position below the chevron */
 	right: 0;
 }
@@ -1298,6 +1299,7 @@
 .list-prayer-dropdown {
 	position: relative;	
 	border-bottom: 1px solid #5555552d;
+	padding: 4px;
 }
 .list-prayer-item-addremove label {
 	cursor: pointer;
@@ -1339,15 +1341,32 @@
 	gap: 24px;
 }
 .prayer-table-head {
-	color: #000;
-	background-color: #61d7e9;
 	text-align: center;
-	font-size: 26px;
+	font-size: 26px;	
+}
+.blackandwhite-head {
+	background-color: #c6c6c7;
+}
+			
+.bluebg-head {
+	color: #ffffff;
+	background-image: linear-gradient(90deg, hsla(192, 78%, 18%, 0.884), #0c4d52bb, #13545f, #02272cbb);
+}
+.blackandwhite-body {
+	color: #050505;
+	border: 1px solid #c6c6c7;
+	
+}
+.bluebg-body {	
+	background-image: linear-gradient(90deg, hsl(194, 69%, 57%), #48ced8, #9af0ff, #37e4ff);
+	color: #050505;
+}
+.bluebg-body:nth-child(even) {	
+	background-image: linear-gradient(90deg, hsl(194, 84%, 47%), hsl(184, 92%, 60%), #9af0ff, #06dbfc);
+	color: #050505;
 }
 
 .prayer-table-body {
-	background-color: #1bbad2;
-	color: #FFFFFF;
 	font-size: 22px;
 }
 .prayer-weekly-container thead tr td {
@@ -1373,6 +1392,157 @@
 	padding: 0;
 }
 
+/*********** Post Feed *******/
+
+.sidebar-container {
+	width: 15vw;
+	height: 100vh;
+    background-image: linear-gradient(90deg, hsl(212, 94%, 53%), #2b5dff, #2b5dff) !important;
+}
+.feed-container {
+	width: 70vw;
+	height: 100vh;
+    background-image: linear-gradient(90deg, hsl(212, 94%, 53%), #2b5dff, #2b5dff, #2b5dff) !important;
+}
+.trending-container {	
+	width: 15vw;
+	height: 100vh;
+    background-image: linear-gradient(90deg, hsl(212, 94%, 53%), #2b5dff, #1148ff) !important;
+}
+.postfeed-page-wrapper {
+	display: flex;
+	width: 100%;
+}
+.feed-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+.feedinput-container {
+	border: 1px solid lightgray;
+	border-radius: 8px;
+	background-color: rgba(132, 216, 255, 0.555);
+	color: #ffffff;
+	padding: 8px 16px;
+	font-size: 14px;
+	margin: 12px;
+	width: 95%;
+}
+
+.feedposts-container {
+	background-color: #fff;
+	border-radius: 4px;
+	width: 98% !important;
+	height: 80vh !important;
+	overflow-y: scroll;
+}
+.feed-container {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.feedposts-container {
+	width: 100%;
+	height: 60vh;
+}
+.feedinput-image {
+	border-radius: 50%;
+	width: 50px;
+	max-height: 50px;
+	border: 1px solid #cce8ff;
+}
+.feedinput-input-buttons-wrapper {
+	display: flex;
+	justify-content: space-between;
+	width: 80%;
+}
+.inputs-galleryicon {
+	color: #0cff04;
+}
+.inputs-galleryicon:hover {
+	color: #000;
+}
+
+.feedinput-icons-container {
+	display: flex;
+	align-items: center;
+	gap: 24px;
+}
+.feedinput-input-wrapper div button {
+	width: 150px;
+}
+.feedinput-wrapper {
+	padding: 24px 12px;
+	display: flex;
+	gap: 48px;
+}
+.feedinput-input-wrapper {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}
+.postfeed-input {
+	background-color: transparent;
+	font-size: 22px;
+	color: #ffffff !important;
+	border-bottom: 1px solid #4be1fc;
+}
+.postfeed-input {
+	background-color: transparent !important;
+	border: none !important;
+	font-size: 22px;
+	overflow: hidden; /* Hide the scrollbar */
+    min-height: 50px; /* Optional: Set a minimum height */
+	width: 100%;
+	resize: none;
+	color: #ffffff !important;
+}
+.postfeed-input:active {
+	background-color: transparent;
+	color: #ffffff !important;
+}
+.postfeed-input::placeholder {	
+	color: #ffffff !important;
+}
+
+
+/******* Emoji Modal *****/ 
+.resizable-modal {
+	background-color: white;
+	border-radius: 8px;
+	padding: 28px;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+  }
+  
+  
+  .emoji-container {
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+  }
+  .close-icon {
+	position: absolute;
+	top: 8px;
+	right: 8px;
+	cursor: pointer;
+  }
+  .close-icon-svg:hover {
+	color: #06dbfc !important;
+  }
+  .close-icon-svg {
+	width: 24px;
+	height: 24px;
+	color: black; /* Change the color of the close icon */
+  }
+.emoji-button {
+	font-size: 24px;
+}
 /******** Buttons *********/
 
 .submit, .red-button {
@@ -1390,6 +1560,36 @@
 .submit {	
 	border: 2px solid #1cbed6;
     background: linear-gradient(to bottom, rgb(115, 198, 247), rgb(24, 160, 250));
+}
+.black-button {	
+	color: #ffffff;
+	border: 1px solid #000000;
+	background: linear-gradient(90deg, hsl(0, 1%, 19%), #757575, #726f6f, #838383);
+	cursor: pointer;
+	margin: 0 !important;
+	border-radius: 4px;
+}
+.black-button:hover {
+	overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+    -webkit-transition: all 0.70s ease 0s;
+       -moz-transition: all 0.70s ease 0s;
+        -ms-transition: all 0.70s ease 0s;
+         -o-transition: all 0.70s ease 0s;
+            transition: all 0.70s ease 0s;
+    z-index: 1;
+    background-image: linear-gradient(90deg, hsl(0, 0%, 75%), #c4c4c4bb, #8f8f8f, #797a7abb) !important;
+    background-position: 98% 0 !important;
+    color: #000 !important;
+    -webkit-background-size: 210% 100%;
+       -moz-background-size: 210% 100%;
+        -ms-background-size: 210% 100%;
+         -o-background-size: 210% 100%;
+            background-size: 210% 100% ;   
+}
+.black-button-active {
+	border: 1px solid red;
 }
 .filter-remove-button, .red-button {	
 	color: #ffffff;
