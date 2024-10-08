@@ -1614,13 +1614,14 @@
 	flex-direction: column;
 	color: #ffffff;
 	cursor: pointer;
+	background-color: #003af8a2;
 }
 .post-info-container {
 	display: flex;
 	align-items: center;
 	flex-direction: column;
 	width: 70%;
-	color: #000;
+	color: #ffffff;
 }
 .post-owner-container {
 	width: 100%;
@@ -1640,9 +1641,7 @@
 .post-owner-container h4, .post-owner-container h5 {
 	margin: 0 !important;
 	font-size: 24px;
-  background: -webkit-linear-gradient(#020f7e, #003af8, #021c72);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+    color: #16f7ff;
   
 }
 .posts-owner-photourl {
@@ -1683,7 +1682,8 @@
 	color: #d3d3d3;
 }
 .post-like-container div:hover {
-	color: #007bff;
+	color: #00e1ff;
+	
 }
 
 

@@ -175,12 +175,12 @@ const FullCalendarComponent = () => {
     }
   };
   const eventContent = (arg) => {
-    // Check if start is available and format it
+    
     const startDate = arg.event.start ? new Date(arg.event.start).toLocaleString("en-US", {     
       
       hour: "numeric",
       minute: "numeric",
-      hour12: true, // Optional: to show 12-hour format
+      hour12: true, 
     }) : '';
     return (
       <div className='custom-cal' style={{ 
@@ -188,8 +188,8 @@ const FullCalendarComponent = () => {
         color: arg.event.textColor, 
         padding: '5px' 
       }}>
-        <div>{startDate}</div> {/* Display formatted start date */}
-        <div>Event: {arg.event.title}</div> {/* Display event title */}     
+        <div>{startDate}</div> 
+        <div>Event: {arg.event.title}</div>     
         <div>Location: {arg.event._def.extendedProps.location}</div>   
         <div>Desc: {arg.event._def.extendedProps.description}</div>
       </div>
