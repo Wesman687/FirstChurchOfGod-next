@@ -151,7 +151,7 @@ const FullCalendarComponent = () => {
         eventTextColor: textColor,
         backgroundColor: bgColor,
         textColor: textColor,
-        allDay: false, // Ensure the event is not marked as all-day
+        allDay: false, 
         extendedProps: {
           description,
           location,
@@ -161,12 +161,10 @@ const FullCalendarComponent = () => {
 
       setEvents((prevEvents) => [...prevEvents, newEvent]);
 
-      // Add it directly to the calendar instance
       const calendarApi = calendarRef.current.getApi();
       calendarApi.addEvent(newEvent);
       const docRef = await addDoc(collection(db, 'events'), newEvent)
 
-      // Close the modal and reset the form
       dispatch(closeEventModal());
       setNewEventData({ title: '', description: '', location: '', startTime: '', endTime: '' });
       setDisableTime(false)
