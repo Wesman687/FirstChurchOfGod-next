@@ -90,7 +90,7 @@ function CommentModal() {
                                
                                 <div className='comments-post-container'>
                                 {comments.length > 0 && comments.map((item, index) => (                                    
-                                        <Post post={item} key={index} postComment={true} postId={post.id} />                                        
+                                        <Post post={item} key={index} postComment={true} postId={post.id} fetchData={fetchData} />                                        
                                 ))}
                                 </div>
                             <FeedInput user={user} comment={commentDetails.id} fetchData={fetchData} collapse={true} />

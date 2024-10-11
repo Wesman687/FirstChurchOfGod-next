@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { Timestamp } from 'firebase/firestore';
 import GalleryIcon from '../icons/GalleryIcon';
 import EmojiModal from '../modals/EmojiModal';
 import PostConfirmationModal from '../modals/PostConfirmationModel';
@@ -10,7 +10,7 @@ import RingSpinner from '../RingSpinner';
 import ChevronUpIcon from '../icons/ChevronUpIcon';
 import ChevronDownIcon from '../icons/ChevronDownIcon';
 
-function FeedInput({ user, comment, fetchData, collapse }) {
+function FeedInput({ user, comment, collapse }) {
     const [loading, setLoading] = useState(false)
     const [postContent, setPostContent] = useState('');
     const [image, setImage] = useState();
@@ -54,7 +54,7 @@ function FeedInput({ user, comment, fetchData, collapse }) {
                     commentId: Date.now().toString(), 
                     username: user.email.split('@')[0],
                     name:  `${user.firstName} ${user.lastName}`,
-                    timeStamp: new Date(),
+                    timeStamp: Timestamp.now(),
                     owner: user.userRef,
                     photoUrl: user.photoUrl,
                     comment: postContent, // Ensure this contains the comment text
@@ -63,8 +63,7 @@ function FeedInput({ user, comment, fetchData, collapse }) {
     
                 await updateDoc(docRef, {
                     comments: arrayUnion(commentDetails)
-                });
-                fetchData()
+                });                
                 setUploadSuccess(true);
             } catch (error) {
                 console.error("Error uploading comment:", error);
@@ -85,7 +84,6 @@ function FeedInput({ user, comment, fetchData, collapse }) {
                 setUploadSuccess(false);
             }
         }
-    
         setLoading(false);
         setShowConfirmation(true);
         setImage(null);
@@ -99,7 +97,6 @@ function FeedInput({ user, comment, fetchData, collapse }) {
         const randomPart = Math.random().toString(36).substr(2, 6); // Generate random string
         return `image_${timestamp}_${randomPart}`;
     }
-  
     return (
         <>
         {collapseInput ? <div className='feedinput-collapse-container click'  onClick={()=>{            

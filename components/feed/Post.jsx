@@ -14,7 +14,7 @@ import PostHeader from './PostHeader';
 import PostInfo from './PostInfo';
 import ConfirmationModal from '../modals/ConfirmationModel';
 
-function Post({ postComment, postId, post: existingPost }) {
+function Post({ postComment, postId, post: existingPost, fetchData }) {
     const [owner, setOwner] = useState(null);
     const [comments, setComments] = useState([]);
     const [showConfirm, setShowConfirm] = useState(false); // State for showing the confirmation modal  
@@ -32,25 +32,7 @@ function Post({ postComment, postId, post: existingPost }) {
     const cancelDelete = () => {
         setShowConfirm(false); // Hide the confirmation modal
     };
-    async function handleRemove() {
-        if (post.image) {
-            // Get a reference to the image in Firebase Storage
-            const imageRef = ref(storage, post.image);
-            // Delete the image from Firebase Storage
-            await deleteObject(imageRef).then(() => {
-                console.log('Image deleted successfully from Firebase Storage');
-            }).catch((error) => {
-                console.error('Error deleting image from Firebase Storage:', error);
-                toast.error('Error deleting image');
-            });
-        }
-        try {
-            await deleteDoc(doc(db, 'posts', post.id));
-            setShowConfirm(false)
-        } catch (error) {
-            toast.error('There was an error with deleting the post')
-        }
-    }
+    
     useEffect(() => {
         // Fetch the user from the Firestore users collection
         const fetchUser = async () => {
@@ -74,11 +56,48 @@ function Post({ postComment, postId, post: existingPost }) {
     }, [post.owner]);
     useEffect(() => {
         const fetchComment = () => {
-            setLikes(post.likes)
-            setComments(post.comments)
+            setLikes(post.likes || [])
+            setComments(post.comments || [])
+            console.log(post)
         }
         fetchComment()
-    }, [post.likes, post.comments])
+    }, [post])
+    async function handleRemove() {
+        if (post.image) {
+            // Get a reference to the image in Firebase Storage
+            const imageRef = ref(storage, post.image);
+            // Delete the image from Firebase Storage
+            await deleteObject(imageRef).then(() => {
+                console.log('Image deleted successfully from Firebase Storage');
+            }).catch((error) => {
+                console.error('Error deleting image from Firebase Storage:', error);
+                toast.error('Error deleting image');
+            });
+        }
+        if (postComment){
+            const postRef = doc(db, "posts", postId);
+            const postSnapshot = await getDoc(postRef);
+
+            const postData = postSnapshot.data();
+            const comments = postData.comments || []; 
+            
+            const updatedComments = comments.filter(comment => comment.commentId !== post.commentId); 
+            await updateDoc(postRef, {
+                comments: updatedComments,
+            });
+            setShowConfirm(false)
+            fetchData()
+        }
+        else {
+            try {
+                await deleteDoc(doc(db, 'posts', post.id));
+                setShowConfirm(false)
+            } catch (error) {
+                toast.error('There was an error with deleting the post')
+            }
+        }
+        
+    }
     async function handleLikes(e) {
         e.stopPropagation();
         if (!user.username) {
