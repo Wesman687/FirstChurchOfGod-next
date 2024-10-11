@@ -1,12 +1,8 @@
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
-import { deleteObject, ref } from 'firebase/storage';
-import { db, storage } from '@/firebase';
-import ConfirmationModal from '../modals/ConfirmationModel';
 
 function PostHeader({owner, post, username}) {
-    const user = useSelector(state => state.user)
-    const [showConfirm, setShowConfirm] = useState(false); // State for showing the confirmation modal    
+    const user = useSelector(state => state.user)  
   return (
     <>
     <div className='post-owner-container'>
@@ -31,15 +27,7 @@ function PostHeader({owner, post, username}) {
                         
                         
                     </div>
-                    
-                    {showConfirm && (
-                <ConfirmationModal
-                    title="Confirm Removal"
-                    message={`Are you sure you want to remove @${username} post?`}
-                    onConfirm={handleRemove}
-                    onCancel={cancelDelete}
-                />
-            )}
+                                       
             </>
   )
 }

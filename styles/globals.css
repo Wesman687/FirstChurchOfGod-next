@@ -1691,7 +1691,23 @@
 	color: #00e1ff;
 	
 }
-
+.comment-wrapper {
+	padding: 128px;
+}
+.comment-input-container {
+	position: relative;
+	border: 1px solid lightgray;
+	padding: 32px;
+	border-radius: 8px;
+	background-color: #000;
+	width: 80vw;
+}
+.postcomment-info {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+}
 
 /******* Emoji Modal *****/ 
 .resizable-modal {

@@ -13,12 +13,15 @@ import SolidChatIcon from '../icons/SolidChatIcon';
 import { openCommentModal, setComment } from '@/redux/modalSlice';
 import PostHeader from './PostHeader';
 import DotsIcon from '../icons/DotsIcon';
+import PostInfo from './PostInfo';
+import ConfirmationModal from '../modals/ConfirmationModel';
 
 function Post({ post }) {
     const [owner, setOwner] = useState(null);
     const [collapsePost, setCollapsePost] = useState(false)
     const [likes, setLikes] = useState(post.likes || []);
     const [comments, setComments] = useState(post.comment || []);
+    const [showConfirm, setShowConfirm] = useState(false); // State for showing the confirmation modal  
     const [username, setUserName] = useState('')
     const user = useSelector(state => state.user)
     const dispatch = useDispatch()    
@@ -114,10 +117,7 @@ function Post({ post }) {
                             </div>
                         </div>
                     </div>
-                        <div className='post-info-container'>
-                            <h4>{post.comment}</h4>
-                            {post.image && <img src={post.image} className='post-image' alt='Image' />}
-                        </div>
+                        <PostInfo post={post} />
 
 
                     <div className='post-footer'>
@@ -157,6 +157,14 @@ function Post({ post }) {
                         </div>
                     </div>
                 </div>}
+                {showConfirm && (
+                <ConfirmationModal
+                    title="Confirm Removal"
+                    message={`Are you sure you want to remove @${username} post?`}
+                    onConfirm={handleRemove}
+                    onCancel={cancelDelete}
+                />
+            )}
         </>
     )
 }
