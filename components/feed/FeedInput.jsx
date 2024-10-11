@@ -41,6 +41,7 @@ function FeedInput({user}) {
                 timeStamp: new Date(),
                 comment: postContent,
                 owner: user.userRef,
+                name: user.firstName + ' ' + user.lastName
             });
             setUploadSuccess(true);
         } catch (error) {

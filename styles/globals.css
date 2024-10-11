@@ -1616,6 +1616,12 @@
 	cursor: pointer;
 	background-color: #003af8a2;
 }
+.post-header {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	gap: 12px;
+}
 .post-info-container {
 	display: flex;
 	align-items: center;
