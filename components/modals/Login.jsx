@@ -79,6 +79,7 @@ const Login = ({ defaultState }) => {
         uid: res.uid,
         firstName: firstName,
         lastName: lastName,
+        username: email.split('@')[0],
         email: email,
         phone: phone,
         photoUrl: downloadURL,
@@ -96,24 +97,24 @@ const Login = ({ defaultState }) => {
             isAdmin: false
           })
         );
-        
+
         await updateDoc(docRef, {
-          userRef: docRef.id, 
-      });
+          userRef: docRef.id,
+        });
 
       }
       else {
         setError({
-            showError: true,
-            title: "Sign Up Failed",
-            message: "Please try again, or log in to check account credentials.",
+          showError: true,
+          title: "Sign Up Failed",
+          message: "Please try again, or log in to check account credentials.",
         });
       }
       dispatch(closeLoginModal());
     } catch (error) {
       dispatch(closeLoginModal())
       setError({ showError: true, title: "Error", message: error.message });
-  }
+    }
 
     setLoading(false)
   }
@@ -125,7 +126,7 @@ const Login = ({ defaultState }) => {
     } catch (error) {
       dispatch(closeLoginModal())
       setError({ showError: true, title: "Login Failed", message: error.code.split('/')[1].split('-').join(" ") });
-  }
+    }
     setLoading(false)
   }
   function checkCredentials() {
@@ -144,16 +145,16 @@ const Login = ({ defaultState }) => {
         console.log("nothing", data.docs, currentUser.uid)
       }
       else {
-        const userInfo = data.docs.map(doc => doc.data())[0]
+        const userInfo = data.docs[0].data();
         const docId = data.docs[0].id;
-        if (!userInfo.userRef) {
-          console.log("userRef is missing, updating...");
 
-          // Update the user document with the userRef
+        if (!userInfo.userRef || userInfo.userRef !== docId) {
+          console.log("userRef is missing or incorrect, updating...");
+
+          // Update the user document with the correct userRef
           await updateDoc(doc(db, "user", docId), {
             userRef: docId
           });
-
         }
         dispatch(
           setUser({
@@ -161,7 +162,7 @@ const Login = ({ defaultState }) => {
             firstName: userInfo.firstName,
             lastName: userInfo.lastName,
             email: userInfo.email,
-            uid: userInfo.uid,
+            uid: data.docs[0].id,
             phone: userInfo.phone,
             photoUrl: userInfo.photoUrl,
             isAdmin: userInfo.isAdmin,
@@ -180,7 +181,6 @@ const Login = ({ defaultState }) => {
 
     return unsubscribe;
   }, []);
-
   return (
     <>
 

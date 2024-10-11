@@ -16,16 +16,16 @@ import DotsIcon from '../icons/DotsIcon';
 import PostInfo from './PostInfo';
 import ConfirmationModal from '../modals/ConfirmationModel';
 
-function Post({ post }) {
+function Post({ post, postComment }) {
     const [owner, setOwner] = useState(null);
-    const [collapsePost, setCollapsePost] = useState(false)
-    const [likes, setLikes] = useState(post.likes || []);
-    const [comments, setComments] = useState(post.comment || []);
+    const [comments, setComments] = useState([]);
     const [showConfirm, setShowConfirm] = useState(false); // State for showing the confirmation modal  
     const [username, setUserName] = useState('')
     const user = useSelector(state => state.user)
     const dispatch = useDispatch()    
     const [edit, setEdit] = useState(false)
+    const [collapsePost, setCollapsePost] = useState(false)
+    const [likes, setLikes] = useState([]);
     const confirmRemoveMember = () => {
         setShowConfirm(true);
     };
@@ -49,7 +49,6 @@ function Post({ post }) {
         try {
             await deleteDoc(doc(db, 'posts', post.id));
             setShowConfirm(false)
-
         } catch (error) {
             toast.error('There was an error with deleting the post')
         }
@@ -82,7 +81,6 @@ function Post({ post }) {
         }
         fetchComment()
     }, [post.likes, post.comments])
-
     async function handleLikes(e) {
         e.stopPropagation();
         if (!user.username) {
@@ -101,22 +99,9 @@ function Post({ post }) {
     return (
         <>
             {collapsePost ? <div className='post-container-collapsed click' onClick={() => setCollapsePost((prev) => !prev)}><ChevronDownIcon classes={'white icon-small'} /><div className='collapse-line'></div></div> :
-                <div className='post-container'>
-                    <div className="post-header">
-                        <div className='post-feed-chevron click' onClick={() => setCollapsePost((prev) => !prev)}>
-                            <ChevronUpIcon classes={'white icon-small '} />
-                        </div>
-                        <PostHeader owner={owner} post={post} username={username} setCollapsePost={setCollapsePost} />
-                        <div className='post-dropdown'>
-                            <div className='list-prayer-item-chevron'>
-                                <DotsIcon classes={'white icon-small'} />
-                            </div>
-                            <div className='post-prayer-menudropdown'>
-                                {(user.isAdmin || user.userRef === post.owner) && <><label className='click' onClick={() => setEdit((prev) => !prev)}>{edit ? 'Cancel Edit' : 'Edit'}</label>
-                                    <label className='click' onClick={() => confirmRemoveMember()}>Remove</label></>}
-                            </div>
-                        </div>
-                    </div>
+                <div className='post-container'>                    
+                        <PostHeader timeStamp={post.timeStamp} name={post.name} username={username} photoUrl={post.photoUrl} setCollapsePost={setCollapsePost} confirmRemoveMember={confirmRemoveMember} setEdit={setEdit} edit={edit} owner={post.owner} />
+                        
                         <PostInfo post={post} />
 
 
@@ -124,11 +109,11 @@ function Post({ post }) {
                         <div className='post-like-container'>
                             <div className='click' onClick={handleLikes}>
                                 {likes?.includes(user.uid) ? <SolidThumbsUp classes={'xs-icon white'} /> : <ThumbsUpIcon classes={'xs-icon'} />}
-                                <label className='click'> Like</label>
+                                <label className={`click + ${likes?.includes(user.uid) && 'mycommentorlike'}`}> Like</label>
                             </div>
                             {likes?.length > 0 &&
                                 <div className='post-likes'>
-                                    <label>{likes.length}</label>
+                                    <label className={`${likes?.includes(user.uid) && 'mycommentorlike'}`}>{likes.length}</label>
                                 </div>}
                             <div className='click' onClick={() => {
                                 dispatch(setComment({
@@ -142,13 +127,13 @@ function Post({ post }) {
                                 }))
                                 dispatch(openCommentModal())
                             }}>
-                                {comments?.includes(user.uid) ? <SolidChatIcon classes={'xs-icon white'} /> : <ChatIcon classes={'xs-icon'} />}
+                                {comments?.length > 0 && comments?.some(comment => comment.owner === user.userRef) ? <SolidChatIcon classes={`xs-icon + ${comments?.some(comment => comment.owner === user.userRef) && 'mycommentorlike'}`} /> : <ChatIcon classes={'xs-icon'} />}
 
-                                <label className='click'>Comment</label>
+                                <label className={`click + ${comments?.some(comment => comment.owner === user.userRef) && 'mycommentorlike'}`}>Comments</label>
                             </div>
                             {comments?.length > 0 &&
                                 <div className='post-likes'>
-                                    <label>{comments?.length}</label>
+                                    <label className={`${comments?.some(comment => comment.owner === user.userRef) && 'mycommentorlike'}`}>{comments?.length}</label>
                                 </div>}
                             <div className='click'>
                                 <ShareIcon classes={'xs-icon'} />
