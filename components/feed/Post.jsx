@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { arrayRemove, arrayUnion, deleteDoc, doc, getDoc, updateDoc } from 'firebase/firestore';
 import { db, storage } from '@/firebase'; // Import Firestore instance
 import ChevronDownIcon from '../icons/ChevronDownIcon';
-import ChevronUpIcon from '../icons/ChevronUpIcon';
 import { useDispatch, useSelector } from 'react-redux';
 import ThumbsUpIcon from '../icons/ThumbsUpIcon';
 import ChatIcon from '../icons/ChatIcon';
@@ -12,20 +11,20 @@ import SolidThumbsUp from '../icons/SolidThumbsUp';
 import SolidChatIcon from '../icons/SolidChatIcon';
 import { openCommentModal, setComment } from '@/redux/modalSlice';
 import PostHeader from './PostHeader';
-import DotsIcon from '../icons/DotsIcon';
 import PostInfo from './PostInfo';
 import ConfirmationModal from '../modals/ConfirmationModel';
 
-function Post({ post, postComment }) {
+function Post({ postComment, postId, post: existingPost }) {
     const [owner, setOwner] = useState(null);
     const [comments, setComments] = useState([]);
     const [showConfirm, setShowConfirm] = useState(false); // State for showing the confirmation modal  
     const [username, setUserName] = useState('')
     const user = useSelector(state => state.user)
-    const dispatch = useDispatch()    
+    const dispatch = useDispatch()
     const [edit, setEdit] = useState(false)
     const [collapsePost, setCollapsePost] = useState(false)
     const [likes, setLikes] = useState([]);
+    const [post, setPost] = useState(existingPost)
     const confirmRemoveMember = () => {
         setShowConfirm(true);
     };
@@ -37,7 +36,6 @@ function Post({ post, postComment }) {
         if (post.image) {
             // Get a reference to the image in Firebase Storage
             const imageRef = ref(storage, post.image);
-
             // Delete the image from Firebase Storage
             await deleteObject(imageRef).then(() => {
                 console.log('Image deleted successfully from Firebase Storage');
@@ -86,23 +84,65 @@ function Post({ post, postComment }) {
         if (!user.username) {
             return;
         }
-        if (likes?.includes(user.uid)) {
-            await updateDoc(doc(db, "posts", post.id), {
-                likes: arrayRemove(user.uid),
-            });
-        } else {
-            await updateDoc(doc(db, "posts", post.id), {
-                likes: arrayUnion(user.uid),
-            });
+        if (postComment) {
+            const postRef = doc(db, "posts", postId);
+            const postSnapshot = await getDoc(postRef);
+
+            if (postSnapshot.exists()) {
+                const postData = postSnapshot.data();
+                const comments = postData.comments || []; // Fallback to empty array if no comments
+                // Step 2: Perform postComment logic
+                let updatedComments;
+
+                const targetComment = comments.find(comment => comment.commentId === post.commentId);                
+                const likes = targetComment ? (targetComment.likes || []) : [];
+
+                if (likes?.includes(user.uid)) {
+                    console.log('test')
+                    // Remove the user's UID from likes
+                    updatedComments = comments.map(comment =>
+                        comment.commentId === post.commentId
+                            ? { ...comment, likes: likes.filter(uid => uid !== user.uid) }
+                            : comment
+                    );
+                } else {
+                    console.log('test2')
+                    // Add the user's UID to likes
+                    updatedComments = comments.map(comment =>
+                        comment.commentId === post.commentId
+                            ? { ...comment, likes: [...likes, user.uid] }
+                            : comment
+                    );
+                }
+                console.log(updatedComments, likes)
+                // Step 3: Update the comments array in Firestore
+                await updateDoc(postRef, {
+                    comments: updatedComments,
+                });
+                
+                setPost(updatedComments.find(comment => comment.commentId === post.commentId))
+            }
+
+        }
+        else {
+            if (likes?.includes(user.uid)) {
+                await updateDoc(doc(db, "posts", post.id), {
+                    likes: arrayRemove(user.uid),
+                });
+            } else {
+                await updateDoc(doc(db, "posts", post.id), {
+                    likes: arrayUnion(user.uid),
+                });
+            }
         }
     }
     return (
         <>
             {collapsePost ? <div className='post-container-collapsed click' onClick={() => setCollapsePost((prev) => !prev)}><ChevronDownIcon classes={'white icon-small'} /><div className='collapse-line'></div></div> :
-                <div className='post-container'>                    
-                        <PostHeader timeStamp={post.timeStamp} name={post.name} username={username} photoUrl={post.photoUrl} setCollapsePost={setCollapsePost} confirmRemoveMember={confirmRemoveMember} setEdit={setEdit} edit={edit} owner={post.owner} />
-                        
-                        <PostInfo post={post} />
+                <div className='post-container'>
+                    <PostHeader timeStamp={post.timeStamp} name={post.name} username={username} photoUrl={post.photoUrl} setCollapsePost={setCollapsePost} confirmRemoveMember={confirmRemoveMember} setEdit={setEdit} edit={edit} owner={post.owner} />
+
+                    <PostInfo post={post} />
 
 
                     <div className='post-footer'>
@@ -115,7 +155,7 @@ function Post({ post, postComment }) {
                                 <div className='post-likes'>
                                     <label className={`${likes?.includes(user.uid) && 'mycommentorlike'}`}>{likes.length}</label>
                                 </div>}
-                            <div className='click' onClick={() => {
+                            {!postComment && <div className='click' onClick={() => {
                                 dispatch(setComment({
                                     id: post.id,
                                     comment: post.comment,
@@ -130,7 +170,7 @@ function Post({ post, postComment }) {
                                 {comments?.length > 0 && comments?.some(comment => comment.owner === user.userRef) ? <SolidChatIcon classes={`xs-icon + ${comments?.some(comment => comment.owner === user.userRef) && 'mycommentorlike'}`} /> : <ChatIcon classes={'xs-icon'} />}
 
                                 <label className={`click + ${comments?.some(comment => comment.owner === user.userRef) && 'mycommentorlike'}`}>Comments</label>
-                            </div>
+                            </div>}
                             {comments?.length > 0 &&
                                 <div className='post-likes'>
                                     <label className={`${comments?.some(comment => comment.owner === user.userRef) && 'mycommentorlike'}`}>{comments?.length}</label>
@@ -142,7 +182,7 @@ function Post({ post, postComment }) {
                         </div>
                     </div>
                 </div>}
-                {showConfirm && (
+            {showConfirm && (
                 <ConfirmationModal
                     title="Confirm Removal"
                     message={`Are you sure you want to remove @${username} post?`}

@@ -62,7 +62,6 @@ function CommentModal() {
 
         fetchData();
     }, [isOpen, commentDetails.id]);
-    console.log(comments)
     return (
         <Modal
             open={isOpen}
@@ -91,7 +90,7 @@ function CommentModal() {
                                
                                 <div className='comments-post-container'>
                                 {comments.length > 0 && comments.map((item, index) => (                                    
-                                        <Post post={item} key={index} postComment={true} />                                        
+                                        <Post post={item} key={index} postComment={true} postId={post.id} />                                        
                                 ))}
                                 </div>
                             <FeedInput user={user} comment={commentDetails.id} fetchData={fetchData} collapse={true} />

@@ -1759,7 +1759,7 @@
 	border: 1px solid lightgray;
 	padding: 22px;
 	border-radius: 8px;
-	background-color: #000000ce;
+    background-image: linear-gradient(90deg, hsl(212, 94%, 53%), #2b5dff, #2b5dff, #458fff) !important;
 	width: 95vw;
 }
 .comment-modal-container {

@@ -99,7 +99,7 @@ function FeedInput({ user, comment, fetchData, collapse }) {
         const randomPart = Math.random().toString(36).substr(2, 6); // Generate random string
         return `image_${timestamp}_${randomPart}`;
     }
-
+  
     return (
         <>
         {collapseInput ? <div className='feedinput-collapse-container click'  onClick={()=>{            
