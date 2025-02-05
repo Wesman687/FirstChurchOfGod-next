@@ -18,90 +18,85 @@ function ManageFilters() {
         })
         setNewFilter('')
     }
-    async function handleRemove({index}) {
+    async function handleRemove({ index }) {
         console.log(inputs[index].id)
         await deleteDoc(doc(db, 'filters', inputs[index].id))
     }
-    async function handleEdit({index}){
+    async function handleEdit({ index }) {
         setEditing(true)
         setEditIndex(index)
         setEditFilter(inputs[index].data().filter)
         setOriginalEditFilter(inputs[index].data().filter)
 
     }
-    function handleClear(){
+    function handleClear() {
         setEditing(false)
         setEditIndex(null)
         setEditFilter('')
         setOriginalEditFilter('')
     }
-    async function handleUpdate(){
+    async function handleUpdate() {
         await updateDoc(doc(db, 'filters', inputs[editIndex].id), {
             filter: editFilter
         })
         handleClear()
     }
-    useEffect(()=>{
-        const q = query(collection(db, 'filters'))        
-        const unsubscribe = onSnapshot(q, (snapshot) =>{
+    useEffect(() => {
+        const q = query(collection(db, 'filters'))
+        const unsubscribe = onSnapshot(q, (snapshot) => {
             const data = snapshot.docs
             setInputs(data)
         })
         return unsubscribe
-    },[])
+    }, [])
     return (
         <div className='manage-gallery-section'>
             <h2>Manage Galleries</h2>
             <div className='filter-input-container'>
-                {editing ?  
-                <><label className='filter-input-label'>Edit {originalEditFilter}: </label>
-                <div className='filter-input-w-button'>
-                    <input className='filter-input' value={editFilter} onChange={(e) => setEditFilter(e.target.value)} placeholder={originalEditFilter}>
-                    </input>
-                    <div className='clear-edit-container'>
-                    <button className={editFilter !== originalEditFilter && 'filter-add'} onClick={handleUpdate}>Update</button>
-                    <figure className='input-left-icon' onClick={handleClear}>
-                    <ArrowUturnLeftIcon />
-                    </figure>
-                    </div>
-                </div></>
-                
-                : <><label className='filter-input-label'>Add Gallery: </label>
-                <div className='filter-input-w-button'>
-                    <input className='filter-input' value={newFilter} onChange={(e) => setNewFilter(e.target.value)} placeholder='Gallery Name'>
-                    </input>
-                    <button className={newFilter.length > 0 && 'filter-add'} onClick={handleAdd}>Add</button>
-                </div></>}
+                {editing ?
+                    <><label className='filter-input-label'>Edit {originalEditFilter}: </label>
+                        <div className='filter-input-w-button'>
+                            <input className='filter-input' value={editFilter} onChange={(e) => setEditFilter(e.target.value)} placeholder={originalEditFilter}>
+                            </input>
+                            <div className='clear-edit-container'>
+                                <button className={editFilter !== originalEditFilter && 'filter-add'} onClick={handleUpdate}>Update</button>
+                                <figure className='input-left-icon' onClick={handleClear}>
+                                    <ArrowUturnLeftIcon />
+                                </figure>
+                            </div>
+                        </div></>
+
+                    : <><label className='filter-input-label'>Add Gallery: </label>
+                        <div className='filter-input-w-button'>
+                            <input className='filter-input' value={newFilter} onChange={(e) => setNewFilter(e.target.value)} placeholder='Gallery Name'>
+                            </input>
+                            <button className={newFilter.length > 0 && 'filter-add'} onClick={handleAdd}>Add</button>
+                        </div></>}
             </div>
             <div className='filters-list-container'>
                 <table>
-                <thead>
-                    <tr>
-                        <td>Gallery Name</td>
-                        <td className='edit-remove-column'>Edit/Remove</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    
-                        {inputs.length > 0 && inputs.map((item, index) => (
-                            <>
-                            <tr key={index}>
-                            
-                            <td>{item.data().filter}</td>
-                        <td className='edit-remove-column'>
-                            <div>
-                            <label className='filter-edit-button' onClick={()=>handleEdit({index})} ><EditIcon /> Edit</label>
-                            </div>
-                            <div>
-                            <label className='filter-remove-button red-button' onClick={()=>handleRemove({index})}><TrashIcon /> Remove</label>
-                            </div>
-                        </td>
-                        
+                    <thead>
+                        <tr>
+                            <td>Gallery Name</td>
+                            <td className='edit-remove-column'>Edit/Remove</td>
                         </tr>
-                        </>
+                    </thead>
+                    <tbody>
+                        {inputs.length > 0 && inputs.map((item, index) => (
+                            <tr key={index}>
+                                <td>{item.data().filter}</td>
+                                <td className='edit-remove-column'>
+                                    <div>
+                                        <label className='filter-edit-button' onClick={() => handleEdit({ index })} ><EditIcon /> Edit</label>
+                                    </div>
+                                    <div>
+                                        <label className='filter-remove-button red-button' onClick={() => handleRemove({ index })}><TrashIcon /> Remove</label>
+                                    </div>
+                                </td>
+                            </tr>
                         ))}
-                    
-                </tbody>
+
+                    </tbody>
                 </table>
             </div>
 

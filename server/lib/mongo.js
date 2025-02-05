@@ -1,18 +1,20 @@
-import mongoose from "mongoose";
+import { MongoClient } from "mongodb";
 
-const MONGO_URI = process.env.MONGO_DB;
+const MONGO_URI = process.env.MONGO_URI;
 
-const connectDB = async () => {
-  if (mongoose.connection.readyState >= 1) return;
-  try {
-    await mongoose.connect(MONGO_URI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
-    console.log("✅ MongoDB Connected!");
-  } catch (error) {
-    console.error("❌ MongoDB Connection Failed:", error);
+if (!MONGO_URI) {
+  throw new Error("❌ MongoDB connection string is missing.");
+}
+
+const client = new MongoClient(MONGO_URI);
+const dbName = "campDatabase";
+
+async function connectToMongo() {
+  if (!client.topology || !client.topology.isConnected()) {
+    await client.connect();
+    console.log("✅ Connected to MongoDB");
   }
-};
+  return client.db(dbName);
+}
 
-export default connectDB;
+export { connectToMongo };

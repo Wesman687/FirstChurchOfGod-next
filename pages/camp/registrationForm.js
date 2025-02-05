@@ -6,6 +6,7 @@ import { useState } from "react";
 export default function RegistrationForm() {
   const { register, handleSubmit, formState: { errors } } = useForm();
   const [submitted, setSubmitted] = useState(false);
+  
 
   const onSubmit = async (data) => {
     try {
