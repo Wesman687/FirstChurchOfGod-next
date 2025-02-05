@@ -134,53 +134,57 @@ const Login = ({ defaultState }) => {
   }
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
-      setLoading(true)
+      setLoading(true);
       if (!currentUser) {
-        setLoading(false)
+        setLoading(false);
         return;
       }
-      const userRef = await query(collection(db, "user"), where('uid', '==', currentUser.uid))
-      const data = await getDocs(userRef)
+
+      console.log("🔥 Auth UID:", currentUser.uid);  // ✅ Debugging Step
+
+      const userRef = query(
+        collection(db, "user"),
+        where("uid", "==", currentUser.uid)  // ✅ Ensure Firestore is queried correctly
+      );
+      const data = await getDocs(userRef);
+
       if (data.empty) {
-        console.log("nothing", data.docs, currentUser.uid)
+        console.log("❌ No matching user found in Firestore for UID:", currentUser.uid);
+        setLoading(false);
+        return;
       }
-      else {
-        const userInfo = data.docs[0].data();
-        const docId = data.docs[0].id;
 
-        if (!userInfo.userRef || userInfo.userRef !== docId) {
-          console.log("userRef is missing or incorrect, updating...");
+      const userInfo = data.docs[0].data();
+      const docId = data.docs[0].id;
 
-          // Update the user document with the correct userRef
-          await updateDoc(doc(db, "user", docId), {
-            userRef: docId
-          });
-        }
-        dispatch(
-          setUser({
-            username: userInfo.email.split("@")[0],
-            firstName: userInfo.firstName,
-            lastName: userInfo.lastName,
-            email: userInfo.email,
-            uid: data.docs[0].id,
-            phone: userInfo.phone,
-            photoUrl: userInfo.photoUrl,
-            isAdmin: userInfo.isAdmin,
-            isMember: userInfo.isMember,
-            userRef: data.docs[0].id,
-            isSuper: userInfo.isSuper,
-            isSuperSuper: userInfo.isSuperSuper,
-            commentRef: userInfo.commentRef
-          })
-        );
-
+      if (!userInfo.userRef || userInfo.userRef !== docId) {
+        console.log("🔄 Updating userRef field in Firestore...");
+        await updateDoc(doc(db, "user", docId), { userRef: docId });
       }
-      setLoading(false)
+
+      // ✅ Correctly set UID in Redux
+      dispatch(setUser({
+        username: userInfo.email.split("@")[0],
+        firstName: userInfo.firstName,
+        lastName: userInfo.lastName,
+        email: userInfo.email,
+        uid: currentUser.uid, // ✅ Use Firebase Auth UID
+        phone: userInfo.phone,
+        photoUrl: userInfo.photoUrl,
+        isAdmin: userInfo.isAdmin,
+        isMember: userInfo.isMember,
+        userRef: docId, // ✅ Store Firestore doc ID separately
+        isSuper: userInfo.isSuper,
+        isSuperSuper: userInfo.isSuperSuper,
+        commentRef: userInfo.commentRef
+      }));
+
+      setLoading(false);
     });
 
-
-    return unsubscribe;
+    return () => unsubscribe();
   }, []);
+
   return (
     <>
 

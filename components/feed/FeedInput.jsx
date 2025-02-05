@@ -10,7 +10,7 @@ import RingSpinner from '../RingSpinner';
 import ChevronUpIcon from '../icons/ChevronUpIcon';
 import ChevronDownIcon from '../icons/ChevronDownIcon';
 
-function FeedInput({ user, comment, collapse }) {
+function FeedInput({ user, comment, collapse, postId }) {
     const [loading, setLoading] = useState(false)
     const [postContent, setPostContent] = useState('');
     const [image, setImage] = useState();
@@ -56,6 +56,7 @@ function FeedInput({ user, comment, collapse }) {
                     name:  `${user.firstName} ${user.lastName}`,
                     timeStamp: Timestamp.now(),
                     owner: user.userRef,
+                    postId,
                     photoUrl: user.photoUrl,
                     comment: postContent, // Ensure this contains the comment text
                     image: downloadURL || null,

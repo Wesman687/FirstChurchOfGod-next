@@ -124,8 +124,7 @@ function Post({ postComment, postId, post: existingPost, fetchData }) {
                             ? { ...comment, likes: likes.filter(uid => uid !== user.uid) }
                             : comment
                     );
-                } else {
-                    console.log('test2')
+                } else {                    
                     // Add the user's UID to likes
                     updatedComments = comments.map(comment =>
                         comment.commentId === post.commentId
@@ -133,7 +132,6 @@ function Post({ postComment, postId, post: existingPost, fetchData }) {
                             : comment
                     );
                 }
-                console.log(updatedComments, likes)
                 // Step 3: Update the comments array in Firestore
                 await updateDoc(postRef, {
                     comments: updatedComments,
@@ -144,15 +142,19 @@ function Post({ postComment, postId, post: existingPost, fetchData }) {
 
         }
         else {
+            let newLikes
             if (likes?.includes(user.uid)) {
-                await updateDoc(doc(db, "posts", post.id), {
-                    likes: arrayRemove(user.uid),
-                });
+                newLikes = likes.filter(item => item !== user.uid)
             } else {
-                await updateDoc(doc(db, "posts", post.id), {
-                    likes: arrayUnion(user.uid),
-                });
+                newLikes = [...likes, user.uid]
             }
+            await updateDoc(doc(db, "posts", post.id), {
+                likes: newLikes
+            });
+            setPost(prevPost => ({
+                ...prevPost,
+                likes: newLikes
+            }));
         }
     }
     return (
@@ -161,7 +163,7 @@ function Post({ postComment, postId, post: existingPost, fetchData }) {
                 <div className='post-container'>
                     <PostHeader timeStamp={post.timeStamp} name={post.name} username={username} photoUrl={post.photoUrl} setCollapsePost={setCollapsePost} confirmRemoveMember={confirmRemoveMember} setEdit={setEdit} edit={edit} owner={post.owner} />
 
-                    <PostInfo post={post} />
+                    <PostInfo post={post} edit={edit} setEdit={setEdit} postComment={postComment}  />
 
 
                     <div className='post-footer'>

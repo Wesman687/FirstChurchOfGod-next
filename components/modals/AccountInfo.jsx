@@ -43,43 +43,65 @@ const AccountInfo = () => {
     }
     const updateUser = async (e) => {
         e.preventDefault();
-        e.stopPropagation()
+        e.stopPropagation();
         setLoading(true);
-
-        
-            let downloadURL
+    
+        try {
+            let downloadURL = image; // Default to existing image if not updated
+    
+            // ✅ Upload new image if it exists
             if (image && newImage) {
-                const imageRef = await ref(storage, `photos/${user.uid}`)
-                const uploadImage = await uploadString(imageRef, image, "data_url")
-                downloadURL = await getDownloadURL(imageRef)
+                const imageRef = ref(storage, `photos/${user.uid}/profile.jpg`);
+                await uploadString(imageRef, image, "data_url");
+                
+                // ✅ Introduce a slight delay to ensure Firebase Storage propagates
+                await new Promise(resolve => setTimeout(resolve, 1000));
+    
+                downloadURL = await getDownloadURL(imageRef);
             }
-
-            const userRef = await query(
+    
+            // ✅ Query Firestore for the user document
+            const userRef = query(
                 collection(db, "user"),
                 where("uid", "==", user.uid)
             );
             const data = await getDocs(userRef);
+    
+            // ✅ Handle empty result case
             if (data.empty) {
-                console.log("nothing", data.docs, user.uid);
+                console.log("User not found in Firestore.");
+                setLoading(false);
+                return;
             }
-            const userInfo = data.docs.map(doc => doc.data())[0]
+    
+            // ✅ Force image refresh by adding a timestamp (cache busting)
+            const timestamp = new Date().getTime();
+            const updatedPhotoURL = downloadURL.includes("?")
+                ? `${downloadURL}&t=${timestamp}`
+                : `${downloadURL}?t=${timestamp}`;
+    
+            // ✅ Prepare updated user data
             const userData = {
                 firstName: newFirstName,
                 lastName: newLastName,
                 phone: newPhone,
-                email: userInfo.email,
-                photoUrl: newImage ? downloadURL : image,
-                uid: userInfo.uid,
-                userRef: data.docs[0].id
+                email: user.email,
+                photoUrl: updatedPhotoURL, // ✅ Use updated URL with cache busting
+                uid: user.uid,
+                userRef: data.docs[0].id,
             };
+    
+            // ✅ Update Firestore document
             const docRef = doc(db, "user", data.docs[0].id);
             await updateDoc(docRef, userData);
             dispatch(setUser(userData));
-
-        
-
-        setLoading(false);
-        dispatch(closeAccountModal());
+    
+        } catch (error) {
+            console.error("Error updating user:", error);
+        } finally {
+            setLoading(false);
+            dispatch(closeAccountModal());
+        }
     };
     return (
         <>

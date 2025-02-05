@@ -1753,7 +1753,42 @@
 .comment-image {
 	width: 150px;
 }
-
+.updatecomment-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+.homecomment-red-button {
+	font-size: 12px !important;
+	padding: 12px 22px !important;
+	text-align: center;
+}
+.updatecomment-button-container button {
+	width: 150px;
+	font-size: 12px;
+	text-wrap: nowrap;
+}
+.updatecomment-button-container {
+	display: flex;
+	gap: 12px;
+	align-items: center;
+}
+.updatecomment-submit {
+	margin: 0 !important;
+	text-align: center;
+	width: fit-content !important;
+}
+.updatecomment-input {
+	background-color: transparent !important;
+	border: none !important;
+	font-weight: bold;
+	width: 100%;
+	color: #ffffff;
+	font-size: 22px;
+	overflow-y: scroll;
+	scrollbar-width: none !important;
+}
 .comment-input-container {
 	position: relative;
 	border: 1px solid lightgray;

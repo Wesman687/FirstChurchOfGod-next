@@ -93,7 +93,7 @@ function CommentModal() {
                                         <Post post={item} key={index} postComment={true} postId={post.id} fetchData={fetchData} />                                        
                                 ))}
                                 </div>
-                            <FeedInput user={user} comment={commentDetails.id} fetchData={fetchData} collapse={true} />
+                            <FeedInput user={user} comment={commentDetails.id} fetchData={fetchData} collapse={true} postId={post.id} />
                         </div>
                     )}
                 </div>
