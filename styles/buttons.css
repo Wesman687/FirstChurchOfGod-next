@@ -1,0 +1,346 @@
+/******** Buttons *********/
+
+.submit, .red-button {
+    width: 100%;
+    border: 0;
+    outline: 0;
+    padding: 16px;
+    color: #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 500;
+    margin-top: 20px;
+    cursor: pointer;
+}
+.submit {	
+	border: 2px solid #1cbed6;
+    background: linear-gradient(to bottom, rgb(115, 198, 247), rgb(24, 160, 250));
+}
+.black-button {	
+	color: #ffffff;
+	border: 1px solid #000000;
+	background: linear-gradient(90deg, hsl(0, 1%, 19%), #757575, #726f6f, #838383);
+	cursor: pointer;
+	margin: 0 !important;
+	border-radius: 4px;
+}
+.black-button:hover {
+	overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+    -webkit-transition: all 0.70s ease 0s;
+       -moz-transition: all 0.70s ease 0s;
+        -ms-transition: all 0.70s ease 0s;
+         -o-transition: all 0.70s ease 0s;
+            transition: all 0.70s ease 0s;
+    z-index: 1;
+    background-image: linear-gradient(90deg, hsl(0, 0%, 75%), #c4c4c4bb, #8f8f8f, #797a7abb) !important;
+    background-position: 98% 0 !important;
+    color: #000 !important;
+    -webkit-background-size: 210% 100%;
+       -moz-background-size: 210% 100%;
+        -ms-background-size: 210% 100%;
+         -o-background-size: 210% 100%;
+            background-size: 210% 100% ;   
+}
+.orange-btn {
+	background-color: #1DC6DF;
+	cursor: pointer;
+}
+.orange-btn:hover {
+	position: relative;
+    -webkit-transition: all .70s ease 0s;
+       -moz-transition: all .70s ease 0s;
+        -ms-transition: all .70s ease 0s;
+         -o-transition: all .70s ease 0s;
+            transition: all .70s ease 0s;
+    z-index: 1;
+    background-image: linear-gradient(270deg, #ffa800 0%, #ffa800 50%, #1DC6DF 50%, #1DC6DF 100%) !important;
+    background-position: 98% 0 !important;
+    color: #FFFFFF !important;
+    -webkit-background-size: 210% 100%;
+       -moz-background-size: 210% 100%;
+        -ms-background-size: 210% 100%;
+         -o-background-size: 210% 100%;
+            background-size: 210% 100% ;
+}
+.black-button-active {
+	border: 1px solid red;
+}
+.filter-remove-button, .red-button {	
+	color: #ffffff;
+	border: 1px solid #940101;
+	background: linear-gradient(90deg, hsl(0, 100%, 52%), #f50404, #ff2929, #ff0101);
+	cursor: pointer;
+	margin: 0 !important;
+}
+.submit:hover {
+	background: linear-gradient(90deg, hsl(194, 98%, 63%), #2df1ffbb, #4be1fc, #61e6fabb);
+	overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+    -webkit-transition: all 0.70s ease 0s;
+       -moz-transition: all 0.70s ease 0s;
+        -ms-transition: all 0.70s ease 0s;
+         -o-transition: all 0.70s ease 0s;
+            transition: all 0.70s ease 0s;
+    z-index: 1;
+    background-image: linear-gradient(90deg, hsl(194, 97%, 64%), #2df1ffbb, #4be1fc, #61e6fabb) !important;
+    background-position: 98% 0 !important;
+    color: #000 !important;
+    -webkit-background-size: 210% 100%;
+       -moz-background-size: 210% 100%;
+        -ms-background-size: 210% 100%;
+         -o-background-size: 210% 100%;
+            background-size: 210% 100% ;
+    
+	border: 2px solid #0000;   
+ 
+}
+.filter-remove-button:hover, .red-button:hover {
+	color: white;
+	background: linear-gradient(270deg, hsl(0, 94%, 50%), #ff6969bb, #ff7d7d, #fc6060bb) ;	
+    white-space: nowrap;
+    position: relative;
+    -webkit-transition: all 0.70s ease 0s;
+       -moz-transition: all 0.70s ease 0s;
+        -ms-transition: all 0.70s ease 0s;
+         -o-transition: all 0.70s ease 0s;
+            transition: all 0.70s ease 0s;
+    z-index: 1;
+    background-image: linear-gradient(270deg, hsl(0, 98%, 58%), #f31818, #d30606, #d30303)  !important;
+    background-position: 98% 0 !important;
+    color: #000 !important;
+    -webkit-background-size: 210% 100%;
+       -moz-background-size: 210% 100%;
+        -ms-background-size: 210% 100%;
+         -o-background-size: 210% 100%;
+            background-size: 210% 100% ;
+    
+}
+.filter-edit-button, .light-blue-button {	
+	color: #ffffff;
+	border: 1px solid #1cbed6;
+	background: linear-gradient(90deg, hsl(194, 98%, 63%), #2df1ffbb, #4be1fc, #61e6fabb);
+	cursor: pointer;
+	border-radius: 4px;
+	
+}
+
+
+.filter-edit-button:hover, .add-image-button:hover, .light-blue-button:hover {	
+	background: linear-gradient(90deg, hsl(194, 98%, 63%), #2df1ffbb, #4be1fc, #61e6fabb);
+	overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+    -webkit-transition: all 0.70s ease 0s;
+       -moz-transition: all 0.70s ease 0s;
+        -ms-transition: all 0.70s ease 0s;
+         -o-transition: all 0.70s ease 0s;
+            transition: all 0.70s ease 0s;
+    z-index: 1;
+    background-image: linear-gradient(90deg, hsl(194, 97%, 64%), #2df1ffbb, #4be1fc, #61e6fabb) !important;
+    background-position: 98% 0 !important;
+    color: #FFFFFF !important;
+    -webkit-background-size: 210% 100%;
+       -moz-background-size: 210% 100%;
+        -ms-background-size: 210% 100%;
+         -o-background-size: 210% 100%;
+            background-size: 210% 100% ;
+    
+
+}
+.filter-add {
+	background: linear-gradient(90deg, hsl(194, 98%, 63%), #2df1ffbb, #4be1fc, #61e6fabb);
+	border-radius: 4px;
+	border: 2px solid #0000;
+	cursor: pointer;
+}
+
+.filter-add:hover {
+	color: #000;
+	background: linear-gradient(90deg, hsl(194, 98%, 63%), #2df1ffbb, #4be1fc, #61e6fabb);
+	overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+    -webkit-transition: all 0.70s ease 0s;
+       -moz-transition: all 0.70s ease 0s;
+        -ms-transition: all 0.70s ease 0s;
+         -o-transition: all 0.70s ease 0s;
+            transition: all 0.70s ease 0s;
+    z-index: 1;
+    background-image: linear-gradient(90deg, hsl(194, 97%, 64%), #2df1ffbb, #4be1fc, #61e6fabb) !important;
+    background-position: 98% 0 !important;
+    color: #FFFFFF !important;
+    -webkit-background-size: 210% 100%;
+       -moz-background-size: 210% 100%;
+        -ms-background-size: 210% 100%;
+         -o-background-size: 210% 100%;
+            background-size: 210% 100% ;
+    
+	border: 2px solid #0000;
+}
+.add-image-button {
+	border: 1px solid #1DC6DF;
+	color: #dddbdb;
+	padding: 4px 8px;
+	font-size: 18px;
+	font-weight: 400;
+	margin-bottom: 24px;
+	border-radius: 4px;
+	background: linear-gradient(90deg, hsl(194, 98%, 63%), #2df1ffbb, #4be1fc, #61e6fabb);
+	cursor: pointer;
+}
+.manage-filters-label {
+	color: #1cbed6;
+	cursor: pointer;
+	border: 1px solid lightgray;
+	border-radius: 8px;
+	padding: 4px 8px;
+	font-weight: 500;
+	background: linear-gradient(90deg, #ebebeb, #d6d1d1bb, #ebebeb, #d3cdcdbb);
+}
+.manage-filters-label:hover {
+	color: #999999;
+	background: linear-gradient(90deg, hsl(194, 97%, 64%), #00eeffbb, #4be1fc, #01accabb);
+	overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+    -webkit-transition: all 0.70s ease 0s;
+       -moz-transition: all 0.70s ease 0s;
+        -ms-transition: all 0.70s ease 0s;
+         -o-transition: all 0.70s ease 0s;
+            transition: all 0.70s ease 0s;
+    z-index: 1;
+    background-image: linear-gradient(90deg, hsl(194, 97%, 64%), #00eeffbb, #4be1fc, #01accabb) !important;
+    background-position: 98% 0 !important;
+    color: #FFFFFF !important;
+    -webkit-background-size: 210% 100%;
+       -moz-background-size: 210% 100%;
+        -ms-background-size: 210% 100%;
+         -o-background-size: 210% 100%;
+            background-size: 210% 100% ;
+    border: none !important;
+}
+.filter-add, .light-blue-button {
+	background: linear-gradient(90deg, hsl(194, 98%, 63%), #2df1ffbb, #4be1fc, #61e6fabb);
+	border-radius: 4px;
+	cursor: pointer;
+	box-shadow: 0px 1px 1px 1px #03afffa6
+}
+
+.filter-add:hover, .light-blue-button:hover {
+	color: #999999 !important;
+	background: linear-gradient(90deg, hsl(194, 98%, 63%), #2df1ffbb, #4be1fc, #61e6fabb);
+	overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+    -webkit-transition: all 0.70s ease 0s;
+       -moz-transition: all 0.70s ease 0s;
+        -ms-transition: all 0.70s ease 0s;
+         -o-transition: all 0.70s ease 0s;
+            transition: all 0.70s ease 0s;
+    z-index: 1;
+    background-image: linear-gradient(90deg, hsl(194, 97%, 64%), #2df1ffbb, #4be1fc, #61e6fabb) !important;
+    background-position: 98% 0 !important;
+    -webkit-background-size: 210% 100%;
+       -moz-background-size: 210% 100%;
+        -ms-background-size: 210% 100%;
+         -o-background-size: 210% 100%;
+            background-size: 210% 100% ;
+			
+	box-shadow: 0px 1px 1px 1px #03afffa6
+	
+}
+.manage-filters-label-active {
+	color: #000;
+	background: linear-gradient(90deg, hsl(194, 98%, 63%), #2df1ffbb, #4be1fc, #61e6fabb);
+	overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+    -webkit-transition: all 0.70s ease 0s;
+       -moz-transition: all 0.70s ease 0s;
+        -ms-transition: all 0.70s ease 0s;
+         -o-transition: all 0.70s ease 0s;
+            transition: all 0.70s ease 0s;
+    z-index: 1;
+    background-image: linear-gradient(90deg, hsl(194, 97%, 64%), #2df1ffbb, #4be1fc, #61e6fabb) !important;
+    background-position: 98% 0 !important;
+    color: #FFFFFF !important;
+    -webkit-background-size: 210% 100%;
+       -moz-background-size: 210% 100%;
+        -ms-background-size: 210% 100%;
+         -o-background-size: 210% 100%;
+            background-size: 210% 100% ;
+    
+			border-radius: 8px !important;
+			border: 2px solid #0000;
+			padding: 4px;
+			text-shadow:
+			-1px -1px 0 #0000001a,  
+			 1px -1px 0 #0000001a,
+			 -1px 1px 0 #0000001a,
+			  1px 1px 0 #0000001a;
+}
+.outline-button { 
+	cursor: pointer;
+	color: #FFFFFF !important;
+	border: 1px solid #FFFFFF;
+	padding: 8px 32px;
+	width: fit-content;
+}
+.outline-button:hover {	
+	overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+    -webkit-transition: all 0.70s ease 0s;
+       -moz-transition: all 0.70s ease 0s;
+        -ms-transition: all 0.70s ease 0s;
+         -o-transition: all 0.70s ease 0s;
+            transition: all 0.70s ease 0s;
+    z-index: 1;
+    background-image: linear-gradient(90deg, #1DC6DF 0%, #1DC6DF 50%, #ffffff 50%, #ffffff 100%) !important;
+    color: #1DC6DF !important;
+    border-color: #ffffff !important;
+	background-position: 98% 0 !important;
+    -webkit-background-size: 210% 100%;
+       -moz-background-size: 210% 100%;
+        -ms-background-size: 210% 100%;
+         -o-background-size: 210% 100%;
+            background-size: 210% 100% ;
+}
+.outline-button-transparent { 
+	cursor: pointer;
+	color: #FFFFFF !important;
+	border: 1px solid #FFFFFF;
+	text-shadow:
+	-1px -1px 0 #0000001a,  
+	 1px -1px 0 #0000001a,
+	 -1px 1px 0 #0000001a,
+	  1px 1px 0 #0000001a;
+	padding: 8px 32px;
+	font-size: 16px;
+	width: fit-content;
+	background-color: transparent;
+}
+.outline-button-transparent:hover {	
+	overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+    -webkit-transition: all 0.70s ease 0s;
+       -moz-transition: all 0.70s ease 0s;
+        -ms-transition: all 0.70s ease 0s;
+         -o-transition: all 0.70s ease 0s;
+            transition: all 0.70s ease 0s;
+    z-index: 1;
+    background-image: linear-gradient(90deg, #1DC6DF 0%, #1DC6DF 50%, #ffffff 50%, #ffffff 100%) !important;
+    color: #1DC6DF !important;
+    border-color: #ffffff !important;
+	text-shadow: none;
+	background-position: 98% 0 !important;
+    -webkit-background-size: 210% 100%;
+       -moz-background-size: 210% 100%;
+        -ms-background-size: 210% 100%;
+         -o-background-size: 210% 100%;
+            background-size: 210% 100% ;
+}

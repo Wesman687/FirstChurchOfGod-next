@@ -6,7 +6,7 @@ function HomeWelcome() {
     return (
         <div className="hp1_welcome_section">
             <div className="content_wrap">
-                <div className="columns_wrap">
+                <div className="columns_wrap welcome_wrapper">
                     <div className="column-1_2 sc_column_item sc_column_item_1 odd first">
                         <figure className="sc_image sc_image_shape_square">                            
                                 <Image src={ChurchImage} alt="" />                            

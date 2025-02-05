@@ -189,7 +189,7 @@ const Login = ({ defaultState }) => {
     <>
 
       {defaultState ?
-        <label className="click" onClick={() => handleOpen()}>Sign Up</label>
+        <label className="home-bottom-login" onClick={() => handleOpen()}>Sign Up</label>
         : <p className="login-link light-blue"
           onClick={() => handleOpen()}
         >
