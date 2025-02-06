@@ -1,5 +1,10 @@
 @charset "utf-8";
 @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap');
+
+a, a:hover, a:focus, a:active {
+	color: inherit !important;
+	text-decoration: none !important;
+}
 .contact-success-container {
 	width: 100%;
 	height: 30vh;
@@ -104,7 +109,7 @@
 .xs-icon {
 	width: 20px;
 }
-.med-icon {
+.md-icon {
 	width: 45px;
 }
 .gap-12 {
@@ -372,6 +377,7 @@ iframe, video, embed {
 	line-height: 1.7857em !important;
 	margin: 0;					/* Addresses margins set differently in IE6/7, F3/4, S5, Chrome */
 	vertical-align: baseline;	/* Improves appearance and consistency in all browsers */
+	z-index: 1;
 }
 .design-button, input {
 	line-height: normal;

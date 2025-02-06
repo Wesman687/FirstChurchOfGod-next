@@ -19,11 +19,11 @@ function HomeWelcome() {
 
                         <div className="sc_services_wrap">
                             <div className="sc_services sc_services_style_services-5 sc_services_type_icons sc_slider_nopagination sc_slider_nocontrols width_100_per">
-                                <h6 className="sc_services_subtitle sc_item_subtitle">Welcome</h6>
+                                <h6 className="sc_services_subtitle sc_item_subtitle home-top-paragraph">Welcome</h6>
                                 <h2 className="sc_services_title sc_item_title home-welcome-title">Loving God, Loving Others and Serving the Lord</h2>
                                 <div className="sc_services_descr sc_item_descr home-welcome-title home-welcome-subtitle"> We’d love to meet you! Come check us out this SUNDAY where you can meet us and see if The <span className='bold'>First Church of God</span>  might be a good fit for you. Our heart and soul is to introduce and connect people with the living and powerful God.</div>
                                 <div className="home-welcome-item">
-                                    <HouseIcon classes={"med-icon"}/>
+                                    <HouseIcon classes={"med-icon home-icons"}/>
                                     <div className="sc_services_item_content">
                                         <h4 className="sc_services_item_title">
                                             Follow with us
@@ -34,7 +34,7 @@ function HomeWelcome() {
                                     </div>
                                 </div>
                                 <div className="home-welcome-item">
-                                    <BookIcon classes={"med-icon"}/>
+                                    <BookIcon classes={"med-icon home-icons"}/>
                                     <div className="sc_services_item_content">
                                         <h4 className="sc_services_item_title">
                                             What We Believe</h4>
@@ -44,7 +44,7 @@ function HomeWelcome() {
                                     </div>
                                 </div>
                                 <div className="home-welcome-item">
-                                    <User classes={"med-icon"}/>
+                                    <User classes={"home-icons" }/>
                                     <div className="sc_services_item_content">
                                         <h4 className="sc_services_item_title">
                                             New Here?

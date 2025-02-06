@@ -17,7 +17,7 @@ function CWC() {
                 <div className='cwc-wrapper'>
                     <Image src={bibleStudy} className='cwc-intro-image' alt='Women studying bible' />
                     <div className='cwc-intro-wrapper'>
-                        <h3>Discover a global network of women ready to live out their calling.</h3>
+                        <h2>Discover a global network of women ready to live out their calling.</h2>
                         <h5>As a Christian Women Connection Member, you are grafted into the blessing of leadership training, spiritual growth, and fellowship.</h5>
                         <Link href={'https://christianwomenconnection.org/connection/'} target='_blank'><button className='cwc-member-button light-blue-button'>Become a member</button></Link>
                     </div>                   
