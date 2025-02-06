@@ -11,14 +11,15 @@ function HomeToAction() {
                     <div className="columns_wrap">
                         <div className="sc_call_to_action_featured column-1_2">
                             <Image src={cwc} className='cwc-homepage-image' alt=""  />
-                        </div><div className="sc_call_to_action_info column-1_2">
+                        </div>
+                        <div className="sc_call_to_action_info column-1_2 home-cwc-wrapper">
                             
                             <h2 className="sc_call_to_action_title sc_item_title">Christian Women Connection</h2>
                             <div className="sc_call_to_action_descr sc_item_descr">Discover a global network of women ready to live out their calling.</div>
                             <div className="sc_call_to_action_buttons sc_item_buttons">
-                                <div className="sc_call_to_action_button sc_item_button">
+                                <div className="sc_call_to_action_button sc_item_button home-cwc-button-wrapper">
                                     <Link href={'/cwc'}>
-                                    <label className="click sc_button sc_button_square sc_button_style_filled sc_button_color_style_2 sc_button_size_large orange-btn">view more</label>
+                                    <label className="click sc_button sc_button_square sc_button_style_filled sc_button_color_style_2 sc_button_size_large orange-btn home-cwc-button">view more</label>
                                     </Link>
                                 </div>
                             </div>

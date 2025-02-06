@@ -1,0 +1,762 @@
+/******* Prayer Request *******/
+.prayerrequest-container {
+	padding: 64px 64px;
+	width: 90%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.request-page-container {
+	width: 100%;
+	padding-top: 64px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	gap: 32px;
+}
+
+.collapse-prayer-wrapper, .collapse-prayer-wrapper-collapsed {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+	flex-direction: column;	
+	transition: all 1350ms ease;
+}
+.prayerrequest-container h4 {
+	text-align: center;
+}
+.collapse-prayer-wrapper-collapsed {
+	border-bottom: 1px solid #cccccc;
+}
+.collapse-prayer-wrapper {
+		border: 1px solid #cccccc;
+}
+.prayerrequest-container {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	padding: 64px;
+	gap: 64px;
+}
+.prayer-chevron {
+	position: absolute;
+	width: 100%;
+	top: 0;
+	left: 95%;
+	z-index: 50;
+}
+.prayer-add-wrapper {
+	width: 70%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	gap: 12px;
+	padding-bottom: 32px;
+}
+.prayer-add-wrapper div {
+	display: flex;
+	gap: 12px;
+	width: 100%;
+}
+.prayer-add-wrapper div label {
+	font-size: 22px;
+	font-weight: bold;
+}
+.prayer-add-wrapper div input, .prayer-add-wrapper div textarea {
+	width: 100%;
+	border: 1px solid #c6c6c7;
+	padding: 4px;
+	height: 30px !important;
+}
+.prayer-add-button {
+	font-size: 24px;
+	padding: 4px 16px;
+}
+.list-prayer-container {
+	width: 80%;
+}
+.list-prayer-item {
+	display: flex;
+	flex-direction: column;
+	border: 1px solid #c9c9c9;
+	margin-bottom: 32px;
+	border-radius: 4px;
+}
+.list-prayer-item div label {
+	font-size: 22px;
+}
+.list-prayer-item-desc {
+	padding: 32px;
+	text-align: center;
+}
+.list-prayer-item-title {
+	display: flex;
+	justify-content: space-between;
+	background-color: #c6f7ff;
+	align-items: center;
+	color: #000;
+	padding: 8px 4px;
+}
+.list-prayer-item-addremove {
+	width: 150px;
+	position: absolute;
+	z-index: 100;
+	font-size: 12px;
+	background-color: #555555;
+	color: #1DC6DF;
+	display: none;
+	flex-direction: column;
+	gap: 12px;
+	padding: 12px 12px;
+	top: 100%; /* Position below the chevron */
+	right: 0;
+}
+.list-prayer-dropdown:hover .list-prayer-item-addremove {
+	display: flex;
+}
+.list-prayer-item-chevron {
+	cursor: pointer;
+}
+.list-prayer-dropdown {
+	position: relative;	
+	border-bottom: 1px solid #5555552d;
+	padding: 4px;
+}
+.list-prayer-item-addremove label {
+	cursor: pointer;
+}
+.list-prayer-item-addremove label:hover {
+	color: #1dc5df9d;
+}
+.list-prayer-input {
+	background-color: #c6f7ff;
+	width: max-content;
+}
+.list-prayer-textarea {
+	background-color: transparent !important;
+	border: none !important;
+	font-size: 22px;
+	overflow: hidden; /* Hide the scrollbar */
+    min-height: 50px; /* Optional: Set a minimum height */
+	width: 100%;
+	resize: none;
+}
+.list-prayer-textarea:active {
+	background-color: transparent;
+}
+.list-prayer-disclaimer {
+	text-align: center;
+}
+
+/***** Prayer Weekly *****/ 
+.prayer-weekly-container {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	width: 90%;		
+	padding: 0px 0 64px 0;
+	text-align: center;
+}
+.prayer-weekly-item {	
+	display: flex;
+	gap: 24px;
+}
+.prayer-table-head {
+	text-align: center;
+	font-size: 26px;	
+}
+.blackandwhite-head {
+	background-color: #c6c6c7;
+}
+			
+.bluebg-head {
+	color: #ffffff;
+	background-image: linear-gradient(90deg, hsla(192, 78%, 18%, 0.884), #0c4d52bb, #13545f, #02272cbb);
+}
+.blackandwhite-body {
+	color: #050505;
+	border: 1px solid #c6c6c7;
+	
+}
+.bluebg-body {	
+	background-image: linear-gradient(90deg, hsl(194, 69%, 57%), #48ced8, #9af0ff, #37e4ff);
+	color: #050505;
+}
+.bluebg-body:nth-child(even) {	
+	background-image: linear-gradient(90deg, hsl(194, 84%, 47%), hsl(184, 92%, 60%), #9af0ff, #06dbfc);
+	color: #050505;
+}
+
+.prayer-table-body {
+	font-size: 22px;
+}
+.prayer-weekly-container thead tr td {
+	padding: 8px 16px;
+	border: none;
+}
+.prayer-weekly-container tbody tr td {
+	padding: 16px;
+	border: none;
+}
+
+.filter-controls {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+}
+.prayer-weekly-container button {
+	width: 150px;
+	font-size: 16px;
+	padding: 4px 8px;
+}
+.filter-controls {
+	padding: 0;
+}
+
+/*********** Post Feed *******/
+/****** Side Bar *****/
+.sidebar-container {
+	width: 15vw;
+	height: 100vh;
+    background-image: linear-gradient(90deg, hsl(212, 94%, 53%), #2b5dff, #2b5dff) !important;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
+.logo-feed {
+	padding-top: 32px;
+	width: 125px;
+}
+.sidebar-links {
+	padding-top: 32px;
+	font-size: 22px;
+}
+.sidebar-links label {
+	color: #ffffff;
+	cursor: pointer;
+}
+.sidebar-links label:hover {
+	color: #ffffff70;
+}
+
+
+.feed-container {
+	width: 70vw;
+	height: 100vh;
+    background-image: linear-gradient(90deg, hsl(212, 94%, 53%), #2b5dff, #2b5dff, #458fff) !important;
+}
+.trending-container {	
+	width: 15vw;
+	height: 100vh;
+    background-image: linear-gradient(90deg, hsl(212, 94%, 53%), #2b5dff, #3361f8) !important;
+}
+.postfeed-page-wrapper {
+	display: flex;
+	width: 100%;
+}
+.feed-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+.feedinput-container {
+	border: 1px solid lightgray;
+	border-radius: 8px;
+	background-color: rgba(132, 216, 255, 0.555);
+	color: #ffffff;
+	padding: 8px 16px;
+	font-size: 14px;
+	margin: 12px;
+	width: 95%;
+}
+.feedinput-collapse-container {	
+	padding: 8px 16px;
+	margin-top: 32px;
+	border: 1px solid lightgray;
+	width: 95%;
+	color: #ffffff;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.feedposts-container {
+	border: 1px solid lightgray;
+	background-color: rgba(132, 216, 255, 0.555);
+	border-radius: 4px;
+	width: 98% !important;
+	height: 80vh !important;
+}
+.feed-container {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+/************* Feed Input ******/
+.feedinput-image {
+	border-radius: 50%;
+	width: 50px;
+	max-height: 50px;
+	border: 1px solid #cce8ff;
+}
+.feedinput-input-buttons-wrapper {
+	display: flex;
+	justify-content: space-between;
+	width: 80%;
+}
+.inputs-galleryicon {
+	color: #0cff04;
+}
+.inputs-galleryicon:hover {
+	color: #000;
+}
+.feedinput-galleryicon {
+	display: flex;
+	align-items: center;
+}
+.feedinput-icons-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 24px;
+}
+.feedinput-input-wrapper div button {
+	width: 150px;
+}
+.feedinput-wrapper {
+	padding: 24px 12px;
+	display: flex;
+	gap: 48px;
+	width: 100%;
+}
+.feedinput-input-wrapper {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	gap: 24px;
+}
+.postfeed-input {
+	background-color: transparent;
+	font-size: 22px;
+	color: #ffffff !important;
+	border-bottom: 1px solid #4be1fc;
+}
+.postfeed-input {
+	background-color: transparent !important;
+	border: none !important;
+	font-size: 22px;
+	overflow: hidden; /* Hide the scrollbar */
+    min-height: 50px; /* Optional: Set a minimum height */
+	resize: none;
+	width: 100%;
+	color: #ffffff !important;
+}
+.postfeed-input:active {
+	background-color: transparent;
+	color: #ffffff !important;
+}
+.postfeed-input::placeholder {	
+	color: #ffffff !important;
+}
+.feedinput-textandimage-wrapper {
+	display: flex;
+	justify-content: space-between;
+}
+.feedinput-uploadimage-wrapper {
+	width: 50%;
+}
+.feedinput-uploadimage {
+	max-width: 150px;
+	max-height: 175px;
+	border-radius: 8px;
+}
+.modal-box-confirm {
+	width: fit-content;
+	padding: 32px 64px;
+}
+.modal-box-confirm h3, .modal-box-confirm p {
+	color: #1148ff;
+}
+/******* Feed Posts *****/ 
+
+.feedposts-container {
+	width: 100%;
+	height: 60vh;
+	overflow-y: scroll;   
+    scrollbar-width: none;  /* Firefox: hide scrollbar */
+    -ms-overflow-style: none; 
+}
+.feedposts-wrapper {
+	padding: 12px;
+	gap: 24px;
+}
+.post-dropdown {
+	display: flex;
+	position: relative;	
+	background-color: transparent;
+}
+.post-dropdown:hover .post-prayer-menudropdown {
+	display: flex;
+}
+.post-prayer-menudropdown {
+	width: 150px;
+	position: absolute;
+	z-index: 100;
+	font-size: 18px;
+	background-color: #000000b6;
+	color: #00ddff;
+	display: none;
+	flex-direction: column;
+	gap: 12px;
+	padding: 12px 12px;
+	top: 100%; /* Position below the chevron */
+	right: 0;
+}
+.post-prayer-menudropdown label:hover {
+	color: #ddd;
+}
+
+.post-container {
+	padding: 8px 12px;
+	margin-bottom: 24px;
+	border: 1px solid lightgray;
+	border-radius: 8px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	flex-direction: column;
+	color: #ffffff;
+	cursor: pointer;
+	background-color: #003af8a2;
+}
+.post-header {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	gap: 12px;
+}
+.post-info-container {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	width: 70%;
+	color: #ffffff;
+}
+.post-owner-container {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	color: lightgray;
+	text-wrap: nowrap;
+	height: fit-content;
+	gap: 12px;
+}
+.posts-owner-photoandname {
+	display: flex;
+	gap: 12px;
+	align-items: center;
+}
+.post-owner-container h4, .post-owner-container h5 {
+	margin: 0 !important;
+	font-size: 24px;
+    color: #16f7ff;
+  
+}
+.posts-owner-photourl {
+	width: 50px;
+	border: 1px solid lightgray;
+	border-radius: 50%;
+}
+.post-image {
+	width: 30%;
+	max-height: 40%;
+	align-self: center;
+}
+.post-container-collapsed {
+	display: flex;
+	align-items: center;
+}
+.collapse-line {
+	width: 100%;
+	border-bottom: 1px solid lightgrey;
+}
+.post-footer {
+	display: flex;
+	flex-direction: column;
+	padding-top: 12px;
+}
+.post-like-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-top: 1px solid #d3d3d3;
+	display: flex;
+	gap: 32px;
+	font-size: 18px;
+}
+.post-like-container div {
+	display: flex;
+	gap: 8px;
+	color: #d3d3d3;
+}
+.mycommentorlike {
+	color: #ffffff;
+}
+.post-like-container div:hover {
+	color: #00e1ff !important;	
+}
+.commentlikeicons {
+	color: #ddd;
+}
+.commmetsowner-container {
+	color: #ffffff;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	flex-direction: column;
+	gap: 32px;
+	width: 90%;
+	border: 1px solid lightgray;
+	border-radius: 8px;
+	margin-bottom: 12px;
+	padding: 4px;
+	text-wrap: nowrap;
+}
+
+.commentscontainer-commentandimage {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	gap: 24px;
+	width: 100%;
+}
+.commentsowner-wrapper {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+}
+.commmetsowner-container h4 {
+	margin: 0;
+	color: #16f7ff;
+}
+.comments-comment-wrapper {
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+}
+.comment-image {
+	width: 150px;
+}
+.updatecomment-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+.homecomment-red-button {
+	font-size: 12px !important;
+	padding: 12px 22px !important;
+	text-align: center;
+}
+.updatecomment-button-container button {
+	width: 150px;
+	font-size: 12px;
+	text-wrap: nowrap;
+}
+.updatecomment-button-container {
+	display: flex;
+	gap: 12px;
+	align-items: center;
+}
+.updatecomment-submit {
+	margin: 0 !important;
+	text-align: center;
+	width: fit-content !important;
+}
+.updatecomment-input {
+	background-color: transparent !important;
+	border: none !important;
+	font-weight: bold;
+	width: 100%;
+	color: #ffffff;
+	font-size: 22px;
+	overflow-y: scroll;
+	scrollbar-width: none !important;
+}
+.comment-input-container {
+	position: relative;
+	border: 1px solid lightgray;
+	padding: 22px;
+	border-radius: 8px;
+    background-image: linear-gradient(90deg, hsl(212, 94%, 53%), #2b5dff, #2b5dff, #458fff) !important;
+	width: 95vw;
+}
+.comment-modal-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    max-height: 90vh; /* Adjust the max-height as needed */
+
+   
+}
+.postcomment-info {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+}
+.comments-post-container {	
+    overflow-y: scroll; /* Enable vertical scrolling */
+	scrollbar-width: none;
+    margin-top: 10px;
+    padding: 10px;
+}
+
+/******* Emoji Modal *****/ 
+.resizable-modal {
+	background-color: white;
+	border-radius: 8px;
+	padding: 28px;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+  }
+  
+  
+  .emoji-container {
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+  }
+  .close-icon {
+	position: absolute;
+	top: 8px;
+	right: 8px;
+	cursor: pointer;
+  }
+  .close-icon-svg:hover {
+	color: #06dbfc !important;
+  }
+  .close-icon-svg {
+	width: 24px;
+	height: 24px;
+	color: black; /* Change the color of the close icon */
+  }
+.emoji-button {
+	font-size: 24px;
+}
+
+
+/************** Full Calendar ********/
+.calender-am-pm {
+	display: flex;
+	background-color: #F3F5F8;
+	margin: 12px 0;
+}
+.calender-am-pm input {
+	margin: 0 !important;
+}
+.calendar-am-select {
+	margin: 10px 0;
+	border: none;
+}
+.calendar-button-container {	
+	gap: 14px;
+	padding-top: 16px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.calendar-button-container button {
+	width: 350px;
+	height: 75px;
+}
+.calendar-container {
+	background-color: #fff;
+	padding: 64px;
+}
+.fc {
+	--fc-border-color:  #01b2ce; /* Change border colors */
+  }
+  .fc-col-header-cell {
+	background-color: #cce8ff; /* Background color for the day headers */
+	font-weight: bold; /* Optional: Make the text bold */
+	border-bottom: 1px solid #ddd; /* Optional: Add a border under the headers */
+	color: #ffffff !important;
+	
+  }
+  .fc-scroller {
+	scrollbar-width: none;
+  }
+  .fc .fc-highlight {
+	background-color: rgba(0, 0, 0, 0.3) !important; /* Example: a semi-transparent dark background */
+	border: none; /* Remove any border (optional) */
+  }
+
+.custom-cal {
+	width: 100%;
+	text-wrap: wrap;
+	border-radius: 5px; /* Add rounded corners */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Add a subtle shadow */
+    padding: 5px;
+	text-align: center;
+	cursor: pointer;
+  }
+  .fc-col-header-cell {
+	background-image: linear-gradient(90deg, #4245fffa, #1102e9f6, #4245fffa);
+  }
+  
+  .fc-toolbar {
+	background-color: #cce8ff93; /* Customize toolbar background */
+	border-bottom: 1px solid #ddd;
+  }
+  .fc-daygrid-day-number {
+	font-weight: bold;
+  }
+  .fc-toolbar-title {
+	color: #011013; /* Set the toolbar title text color */
+	font-size: 18px; /* Adjust font size */
+}
+  .fc .fc-daygrid-day {
+	position: relative;
+	background-color: linear-gradient(90deg, hsl(194, 100%, 60%), #68f2fcbb, #16c8e7, #09cbe9bb); /* Customize day grid background */
+	background-image: linear-gradient(90deg, #81f4fc, #91ecfafa);
+	padding-right: 16px;
+	height: 150px;
+  }
+  .fc-button {
+	background-color: #007bff !important; /* Button background */
+	color: white; /* Button text color */
+	border-radius: 5px; /* Optional rounded corners */
+	font-weight: bold;
+}
+.fc-button:hover {
+	background-color: #0056b3 !important; /* Darker blue on hover */
+	color: #f5f5f5; /* Lighter color on hover */
+	
+}
+.fc-button:active {
+	background-color: #004085; /* Change background color when clicked */
+	color: #ffffff; /* Change text color when clicked */
+	border: none !important; /* Optional: Change border color on click */
+	box-shadow: none !important;
+  }
+  
+  .fc-button.fc-button-active {
+	background-color: #0056b3 !important; 
+	color: #ffffff !important;
+	border-color: #004085 !important; 
+	border: none !important;
+	box-shadow: none !important;
+  }

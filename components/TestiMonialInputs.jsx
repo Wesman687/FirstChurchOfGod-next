@@ -4,7 +4,7 @@ import React from 'react'
 function TestiMonialInput({comment, image, user, position}) {
     return (
         <>
-            <div className="sc_testimonial_content">
+            <div className="sc_testimonial_content testimonial-comment">
                 <p>{comment}</p>
             </div>
             <div className="sc_testimonial_avatar-info">

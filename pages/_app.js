@@ -16,6 +16,8 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import '@/styles/account.css'
 import '@/styles/modals.css'
+import '@/styles/prayerandpost.css'
+import "@/styles/pages.css"
 // Remove list import since it has no CSS
 
 import { Provider } from 'react-redux';
