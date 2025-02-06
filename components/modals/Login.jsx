@@ -1,137 +1,66 @@
-import React, { useEffect, useRef, useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React, { useEffect, useState } from "react";
 import Modal from "@mui/material/Modal";
 import { useDispatch, useSelector } from "react-redux";
 import { openLoginModal, closeLoginModal } from "@/redux/modalSlice.js";
 import {
-  onAuthStateChanged, createUserWithEmailAndPassword,
-  signInWithEmailAndPassword
+  onAuthStateChanged,  
+  signInWithEmailAndPassword,
+  sendPasswordResetEmail,  // ✅ Firebase Reset Password
 } from "firebase/auth";
-import { setUser } from "@/redux/userSlice.js";
-import { addDoc, collection, where, getDocs, query, updateDoc, doc } from "firebase/firestore";
-import { auth, db, storage } from "@/firebase";
+import { auth, db } from "@/firebase";
 import XIcon from "../icons/XIcon";
-import upload from '@/images/upload_area.png'
-import Image from "next/image";
-import { getDownloadURL, ref, uploadString } from "firebase/storage";
 import RingSpinner from "../RingSpinner";
-import { toast } from "react-toastify";
-import ErrorModal from "./ErrorModal";
-
+import ErrorModal from "./ErrorModal"; // ✅ Import confirmation modal
+import ConfirmationModal from "./ConfirmationModel";
+import { collection, getDocs, query, where } from "firebase/firestore";
+import { setUser } from "@/redux/userSlice";
 
 const Login = ({ defaultState }) => {
   const [signState, setSignState] = useState(defaultState || "Sign In");
-  const [lastName, setLastName] = useState("")
-  const [firstName, setFirstName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [photoUrl, setPhotoUrl] = useState('')
-  const [phone, setPhone] = useState("");
   const [loading, setLoading] = useState(false);
+  const [resetEmailSent, setResetEmailSent] = useState(false);
+  const [showConfirm, setShowConfirm] = useState(false); // ✅ Show confirmation modal
   const isOpen = useSelector((state) => state.modals.loginModalOpen);
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.user)
-  const filePickerRef = useRef(null)
   const [error, setError] = useState({ showError: false, title: "", message: "" });
 
-  function addImage(e) {
-    const reader = new FileReader()
-    if (e.target.files[0]) {
-      reader.readAsDataURL(e.target.files[0])
-    }
-
-    reader.addEventListener("load", e => {
-      setPhotoUrl(e.target.result)
-    })
-  }
-  async function handleOpen() {
-    setSignState('Sign In')
-    dispatch(openLoginModal())
-  }
-
-  async function handleSignUp(e) {
+  // ✅ Function to handle password reset confirmation
+  const confirmResetPassword = (e) => {
     e.preventDefault();
-    setLoading(true)
-    let res
-    let downloadURL
-    if (!photoUrl) {
-      alert('Please include a photo')
-      setLoading(false)
-      return
+    if (!email) {
+      setError({ showError: true, title: "Error", message: "Please enter your email first." });
+      return;
     }
+    setShowConfirm(true); // ✅ Open confirmation modal
+  };
+
+  // ✅ Function to send password reset email
+  async function handleResetPassword() {
+    setShowConfirm(false); // Close modal before sending request
+    setLoading(true);
     try {
-      const userCredentials = await createUserWithEmailAndPassword(
-        auth,
-        email,
-        password
-      )
-      res = userCredentials.user;
-      console.log(res)
+      await sendPasswordResetEmail(auth, email);
+      setResetEmailSent(true); // ✅ Show success message
+    } catch (error) {
+      setError({ showError: true, title: "Reset Failed", message: error.message });
+    }
+    setLoading(false);
+  }
 
-
-      const imageRef = await ref(storage, `photos/${res.uid}`)
-      const uploadImage = await uploadString(imageRef, photoUrl, "data_url")
-      downloadURL = await getDownloadURL(imageRef)
-
-
-
-      const docRef = await addDoc(collection(db, `user`), {
-        uid: res.uid,
-        firstName: firstName,
-        lastName: lastName,
-        username: email.split('@')[0],
-        email: email,
-        phone: phone,
-        photoUrl: downloadURL,
-      });
-      if (docRef) {
-        dispatch(
-          setUser({
-            username: email.split("@")[0],
-            firstName: firstName,
-            lastName: lastName,
-            email: email,
-            uid: res.uid,
-            phone: phone,
-            photoUrl: photoUrl,
-            isAdmin: false
-          })
-        );
-
-        await updateDoc(docRef, {
-          userRef: docRef.id,
-        });
-
-      }
-      else {
-        setError({
-          showError: true,
-          title: "Sign Up Failed",
-          message: "Please try again, or log in to check account credentials.",
-        });
-      }
+  // ✅ Function to handle login
+  const login = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
       dispatch(closeLoginModal());
     } catch (error) {
-      dispatch(closeLoginModal())
-      setError({ showError: true, title: "Error", message: error.message });
+      setError({ showError: true, title: "Login Failed", message: error.message });
     }
-
-    setLoading(false)
-  }
-  const login = async (email, password) => {
-    setLoading(true)
-    try {
-      await signInWithEmailAndPassword(auth, email, password)
-
-    } catch (error) {
-      dispatch(closeLoginModal())
-      setError({ showError: true, title: "Login Failed", message: error.code.split('/')[1].split('-').join(" ") });
-    }
-    setLoading(false)
-  }
-  function checkCredentials() {
-    return false
-  }
+    setLoading(false);
+  };
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
       setLoading(true);
@@ -140,7 +69,6 @@ const Login = ({ defaultState }) => {
         return;
       }
 
-      console.log("🔥 Auth UID:", currentUser.uid);  // ✅ Debugging Step
 
       const userRef = query(
         collection(db, "user"),
@@ -187,161 +115,101 @@ const Login = ({ defaultState }) => {
 
   return (
     <>
+      <p className="login-link light-blue" onClick={() => dispatch(openLoginModal())}>
+        Log In
+      </p>
 
-      {defaultState ?
-        <label className="home-bottom-login" onClick={() => handleOpen()}>Sign Up</label>
-        : <p className="login-link light-blue"
-          onClick={() => handleOpen()}
-        >
-          Log In
-        </p>}
-
-      <Modal
-        open={isOpen}
-        onClose={() => dispatch(closeLoginModal())}
-        className="login__modal"
-      >
+      <Modal open={isOpen} onClose={() => dispatch(closeLoginModal())} className="login__modal"
+        style={{ zIndex: 100 }} // Ensure it's below confirmation modal
+        disableEnforceFocus // 🔥 Allows stacking multiple modals
+        disableAutoFocus>
         <div className="login__container">
-
           <div className="login">
-
-            <div className={signState === 'Sign In' ? 'login-form login-setting' : 'login-form login-setting-signup'}>
+            <div className="login-form login-setting">
               {loading ? (
                 <RingSpinner />
-              ) :
+              ) : (
                 <>
                   <div className="login-close-container">
-                    <div
-                      className="login__x"
-                      onClick={() => dispatch(closeLoginModal())}
-                    >
+                    <div className="login__x" onClick={() => dispatch(closeLoginModal())}>
                       <XIcon />
                     </div>
                   </div>
                   <h1>{signState}</h1>
                   <form>
                     <div className="input-container">
-                      {signState === "Sign Up" ? (
-                        <>
-                          <p>First Name</p>
-                          <input
-                            value={firstName}
-                            onChange={(event) => {
-                              setFirstName(event.target.value);
-                            }}
-                            type="text"
-                            placeholder="First Name"
-                          />
-                          <p>Last Name</p>
-                          <input
-                            value={lastName}
-                            onChange={(event) => {
-                              setLastName(event.target.value);
-                            }}
-                            type="text"
-                            placeholder="Last Name"
-                          />
-                        </>
-                      ) : (
-                        <></>
-                      )}
-
                       <p>Email</p>
                       <input
                         value={email}
-                        onChange={(event) => {
-                          setEmail(event.target.value);
-                        }}
+                        onChange={(event) => setEmail(event.target.value)}
                         type="email"
                         placeholder="Email"
                       />
 
-                      <p>Password</p>
-                      <input
-                        value={password}
-                        onChange={(event) => {
-                          setPassword(event.target.value);
-                        }}
-                        type="password"
-                        placeholder="Password"
-                      />
-
-                      {signState === "Sign Up" && (
+                      {signState === "Sign In" && (
                         <>
-                          <p>Phone</p>
+                          <p>Password</p>
                           <input
-                            value={phone}
-                            onChange={(event) => {
-                              setPhone(event.target.value);
-                            }}
-                            type="phone"
-                            placeholder="Phone"
+                            value={password}
+                            onChange={(event) => setPassword(event.target.value)}
+                            type="password"
+                            placeholder="Password"
                           />
-
-                          <div className="photourl-container">
-                            {photoUrl ?
-
-
-                              <div className="account-image-preview">
-                                <div className='x-image-preview' onClick={() => setPhotoUrl(null)}><XIcon />
-                                </div> <img src={photoUrl} className="preview-image" />
-                              </div>
-
-                              :
-                              <>
-                                <div className="input-photourl" onClick={() => filePickerRef.current.click()}>
-                                  <Image src={upload} className="input-upload-image" alt="upload" />
-                                  <input onChange={addImage} ref={filePickerRef} className="hidden" type="file" />
-                                </div>
-                              </>
-                            }
-                          </div>
-                        </>
-                      )}
-                      {signState === "Sign Up" ? (<>
-                        {!(checkCredentials()) ? <button className="submit" onClick={handleSignUp}>Sign Up</button> : <button className="submit__disabled">Fill out all Fields</button>}
-                      </>
-                      ) : (
-                        <>
-                          <button type="submit" className="submit" onClick={(e) => {
-                            e.preventDefault()
-                            login(email, password)
-                            dispatch(closeLoginModal())
-                          }}>
+                          <button type="submit" className="submit" onClick={login}>
                             Sign In
                           </button>
+
+                          {/* ✅ Forgot Password Link */}
+                          <p className="forgot-password" onClick={confirmResetPassword}>
+                            Forgot Password?
+                          </p>
+
+                          {/* ✅ Show success message when reset email is sent */}
+                          {resetEmailSent && (
+                            <p className="success-message">
+                              Password reset email sent! Check your inbox.
+                            </p>
+                          )}
                         </>
                       )}
                     </div>
                   </form>
+
                   <div className="form-switch">
                     {signState === "Sign In" ? (
                       <p>
                         New Account{" "}
-                        <span
-                          onClick={() => setSignState("Sign Up")}
-                          className="switch-text"
-                        >
+                        <span onClick={() => setSignState("Sign Up")} className="switch-text">
                           Sign Up Now
                         </span>
                       </p>
                     ) : (
                       <p>
-                        Already have account?{" "}
-                        <span
-                          onClick={() => setSignState("Sign In")}
-                          className="switch-text"
-                        >
+                        Already have an account?{" "}
+                        <span onClick={() => setSignState("Sign In")} className="switch-text">
                           Sign In
                         </span>
                       </p>
                     )}
-                  </div></>}
+                  </div>
+                </>
+              )}
             </div>
           </div>
-
         </div>
       </Modal>
+
+      {/* ✅ Confirmation Modal for Reset */}
+      {showConfirm && (
+        <ConfirmationModal
+          title="Reset Password?"
+          message={`Are you sure you want to reset your password? A reset link will be sent to ${email}.`}
+          onConfirm={handleResetPassword}
+          onCancel={() => setShowConfirm(false)}
+        />
+      )}
+
+      {/* ✅ Error Modal */}
       {error.showError && (
         <ErrorModal
           title={error.title}

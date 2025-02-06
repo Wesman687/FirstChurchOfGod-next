@@ -1,0 +1,195 @@
+
+/**** Login *****/
+.login__container {
+	width: 100vw;
+	height: 100vh;
+	position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100!important;
+}
+.login-close-container {
+	width: fit-content;
+}
+.login__x {
+    position: absolute;
+    top: 6px;
+    right: 5px;
+    color: white;
+	width: 48px;
+	font-weight: bold;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+	z-index: 250;
+}
+.xicon {
+	width: 48px;
+}
+.login__x:hover {
+    color: #3799AB;
+}
+.login__modal {
+    position: relative;
+    width: 100%;
+    top: 0;
+    bottom: 50;
+}
+.login__button {
+    position: relative;
+    background-color: transparent;
+    color: white;
+    cursor: pointer;
+    padding: 8px 16px;
+    border-radius: 14px;
+    border-color: white;
+}
+.login__button:hover {
+    background-color: white;
+    color: black;
+}
+.login-logo {
+    width: 150px;
+}
+.forgot-password {
+	cursor: pointer;
+}
+.forgot-password:hover {
+	color: #1cbed6;
+}
+.login-form {
+	position: relative;
+    width: 450px;
+    background: rgba(0,0,0,0.75);
+    border-radius: 4px;
+    padding: 16px;
+    margin: auto;
+	overflow: hidden;
+	border: 1px solid #c7f2fda6;
+}
+.login-form h1 {
+    font-size: 32px;
+    font-weight: 500;
+	color: #1cbed6;
+}
+
+.login-form input {
+    width: 100%;
+	max-width: 100%;
+    color: #000;
+    border: 0;
+    margin: 12px 0;
+    outline: 0;
+    padding: 8px;
+    font-size: 16px;
+    font-weight: 500;
+}
+.login-form input::placeholder {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.submit__disabled {
+    background-color: rgb(2, 65, 2) !important;
+    color: #ddd !important;
+    cursor: not-allowed !important;
+}
+.input-container {
+	width: 100%;
+	overflow: hidden;
+}
+.input-container p {
+	margin: 0;
+	color: #ddd ;
+}
+.input-upload-image {
+	height: 75px;
+	width: 75px;
+	cursor: pointer;
+}
+
+.form-help {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #b3b3b3;
+    font-size: 13px;
+}
+.form-switch {
+    margin-top: 12px;
+    color: #3799AB;
+    font-weight: 500;
+    cursor: pointer;
+}
+.switch-text {
+    margin-left: 6px;
+    color: #ddd;
+    font-weight: 500px;
+    cursor: pointer;
+}
+.admin__link {
+    text-decoration: underline;
+}
+
+/**** Accout Setting ****/ 
+.displayed-photourl {
+	border-radius: 50%;
+	width: 45px;
+	max-height: 45px;
+	border: 2px solid #0000002f;
+}
+.account-settings{
+	height: 55vh;
+}
+.settings-ring-container {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	text-align: center;
+	align-items: center;
+	justify-content: center;
+	background-color: transparent !important;
+}
+.disable__submit {    
+    width: 100%;
+    border: 0;
+    outline: 0;
+    padding: 16px;
+    background: rgba(2, 94, 2, 0.712);
+    color: rgb(151, 151, 151);
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 500;
+    margin: 12px 0 0 0;
+    cursor: not-allowed;
+}
+
+.account-image-preview{
+	width: 75px;
+	position: relative;
+	cursor: pointer;
+}
+.photourl-container {
+	display: flex;
+	gap: 24px;
+	justify-content: space-between;
+}
+.x-image-preview {
+	width: 16px;
+	color: #1cbed6;
+	position: absolute;
+	cursor: pointer;
+	top: 0;
+	right: 0;
+}
+.x-image-preview:hover {
+	color: #000;
+}
+.account-settings-check {
+	color: green;
+	width: 24px;
+}
+.account-check-container {
+	display: flex;
+}

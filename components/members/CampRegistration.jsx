@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import CampModal from "../modals/CampModal";
+import RingSpinner from "../RingSpinner";
 
 export default function CampRegistration() {
     const [registrations, setRegistrations] = useState([]);
     const [selectedRegistration, setSelectedRegistration] = useState(null);
     const [modalVisible, setModalVisible] = useState(false);
+    const [loading, setLoading] = useState(false);
 
     // Fetch Registrations
     useEffect(() => {
@@ -35,7 +37,8 @@ export default function CampRegistration() {
 
     return (
         <div className='managemembers-container'>
-            <table className='managemembers-table'>
+            {loading ? <RingSpinner />  
+            : <table className='managemembers-table'>
                 <thead>
                     <tr className='managemembers-table-thead-row'>
                         <th>Name</th>
@@ -53,12 +56,12 @@ export default function CampRegistration() {
                             <td>{reg.email}</td>
                             <td>{reg.phone}</td>
                             <td>
-                                <button onClick={() => handleRegistrationClick(reg)}>Edit</button>
+                                <button className="orange-btn camp-edit" onClick={() => handleRegistrationClick(reg)}>Edit</button>
                             </td>
                         </tr>
                     ))}
                 </tbody>
-            </table>
+            </table>}
 
             {/* Open modal when registration is selected */}
             {modalVisible && (

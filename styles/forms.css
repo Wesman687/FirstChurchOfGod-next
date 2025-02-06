@@ -92,6 +92,9 @@
     cursor: pointer;
     margin-top: 20px;
   }
+  .camp-edit {
+    border: 1px solid white;
+  }
   
   .submit-button:hover {
     background: #0056b3;

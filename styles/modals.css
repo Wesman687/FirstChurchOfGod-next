@@ -1,0 +1,238 @@
+.member-modal-button-wrapper {
+	margin-top: 12px;
+	display: flex;
+	flex-direction: column;
+}
+.member-modal-button-wrapper div button {
+	width: 225px;
+	border-radius: 4px;
+	font-size: 16px;
+	height: 45px;
+	padding: 0;
+}
+
+/******* Member Modal *****/
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+.ripple {
+	position: absolute;
+	width: 2px;
+	height: 3px;
+	background: #15ddfc;
+	border-radius: 35%;
+	pointer-events: none;
+	transform: scale(0);
+	animation: ripple-animation 5s ease-in-out;
+  }
+  
+  @keyframes ripple-animation {
+	0% {
+	  transform: scale(150);
+	  opacity: .2;
+	}
+	25% {
+		transform: scale(50);
+		opacity: .6;
+	  }
+	  75% {
+		transform: scale(150);
+		opacity: .2;
+	  }
+	  100% {
+		transform: scale(50);
+		opacity: .6;
+	  }
+  }
+
+.modal-box {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 400px;
+    max-width: 90%;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    position: relative;
+    z-index: 1001;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	background-image: linear-gradient(90deg, hsl(194, 100%, 60%), #31f1ff, #24dbfc, #25e2ff)
+}
+.member-modal-photo-wrapper {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.modal-box h3 {
+	z-index: 50;
+	font-size: 22px;
+	color: #ffffff !important;
+	text-shadow:
+	-1px -1px 0 #0000001a,  
+	 1px -1px 0 #0000001a,
+	 -1px 1px 0 #0000001a,
+	  1px 1px 0 #0000001a;
+}
+.modal-box form div {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	z-index: 50;
+	cursor: wait;
+}
+.modal-box form div label {
+	z-index: 50;
+	color: #ffffff;
+	font-size: 22px;
+	text-shadow:
+	-1px -1px 0 #0000001a,  
+	 1px -1px 0 #0000001a,
+	 -1px 1px 0 #0000001a,
+	  1px 1px 0 #0000001a;
+}
+.modal-box form div input {
+	z-index: 50;
+	font-size: 22px;
+    color: rgba(255, 255, 255, 0.6); /* Lighter white for placeholders */
+	background-color: transparent !important;
+	border: #eeeaea !important;
+	padding: 4px;
+}
+/* Style for placeholder text inside the input fields */
+.modal-box form div input::placeholder {
+    color: rgba(255, 255, 255, 0.6); /* Lighter white for placeholders */
+	background-color: transparent !important;
+}
+
+/* Style for when the input is focused (active) */
+.modal-box form div input:focus {
+    background-color: rgba(255, 255, 255, 0.1); /* Slightly darker background on focus */
+    border-color: #4caf50; /* Green border on focus */
+    color: white;
+	text-shadow:
+	-1px -1px 0 #0000001a,  
+	 1px -1px 0 #0000001a,
+	 -1px 1px 0 #0000001a,
+	  1px 1px 0 #0000001a;
+	background-color: transparent !important;
+}
+
+/* Style for when the input is hovered */
+.modal-box form div input:hover {
+    background-color: rgba(255, 255, 255, 0.05); /* Slightly lighter background on hover */
+}
+
+/* Error or invalid input styling (example) */
+.modal-box form div input.invalid {
+    border-color: red; /* Red border for invalid input */
+}
+
+.modal-image {
+    border-radius: 50%;
+	border: 1px solid #ddd;
+}
+.member-modal-preview {
+	width: 100px !important;
+}
+.save-button {
+	align-self: center;
+}
+.member-modal-uturn {
+	z-index: 50;
+	width: 35px;
+	margin-left: 24px;
+	cursor: pointer;
+}
+.member-model-button-wrapper {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-top: 24px;
+}
+.close-button {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    position: absolute;
+	border-radius: 4px;
+    top: 10px;
+    right: 10px;
+}
+.close-button:hover {
+	background-color: white;
+	color: #000;
+	font-size: 14px;
+	transition: 450ms ease;
+}
+/***** Confirmation MOdel *****/
+/* General modal overlay */
+.modal-overlay-confirm {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Dark overlay */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+/* Modal box styling */
+.modal-box-confirm {
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    max-width: 500px;
+    width: 100%;
+	z-index: 500;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+/* Modal header and text */
+.modal-box h3 {
+    margin-top: 0;
+}
+
+/* Confirmation Modal specific styling */
+.confirmation-box {
+    text-align: center;
+    padding: 20px;
+	z-index: 500;
+}
+
+.confirmation-box p {
+    margin: 20px 0;
+}
+
+/* Confirmation modal buttons */
+.confirmation-modal-buttons {
+    display: flex;
+    margin-top: 20px;
+	gap: 24px;
+	justify-content: center;
+}
+.confirmation-modal-buttons button {
+	width: 150px;
+	font-size: 16px;
+}
+.confirm-button {
+	color: #ffffff !important;
+}

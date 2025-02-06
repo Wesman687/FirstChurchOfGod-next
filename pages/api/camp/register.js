@@ -39,7 +39,7 @@ export default async function handler(req, res) {
         } else if (req.method === "PUT") {
             const { id, ...updatedData } = req.body;
             const result = await collection.updateOne(
-                { _id: new ObjectId(id) },
+                { _id: id },
                 { $set: updatedData }
             );
             return res.status(200).json({ message: "Updated successfully", result });
