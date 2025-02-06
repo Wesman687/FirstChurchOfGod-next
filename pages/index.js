@@ -20,7 +20,7 @@ export default function Home() {
               <HomeWelcome />
               <HomeMission />
               <HomeToAction />
-              <Testimonial />
+              {/* <Testimonial /> */}
               <HomeBottom />
             </section>
           </article>

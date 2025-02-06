@@ -182,7 +182,7 @@
 /***** Confirmation MOdel *****/
 /* General modal overlay */
 .modal-overlay-confirm {
-    position: fixed;
+    position: fixed !important;
     top: 0;
     left: 0;
     width: 100%;
@@ -191,7 +191,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 2000;
+    z-index: 9999 !important;
 }
 
 /* Modal box styling */
@@ -201,7 +201,7 @@
     padding: 20px;
     max-width: 500px;
     width: 100%;
-	z-index: 500;
+	z-index: 1100;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     position: relative;
 }
@@ -215,7 +215,7 @@
 .confirmation-box {
     text-align: center;
     padding: 20px;
-	z-index: 500;
+	z-index: 1000;
 }
 
 .confirmation-box p {

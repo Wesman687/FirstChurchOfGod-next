@@ -3,26 +3,33 @@ import Modal from "@mui/material/Modal";
 import { useDispatch, useSelector } from "react-redux";
 import { openLoginModal, closeLoginModal } from "@/redux/modalSlice.js";
 import {
-  onAuthStateChanged,  
+  onAuthStateChanged,
   signInWithEmailAndPassword,
-  sendPasswordResetEmail,  // ✅ Firebase Reset Password
+  sendPasswordResetEmail,
+  createUserWithEmailAndPassword,
 } from "firebase/auth";
-import { auth, db } from "@/firebase";
+import { auth, db, storage } from "@/firebase";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage"; // ✅ Firebase Storage
 import XIcon from "../icons/XIcon";
 import RingSpinner from "../RingSpinner";
-import ErrorModal from "./ErrorModal"; // ✅ Import confirmation modal
+import ErrorModal from "./ErrorModal";
 import ConfirmationModal from "./ConfirmationModel";
-import { collection, getDocs, query, where } from "firebase/firestore";
+import { collection, getDocs, query, where, doc, setDoc } from "firebase/firestore";
 import { setUser } from "@/redux/userSlice";
 
-const Login = ({ defaultState }) => {
+const Login = ({ defaultState, classes }) => {
   const [signState, setSignState] = useState(defaultState || "Sign In");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [photo, setPhoto] = useState(null);
+  const [photoUrl, setPhotoUrl] = useState("");
   const [loading, setLoading] = useState(false);
   const [resetEmailSent, setResetEmailSent] = useState(false);
-  const [showConfirm, setShowConfirm] = useState(false); // ✅ Show confirmation modal
-  const isOpen = useSelector((state) => state.modals.loginModalOpen);
+  const [showConfirm, setShowConfirm] = useState(false);
+  const [isOpen, setIsOpen ]= useState(false)
   const dispatch = useDispatch();
   const [error, setError] = useState({ showError: false, title: "", message: "" });
 
@@ -33,16 +40,16 @@ const Login = ({ defaultState }) => {
       setError({ showError: true, title: "Error", message: "Please enter your email first." });
       return;
     }
-    setShowConfirm(true); // ✅ Open confirmation modal
+    setShowConfirm(true);
   };
 
   // ✅ Function to send password reset email
   async function handleResetPassword() {
-    setShowConfirm(false); // Close modal before sending request
+    setShowConfirm(false);
     setLoading(true);
     try {
       await sendPasswordResetEmail(auth, email);
-      setResetEmailSent(true); // ✅ Show success message
+      setResetEmailSent(true);
     } catch (error) {
       setError({ showError: true, title: "Reset Failed", message: error.message });
     }
@@ -61,6 +68,72 @@ const Login = ({ defaultState }) => {
     }
     setLoading(false);
   };
+
+  // ✅ Function to handle image upload
+  const handleImageUpload = async (file) => {
+    if (!file) return null;
+
+    const storageRef = ref(storage, `profile_pictures/${file.name}`);
+    await uploadBytes(storageRef, file);
+    const downloadURL = await getDownloadURL(storageRef);
+    return downloadURL;
+  };
+
+  // ✅ Function to handle sign up
+  const signUp = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+
+    try {
+      // ✅ Check if the email is already registered
+      const userRef = query(collection(db, "user"), where("email", "==", email));
+      const data = await getDocs(userRef);
+
+      if (!data.empty) {
+        setError({ showError: true, title: "Sign Up Failed", message: "This email is already in use." });
+        setLoading(false);
+        return;
+      }
+
+      // ✅ Upload profile photo if provided
+      let uploadedPhotoUrl = "";
+      if (photo) {
+        uploadedPhotoUrl = await handleImageUpload(photo);
+        setPhotoUrl(uploadedPhotoUrl);
+      }
+
+      // ✅ Create user in Firebase Authentication
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const newUser = userCredential.user;
+
+      // ✅ Save user info to Firestore
+      const userData = {
+        uid: newUser.uid,
+        email,
+        firstName,
+        lastName,
+        phone,
+        photoUrl: uploadedPhotoUrl || "",
+        isAdmin: false,
+        isMember: false,
+        userRef: newUser.uid,
+        isSuper: false,
+        isSuperSuper: false,
+        commentRef: "",
+      };
+      await setDoc(doc(db, "user", newUser.uid), userData);
+
+      // ✅ Save user in Redux
+      dispatch(setUser(userData));
+
+      dispatch(closeLoginModal());
+    } catch (error) {
+      setError({ showError: true, title: "Sign Up Failed", message: error.message });
+    }
+
+    setLoading(false);
+  };
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
       setLoading(true);
@@ -69,43 +142,16 @@ const Login = ({ defaultState }) => {
         return;
       }
 
-
-      const userRef = query(
-        collection(db, "user"),
-        where("uid", "==", currentUser.uid)  // ✅ Ensure Firestore is queried correctly
-      );
+      const userRef = query(collection(db, "user"), where("uid", "==", currentUser.uid));
       const data = await getDocs(userRef);
 
       if (data.empty) {
-        console.log("❌ No matching user found in Firestore for UID:", currentUser.uid);
         setLoading(false);
         return;
       }
 
       const userInfo = data.docs[0].data();
-      const docId = data.docs[0].id;
-
-      if (!userInfo.userRef || userInfo.userRef !== docId) {
-        console.log("🔄 Updating userRef field in Firestore...");
-        await updateDoc(doc(db, "user", docId), { userRef: docId });
-      }
-
-      // ✅ Correctly set UID in Redux
-      dispatch(setUser({
-        username: userInfo.email.split("@")[0],
-        firstName: userInfo.firstName,
-        lastName: userInfo.lastName,
-        email: userInfo.email,
-        uid: currentUser.uid, // ✅ Use Firebase Auth UID
-        phone: userInfo.phone,
-        photoUrl: userInfo.photoUrl,
-        isAdmin: userInfo.isAdmin,
-        isMember: userInfo.isMember,
-        userRef: docId, // ✅ Store Firestore doc ID separately
-        isSuper: userInfo.isSuper,
-        isSuperSuper: userInfo.isSuperSuper,
-        commentRef: userInfo.commentRef
-      }));
+      dispatch(setUser(userInfo));
 
       setLoading(false);
     });
@@ -115,14 +161,11 @@ const Login = ({ defaultState }) => {
 
   return (
     <>
-      <p className="login-link light-blue" onClick={() => dispatch(openLoginModal())}>
-        Log In
-      </p>
+      <p className={classes} onClick={() => setIsOpen(true)}>Login</p> 
 
-      <Modal open={isOpen} onClose={() => dispatch(closeLoginModal())} className="login__modal"
-        style={{ zIndex: 100 }} // Ensure it's below confirmation modal
-        disableEnforceFocus // 🔥 Allows stacking multiple modals
-        disableAutoFocus>
+      
+      {isOpen && (
+        <div className="custom-modal-overlay">
         <div className="login__container">
           <div className="login">
             <div className="login-form login-setting">
@@ -131,45 +174,55 @@ const Login = ({ defaultState }) => {
               ) : (
                 <>
                   <div className="login-close-container">
-                    <div className="login__x" onClick={() => dispatch(closeLoginModal())}>
+                    <div className="login__x" onClick={() => setIsOpen(false)}>
                       <XIcon />
                     </div>
                   </div>
-                  <h1>{signState}</h1>
+                  <h1 className="login-header">{signState}</h1>
                   <form>
                     <div className="input-container">
                       <p>Email</p>
-                      <input
-                        value={email}
-                        onChange={(event) => setEmail(event.target.value)}
-                        type="email"
-                        placeholder="Email"
-                      />
-
-                      {signState === "Sign In" && (
+                      <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder="Email" />
+                      {signState == "Sign Up" && <> <p>Password</p>
+                          <input value={password} onChange={(e) => setPassword(e.target.value)} type="password" placeholder="Password" /></>}
+                      {signState === "Sign In" ? (
                         <>
                           <p>Password</p>
-                          <input
-                            value={password}
-                            onChange={(event) => setPassword(event.target.value)}
-                            type="password"
-                            placeholder="Password"
-                          />
-                          <button type="submit" className="submit" onClick={login}>
-                            Sign In
-                          </button>
+                          <input value={password} onChange={(e) => setPassword(e.target.value)} type="password" placeholder="Password" />
+                          <button type="submit" className="submit" onClick={login}>Sign In</button>
+                          <p className="forgot-password" onClick={confirmResetPassword}>Forgot Password?</p>
+                        </>
+                      ) : (
+                        <>
+                          <p>First Name</p>
+                          <input value={firstName} onChange={(e) => setFirstName(e.target.value)} type="text" placeholder="First Name" />
+                          <p>Last Name</p>
+                          <input value={lastName} onChange={(e) => setLastName(e.target.value)} type="text" placeholder="Last Name" />
+                          <p>Phone</p>
+                          <input value={phone} onChange={(e) => setPhone(e.target.value)} type="text" placeholder="Phone" />
+                          <p>Profile Photo</p>
+                          <div className="login-file">
+                            <input
+                              type="file"
+                              accept="image/*" // Ensures only image files
+                              onChange={(e) => {
+                                const file = e.target.files[0];
+                                if (file) {
+                                  setPhoto(file);
+                                  setPhotoUrl(URL.createObjectURL(file)); // Generate preview URL
+                                }
+                              }}
+                            />
 
-                          {/* ✅ Forgot Password Link */}
-                          <p className="forgot-password" onClick={confirmResetPassword}>
-                            Forgot Password?
-                          </p>
-
-                          {/* ✅ Show success message when reset email is sent */}
-                          {resetEmailSent && (
-                            <p className="success-message">
-                              Password reset email sent! Check your inbox.
-                            </p>
-                          )}
+                            {/* ✅ Display Image Preview */}
+                            {photoUrl && (
+                              <div className="image-preview">
+                                <img src={photoUrl} alt="User Preview" />
+                              </div>
+                            )}
+                          </div>
+                          
+                          <button type="submit" className="submit" onClick={signUp}>Sign Up</button>
                         </>
                       )}
                     </div>
@@ -177,19 +230,9 @@ const Login = ({ defaultState }) => {
 
                   <div className="form-switch">
                     {signState === "Sign In" ? (
-                      <p>
-                        New Account{" "}
-                        <span onClick={() => setSignState("Sign Up")} className="switch-text">
-                          Sign Up Now
-                        </span>
-                      </p>
+                      <p>New Account? <span onClick={() => setSignState("Sign Up")} className="switch-text">Sign Up Now</span></p>
                     ) : (
-                      <p>
-                        Already have an account?{" "}
-                        <span onClick={() => setSignState("Sign In")} className="switch-text">
-                          Sign In
-                        </span>
-                      </p>
+                      <p>Already have an account? <span onClick={() => setSignState("Sign In")} className="switch-text">Sign In</span></p>
                     )}
                   </div>
                 </>
@@ -197,8 +240,8 @@ const Login = ({ defaultState }) => {
             </div>
           </div>
         </div>
-      </Modal>
-
+        </div>
+        )}
       {/* ✅ Confirmation Modal for Reset */}
       {showConfirm && (
         <ConfirmationModal
@@ -217,6 +260,7 @@ const Login = ({ defaultState }) => {
           onClose={() => setError({ showError: false, title: "", message: "" })}
         />
       )}
+
     </>
   );
 };

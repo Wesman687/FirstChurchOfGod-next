@@ -2,8 +2,8 @@
 
 function ConfirmationModal({ title, message, onConfirm, onCancel }) {
     return (
-        <div className='modal-overlay-confirm'>
-            <div className='modal-box-confirm confirmation-box' style={{ zIndex: 3000 }}>
+        <div className='modal-overlay-confirm' style={{ zIndex: 1000 }}>
+            <div className='modal-box-confirm confirmation-box' >
                 <h3>{title}</h3>
                 <p>{message}</p>
                 <div className='confirmation-modal-buttons'>

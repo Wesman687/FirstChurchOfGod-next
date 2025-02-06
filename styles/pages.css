@@ -47,12 +47,14 @@
 }
 
 .home-bottom-firstparagraph {
-    font-size: 14px;
     font-weight: bold;
 	max-width: 50%;
 	word-wrap: break-word;
 	border-right: 1px solid white;
-	padding: 12px 24px;
+	padding: 12px 24px;    
+	color: white;
+	font-size: 22px;
+    
 }
 
 .home-bottom-email {
@@ -67,6 +69,7 @@
 .home-bottom-login {
 	margin: 0;
 	cursor: pointer;
+    text-wrap: break-word;
 }
 
 .outline-button {
@@ -97,10 +100,6 @@
 .home-bottom-email a {
 	color: white;
 }
-.home-bottom-firstparagraph {
-	color: white;
-	font-size: 22px;
-}
 /***** Gallery */
 .post_content-2 {
 	width: 100% !important;
@@ -124,11 +123,29 @@
 	display: flex;
 	justify-content: space-between;
 }
-.login-link:hover {
-	color: #000 !important;
+
+.login-link-outline:hover {    
+    
+    white-space: nowrap;
+    position: relative;
+    -webkit-transition: all 0.70s ease 0s;
+       -moz-transition: all 0.70s ease 0s;
+        -ms-transition: all 0.70s ease 0s;
+         -o-transition: all 0.70s ease 0s;
+            transition: all 0.70s ease 0s;
+    z-index: 1;
+    background-color: #ffa800;
+    background-position: 98% 0 !important;
+    color: white !important;
+    border: 1px solid #ffa800;
+
 }
-.login-link {
+.login-link-outline {
 	cursor: pointer;
+    border: 1px solid white;
+    padding: 8px 24px;
+    color: white !important;
+    word-wrap: break-word !important;
 }
 .esg-grid {
 	display: flex;
@@ -290,6 +307,7 @@
 .cwc-homepage-image {
 	border: 1px solid #333;
 	border-radius: 4px;
+    margin-bottom: 32px;
 }
 .cwc-body-text {
 	text-align: center;
@@ -302,15 +320,49 @@
 	justify-content: center;
 	flex-direction: column;
 }
-
+.home-cwc-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.content_wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.home-mission-subtitle {
+    color: white;
+    word-wrap: break-word;
+    font-size: 14px;
+    text-align: center;
+    width: 120%;
+}
+.home-mission-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+}
+.home-mission-verse {
+    margin-top: 12px;
+    text-align: center;
+}
+.home-mission-left {
+    color: white;
+    font-size: 22px;
+    padding: 24px;
+}
 
 .cwc-mission-wrapper h3, .cwc-mission-wrapper h4 {
 	color: #ffffff !important;
 	text-align: center;
 	font-weight: bold;
-	text-decoration: underline;
-
-	
+	text-decoration: underline;	
+}
+.home-cwc-paragraph {
+    text-align: center;
 }
 .cwc-mission-wrapper li {
 	font-size: 18px;
@@ -334,6 +386,18 @@
 	width: 90%;
 	background-color: #1DC6DF;
 	color: #FFFFFF !important;
+}
+.columns_wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.cwc-homepage-image-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80% !important;
 }
 
 .cwc-mission-wrapper:hover {
@@ -359,6 +423,66 @@
     color: #1DC6DF;
     top: 360px !important;
 }
+.testimonial-container {
+    background-image: url(/_next/static/media/testimonials.99324c18.jpg);
+    background-position: 50%;
+    background-repeat: no-repeat;
+}
+
+/* Custom Navigation Arrows */
+.custom-prev, .custom-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2rem;
+    background: transparent;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    z-index: 10;
+}
+.custom-prev {
+    left: -50px;
+}
+.home-welcome-item{
+    padding-bottom: 24px;
+    display: flex;
+    gap: 32px;
+    font-style: bold;
+    font-size: 18px;
+}
+
+.custom-next {
+    right: -50px;
+}
+
+/* Medium Screens - Shrink Arrows */
+@media (max-width: 1024px) {
+    .custom-prev, .custom-next {
+        font-size: 1.5rem;
+        padding: 5px;
+    }
+    .home-welcome-item {
+        flex-direction: column !important;
+        display: flex;
+        text-align: center;
+    }
+    .home-welcome-item svg {
+        align-self: center;
+    }
+
+}
+
+/* Small Screens - Hide Arrows */
+@media (max-width: 768px) {
+    .custom-prev, .custom-next {
+        display: none;
+    }
+}
+
+
 @media screen and (max-width: 768px) {
     .cwc-intro-image {
         width: 100%;
@@ -413,6 +537,12 @@
         align-items: center;
         justify-content: center;
     }
+    .cwc-homepage-image-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-bottom: 24px;
+    }
     .home-welcome-item {
         display: flex;
         align-items: center;
@@ -428,6 +558,18 @@
         align-items: center;
         justify-content: center;
     }
+    .columns_wrap {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .cwc-homepage-image{
+        width: 80% !important;
+    }
+    .home-cwc-title {
+        font-size: 32px;
+    }
     .home-cwc-button {
         align-items: center;
     }
@@ -440,12 +582,22 @@
     .testimonial-comment {
         font-size: 14px;
     }
-    .testimonial-arrows {
-        display: none !important;
-        color: transparent!;
+    .home-bottom-wrapper {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
     }
-    .arrow--left, .arrow--right {
-        width: 15px;
-        top: 215px !important;
+    .home-bottom-firstparagraph{
+        border-right: none;
+        border-bottom: 1px solid white;
+       font-size: 18px !important;
+       word-wrap: normal;
+       max-width: 70vw;
     }
+    .home-bottom-email {
+        text-align: center;
+    }
+    .footer-wrapper {
+		flex-direction: column;
+	}
 }

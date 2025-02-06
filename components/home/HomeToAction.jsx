@@ -9,13 +9,13 @@ function HomeToAction() {
             <div className="sc_call_to_action sc_call_to_action_style_1 sc_call_to_action_align_left sc_call_to_action_color_style_1 width_100_per">
                 <div className="content_wrap">
                     <div className="columns_wrap">
-                        <div className="sc_call_to_action_featured column-1_2">
+                        <div className="cwc-homepage-image-wrapper">
                             <Image src={cwc} className='cwc-homepage-image' alt=""  />
                         </div>
-                        <div className="sc_call_to_action_info column-1_2 home-cwc-wrapper">
+                        <div className="home-cwc-wrapper">
                             
-                            <h2 className="sc_call_to_action_title sc_item_title">Christian Women Connection</h2>
-                            <div className="sc_call_to_action_descr sc_item_descr">Discover a global network of women ready to live out their calling.</div>
+                            <h2 className="home-cwc-title">Christian Women Connection</h2>
+                            <div className="home-cwc-paragraph">Discover a global network of women ready to live out their calling.</div>
                             <div className="sc_call_to_action_buttons sc_item_buttons">
                                 <div className="sc_call_to_action_button sc_item_button home-cwc-button-wrapper">
                                     <Link href={'/cwc'}>

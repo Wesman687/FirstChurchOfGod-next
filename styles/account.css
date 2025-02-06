@@ -2,12 +2,25 @@
 /**** Login *****/
 .login__container {
 	width: 100vw;
-	height: 100vh;
-	position: relative;
+    height: 100vh;
+	position: fixed;
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 100!important;
+    z-index: 100 !important;
+    position: relative;
+}
+.custom-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6); /* Dark overlay */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100; /* Ensure it's above everything */
 }
 .login-close-container {
 	width: fit-content;
@@ -23,6 +36,25 @@
     border: none;
     cursor: pointer;
 	z-index: 250;
+}
+.login-header {
+    margin: 12px;
+    text-align: center;
+}
+.image-preview img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-top: 10px;
+    border: 2px solid #ccc;
+  }
+.login-file {
+    display: flex;
+    gap: 24px;
+}
+.login-file input {
+    width: 150px !important;
 }
 .xicon {
 	width: 48px;

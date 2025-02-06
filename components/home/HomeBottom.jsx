@@ -13,7 +13,7 @@ function HomeBottom() {
                         <a className="" href="#">info@yoursite.com</a>
                     </h4>
                 </div>
-                <div className="outline-button home-bottom-button"><Login defaultState={'Sign Up'} /></div>
+                <div className="home-bottom-button "><Login defaultState={'Sign Up'} classes={"login-link-outline"}/></div>
             </div>
             </div>
         </div>

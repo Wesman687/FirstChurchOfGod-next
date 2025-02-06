@@ -10,7 +10,7 @@ function HomeMission() {
                     </div><div className="column-1_2 sc_column_item sc_column_item_2 even">
                         <div className="sc_section">
                             <div className="sc_section_inner">
-                                <p className="tpl_lighthome-mission-subtitle">
+                                <p className="home-mission-subtitle">
                                     “The church is the body of Christ on earth, empowered by the Holy Spirit to continue the task of reaching the lost and discipling the saved, helping them become fully devoted followers of Christ.”
                                 </p>
                                 <p className="tpl_light home-mission-verse">Ephesians 4:1-16</p>

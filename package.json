@@ -44,7 +44,6 @@
     "react-toastify": "^10.0.5",
     "redux": "^5.0.1",
     "shimmer-effects-react": "^1.0.4",
-    "swiper": "^11.2.2",
     "toastify": "^2.0.1"
   },
   "devDependencies": {

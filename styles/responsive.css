@@ -3356,13 +3356,6 @@ Very common low res
     .post_item_404 .column_404{
         width: 50%;
     }
-    body #booked-profile-page input.button-primary[type="submit"],
-    body table.booked-calendar input.button-primary[type="submit"],
-    body .booked-modal input.button-primary[type="submit"],
-    body table.booked-calendar .booked-appt-list .timeslot .timeslot-people button,
-    body #booked-profile-page .booked-profile-appt-list .appt-block.approved .status-block{
-        margin-bottom: 0;
-    }
 
     .widget_shopping_cart_content .buttons .checkout{
         margin-top: 1em;
@@ -3440,16 +3433,6 @@ Very common low res
         width: 45%;
         margin-right: 5%;
         font-size: 10em !important;
-    }
-    .post_item_404 .column_404{
-        width: 50%;
-    }
-    body #booked-profile-page input.button-primary[type="submit"],
-    body table.booked-calendar input.button-primary[type="submit"],
-    body .booked-modal input.button-primary[type="submit"],
-    body table.booked-calendar .booked-appt-list .timeslot .timeslot-people button,
-    body #booked-profile-page .booked-profile-appt-list .appt-block.approved .status-block{
-        margin-bottom: 0;
     }
 
     .widget_shopping_cart_content .buttons .checkout{
@@ -3533,37 +3516,8 @@ Very common low res
     .post_item_404 .column_404{
         width: 50%;
     }
-    body #booked-profile-page input.button-primary[type="submit"],
-    body table.booked-calendar input.button-primary[type="submit"],
-    body .booked-modal input.button-primary[type="submit"],
-    body table.booked-calendar .booked-appt-list .timeslot .timeslot-people button,
-    body #booked-profile-page .booked-profile-appt-list .appt-block.approved .status-block{
-        margin-bottom: 0;
-    }
+ 
 
-    .widget_shopping_cart_content .buttons .checkout{
-        margin-top: 1em;
-    }
-    .woocommerce .widget_price_filter .price_slider_amount .button{
-        float: none;
-        width: 100%;
-        margin: 0;
-    }
-    .woocommerce .widget_price_filter .price_slider_amount .price_label{
-        float: none;
-        padding-top: 1em;
-        text-align: center;
-    }
-	
-	.post_item_sermons{
-        height: auto;
-    }
-	.post_item_sermons h4.post_title{
-		font-size: 1.1429em !important;
-		margin-top: 1.1429em;}
-	.post_item_sermons .post_descr{
-		font-size: 0.8571em;
-	}
 }
 @media (min-width: 1263px) and (max-width: 1439px) {
     h1{
@@ -3576,27 +3530,6 @@ Very common low res
     }
     .post_item_404 .column_404{
         width: 50%;
-    }
-    body #booked-profile-page input.button-primary[type="submit"],
-    body table.booked-calendar input.button-primary[type="submit"],
-    body .booked-modal input.button-primary[type="submit"],
-    body table.booked-calendar .booked-appt-list .timeslot .timeslot-people button,
-    body #booked-profile-page .booked-profile-appt-list .appt-block.approved .status-block{
-        margin-bottom: 0;
-    }
-
-    .widget_shopping_cart_content .buttons .checkout{
-        margin-top: 1em;
-    }
-    .woocommerce .widget_price_filter .price_slider_amount .button{
-        float: none;
-        width: 100%;
-        margin: 0;
-    }
-    .woocommerce .widget_price_filter .price_slider_amount .price_label{
-        float: none;
-        padding-top: 1em;
-        text-align: center;
     }
     .tribe-bar-date-filter,
     .tribe-bar-search-filter{
@@ -3616,56 +3549,6 @@ Very common low res
 	}
 }
 
-@media (min-width: 320px) and (max-width: 1439px) {
-    /* Events Calendar */
-    body #booked-profile-page input.button-primary[type="submit"],
-    body table.booked-calendar input.button-primary[type="submit"],
-    body .booked-modal input.button-primary[type="submit"],
-    body table.booked-calendar .booked-appt-list .timeslot .timeslot-people button,
-    body #booked-profile-page .booked-profile-appt-list .appt-block.approved .status-block{
-        background-color : #1DC6DF;
-        margin-bottom: 1em;
-    }
-    body #booked-profile-page input.button-primary[type="submit"]:hover,
-    body table.booked-calendar input.button-primary[type="submit"]:hover,
-    body .booked-modal input.button-primary[type="submit"]:hover,
-    body table.booked-calendar .booked-appt-list .timeslot .timeslot-people button:hover,
-    body #booked-profile-page .booked-profile-appt-list .appt-block.approved .status-block:hover{
-        background-color : #3799AB;
-    }
-    body .booked-modal .bm-window{
-        background-color: #ffffff;
-    }
-    body .booked-form .field input[type="text"],
-    body .booked-form .field input[type="password"],
-    body .booked-form .field input[type="tel"],
-    body .booked-form .field input[type="email"]{
-        color: #555555;
-    }
-    #tribe-bar-form.tribe-bar-collapse #tribe-bar-collapse-toggle{
-        max-width: 182px;
-    }
-}
-
-@media (min-width: 721px) and (max-width: 959px) {
-    /* Events Calendar */
-    body #booked-profile-page input.button-primary[type="submit"],
-    body table.booked-calendar input.button-primary[type="submit"],
-    body .booked-modal input.button-primary[type="submit"],
-    body table.booked-calendar .booked-appt-list .timeslot .timeslot-people button,
-    body #booked-profile-page .booked-profile-appt-list .appt-block.approved .status-block{
-        margin-bottom: 0;
-    }
-    body table.booked-calendar .booked-appt-list .timeslot .timeslot-time{
-        width: 50%;
-    }
-    body table.booked-calendar .booked-appt-list .timeslot .timeslot-people{
-        width: 50%;
-    }
-    body table.booked-calendar .booked-appt-list .timeslot .timeslot-count{
-        display: none;
-    }
-}
 
 @media (min-width: 767px) and (max-width: 769px) {
     .woocommerce ul.products li.product:nth-child(2n),
