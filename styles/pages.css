@@ -510,6 +510,9 @@
 .home-icons {
     width: 48px;
 }
+.home-welcome-subtitle {
+    color: #3799AB;
+}
 
 
 @media screen and (max-width: 768px) {
@@ -565,6 +568,10 @@
         display: flex !important;
         justify-content: center;
         align-items: center;
+    }
+    .home-welcome-subtitle {
+        font-size: 18px !important;
+        padding-bottom: 12px;
     }
     .home-welcome-title {
         font-size: 22px;

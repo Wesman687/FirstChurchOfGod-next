@@ -21,6 +21,8 @@ export default function RegistrationForm() {
       });
   
       if (!response.ok) throw new Error("Registration failed");
+      const emailResponse = await sendEmail(formData, "CAMP REGISTRATION FROM CHURCH WEBSITE");
+            if (emailResponse.status !== "success") throw new Error(emailResponse.message || "❌ Email sending failed");
   
       console.log(`🎉 Registration for ${year} successful!`);
       setSubmitted(true);

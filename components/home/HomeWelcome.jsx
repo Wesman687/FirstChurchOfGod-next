@@ -25,7 +25,7 @@ function HomeWelcome() {
                                 <div className="home-welcome-item">
                                     <HouseIcon classes={"med-icon home-icons"}/>
                                     <div className="sc_services_item_content">
-                                        <h4 className="sc_services_item_title">
+                                        <h4 className="sc_services_item_title home-welcome-subtitle">
                                             Follow with us
                                         </h4>
                                         <div className="sc_services_item_description">
@@ -36,7 +36,7 @@ function HomeWelcome() {
                                 <div className="home-welcome-item">
                                     <BookIcon classes={"med-icon home-icons"}/>
                                     <div className="sc_services_item_content">
-                                        <h4 className="sc_services_item_title">
+                                        <h4 className="sc_services_item_title home-welcome-subtitle">
                                             What We Believe</h4>
                                         <div className="sc_services_item_description home-welcome-items-paragraph">
                                             <p className='home-welcome-items-paragraph'>We believe that the Bible is God’s Word. It is accurate, authoritative and applicable to our everyday lives.</p>
@@ -46,7 +46,7 @@ function HomeWelcome() {
                                 <div className="home-welcome-item">
                                     <User classes={"home-icons" }/>
                                     <div className="sc_services_item_content">
-                                        <h4 className="sc_services_item_title">
+                                        <h4 className="sc_services_item_title home-welcome-subtitle">
                                             New Here?
                                         </h4>
                                         <div className="sc_services_item_description">
