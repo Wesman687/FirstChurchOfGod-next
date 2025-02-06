@@ -36,7 +36,15 @@ export default async function handler(req, res) {
 
             return res.status(200).json({ message: "Registration deleted successfully!" });
 
-        } else {
+        } else if (req.method === "PUT") {
+            const { id, ...updatedData } = req.body;
+            const result = await collection.updateOne(
+                { _id: new ObjectId(id) },
+                { $set: updatedData }
+            );
+            return res.status(200).json({ message: "Updated successfully", result });
+        }
+        else {
             return res.status(405).json({ error: "Method not allowed" });
         }
     } catch (error) {

@@ -1,0 +1,170 @@
+.admin-container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background: white;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+h2 {
+    text-align: center;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+
+button {
+    margin: 5px;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+}
+/* Modal Styling */
+/* Make Modal Smaller */
+.camp-modal {
+    width: 450px;  /* Reduced from 600px */
+    padding: 15px;
+    border-radius: 10px;
+    position: relative;
+    max-height: 80vh;
+    overflow-y: auto;
+    scrollbar-color: transparent transparent;
+}
+.camp-close-button {
+    font-size: 14px;
+    color: black;
+    background-color: transparent;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.camp-close-button:hover {
+    color: red;
+}
+/* Compact Form Layout */
+.form-compact {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Smaller Inputs */
+.form-group input {
+    width: 100%;
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.form-groupname {
+    display: flex;
+    gap: 24px;
+}
+
+/* Small Field */
+.form-group.small input {
+    display: flex;
+    align-items: center;
+}
+
+/* Form Row for Shorter Inputs */
+.form-row {
+    display: flex;
+    gap: 10px;
+}
+
+.form-row input {
+    flex: 1;
+}
+
+/* Checkbox Section */
+.form-group.checkbox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+/* Buttons */
+.modal-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+    align-items: center;
+}
+
+.modal-btn-container {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+.modal-btn-container div {
+    padding: 10px;
+    width: 30%;
+    display: flex;
+    align-items: center;
+}
+.modal-btn-container div button {
+    font-size: 12px;
+    height: 50px;
+}
+.campmodel-checkbox-grouping {
+    display: flex;
+    gap: 10px;
+}
+.campmodel-checkbox-grouping input {
+    width: 20px;
+    height: 20px;
+}
+.modal-camp-red {
+    background-color: red;
+    white-space: nowrap;
+}
+.modal-camp-blue {
+    background-color: white;
+    color: #1cbed6;
+    border: 1px solid #1cbed6;
+    white-space: nowrap;
+}
+.modal-camp-blue:hover {    
+        background: linear-gradient(90deg, hsl(194, 98%, 63%), #2df1ffbb, #4be1fc, #61e6fabb);
+        overflow: hidden;
+        white-space: nowrap;
+        position: relative;
+        -webkit-transition: all 0.70s ease 0s;
+           -moz-transition: all 0.70s ease 0s;
+            -ms-transition: all 0.70s ease 0s;
+             -o-transition: all 0.70s ease 0s;
+                transition: all 0.70s ease 0s;
+        z-index: 1;
+        background-image: linear-gradient(90deg, hsl(194, 97%, 64%), #2df1ffbb, #4be1fc, #61e6fabb) !important;
+        background-position: 98% 0 !important;
+        color: #FFFFFF !important;
+        -webkit-background-size: 210% 100%;
+           -moz-background-size: 210% 100%;
+            -ms-background-size: 210% 100%;
+             -o-background-size: 210% 100%;
+                background-size: 210% 100% ;       
+    
+}
+.modal-camp-red:hover {    
+    white-space: nowrap;
+    position: relative;
+    -webkit-transition: all 0.70s ease 0s;
+       -moz-transition: all 0.70s ease 0s;
+        -ms-transition: all 0.70s ease 0s;
+         -o-transition: all 0.70s ease 0s;
+            transition: all 0.70s ease 0s;
+    z-index: 1;
+    background-color: white;
+    background-position: 98% 0 !important;
+    color: red !important;
+    border: 1px solid red;
+
+}

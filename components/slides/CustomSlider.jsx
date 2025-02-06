@@ -4,7 +4,7 @@ import slide1 from '@/images/slider1-3.jpg'
 import slide2 from '@/images/slider1-2.jpg'
 import slide3 from '@/images/home1_sl2.jpg'
 import slide4 from '@/images/sundaybanner.jpg'
-import slide5 from '@/images/art_camp.jpg'
+import slide5 from '@/images/art_banner.jpg'
 import miniSlide2 from '@/images/slider1-1_layer.webp'
 import Slider from "react-animated-slider";
 import "react-animated-slider/build/horizontal.css";

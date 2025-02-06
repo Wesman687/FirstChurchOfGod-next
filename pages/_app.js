@@ -11,6 +11,7 @@ import "@/styles/forms.css"; // Import CSS
 import '@fullcalendar/common/main.css'; // Import from common
 import '@/styles/buttons.css'
 import '@/styles/nav.css'
+import '@/styles/members.css'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 // Remove list import since it has no CSS

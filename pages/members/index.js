@@ -1,30 +1,33 @@
-import Layout from '@/components/Layout'
-import HomeComment from '@/components/members/HomeComment'
-import ManageMembers from '@/components/members/ManageMembers'
-import MyPrayerRequest from '@/components/members/MyPrayerRequest'
-import React, { useState } from 'react'
-import { useSelector } from 'react-redux'
+import Layout from '@/components/Layout';
+import CampRegistration from '@/components/members/CampRegistration';
+import HomeComment from '@/components/members/HomeComment';
+import ManageMembers from '@/components/members/ManageMembers';
+import MyPrayerRequest from '@/components/members/MyPrayerRequest';
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 
 function Members() {
-    const user = useSelector(state => state.user)
-    const [testimonial, setTestimonial] = useState(true)
-    const [manageMembers, setManageMembers] = useState(false)
-    const [prayerRequest, setPrayerRequest] = useState(false)    
-    function handleManageTestimonials(){
-        setTestimonial(true)
-        setManageMembers(false)
-        setPrayerRequest(false)
-    }
-    function handleManageMembers(){
-        setTestimonial(false)
-        setManageMembers(true)
-        setPrayerRequest(false)
-    }
-    function handlePrayerRequest(){
-        setPrayerRequest(true)
-        setTestimonial(false)
-        setManageMembers(false)
-    }
+    const user = useSelector(state => state.user);
+
+    // ✅ Single state for managing active section
+    const [activeSection, setActiveSection] = useState("testimonial");
+
+    // ✅ Sections mapping for dynamic rendering
+    const sections = {
+        testimonial: <HomeComment />,
+        manageMembers: <ManageMembers />,
+        prayerRequest: <MyPrayerRequest />,
+        campRegistration: <CampRegistration />,
+    };
+
+    // ✅ Button configuration for dynamic rendering
+    const buttons = [
+        { key: "testimonial", label: "Testimonial" },
+        { key: "manageMembers", label: user.isAdmin ? "Manage Members" : "Show Members" },
+        { key: "prayerRequest", label: "My Prayer Request" },
+        { key: "campRegistration", label: "Camp Registration" },
+    ];
+
     return (
         <Layout>
             <div className="top_panel_title top_panel_style_3 title_present breadcrumbs_present scheme_original">
@@ -34,24 +37,26 @@ function Members() {
                     </div>
                 </div>
             </div>
-            <div className='manage-buttons-container members-toolbar'>
+
+            {/* ✅ Toolbar with dynamically generated buttons */}
+            <div className="manage-buttons-container members-toolbar">
                 <div>
-                    {!testimonial ? <label className='manage-filters-label' onClick={handleManageTestimonials}>Testimonial</label> :
-                        <label className='manage-filters-label-active manage-members-active'>Testimonial</label>
-                    }
-                    {!manageMembers ? <label className='manage-filters-label' onClick={handleManageMembers}>{user.isAdmin ? 'Manage Members' : 'Show Members'}</label> :
-                        <label className='manage-filters-label-active manage-members-active'>{user.isAdmin ? 'Manage Members' : 'Show Members'}</label>
-                    }
-                    {!prayerRequest ? <label className='manage-filters-label' onClick={handlePrayerRequest}>My Prayer Request</label> :
-                        <label className='manage-filters-label-active manage-members-active'>My Prayer Request</label>
-                    }
+                    {buttons.map(({ key, label }) => (
+                        <label
+                            key={key}
+                            className={activeSection === key ? "manage-filters-label-active manage-members-active" : "manage-filters-label"}
+                            onClick={() => setActiveSection(key)}
+                        >
+                            {label}
+                        </label>
+                    ))}
                 </div>
             </div>
-            {testimonial && <HomeComment />}
-            {manageMembers && <ManageMembers />}
-            {prayerRequest && <MyPrayerRequest />}
+
+            {/* ✅ Render the active section dynamically */}
+            {sections[activeSection]}
         </Layout>
-    )
+    );
 }
 
-export default Members
+export default Members;

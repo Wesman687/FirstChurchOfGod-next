@@ -1,6 +1,6 @@
 import Layout from '@/components/Layout'
 import React from 'react'
-import art_camp from '@/images/art_camp.jpg'
+import art_camp from '@/images/art_banner.jpg'
 import art_camp2 from '@/images/art_camp2.jpg'
 import Image from 'next/image'
 import RegistrationForm from './registrationForm'

@@ -28,7 +28,7 @@ function Contacts() {
                                 </div>
                                 <div className="sc_form_address_field sc_form_address_field_icon_phone">
                                     <span className="sc_form_address_label">Phone number:</span>
-                                    <span className="sc_form_address_data"><a href="tel:13863252814">904-226-9856</a></span>
+                                    <span className="sc_form_address_data"><a href="tel:13863252814">386-546-0143</a></span>
                                 </div>
                                 <div className="sc_form_address_field sc_form_address_field_icon_email">
                                     <span className="sc_form_address_label">Have any questions?</span>
