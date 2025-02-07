@@ -6,14 +6,14 @@ import BookIcon from '../icons/BookIcon'
 import User from '../icons/User'
 
 function HomeWelcome() {
-    
+
     return (
         <div className="hp1_welcome_section">
             <div className="content_wrap">
                 <div className="columns_wrap welcome_wrapper">
                     <div className="column-1_2 sc_column_item sc_column_item_1 odd first home-welcome-image-wrapper">
                         <figure className="home-welcome-image">
-                            <Image src={ChurchImage} alt="" />
+                            <Image width={450} height={350}  src={ChurchImage} alt="" />
                         </figure>
                     </div>
                     <div className=" even">
