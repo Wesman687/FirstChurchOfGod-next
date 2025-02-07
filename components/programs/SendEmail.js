@@ -1,17 +1,27 @@
-export async function sendEmail(subject, formData) {
+export async function sendEmail(formData, subject) {
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_EMAIL_API}/send-email`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-            to_emails: ["Wesman687@gmail.com", "Susan_Miracle2000@yahoo.com"],
-            subject: subject,
-            message: formData.message,
-          })
-      });
-  
+        // ✅ Extract only the fields needed for the email
+        const emailData = {
+          to_emails: ["Wesman687@gmail.com", "Susan_Miracle2000@yahoo.com"],
+          subject: subject,
+          message: `
+            <h2>New Camp Registration</h2>
+            <p><strong>Child's Name:</strong> ${formData.childName}</p>
+            <p><strong>Age:</strong> ${formData.childAge}</p>
+            <p><strong>Parent:</strong> ${formData.firstName} ${formData.lastName}</p>
+            <p><strong>Email:</strong> ${formData.email}</p>
+            <p><strong>Phone:</strong> ${formData.phone}</p>
+            <p><strong>Address:</strong> ${formData.address1}, ${formData.city}, ${formData.state}, ${formData.zip}, ${formData.country}</p>
+            <p><strong>Allergies:</strong> ${formData.childAlergies || "None"}</p>
+            <p><strong>Permission Given:</strong> ${formData.permission ? "Yes" : "No"}</p>
+          `,
+        };
+    
+        const response = await fetch(`${process.env.NEXT_PUBLIC_EMAIL_API}/send-email`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(emailData),
+        });
       const data = await response.json();
       return data;
     } catch (error) {

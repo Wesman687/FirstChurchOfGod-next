@@ -20,7 +20,7 @@ function ContactForm() {
     e.preventDefault();
     setLoading(true);
     setResponseMessage("");
-
+    console.log(formData)
     try {
       console.log("📨 Sending data to API & Email:", formData);
 

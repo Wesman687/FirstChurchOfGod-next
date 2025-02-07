@@ -41,7 +41,7 @@
     "react-hook-form": "^7.54.2",
     "react-redux": "^9.1.2",
     "react-spinners": "^0.14.1",
-    "react-toastify": "^10.0.5",
+    "react-toastify": "^10.0.6",
     "redux": "^5.0.1",
     "shimmer-effects-react": "^1.0.4",
     "toastify": "^2.0.1"

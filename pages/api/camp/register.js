@@ -15,7 +15,7 @@ export default async function handler(req, res) {
                 return res.status(400).json({ error: "Missing required fields." });
             }
 
-            const result = await collection.insertOne(formData);
+            const result = await collection.insertOne({formData, createdAt: new Date()});
             console.log("✅ Registration Success:", result);
             return res.status(201).json({ message: "Registration successful!", id: result.insertedId });
 

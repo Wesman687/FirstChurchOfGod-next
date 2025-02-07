@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Modal from "@mui/material/Modal";
 import { useDispatch, useSelector } from "react-redux";
 import { openLoginModal, closeLoginModal } from "@/redux/modalSlice.js";
 import {
