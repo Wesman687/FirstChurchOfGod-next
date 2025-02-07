@@ -503,6 +503,9 @@
 .home-cwc-paragraph {
     text-align: center;
     color: #1dc6df;
+    font-size: 22px;
+    font-weight: 600;
+    max-width: 80%;
 }
 .cwc-mission-wrapper li {
 	font-size: 18px;
@@ -602,6 +605,20 @@
 }
 .home-welcome-subtitle {
     color: #3799AB;
+}
+.home-action-container {
+    padding: 64px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.home-cwc-button-wrapper{
+    width: 100%;
+    align-items: center;
+    display: flex;
+}
+.home-cwc-button {
+    align-items: center;
 }
 
 
@@ -740,9 +757,12 @@
     .home-bottom-firstparagraph{
         border-right: none;
         border-bottom: 1px solid white;
-       font-size: 18px !important;
+       font-size: 22px !important;
        word-wrap: normal;
        max-width: 70vw;
+       padding: 0 !important;
+       margin: 0;
+       line-height: 1.8;
     }
     .home-bottom-email {
         text-align: center;
@@ -750,4 +770,7 @@
     .footer-wrapper {
 		flex-direction: column;
 	}
+    .login-link-outline {
+        margin: 0;
+    }
 }
