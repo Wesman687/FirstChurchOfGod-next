@@ -6,6 +6,7 @@ import BookIcon from '../icons/BookIcon'
 import User from '../icons/User'
 
 function HomeWelcome() {
+    
     return (
         <div className="hp1_welcome_section">
             <div className="content_wrap">
