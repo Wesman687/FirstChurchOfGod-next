@@ -267,6 +267,11 @@
 	font-weight: 300;
     padding: 0px 24px;
 }
+.camp-banner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 @media (max-width: 768px){
     .camp-intro-wrapper h1 {
         font-size: 28px;

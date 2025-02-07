@@ -6,10 +6,10 @@ export async function sendEmail(subject, formData) {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          to_emails: ["Wesman687@gmail.com", "Susan_Miracle2000@yahoo.com"],
-          subject: subject,
-          message: formData.message, // Ensure `message` exists inside formData
-        }),
+            to_emails: ["Wesman687@gmail.com", "Susan_Miracle2000@yahoo.com"],
+            subject: subject,
+            message: formData.message,
+          })
       });
   
       const data = await response.json();

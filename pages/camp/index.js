@@ -9,7 +9,7 @@ function index() {
   return (
     <Layout>
         <div className="top_panel_title top_panel_style_3 title_present breadcrumbs_present scheme_original">
-                <div className=" top_panel_inner_style_3">
+                <div className="camp-banner">
                     <Image src={art_camp} alt='background image' className='cwc-bg-image' />
                 </div>
             </div>
