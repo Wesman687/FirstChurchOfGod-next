@@ -2,14 +2,9 @@ import AddImages from '@/components/gallery/AddImages'
 import ManageFilters from '@/components/gallery/ManageFilters'
 import ArrowUturnLeft from '@/components/icons/ArrowUturnLeftIcon'
 import Layout from '@/components/Layout'
-import AccountInfo from '@/components/modals/AccountInfo'
-import Login from '@/components/modals/Login'
 import { auth, db, storage } from '@/firebase'
-import { signOutUser } from '@/redux/userSlice'
-import { signOut } from 'firebase/auth'
-import { collection, deleteDoc, doc, getDocs, onSnapshot, orderBy, query, where } from 'firebase/firestore'
+import { collection, deleteDoc, doc, getDocs, onSnapshot,  query, where } from 'firebase/firestore'
 import { deleteObject, ref } from 'firebase/storage'
-import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
@@ -196,7 +191,7 @@ function Gallery() {
                                                 {(displayedImages.length > 0 && displayGallery) && displayedImages.map((item, index) => (
                                                     <div className="esg-media-cover-wrapper" key={index}>
                                                         <div className="esg-entry-media">
-                                                            <img src={item.link} alt="" />
+                                                            <img className='gallery-image' src={item.link} alt="" />
                                                         </div>
                                                         {user.isAdmin && <div>
                                                             <label className='gallery-image-label' onClick={()=>handleEdit(item)}>Edit</label>

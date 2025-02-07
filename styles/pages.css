@@ -106,7 +106,8 @@
 	padding: 0px 0 128px !important;
 }
 .esg-entry-media {
-	width: 225px;
+    max-width: 300px;
+    max-height: 350px;
 	cursor: pointer;
 	position: relative;
 }
@@ -492,6 +493,10 @@
     left:20%;
     z-index: 5;
     top: 0;
+}
+.gallery-image {
+    width: 100%;
+    height: auto;
 }
 
 /* ✅ Responsive Design */
