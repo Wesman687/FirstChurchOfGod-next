@@ -24,6 +24,7 @@ export async function sendEmail(formData, subject) {
         });
       const data = await response.json();
       return data;
+      
     } catch (error) {
       console.error("❌ Error sending email:", error);
       return { status: "error", message: "Failed to send email" };
