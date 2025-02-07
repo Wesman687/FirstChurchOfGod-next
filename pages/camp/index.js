@@ -16,7 +16,7 @@ function index() {
             <div className='cwc-container'>
                 <div className='camp-wrapper'>
                     <div className='camp-intro-wrapper'>
-                        <h1>Beggining March 2, 2025</h1>
+                        <h1>Begining March 2, 2025</h1>
                         <h2 style={{color: "red"}}>Christian Art Classes</h2>
                         <h3>Sundays (1st grade - 5th grade) 1:00 - 2:30pm </h3>                        
                     </div>      

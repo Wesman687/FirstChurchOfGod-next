@@ -36,7 +36,6 @@ function CampModal({ registration, onClose, refresh }) {
     };
 
     const handleDelete = async () => {
-        if (!confirm("Are you sure you want to delete this registration?")) return;
         setLoading(true);
         try {
             await axios.delete("/api/camp/register", { data: { id: formData._id } });

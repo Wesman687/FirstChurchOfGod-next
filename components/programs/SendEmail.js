@@ -2,7 +2,7 @@ export async function sendEmail(formData, subject) {
     try {
         // ✅ Extract only the fields needed for the email
         const emailData = {
-          to_emails: ["Wesman687@gmail.com", "Susan_Miracle2000@yahoo.com"],
+          to_emails: ["Wesman687@gmail.com", "Susan_Miracle2000@yahoo.com", "the1stchurchofgod@gmail.com"],
           subject: subject,
           message: `
             <h2>New Camp Registration</h2>

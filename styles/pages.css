@@ -467,12 +467,40 @@
     font-size: 16px;
     font-weight: bold;
 }
+.about-us-header {
+    margin-top: 75px;
+    height: 50%;
+    overflow: hidden;
+    position: relative;
+}
+.about-us-banner-image {
+    width: 100%;
+    height: auto;
+    position: relative;
+}
+.about-header {
+    color: white !important;    
+    text-align: center;
+}
+.about-header-wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    left:20%;
+    z-index: 5;
+    top: 0;
+    position: absolute;
+}
 
 /* ✅ Responsive Design */
 @media (max-width: 768px) {
     .home-mission-wrapper {
         flex-direction: column;
         text-align: center;
+    }
+    .about-header {
+        font-size: 18px !important;
     }
     .home-mission-left {
         font-size: 26px;
