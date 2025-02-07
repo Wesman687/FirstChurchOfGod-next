@@ -77,20 +77,19 @@ function ManageFilters() {
                 <table>
                     <thead>
                         <tr>
-                            <td>Gallery Name</td>
+                            <td className='edit-remove-column'>Gallery Name</td>
                             <td className='edit-remove-column'>Edit/Remove</td>
                         </tr>
                     </thead>
                     <tbody>
                         {inputs.length > 0 && inputs.map((item, index) => (
                             <tr key={index}>
-                                <td>{item.data().filter}</td>
-                                <td className='edit-remove-column'>
-                                    <div>
-                                        <label className='filter-edit-button' onClick={() => handleEdit({ index })} ><EditIcon /> Edit</label>
-                                    </div>
-                                    <div>
-                                        <label className='filter-remove-button red-button' onClick={() => handleRemove({ index })}><TrashIcon /> Remove</label>
+                                <td className='edit-remove-column-body'>{item.data().filter}</td>
+                                <td className='edit-remove-column-body'>
+                                    <div className='manage-filter-wrapper'>
+                                        <label className='filter-edit-button manage-filter-button' onClick={() => handleEdit({ index })} ><EditIcon classes={"icon-small"}/> Edit</label>
+                   
+                                        <label className='filter-remove-button manage-filter-button red-button' onClick={() => handleRemove({ index })}><TrashIcon classes={"icon-small"} /> Remove</label>
                                     </div>
                                 </td>
                             </tr>

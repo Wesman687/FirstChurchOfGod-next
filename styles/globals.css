@@ -53,7 +53,9 @@ a, a:hover, a:focus, a:active {
 }
 .footer-wrapper span {
 	color: #ddd !important;
-	margin: 12px 24px;
+	margin: 6px 24px;
+	font-size: 10px !important;
+	word-wrap: break-word;
 }
 .about-header {
 	color: #2e2e2e !important;

@@ -91,8 +91,7 @@
 	justify-content: center;
 	width: 100%;
 }
-.home-bottom-email {
-}
+
 .home-bottom-email h4 {
 	margin: 0;
 	color: white;
@@ -114,6 +113,10 @@
 .esg-entry-media:hover {
 	transform: scale(150%);
 	z-index: 10;
+}
+.new-image{
+    max-width: 300px;
+    max-height: 375px;
 }
 .gallery-image-container {
 	display: flex;
@@ -217,6 +220,25 @@
 	gap: 12px;
 	cursor: pointer;
 }
+.edit-remove-column {
+    height: 100px !important;
+    text-align: center;
+    background-color: #1cbed6;
+    border-bottom: 1px solid white;
+}
+.manage-filter-button svg {
+    height: 16px;
+}
+.manage-filter-button {
+    text-align: center;
+}
+.manage-filter-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+} 
+
 
 
 /********* Admin Tool Bar **********/ 

@@ -1,5 +1,5 @@
 import React from 'react'
-import ChurchImage from '@/images/church_foto.jpg'
+import ChurchImage from '@/images/Firstchurchofgod.jpg'
 import Image from 'next/image'
 import HouseIcon from '../icons/HouseIcon'
 import BookIcon from '../icons/BookIcon'
