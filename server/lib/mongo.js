@@ -1,6 +1,7 @@
+
 import { MongoClient } from "mongodb";
 
-const MONGO_URI = process.env.MONGO_URI;
+const MONGO_URI = process.env.NEXT_PUBLIC_MONGO_URI;
 
 if (!MONGO_URI) {
   throw new Error("❌ MongoDB connection string is missing.");

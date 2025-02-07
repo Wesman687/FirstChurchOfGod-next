@@ -1,6 +1,5 @@
 export async function sendEmail(subject, formData) {
     try {
-        NEXT_PUBLIC_EMAIL_API
       const response = await fetch(`${process.env.NEXT_PUBLIC_EMAIL_API}/send-email`, {
         method: "POST",
         headers: {
