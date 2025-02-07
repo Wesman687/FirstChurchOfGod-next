@@ -49,9 +49,20 @@
 }
 .menu-item, .photo-link-name {
     color: #3799AB;
-    font-size: 14px;
+    font-size: 16px;
     padding: 10px;
     cursor: pointer;
+}
+
+/* Current Page Indicator */
+.menu_main_nav li.current-link {
+    color: orange;
+    font-weight: bold;    
+    font-size: 16px;
+    padding: 10px;
+    word-wrap: break-word;
+    cursor: pointer;
+    text-wrap: nowrap;
 }
 /* ✅ When menu is open */
 .nav-menu.open {
@@ -83,16 +94,6 @@
     color: white;
 }
 
-/* Current Page Indicator */
-.menu_main_nav li.current-link {
-    color: orange;
-    font-weight: bold;    
-    font-size: 14px;
-    padding: 10px;
-    word-wrap: break-word;
-    cursor: pointer;
-    text-wrap: nowrap;
-}
 
 /* ===========================
    🔥 Close Button (X Icon)
@@ -273,5 +274,10 @@
     }
     .displayed-photourl {
         display: none;
+    }
+    
+    /* Current Page Indicator */
+    .menu_main_nav li.current-link, .menu-item, .photo-link-name {  
+        font-size: 22px;
     }
 }

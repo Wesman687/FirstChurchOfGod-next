@@ -497,8 +497,14 @@
 
 .home-top-paragraph {
     text-align: center;
-    color: #1cbed6;
+    color: black;
+    font-size: 28px;
+    padding-bottom: 24px;
 }
+.home-icons {
+    width: 48px;
+}
+
 .home-welcome-item{
     padding-bottom: 24px;
     display: flex;
@@ -507,8 +513,21 @@
     font-size: 18px;
     color: #1DC6DF;
 }
-.home-icons {
-    width: 48px;
+.home-welcome-title {
+    color: #1cbed6;
+    font-size: 32px;
+}
+.even {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.home-welcome-title-paragraph {
+    width: 70% !important;
+    font-size: 18px;
+    text-align: center;
+    padding: 24px 0px;
 }
 .home-welcome-subtitle {
     color: #3799AB;
@@ -579,6 +598,11 @@
     .home-welcome-subtitle {
         font-size: 14px;
     }
+    .home-welcome-title-paragraph {
+        width: 100% !important;
+        font-size: 16px;
+        line-height: 1.9;
+    }
     .sc_services_item_description {
         font-size: 14px !important;
     }
@@ -586,6 +610,7 @@
         margin: 0 !important;
         text-align: center;
     }
+    
     .home-welcome-items-paragraph {
         width: 100%;
         display: flex;
