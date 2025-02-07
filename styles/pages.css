@@ -452,7 +452,7 @@
     flex-direction: column;
     align-items: flex-start;
     text-align: left;
-    padding-left: 20px;
+    padding: 0 32px;
     width: 50%;
     flex: 1;
     border-left: 1px solid rgba(207, 207, 207, 0.75);
@@ -473,7 +473,8 @@
 /* ✅ Left Side Text */
 .home-mission-left {
     color: white;
-    font-size: 22px; /* Limit width */
+    font-size: 18px !important;
+    margin-right: 24px; /* Limit width */
 }
 
 /* ✅ Right Side Text */
@@ -489,6 +490,7 @@
     color: white;
     font-size: 16px;
     font-weight: bold;
+    align-self: flex-end;
 }
 .about-us-header {
     background-image: url('../images/cross-in-sky.png');    

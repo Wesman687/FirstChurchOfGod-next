@@ -1,4 +1,5 @@
 .slider-wrapper {
+    margin-top: 78px;
     height: 65vh;
     overflow: hidden;
     position: relative;
@@ -18,8 +19,9 @@
 }
 .slider-mini-image {
     position: absolute;
-    top: 10%;
-    left: 30%;
+    top: 50px;
+    left: 0;
+    width: 50%;
 }
 .slider {
     position: relative;
@@ -30,10 +32,10 @@
 }
 .slide-button {
     z-index: 1;
-    margin-top: 64px;
+    margin-top: 20px;
 }
 .inner p {
-    font-size: 24px;
+    font-size: 18px;
     width: 100%;
     line-height: 1.4;
 }

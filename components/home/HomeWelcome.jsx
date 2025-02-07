@@ -1,4 +1,5 @@
 import React from 'react'
+import ChurchImage from '@/images/firstchurchofgod2.jpg'
 import Image from 'next/image'
 import HouseIcon from '../icons/HouseIcon'
 import BookIcon from '../icons/BookIcon'
@@ -12,6 +13,7 @@ function HomeWelcome() {
                 <div className="columns_wrap welcome_wrapper">
                     <div className="column-1_2 sc_column_item sc_column_item_1 odd first home-welcome-image-wrapper">
                         <figure className="home-welcome-image">
+                            <Image width={450} height={350}  src={ChurchImage} alt="" />
                         </figure>
                     </div>
                     <div className=" even">
