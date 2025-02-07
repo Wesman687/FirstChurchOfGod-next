@@ -9,9 +9,8 @@ function About() {
     return (
         <Layout>
             <div className="about-us-header">
-                <Image className='about-us-banner-image' src={banner} alt="banner" />
-                <div className='about-header-wrapper'>
                  <h1 className="about-header">About First Church of God</h1>
+                <div className='about-header-wrapper'>
                 </div>
                 </div>
             <div className="content_wrap">

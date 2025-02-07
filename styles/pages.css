@@ -468,9 +468,10 @@
     font-weight: bold;
 }
 .about-us-header {
-    margin-top: 75px;
-    height: 50%;
-    overflow: hidden;
+    background-image: url('../images/cross-in-sky.png');    
+    background-size: cover;
+    background-position: top;
+    height: 20vh;
     position: relative;
 }
 .about-us-banner-image {
@@ -481,6 +482,7 @@
 .about-header {
     color: white !important;    
     text-align: center;
+    z-index: 5;
 }
 .about-header-wrapper {
     width: 100%;
@@ -490,7 +492,6 @@
     left:20%;
     z-index: 5;
     top: 0;
-    position: absolute;
 }
 
 /* ✅ Responsive Design */
