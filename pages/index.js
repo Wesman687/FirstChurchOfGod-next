@@ -16,7 +16,6 @@ export default function Home() {
         <div className="content">
           <article className="post_item post_item_single page">
             <section className="post_content">
-              <HeaderSlide />
               <HomeWelcome />
               <HomeMission />
               <HomeToAction />

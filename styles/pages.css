@@ -422,7 +422,10 @@
     }
     
 }
-
+.header-slide {
+    margin: 0 auto;
+    max-width: 98vw;
+}
 .home-mission-container {
     display: flex;
     align-items: center;
