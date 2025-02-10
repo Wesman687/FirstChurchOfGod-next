@@ -174,7 +174,7 @@ function Gallery() {
                                             <div className="esg-entry-media">
                                                 <img className='gallery-image' src={item.link} alt="" />
                                             </div>
-                                            {user.isAdmin && <div>
+                                            {user.isAdmin && <div className='gallery-image-label-container'>
                                                 <label className='gallery-image-label' onClick={() => handleEdit(item)}>Edit</label>
                                                 <label className='gallery-image-label' onClick={() => handleDelete(item)}>Delete</label>
                                             </div>}
