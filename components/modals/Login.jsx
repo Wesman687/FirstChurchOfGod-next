@@ -219,9 +219,10 @@ const Login = ({ defaultState, classes }) => {
                                 <img src={photoUrl} alt="User Preview" />
                               </div>
                             )}
+                            <button type="submit" className="submit" onClick={signUp}>Sign Up</button>
                           </div>
                           
-                          <button type="submit" className="submit" onClick={signUp}>Sign Up</button>
+                          
                         </>
                       )}
                     </div>

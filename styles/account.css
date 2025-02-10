@@ -52,9 +52,11 @@
 .login-file {
     display: flex;
     gap: 24px;
+    justify-content: space-between;
 }
+
 .login-file input {
-    width: 150px !important;
+    width: 75px !important;
 }
 .xicon {
 	width: 48px;
@@ -171,9 +173,6 @@
 	max-height: 45px;
 	border: 2px solid #0000002f;
 }
-.account-settings{
-	height: 55vh;
-}
 .settings-ring-container {
 	width: 100%;
 	height: 100%;
@@ -224,4 +223,43 @@
 }
 .account-check-container {
 	display: flex;
+}
+.account-button-container   {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    padding: 4px;
+}
+
+@media (max-width: 768px){
+    .login-form {
+        max-width: 80vw;
+        max-height: 90vh;
+        overflow-y: scroll;
+        scrollbar-width: none;
+    }
+    .icon-small {
+        display: none;
+    }
+    .login-header {
+        font-size: 22px!important;
+    }
+    .login-form input {
+        font-size: 12px;
+        padding: 2px;
+    }
+    .login-form input::placeholder {
+        font-size: 12px;
+    }
+    .login-form p {
+        font-size: 12px;
+    }
+    .login-form img {
+        width: 30px;
+        height: 30px;
+    }
+    .login__x {
+        width: 30px;
+    }
 }

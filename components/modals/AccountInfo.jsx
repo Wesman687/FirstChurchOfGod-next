@@ -214,14 +214,15 @@ const AccountInfo = () => {
                                                             </div>
                                                             }
                                                 </div>
-
+                                                <div className="account-button-container">
                                                 <button
                                                     className="contact__submit submit"
                                                     onClick={(e) => updateUser(e)}
                                                     type="submit"
-                                                >
+                                                    >
                                                     Update
                                                 </button>
+                                                    </div>
 
                                             </form>
 
