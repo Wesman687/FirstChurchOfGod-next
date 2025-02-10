@@ -2,9 +2,7 @@ import HomeBottom from "@/components/home/HomeBottom";
 import HomeMission from "@/components/home/HomeMission";
 import HomeToAction from "@/components/home/HomeToAction";
 import HomeWelcome from "@/components/home/HomeWelcome";
-import Testimonial from "@/components/home/Testimonial";
 import Layout from "@/components/Layout";
-import HeaderSlide from "@/components/slides/HeaderSlide";
 
 
 

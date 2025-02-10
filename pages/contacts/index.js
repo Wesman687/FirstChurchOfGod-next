@@ -10,13 +10,9 @@ import SmileIcon from '@/components/icons/SmileIcon'
 function Contacts() {
     return (
         <Layout>
-            <div className="top_panel_title top_panel_style_3 title_present breadcrumbs_present scheme_original">
-                <div className="top_panel_title_inner top_panel_inner_style_3 contact-header">
-                    <div className="content_wrap">
+                    <div className="contact-wrapper">
                         <h1 className="page_title contact-header-text">Contact Us</h1>
-                    </div>
-                </div>
-            </div>
+                    
             <div className="content_wrap padding_top_5_2857em padding_bottom_6_1429em">
                 <div id="sc_form_1_wrap" className="sc_form_wrap ">
                     <div id="sc_form_1" className="sc_form sc_form_style_form_2 aligncenter">
@@ -69,6 +65,7 @@ function Contacts() {
                         </div>
                     </div>
                 </div>
+            </div>
             </div>
 
             <Map />
