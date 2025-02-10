@@ -647,7 +647,8 @@
     text-align: center;
     color: black;
     font-size: 28px;
-    padding-bottom: 24px;
+    padding: 32px 0 14px;
+    margin: 0 !important;
 }
 .home-icons {
     width: 48px;
@@ -742,7 +743,7 @@
     }
     .home-welcome-image {
         width: 70%;
-        padding-bottom: 32px;
+        padding-bottom: 32px !important;
     }
     .home-welcome-image-wrapper {
         width: 100%;
