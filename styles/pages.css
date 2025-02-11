@@ -728,8 +728,9 @@
     align-items: center;
     justify-content: center;
 }
-.home-cwc-button-wrapper{
+.home-cwc-buttons-wrapper{
     width: 100%;
+    justify-content: center;
     align-items: center;
     display: flex;
 }
