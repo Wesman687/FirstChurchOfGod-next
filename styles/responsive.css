@@ -191,60 +191,6 @@
 }
 
 
-@media (min-width: 960px) and (max-width: 1135px) {
-	html, body {	font-size: 13px; }
-	h1 { font-size:3em; }		/* 39px */
-	h2 { font-size:2.3077em; }	/* 30px */
-	h3 { font-size:2.3077em; }	/* 30px */
-	h4 { font-size:1.3846em; }	/* 18px */
-	h5 { font-size:1.2308em; }	/* 16px */
-	h6 { font-size:1em; }		/* 13px */
-
-	/* Post layouts */
-	.isotope_filters a {
-		font-size:0.8461em;
-	}
-
-	/* Post parts */
-	.post_info {
-		font-size:0.8461em;
-	}
-	.post_info {
-		font-size:0.8461em;
-	}
-	.post_rating .reviews_star {
-		font-size:1em;
-	}
-	.post_item_colored .post_category {
-		font-size:1em;
-		margin:0 0 0.4em;
-	}
-	.post_item_colored .post_descr .post_price_period {
-		font-size:1em;
-	}
-	.post_item_colored .post_descr .post_price_value {
-		font-size:1.3846em;
-	}
-
-	/* Footer */
-	.contacts_wrap .contacts_address {
-		font-size: 1em;
-	}
-
-	/* Widgets */
-	.widget_area .post_item .post_info {
-		font-size:0.7692em;
-	}
-
-	/* Shortcodes */
-	.sc_testimonial_content {
-		font-size:1.25em;
-	}
-	.sc_testimonial_author {
-		font-size: 1em;
-	}
-
-}
 
 @media (min-width: 960px) and (max-width: 1023px) {
 

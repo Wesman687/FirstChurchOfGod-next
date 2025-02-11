@@ -127,6 +127,8 @@
 .gallery-image-container {
 	display: flex;
 	flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
 	gap: 24px;
 }
 .esg-filter-wrapper {
@@ -675,6 +677,23 @@
 .home-icons {
     width: 48px;
 }
+@keyframes rotateBackAndForth {
+    0% { transform: rotate(-30deg); }
+    50% { transform: rotate(0deg); }
+    100% { transform: rotate(-30deg); }
+}
+
+.art-sign-up {
+    position: absolute;
+    top: 150px;
+    left: 250px;
+    z-index: 5;
+    animation: rotateBackAndForth 10s infinite ease-in-out;
+}
+
+.hp1_welcome_section {
+    position: relative;
+}
 
 .home-welcome-item{
     padding-bottom: 24px;
@@ -716,6 +735,12 @@
 }
 .home-cwc-button {
     align-items: center;
+}
+@media (min-width: 768px) and (max-width: 1123px) {
+    .art-sign-up {
+        left: 100px !important;
+        width: 150px;
+    }
 }
 
 
@@ -813,6 +838,11 @@
         align-items: center;
         flex-direction: column;
         justify-content: center;
+    }
+    .art-sign-up {
+        left: 30px;
+        top: 120px;
+        width: 100px;
     }
     .home-icons {
         width: 38px !important;

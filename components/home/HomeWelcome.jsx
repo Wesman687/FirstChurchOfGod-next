@@ -4,12 +4,17 @@ import Image from 'next/image'
 import HouseIcon from '../icons/HouseIcon'
 import BookIcon from '../icons/BookIcon'
 import User from '../icons/User'
+import art from '@/images/art_sign_up.png'
+import Link from 'next/link'
 
 function HomeWelcome() {
 
     return (
         <div className="hp1_welcome_section">
             <div className="content_wrap">
+                <Link href='/camp'>
+                    <Image width={250} src={art} alt='art' className='art-sign-up' />
+                </Link>                
                 <div className="columns_wrap welcome_wrapper">
                     <div className=" home-welcome-image-wrapper">
                         <figure className="home-welcome-image">

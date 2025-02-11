@@ -171,7 +171,7 @@ function Gallery() {
                                 <div className='gallery-image-container'>
                                     {(displayedImages.length > 0 && displayGallery) && displayedImages.map((item, index) => (
                                         <div className="esg-media-cover-wrapper" key={index}>
-                                            <div className="esg-entry-media">
+                                            <div className="esg-entry-media" Loading="lazy">
                                                 <img className='gallery-image' src={item.link} alt="" />
                                             </div>
                                             {user.isAdmin && <div className='gallery-image-label-container'>
