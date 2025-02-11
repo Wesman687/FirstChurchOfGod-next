@@ -47,7 +47,7 @@ function Contacts() {
 
 
                                 </div>
-                                <div className="contact-label-wrap">
+                                <div classame="contact-label-wrap">
                                     <SmileIcon classes={"md-icon light-blue contact-item"}/>
                                     <div className="contact-label-wrap-text">
                                     <span className="contact-label">We are open:</span>
