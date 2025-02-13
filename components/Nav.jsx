@@ -7,7 +7,6 @@ import AccountInfo from "./modals/AccountInfo";
 import { signOut } from "firebase/auth";
 import { auth } from "@/firebase";
 import { signOutUser } from "@/redux/userSlice";
-import XIcon from "./icons/XIcon";
 import { useRouter } from "next/router";
 import Link from "next/link";
 

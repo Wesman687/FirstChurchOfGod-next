@@ -11,7 +11,14 @@
     z-index: 5;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-
+/* Ensure no unwanted scrollbar or grey space */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden; /* Prevents horizontal scrolling */
+}
 /* Flexbox for content alignment */
 .nav_content_wrap {
     display: flex;
@@ -28,25 +35,7 @@
     max-height: 50px;
 }
 
-/* ===========================
-   🌐 Full-Screen Navigation (Mobile) 
-   =========================== */
-   .nav-menu {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw; /* Full screen width */
-    height: 100vh; /* Full screen height */
-    background: rgba(255, 255, 255, 0.95); /* Slight transparency */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    transform: translateX(100%); /* Move off-screen */
-    transition: transform 0.4s ease-in-out; /* ✅ Only slide animation */
-    box-shadow: -5px 0 10px rgba(0, 0, 0, 0.2);
-    z-index: 5;
-}
+
 .menu-item, .photo-link-name {
     color: #3799AB;
     font-size: 16px;
@@ -65,15 +54,39 @@
     text-wrap: nowrap;
 }
 /* ✅ When menu is open */
+
+.nav-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw !important;
+    height: 100vh !important;
+    background: rgba(255, 255, 255, 0.95);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transform: translateX(110%); /* Move slightly more off-screen */
+    transition: transform 0.4s ease-in-out;
+    z-index: 1000;
+    visibility: hidden;
+    opacity: 0;
+}
+
+/* Ensure full screen when open */
 .nav-menu.open {
-    transform: translateX(0); /* Slide in */
+    transform: translateX(0);
+    visibility: visible;
+    opacity: 1;
 }
 
 /* ✅ When menu is closing */
 .nav-menu.closing {
-    transform: translateX(100%); /* Slide back out */
+    transform: translateX(110%);
+    opacity: 0;
+    visibility: hidden;
+    transition: transform 0.3s ease-in-out, opacity 0.2s ease-out;
 }
-
 /* Main navigation list */
 .menu_main_nav {
     list-style: none;
@@ -100,8 +113,8 @@
    =========================== */
 .nav-x {
     position: absolute;
-    top: 20px;
-    right: 20px;
+    top: 0px;
+    right: 0px;
     font-size: 24px;
     cursor: pointer;
     color: #3799AB;
@@ -158,23 +171,20 @@
     .hamburger {
         display: none !important;
     }
-
     .nav-menu {
-        all: unset; /* Resets properties */
+        position: static !important; /* Prevents taking over the whole page */
+        width: auto !important;
+        height: auto !important;
         display: flex !important;
         flex-direction: row;
-        justify-content: flex-end;
         align-items: center;
-        position: static;
-        width: auto;
-        height: auto;
-        background: none;
-        box-shadow: none;
-        transform: none;
-        visibility: visible;
-        opacity: 1;
+        justify-content: flex-end;
+        background: none !important;
+        box-shadow: none !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        transform: none !important; /* Prevents off-screen movement */
     }
-
     .menu_main_nav {
         display: flex !important;
         flex-direction: row;

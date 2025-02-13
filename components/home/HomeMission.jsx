@@ -2,7 +2,6 @@ import React from 'react'
 
 function HomeMission() {
     return (
-        <div className="hp1_mission_section">
                 <div className="home-mission-container">
                     <div className="home-mission-wrapper">
                         <div className='left-wrapper'>
@@ -16,7 +15,6 @@ function HomeMission() {
                         </div>
 
                     </div>
-                </div>
         </div>
 
     )

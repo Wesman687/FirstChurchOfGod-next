@@ -10,7 +10,7 @@ import Link from 'next/link'
 function HomeWelcome() {
 
     return (
-        <div className="hp1_welcome_section">
+        <div className="home-container">
             <div className="content_wrap">
                 <Link href='/camp'>
                     <Image width={250} src={art} alt='art' className='art-sign-up' />
@@ -26,7 +26,7 @@ function HomeWelcome() {
                         <p className='home-welcome-title-paragraph'>Wed love to meet you! Come check us out this SUNDAY where you can meet us and see if The <span className='bold'>First Church of God</span>  might be a good fit for you. Our heart and soul is to introduce and connect people with the living and powerful God.</p>
                         <div className="sc_services_wrap">
 
-                            <div className="sc_services sc_services_style_services-5 sc_services_type_icons sc_slider_nopagination sc_slider_nocontrols width_100_per">
+                            <div className="home-welcome-wrapper sc_services_item_title  sc_services_style_services-5 sc_services_type_icons sc_slider_nopagination sc_slider_nocontrols width_100_per">
 
                                 <div className="home-welcome-item">
                                     <HouseIcon classes={"med-icon home-icons"} />
