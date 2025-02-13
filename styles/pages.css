@@ -752,9 +752,6 @@
     line-height: 1.8;
 }
 
-.home-welcome-image {
-    border-radius: 8px;
-}
 .home-cwc-button {
     align-items: center;
 }
@@ -868,7 +865,6 @@
     }
     .home-welcome-image {
         width: 70%;
-        padding-bottom: 32px !important;
     }
     .home-welcome-image-wrapper {
         width: 100%;

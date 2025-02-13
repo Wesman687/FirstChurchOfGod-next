@@ -17,9 +17,8 @@ function HomeWelcome() {
                 </Link>                
                 <div className="columns_wrap welcome_wrapper">
                     <div className=" home-welcome-image-wrapper">
-                        <figure className="home-welcome-image">
                             <Image width={650} height={350}  src={ChurchImage} className='home-welcome-image' alt="" />
-                        </figure>
+                     
                     </div>
                     <div className=" even">
                         <h6 className="home-top-paragraph">Welcome</h6>
