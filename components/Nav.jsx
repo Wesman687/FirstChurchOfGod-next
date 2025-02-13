@@ -24,11 +24,8 @@ export default function Nav() {
 
   // ✅ Handle closing animation
   const handleCloseMenu = () => {
-    setIsClosing(true);
-    setTimeout(() => {
       setMenuOpen(false);
       setIsClosing(false);
-    }, 400);
   };
 
   // ✅ Navigate & close menu
