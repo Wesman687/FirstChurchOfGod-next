@@ -40,6 +40,17 @@
     border-radius: 14px;
     border: 2px solid orange;
     height: fit-content;
+    .cwc-mission-wrapper {
+      margin-top: 32px;
+      padding: 32px;
+      border-radius: 4px;
+      border: 2px solid orange;
+      width: 70%;
+      background-color: #1DC6DF;
+      color: #FFFFFF !important;
+      box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2); /* Adds a soft shadow */
+  }
+  
 }
 .orange-btn:hover {
 	position: relative;
