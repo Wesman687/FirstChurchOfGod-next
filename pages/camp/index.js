@@ -8,9 +8,9 @@ import RegistrationForm from './registrationForm'
 function index() {
   return (
     <Layout>
-        <div className="top_panel_title top_panel_style_3 title_present breadcrumbs_present scheme_original">
+        <div className="camp-container">
                 <div className="camp-banner">
-                    <Image src={art_camp} alt='background image' className='cwc-bg-image' />
+                    <Image src={art_camp} alt='background image' className='camp-bg-image' />
                 </div>
             </div>
             <div className='cwc-container'>

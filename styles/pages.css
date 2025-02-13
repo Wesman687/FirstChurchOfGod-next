@@ -316,7 +316,12 @@
 	gap: 12px;
 }
 /**************** CAMP ************/
-
+.camp-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 32px;
+}
 .camp-wrapper {
 	gap: 24px;
     text-align: center;
@@ -335,6 +340,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.camp-bg-image {
+    padding: 128px 64px 0px;
 }
 @media (max-width: 768px){
     .camp-intro-wrapper h1 {
@@ -438,7 +446,7 @@
 }
 .cwc-bg-image {
 	padding-top: 128px;
-    width: 80%;
+    width: 100%;
     align-self: center;
 }
 .cwc-wrapper {

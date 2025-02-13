@@ -18,7 +18,7 @@ import Image from "next/image";
 import upload from '@/images/upload_area.png'
 import CheckIcon from "../icons/CheckIcon";
 import RingSpinner from "../RingSpinner";
-
+import { validatePhoneNumber } from "@/lib/actions";
 const AccountInfo = () => {
     const isOpen = useSelector((state) => state.modals.accountModalOpen);
     const user = useSelector((state) => state.user);
@@ -43,6 +43,11 @@ const AccountInfo = () => {
     }
     const updateUser = async (e) => {
         e.preventDefault();
+        if (!validatePhoneNumber(newPhone)){
+            setError({ showError: true, title: "Invalid Phone Number", message: "Please enter a valid 10 digit phone number" });
+            return;
+          }
+
         e.stopPropagation();
         setLoading(true);
 
@@ -134,7 +139,7 @@ const AccountInfo = () => {
                                 ) : (
                                     <>
                                         <div className="input-container">
-                                            <h3 className="light-blue">Account Information.</h3>
+                                            <h3 className="account-header">Account Information.</h3>
                                             <form>
                                                 <p>First Name</p>
                                                 <input
@@ -183,7 +188,7 @@ const AccountInfo = () => {
                                                     }
                                                     {user.isAdmin &&
                                                         <div className="account-check-container">
-                                                            <label className="account-settings-admin light-blue">
+                                                            <label className="account-settings-admin">
                                                                 Admin
                                                             </label>
                                                             <div className="account-settings-check">
@@ -193,7 +198,7 @@ const AccountInfo = () => {
                                                     }
                                                     {user.isSuper &&
                                                         <div className="account-check-container">
-                                                            <label className="account-settings-admin light-blue">
+                                                            <label className="account-settings-admin">
                                                                 Super Admin
                                                             </label>
                                                             <div className="account-settings-check">
@@ -203,7 +208,7 @@ const AccountInfo = () => {
                                                     }
                                                     {user.isSuperSuper &&
                                                         <div className="account-check-container">
-                                                            <label className="account-settings-admin light-blue">
+                                                            <label className="account-settings-admin">
                                                                 Owner
                                                             </label>
                                                             <div className="account-settings-check">

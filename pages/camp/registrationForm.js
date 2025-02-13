@@ -3,6 +3,7 @@ import { useState } from "react";
 import { sendEmail } from "@/components/programs/SendEmail";
 import ErrorModal from "@/components/modals/ErrorModal";
 import RingSpinner from "@/components/RingSpinner";
+import { validatePhoneNumber, validateEmail } from "@/lib/actions";
 
 export default function RegistrationForm() {
   const [formData, setFormData] = useState({
@@ -61,6 +62,14 @@ export default function RegistrationForm() {
   // ✅ Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!validatePhoneNumber(formData.phone)){
+      setError({ showError: true, title: "Invalid Phone Number", message: "Please enter a valid 10 digit phone number" });
+      return;
+    }
+    if (!validateEmail(formData.email)){
+      setError({ showError: true, title: "Invalid Email", message: "Please enter a valid email address" });
+      return;
+    }
     setLoading(true);
 
     // ✅ Validate form before proceeding
@@ -69,7 +78,6 @@ export default function RegistrationForm() {
       alert("Please fill in all required fields");
       return;
     }
-    console.log(formData)
     try {
       // ✅ Add the correct year dynamically
       const emailResponse = await sendEmail(formData, "CAMP REGISTRATION FROM CHURCH WEBSITE");

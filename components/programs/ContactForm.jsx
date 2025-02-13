@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import RingSpinner from "../RingSpinner";
 import { sendEmail } from "./SendEmail";
-
+import { validatePhoneNumber, validateEmail } from "@/lib/actions";
+import ErrorModal from "../modals/ErrorModal";
 function ContactForm() {
   const [loading, setLoading] = useState(false);
   const [responseMessage, setResponseMessage] = useState("");
+  const [error, setError] = useState({ showError: false, title: "", message: "" });
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -18,11 +20,17 @@ function ContactForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!validatePhoneNumber(formData.phone)){
+      setError({ showError: true, title: "Invalid Phone Number", message: "Please enter a valid 10 digit phone number" });
+      return;
+    }
+    if (!validateEmail(formData.email)){
+      setError({ showError: true, title: "Invalid Email", message: "Please enter a valid email address" });
+      return;
+    }
     setLoading(true);
     setResponseMessage("");
-    console.log(formData)
     try {
-      console.log("📨 Sending data to API & Email:", formData);
 
       // ✅ Send email request
       const emailResponse = await sendEmail(formData, "CONTACT FROM CHURCH WEBSITE");
@@ -89,6 +97,9 @@ function ContactForm() {
               </>
             )}
           </form>
+        )}
+        {error.showError && (
+          <ErrorModal title={error.title} message={error.message} onClose={() => setError({ showError: false, title: "", message: "" })} />
         )}
       </div>
     </>

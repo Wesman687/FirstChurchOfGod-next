@@ -16,7 +16,7 @@ import ConfirmationModal from "./ConfirmationModel";
 import { collection, getDocs, query, where, doc, setDoc } from "firebase/firestore";
 import { setUser } from "@/redux/userSlice";
 import { sendEmail } from "../programs/SendEmail";
-
+import { validatePhoneNumber, validateEmail } from "@/lib/actions";
 const Login = ({ defaultState, classes }) => {
   const [signState, setSignState] = useState(defaultState || "Sign In");
   const [email, setEmail] = useState("");
@@ -82,6 +82,14 @@ const Login = ({ defaultState, classes }) => {
   // ✅ Function to handle sign up
   const signUp = async (e) => {
     e.preventDefault();
+    if (!validatePhoneNumber(phone)){
+      setError({ showError: true, title: "Invalid Phone Number", message: "Please enter a valid 10 digit phone number" });
+      return;
+    }
+    if (!validateEmail(email)){
+      setError({ showError: true, title: "Invalid Email", message: "Please enter a valid email address" });
+      return;
+    }
     setLoading(true);
 
     try {

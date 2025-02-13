@@ -110,24 +110,24 @@ input[type="file"] {
 .login-form {
 	position: relative;
     width: 450px;
-    background: rgba(0,0,0,0.75);
+    background-color: rgba(6, 226, 255, 0.849); ;
     border-radius: 4px;
     padding: 16px;
     margin: auto;
 	overflow: scroll;
     scrollbar-width: none;
-	border: 1px solid orange;
+	border: 5px solid orange;
     max-height: 90vh;
 }
 .login-form h1, .login-header {
     font-size: 28px;
-    font-weight: 500;
-	color: #1cbed6;    
+    font-weight: 600;
+	color: white;    
     margin: 12px;
     text-align: center;
 }
 .login-form p {
-    color: #1cbed6 !important;
+    color: white !important;
     text-align: left;
 }
 .login-form input {
@@ -197,7 +197,7 @@ input[type="file"] {
 }
 .switch-text {
     margin-left: 6px;
-    color: #ddd;
+    color: white;
     font-weight: 500px;
     cursor: pointer;
 }
@@ -241,7 +241,10 @@ input[type="file"] {
     margin: 12px 0 0 0;
     cursor: not-allowed;
 }
-
+.account-header {
+    color: white;
+    text-align: center;
+}
 .account-image-preview{
 	width: 75px;
 	position: relative;
@@ -264,8 +267,11 @@ input[type="file"] {
 	color: #000;
 }
 .account-settings-check {
-	color: green;
+	color: white;
 	width: 24px;
+}
+.account-settings-admin {
+	color: white;
 }
 .account-check-container {
 	display: flex;
