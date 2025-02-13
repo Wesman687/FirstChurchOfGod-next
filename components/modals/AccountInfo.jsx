@@ -1,7 +1,7 @@
 import { Modal } from "@mui/material";
-import React, {  useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { closeAccountModal,  openAccountModal, } from "@/redux/modalSlice";
+import { closeAccountModal, openAccountModal, } from "@/redux/modalSlice";
 import {
     collection,
     doc,
@@ -45,41 +45,41 @@ const AccountInfo = () => {
         e.preventDefault();
         e.stopPropagation();
         setLoading(true);
-    
+
         try {
             let downloadURL = image; // Default to existing image if not updated
-    
+
             // ✅ Upload new image if it exists
             if (image && newImage) {
                 const imageRef = ref(storage, `photos/${user.uid}/profile.jpg`);
                 await uploadString(imageRef, image, "data_url");
-                
+
                 // ✅ Introduce a slight delay to ensure Firebase Storage propagates
                 await new Promise(resolve => setTimeout(resolve, 1000));
-    
+
                 downloadURL = await getDownloadURL(imageRef);
             }
-    
+
             // ✅ Query Firestore for the user document
             const userRef = query(
                 collection(db, "user"),
                 where("uid", "==", user.uid)
             );
             const data = await getDocs(userRef);
-    
+
             // ✅ Handle empty result case
             if (data.empty) {
                 console.log("User not found in Firestore.");
                 setLoading(false);
                 return;
             }
-    
+
             // ✅ Force image refresh by adding a timestamp (cache busting)
             const timestamp = new Date().getTime();
             const updatedPhotoURL = downloadURL.includes("?")
                 ? `${downloadURL}&t=${timestamp}`
                 : `${downloadURL}?t=${timestamp}`;
-    
+
             // ✅ Prepare updated user data
             const userData = {
                 firstName: newFirstName,
@@ -90,12 +90,12 @@ const AccountInfo = () => {
                 uid: user.uid,
                 userRef: data.docs[0].id,
             };
-    
+
             // ✅ Update Firestore document
             const docRef = doc(db, "user", data.docs[0].id);
             await updateDoc(docRef, userData);
             dispatch(setUser(userData));
-    
+
         } catch (error) {
             console.error("Error updating user:", error);
         } finally {
@@ -104,8 +104,6 @@ const AccountInfo = () => {
         }
     };
     return (
-        <>
-
             <>
                 <p
                     className="sb__link"
@@ -113,15 +111,15 @@ const AccountInfo = () => {
                 >
                     Settings
                 </p>
-                            
+
                 <Modal
                     open={isOpen}
                     onClose={() => dispatch(closeAccountModal())}
-                    className="settings__modal contact__modal"
+                    className="account-settings-modal"
                 >
                     <div className="login__container">
                         <div className="login">
-                            
+
                             <div className="login-form account-settings">
                                 <div className="login-close-container">
                                     <div
@@ -131,8 +129,8 @@ const AccountInfo = () => {
                                         <XIcon />
                                     </div>
                                 </div>
-                                {loading ? (                                    
-                                        <RingSpinner />                               
+                                {loading ? (
+                                    <RingSpinner />
                                 ) : (
                                     <>
                                         <div className="input-container">
@@ -168,61 +166,61 @@ const AccountInfo = () => {
                                                 />
                                                 <div className="photourl-container">
                                                     {image ?
-                                                        
-                                                            
-                                                            <div className="account-image-preview">
-                                                                <div className='x-image-preview' onClick={() => setImage(null)}><XIcon />
-                                                                </div> <img src={image} className="preview-image" />
-                                                            </div>
-                                                        
+
+
+                                                        <div className="account-image-preview">
+                                                            <div className='x-image-preview' onClick={() => setImage(null)}><XIcon />
+                                                            </div> <img src={image} className="preview-image" />
+                                                        </div>
+
                                                         :
                                                         <>
-                                                        <div className="input-photourl" onClick={() => filePickerRef.current.click()}>
-                                                        <Image src={upload} className="input-upload-image" alt="upload" />
-                                                        <input onChange={addImage} ref={filePickerRef} className="hidden" type="file" />
-                                                        </div>
+                                                            <div className="input-photourl" onClick={() => filePickerRef.current.click()}>
+                                                                <Image src={upload} className="input-upload-image" alt="upload" />
+                                                                <input onChange={addImage} ref={filePickerRef} className="hidden" type="file" />
+                                                            </div>
                                                         </>
-                                                        }
-                                                        {user.isAdmin && 
+                                                    }
+                                                    {user.isAdmin &&
                                                         <div className="account-check-container">
-                                                        <label className="account-settings-admin light-blue">
-                                                            Admin                                                            
+                                                            <label className="account-settings-admin light-blue">
+                                                                Admin
                                                             </label>
                                                             <div className="account-settings-check">
-                                                            <CheckIcon />
+                                                                <CheckIcon />
                                                             </div>
-                                                            </div>
-                                                            }
-                                                            {user.isSuper && 
+                                                        </div>
+                                                    }
+                                                    {user.isSuper &&
                                                         <div className="account-check-container">
-                                                        <label className="account-settings-admin light-blue">
-                                                            Super Admin                                                            
+                                                            <label className="account-settings-admin light-blue">
+                                                                Super Admin
                                                             </label>
                                                             <div className="account-settings-check">
-                                                            <CheckIcon />
+                                                                <CheckIcon />
                                                             </div>
-                                                            </div>
-                                                            }
-                                                            {user.isSuperSuper && 
+                                                        </div>
+                                                    }
+                                                    {user.isSuperSuper &&
                                                         <div className="account-check-container">
-                                                        <label className="account-settings-admin light-blue">
-                                                            Owner                                                            
+                                                            <label className="account-settings-admin light-blue">
+                                                                Owner
                                                             </label>
                                                             <div className="account-settings-check">
-                                                            <CheckIcon />
+                                                                <CheckIcon />
                                                             </div>
-                                                            </div>
-                                                            }
+                                                        </div>
+                                                    }
                                                 </div>
                                                 <div className="account-button-container">
-                                                <button
-                                                    className="contact__submit submit"
-                                                    onClick={(e) => updateUser(e)}
-                                                    type="submit"
+                                                    <button
+                                                        className="orange-btn"
+                                                        onClick={(e) => updateUser(e)}
+                                                        type="submit"
                                                     >
-                                                    Update
-                                                </button>
-                                                    </div>
+                                                        Update
+                                                    </button>
+                                                </div>
 
                                             </form>
 
@@ -234,7 +232,7 @@ const AccountInfo = () => {
                     </div>
                 </Modal>{" "}
             </>
-        </>
+    
     );
 };
 

@@ -82,7 +82,7 @@ function ContactForm() {
                 </div>
 
                 <div className="sc_form_item sc_form_button">
-                  <button type="submit" className="light-blue-button" disabled={loading}>
+                  <button type="submit" className="orange-btn" disabled={loading}>
                     Send Message
                   </button>
                 </div>

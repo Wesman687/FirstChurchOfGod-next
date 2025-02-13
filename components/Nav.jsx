@@ -35,7 +35,9 @@ export default function Nav() {
   // ✅ Navigate & close menu
   const handleLink = (link) => {
     router.push(link);
-    handleCloseMenu();
+    if (menuOpen) {
+      handleCloseMenu();
+    }
   };
 
   async function logOut() {
@@ -58,7 +60,7 @@ export default function Nav() {
             onClick={() => (menuOpen ? handleCloseMenu() : setMenuOpen(true))}
           >
             {menuOpen ? (
-              <XIcon classes={"icon-small"} />
+              <p className="nav-x">X</p>
             ) : (
               <>
                 <div className="bar"></div>

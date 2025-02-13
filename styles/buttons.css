@@ -33,7 +33,13 @@
 }
 .orange-btn {
 	background-color: #1DC6DF;
-	cursor: pointer;
+    color: white;
+    font-weight: 500px;
+    cursor: pointer;
+    padding: 8px 16px;
+    border-radius: 14px;
+    border: 2px solid orange;
+    height: fit-content;
 }
 .orange-btn:hover {
 	position: relative;

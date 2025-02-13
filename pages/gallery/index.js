@@ -53,8 +53,6 @@ function Gallery() {
 
     }
 
-
-
     function handleFilter(e) {
         const value = e.target.value
         setFilter(value)
@@ -122,7 +120,6 @@ function Gallery() {
         })
         return unsubscribe
     }, [])
-    console.log(displayedImages)
 
     return (
         <>

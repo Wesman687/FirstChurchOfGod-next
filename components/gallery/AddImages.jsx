@@ -18,19 +18,19 @@ function AddImages({ filters }) {
         reader.addEventListener("load", e => {
             setImage(e.target.result)
         })
-        
+
     }
-    
-    async function handleAdd(){
+
+    async function handleAdd() {
         let downloadURL
-            if (image) {
-                const string = generateRandomStringWithDate()
-                console.log(string)
-                const imageRef = await ref(storage, `images/${string}`)
-                const uploadImage = await uploadString(imageRef, image, "data_url")
-                downloadURL = await getDownloadURL(imageRef)
-         }
-         const docRef = await addDoc(collection(db, 'images'), {
+        if (image) {
+            const string = generateRandomStringWithDate()
+            console.log(string)
+            const imageRef = await ref(storage, `images/${string}`)
+            const uploadImage = await uploadString(imageRef, image, "data_url")
+            downloadURL = await getDownloadURL(imageRef)
+        }
+        const docRef = await addDoc(collection(db, 'images'), {
             link: downloadURL,
             timeStamp: new Date(),
             gallery: filter,
@@ -45,10 +45,10 @@ function AddImages({ filters }) {
         const now = new Date();
         const timestamp = now.getTime(); // Get milliseconds since epoch
         const randomPart = Math.random().toString(36).substr(2, 6); // Generate random string
-      
+
         return `image_${timestamp}_${randomPart}`;
-      }
-    
+    }
+
     return (
         <div className='add-image-container'>
             <div>
@@ -64,7 +64,7 @@ function AddImages({ filters }) {
                             <label>2400 x 1200</label>
                             <div className='add-image-upload-wrapper' >
                                 <UploadIcon />
-                                
+
                             </div>
                         </div>
                         <input onChange={addImage} ref={filePickerRef} className="hidden" type="file" />
@@ -74,21 +74,21 @@ function AddImages({ filters }) {
                 <div className='add-image-details-container'>
                     <div className='add-image-details-wrapper'>
                         <div>
-                    <label className='add-image-labels'>Select Gallery: </label>
-                    <select onChange={(e) => setFilter(e.target.value)} value={filter} className='gallery-filter-box'>                        
-                        {filters.length > 0 && filters.map((item, index) => (
-                            <>
-                                <option value={item} key={index}>{item}</option>
-                            </>))}
-                    </select>
-                    </div>
-                    <div>
-                        <button className='add-image-button' onClick={handleAdd}>Add Image</button>
-                    </div>
+                            <label className='add-image-labels'>Select Gallery: </label>
+                            <select onChange={(e) => setFilter(e.target.value)} value={filter} className='gallery-filter-box'>
+                                {filters.length > 0 && filters.map((item, index) => (
+                                    <>
+                                        <option value={item} key={index}>{item}</option>
+                                    </>))}
+                            </select>
+                        </div>
                     </div>
                     <div>
                         <label className='add-image-labels'>Desc:</label>
-                        <textarea className='add-image-desc' value={desc} onChange={(e)=>setDesc(e.target.value)} placeholder='Description' />
+                        <textarea className='add-image-desc' value={desc} onChange={(e) => setDesc(e.target.value)} placeholder='Description' />
+                    </div>
+                    <div className='gallery-add-image-button-wrapper'>
+                        <button className='orange-btn gallery-add-image-button' onClick={handleAdd}>Add Image</button>
                     </div>
 
                 </div>}

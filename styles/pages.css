@@ -135,6 +135,20 @@
 	display: flex;
 	justify-content: space-between;
 }
+.add-image-template {
+    cursor: pointer;
+    padding: 6px 12px;
+    border: 1px dotted orange;
+    border-radius: 4px;
+}
+.add-image-details-container {
+    padding: 12px 0;
+}
+.gallery-add-image-button-wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
 .login-link-outline:hover {    
     
@@ -353,20 +367,35 @@
     text-align: center;
     width: 100%;
 }
+.contact-fb-logo {
+    border-radius: 4px;
+    background-color: transparent !important;
+}
 .contact-label {
     font-size: 18px;
     font-weight: 700;
     color: #1cbed6;
     width: fit-content;
+    word-wrap: break-word;
+    text-align: left;
 }
 .contact-item {
     align-self: flex-start;
+    width: 50px;
+}
+.contact-item-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
 }
 .contact-label2 {
     font-size: 16px;
     font-weight: 500;
     color: #1cbed6;
     width: auto !important;
+    text-align: left;
+    
 }
 .label-wrapper {
     width: 100%;
@@ -382,10 +411,14 @@
 
 
 
+
 @media (max-width: 768px){
     .contact-wrap {
         align-items: center;
         flex-direction: column;
+    }
+    .contact-label-wrap {
+        width: 100%;
     }
 }
 

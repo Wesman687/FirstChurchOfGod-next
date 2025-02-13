@@ -19,7 +19,7 @@ function CWC() {
                     <div className='cwc-intro-wrapper'>
                         <h2>Discover a global network of women ready to live out their calling.</h2>
                         <h5>As a Christian Women Connection Member, you are grafted into the blessing of leadership training, spiritual growth, and fellowship.</h5>
-                        <Link href={'https://christianwomenconnection.org/connection/'} target='_blank'><button className='cwc-member-button light-blue-button'>Become a member</button></Link>
+                        <Link href={'https://christianwomenconnection.org/connection/'} target='_blank'><button className='orange-btn cwc-member-button'>Become a member</button></Link>
                     </div>                   
                 </div>
                 <h5 className='cwc-body-text'>You do not have to be a member of the Church of God to join or participate in. The local chapter meet on the 4th Monday of each month at 1:00 pm. If you are interested in joining and/or visiting our group and have any question, please call Susan at <a href='tel:#3865460143' className='light-blue'>386-546-0143</a> 

@@ -15,6 +15,7 @@ import ErrorModal from "./ErrorModal";
 import ConfirmationModal from "./ConfirmationModel";
 import { collection, getDocs, query, where, doc, setDoc } from "firebase/firestore";
 import { setUser } from "@/redux/userSlice";
+import { sendEmail } from "../programs/SendEmail";
 
 const Login = ({ defaultState, classes }) => {
   const [signState, setSignState] = useState(defaultState || "Sign In");
@@ -28,7 +29,7 @@ const Login = ({ defaultState, classes }) => {
   const [loading, setLoading] = useState(false);
   const [resetEmailSent, setResetEmailSent] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
-  const [isOpen, setIsOpen ]= useState(false)
+  const [isOpen, setIsOpen] = useState(false)
   const dispatch = useDispatch();
   const [error, setError] = useState({ showError: false, title: "", message: "" });
 
@@ -121,7 +122,7 @@ const Login = ({ defaultState, classes }) => {
         commentRef: "",
       };
       await setDoc(doc(db, "user", newUser.uid), userData);
-
+      sendEmail(userData, "New Member Registration - Awaiting Approval");
       // ✅ Save user in Redux
       dispatch(setUser(userData));
 
@@ -160,88 +161,104 @@ const Login = ({ defaultState, classes }) => {
 
   return (
     <>
-      <p className={classes} onClick={() => setIsOpen(true)}>Login</p> 
+      <p className={classes} onClick={() => setIsOpen(true)}>Login</p>
 
-      
+
       {isOpen && (
         <div className="custom-modal-overlay">
-        <div className="login__container">
-          <div className="login">
-            <div className="login-form login-setting">
-              {loading ? (
-                <RingSpinner />
-              ) : (
-                <>
-                  <div className="login-close-container">
-                    <div className="login__x" onClick={() => setIsOpen(false)}>
-                      <XIcon />
+          <div className="login__container">
+            <div className="login">
+              <div className="login-form login-setting">
+                {loading ? (
+                  <RingSpinner />
+                ) : (
+                  <>
+                    <div className="login-close-container">
+                      <div className="login__x" onClick={() => setIsOpen(false)}>
+                        <XIcon />
+                      </div>
                     </div>
-                  </div>
-                  <h1 className="login-header">{signState}</h1>
-                  <form>
-                    <div className="input-container">
-                      <p>Email</p>
-                      <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder="Email" />
-                      {signState == "Sign Up" && <> <p>Password</p>
+                    <h1 className="login-header">{signState}</h1>
+                    <form>
+                      <div className="input-container">
+                        <p>Email</p>
+                        <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder="Email" />
+                        {signState == "Sign Up" && <> <p>Password</p>
                           <input value={password} onChange={(e) => setPassword(e.target.value)} type="password" placeholder="Password" /></>}
-                      {signState === "Sign In" ? (
-                        <>
-                          <p>Password</p>
-                          <input value={password} onChange={(e) => setPassword(e.target.value)} type="password" placeholder="Password" />
-                          <button type="submit" className="submit" onClick={login}>Sign In</button>
-                          <p className="forgot-password" onClick={confirmResetPassword}>Forgot Password?</p>
-                        </>
-                      ) : (
-                        <>
-                          <p>First Name</p>
-                          <input value={firstName} onChange={(e) => setFirstName(e.target.value)} type="text" placeholder="First Name" />
-                          <p>Last Name</p>
-                          <input value={lastName} onChange={(e) => setLastName(e.target.value)} type="text" placeholder="Last Name" />
-                          <p>Phone</p>
-                          <input value={phone} onChange={(e) => setPhone(e.target.value)} type="text" placeholder="Phone" />
-                          <p>Profile Photo</p>
-                          <div className="login-file">
-                            <input
-                              type="file"
-                              accept="image/*" // Ensures only image files
-                              onChange={(e) => {
-                                const file = e.target.files[0];
-                                if (file) {
-                                  setPhoto(file);
-                                  setPhotoUrl(URL.createObjectURL(file)); // Generate preview URL
-                                }
-                              }}
-                            />
+                        {signState === "Sign In" ? (
+                          <>
+                            <p>Password</p>
+                            <input value={password} onChange={(e) => setPassword(e.target.value)} type="password" placeholder="Password" />
+                            <button type="submit" className="orange-btn" onClick={login}>Sign In</button>
 
-                            {/* ✅ Display Image Preview */}
-                            {photoUrl && (
-                              <div className="image-preview">
-                                <img src={photoUrl} alt="User Preview" />
+                            
+
+                          </>
+                        ) : (
+                          <>
+                            <p>First Name</p>
+                            <input value={firstName} onChange={(e) => setFirstName(e.target.value)} type="text" placeholder="First Name" />
+                            <p>Last Name</p>
+                            <input value={lastName} onChange={(e) => setLastName(e.target.value)} type="text" placeholder="Last Name" />
+                            <p>Phone</p>
+                            <input value={phone} onChange={(e) => setPhone(e.target.value)} type="text" placeholder="Phone" />
+                            <p>Profile Photo</p>
+                            <div className="login-file">
+                              <input
+                                type="file"
+                                id="fileInput"
+                                accept="image/*"
+                                className="login-input-file" // Ensures only image files
+                                onChange={(e) => {
+                                  const file = e.target.files[0];
+                                  if (file) {
+                                    setPhoto(file);
+                                    setPhotoUrl(URL.createObjectURL(file)); // Generate preview URL
+                                  }
+                                }}
+                              />
+                              <label htmlFor="fileInput" className="login-input-file">
+                                Choose File
+                              </label>
+
+                              {/* ✅ Display Image Preview */}
+                              {photoUrl && (
+                                <div className="image-preview">
+                                  <img src={photoUrl} alt="User Preview" />
+                                </div>
+                              )}
+                              <div className="login-file-button">
+                                <label type="submit" className="orange-btn" onClick={signUp}>Sign Up</label>
                               </div>
-                            )}
-                            <button type="submit" className="submit" onClick={signUp}>Sign Up</button>
-                          </div>
-                          
-                          
-                        </>
-                      )}
-                    </div>
-                  </form>
+                            </div>
 
-                  <div className="form-switch">
-                    {signState === "Sign In" ? (
-                      <p>New Account? <span onClick={() => setSignState("Sign Up")} className="switch-text">Sign Up Now</span></p>
-                    ) : (
-                      <p>Already have an account? <span onClick={() => setSignState("Sign In")} className="switch-text">Sign In</span></p>
-                    )}
-                  </div>
-                </>
-              )}
+
+                          </>
+                        )}
+                        
+                      </div>
+                      
+                    </form>
+                    <div className="login-form-bottom-paragraphs">
+                              <div className="form-switch">
+                                {signState === "Sign In" ? (
+                                  <p>New Account: <span onClick={() => setSignState("Sign Up")} className="switch-text">Sign Up Now</span></p>
+                                ) : (
+                                  <p>Already have an account? <span onClick={() => setSignState("Sign In")} className="switch-text">Sign In</span></p>
+                                )}
+                                
+                              </div>
+                              
+                                <p className="forgot-password" onClick={confirmResetPassword}>Forgot Password?</p>
+                            </div>
+
+                  </>
+                )}
+              </div>
             </div>
           </div>
         </div>
-        </div>
-        )}
+      )}
       {/* ✅ Confirmation Modal for Reset */}
       {showConfirm && (
         <ConfirmationModal
