@@ -47,7 +47,7 @@ function Contacts() {
                                         </div>
                                         <div className="contact-label-wrap-text">
                                             <span className="contact-label">Have any questions?</span>
-                                            <span className="contact-label2"><a href="mailto:support@axiomthemes.com">email@email.com</a></span>
+                                            <span className="contact-label2"><a href="mailto:the1stchurchofgod@gmail.com">the1stchurchofgod@gmail.com</a></span>
                                         </div>
                                     </div>
 
