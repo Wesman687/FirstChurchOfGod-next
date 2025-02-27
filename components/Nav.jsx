@@ -87,6 +87,9 @@ export default function Nav() {
               <li className={pathname === "/gallery" ? "current-link" : "menu-item"} onClick={() => handleLink("/gallery")}>
                 Gallery
               </li>
+              <li className={pathname === "/sermons" ? "current-link" : "menu-item"} onClick={() => handleLink("/sermons")}>
+                Sermons 
+              </li>
 
               {/* Admin Section */}
               <div className="nav_link admin">

@@ -961,6 +961,48 @@
 .home-cwc-button {
     align-items: center;
 }
+/******* SERMONS ********/
+
+.sermon-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 128px 32px;
+    min-height: 70vh;
+    background-color: #1DC6DF;
+}
+.sermon-container h1 {
+    color: white;
+}
+.video-container {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    color: white;
+    background-color: orange;
+    margin: 0 auto;
+    overflow: hidden;
+    border: 2px solid white;
+    border-radius: 10px; /* Optional rounded corners */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  .video-container h2{
+    font-size: 32px;
+    font-weight: 500;
+    text-align: center;
+    padding: 24px;
+  }
+  .video-container h5 {
+    padding: 0 24px;
+  }
+  @media (max-width: 768px) {
+    .video-container h2 {
+        padding: 6px;
+        font-size: 14px !important;
+    }
+  }
+  
 
 @media (min-width: 768px) and (max-width: 1123px) {
     .art-sign-up {
