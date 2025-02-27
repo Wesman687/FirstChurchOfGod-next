@@ -979,7 +979,6 @@
     position: relative;
     width: 100%;
     max-width: 900px;
-    color: white;
     background-color: orange;
     margin: 0 auto;
     overflow: hidden;
@@ -989,12 +988,14 @@
   }
   .video-container h2{
     font-size: 32px;
-    font-weight: 500;
+    font-weight: bold;
     text-align: center;
-    padding: 24px;
+    padding: 24px 0;
+    margin: 0;
   }
   .video-container h5 {
     padding: 0 24px;
+    color: white;
   }
   @media (max-width: 768px) {
     .video-container h2 {
