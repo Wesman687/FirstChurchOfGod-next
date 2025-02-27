@@ -14,7 +14,7 @@ function CalendarPage() {
             toast.warning('Only Members can view this page.')
             router.push('/')
         }
-    },[])
+    },[router, user.isMember])
   return (
     <Layout>
         

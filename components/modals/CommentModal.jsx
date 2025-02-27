@@ -61,7 +61,7 @@ function CommentModal() {
         
 
         fetchData();
-    }, [isOpen, commentDetails.id]);
+    }, [isOpen, commentDetails.id, fetchData]);
     return (
         <Modal
             open={isOpen}

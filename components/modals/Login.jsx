@@ -179,7 +179,7 @@ const Login = ({ defaultState, classes }) => {
         document.body.style.overflow = "auto"; // ✅ Cleanup when modal unmounts
         document.body.style.paddingRight = "0";
     };
-}, [isOpen]);
+}, [isOpen, dispatch]);
 
 
   return (

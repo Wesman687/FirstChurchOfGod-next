@@ -75,7 +75,7 @@ function ListPrayerRequest({ action }) {
             setLoading(false)
         })
         return unsubscribe
-    }, [])
+    }, [action, user.userRef])
     return (
         <div className='list-prayer-container'>
             {loading ? <><RingSpinner /></> : <>

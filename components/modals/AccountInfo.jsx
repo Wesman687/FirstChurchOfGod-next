@@ -175,7 +175,7 @@ const AccountInfo = () => {
 
                                                         <div className="account-image-preview">
                                                             <div className='x-image-preview' onClick={() => setImage(null)}><XIcon />
-                                                            </div> <img src={image} className="preview-image" />
+                                                            </div> <img src={image} alt="" className="preview-image" />
                                                         </div>
 
                                                         :
