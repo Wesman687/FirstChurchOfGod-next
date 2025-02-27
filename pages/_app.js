@@ -1,6 +1,5 @@
 import "@/styles/globals.css";
 import '@/styles/responsive.css';
-import '@/styles/shortcodes.css';
 import '@/styles/skin.css';
 import '@/styles/tpl-essential-grids.css';
 import '@/styles/core.animation.css';

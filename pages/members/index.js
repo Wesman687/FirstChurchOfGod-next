@@ -1,3 +1,5 @@
+'use client';
+
 import Layout from '@/components/Layout';
 import CampRegistration from '@/components/members/CampRegistration';
 import HomeComment from '@/components/members/HomeComment';
@@ -7,12 +9,9 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 
 function Members() {
-    const user = useSelector(state => state.user);
-
-    // ✅ Single state for managing active section
+    const user = useSelector((state) => state.user);
     const [activeSection, setActiveSection] = useState("testimonial");
 
-    // ✅ Sections mapping for dynamic rendering
     const sections = {
         testimonial: <HomeComment />,
         manageMembers: <ManageMembers />,
@@ -20,7 +19,6 @@ function Members() {
         campRegistration: <CampRegistration />,
     };
 
-    // ✅ Button configuration for dynamic rendering
     const buttons = [
         { key: "testimonial", label: "Testimonial" },
         { key: "manageMembers", label: user.isAdmin ? "Manage Members" : "Show Members" },
@@ -38,13 +36,15 @@ function Members() {
                 </div>
             </div>
 
-            {/* ✅ Toolbar with dynamically generated buttons */}
+            {/* ✅ Responsive Toolbar */}
             <div className="manage-buttons-container members-toolbar">
                 <div>
                     {buttons.map(({ key, label }) => (
                         <label
                             key={key}
-                            className={activeSection === key ? "manage-filters-label-active manage-members-active" : "manage-filters-label"}
+                            className={`manage-filters-label ${
+                                activeSection === key ? "manage-members-active" : ""
+                            }`}
                             onClick={() => setActiveSection(key)}
                         >
                             {label}
@@ -53,8 +53,10 @@ function Members() {
                 </div>
             </div>
 
-            {/* ✅ Render the active section dynamically */}
-            {sections[activeSection]}
+            {/* ✅ Render active section */}
+            <div className="responsive-section">
+                {sections[activeSection]}
+            </div>
         </Layout>
     );
 }

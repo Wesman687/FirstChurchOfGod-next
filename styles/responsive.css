@@ -1,0 +1,97 @@
+/* Responsive styles for various components */
+
+/* General styles for smaller screens */
+@media (max-width: 768px) {
+    .home-container {
+        padding: 64px 16px 0;
+    }
+    .home-bottom-wrapper {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .home-bottom-firstparagraph {
+        border-right: none;
+        font-size: 14px;
+        word-wrap: normal;
+        max-width: 70vw;
+        padding: 0;
+        margin: 0;
+        line-height: 1.8;
+    }
+    .home-bottom-email {
+        border-top: 1px solid white;
+        padding-top: 22px;
+        text-align: center;
+    }
+    .gallery-image-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .contact-wrap {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+    .contact-label {
+        font-size: 16px;
+    }
+    .contact-paragraph {
+        font-size: 14px;
+        width: 80%;
+    }
+    .cwc-wrapper {
+        flex-direction: column;
+        padding: 32px 12px 0;
+    }
+    .cwc-intro-wrapper {
+        width: 100%;
+        align-items: center;
+    }
+    .cwc-body-text {
+        width: 100%;
+        font-size: 14px;
+        margin: 18px 32px;
+    }
+    .cwc-mission-wrapper {
+        width: 90%;
+        padding: 18px;
+    }
+    .cwc-mission-wrapper h3, .cwc-mission-wrapper h4 {
+        font-size: 16px;
+    }
+    .cwc-mission-wrapper li {
+        font-size: 12px;
+        line-height: 1.8;
+    }
+    .cwc-visit-button {
+        margin-top: 32px;
+        font-size: 16px;
+    }
+    .home-welcome-image {
+        width: 70%;
+    }
+    .home-welcome-title {
+        font-size: 22px;
+    }
+    .home-welcome-subtitle {
+        font-size: 14px;
+    }
+    .home-welcome-title-paragraph {
+        width: 100%;
+        font-size: 14px;
+        line-height: 1.9;
+    }
+    .home-cwc-title {
+        font-size: 26px;
+    }
+    .home-cwc-button {
+        align-items: center;
+    }
+    .testimonial-comment {
+        font-size: 14px;
+    }
+    .footer-wrapper {
+        flex-direction: column;
+    }
+}

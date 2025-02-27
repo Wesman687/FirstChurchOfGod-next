@@ -86,7 +86,7 @@ button {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 5px;
+    gap: 25px;
 }
 
 /* Buttons */
@@ -97,7 +97,7 @@ button {
     align-items: center;
 }
 
-.modal-btn-container {
+.camp-modal-btn-container {
     display: flex;
     gap: 10px;
     width: 100%;
@@ -116,11 +116,15 @@ button {
 }
 .campmodel-checkbox-grouping {
     display: flex;
+    align-items: center;
+    justify-content: center;
     gap: 10px;
+    
 }
 .campmodel-checkbox-grouping input {
     width: 20px;
-    height: 20px;
+    height: 15px;
+    margin: 0;
 }
 .modal-camp-red {
     background-color: red;
@@ -298,4 +302,118 @@ button {
 .homecomment-preview-text {
 	text-align: center;
 	
+}
+/* ✅ General Container Responsiveness */
+.admin-container, .managemembers-container, .homecomment-container {
+    max-width: 90%;
+    margin: auto;
+    padding: 20px;
+}
+
+/* ✅ Responsive Table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+@media (max-width: 768px) {
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+}
+
+/* ✅ Modal Responsiveness */
+.camp-modal {
+    width: 90%;
+    max-width: 450px;
+    padding: 15px;
+    border-radius: 10px;
+    position: relative;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+/* ✅ Adjust Buttons for Smaller Screens */
+button {
+    padding: 8px 12px;
+    font-size: 14px;
+}
+
+.modal-btn-container {
+    flex-direction: column;
+    gap: 5px;
+}
+
+.modal-btn-container div {
+    width: 100%;
+}
+
+/* ✅ Members Toolbar Responsiveness */
+.members-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    padding: 16px;
+}
+
+.members-toolbar div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.members-toolbar label {
+    font-size: 16px;
+    padding: 10px;
+    background: #1dc6df;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .members-toolbar {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .members-toolbar label {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* ✅ Table Responsiveness */
+
+/* ✅ Responsive Form Layout */
+.form-compact, .form-row {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+@media (min-width: 768px) {
+    .form-row {
+        flex-direction: row;
+    }
+}
+
+/* ✅ Improve Button Hover Effects */
+.modal-camp-blue:hover, .modal-camp-red:hover {
+    transition: all 0.3s ease-in-out;
+}
+
+/* ✅ Center elements for smaller screens */
+.text-center {
+    text-align: center;
+}
+
+@media (max-width: 480px) {
+    .text-center {
+        font-size: 14px;
+    }
 }

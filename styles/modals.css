@@ -232,6 +232,7 @@
 .confirmation-modal-buttons button {
 	width: 150px;
 	font-size: 16px;
+	margin: 0;
 }
 .confirm-button {
 	color: #ffffff !important;

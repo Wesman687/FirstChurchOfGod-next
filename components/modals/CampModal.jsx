@@ -122,7 +122,7 @@ function CampModal({ registration, onClose, refresh }) {
                 </div>
 
                 {/* Buttons */}
-                <div className='modal-btn-container'>
+                <div className='camp-modal-btn-container'>
                             <div> 
                                 <button type="submit" className='modal-camp-blue' disabled={loading} onClick={handleSave}>
                                     Save Changes
@@ -137,7 +137,7 @@ function CampModal({ registration, onClose, refresh }) {
             </div>}
             {showConfirm && (
         <ConfirmationModal
-          title={`Remove {formData.firstName} {formData.lastName}?`}
+          title={`Remove ${formData.firstName} ${formData.lastName}?`}
           message={`Are you sure you want to remove this child?`}
           onConfirm={handleDelete}
           onCancel={() => setShowConfirm(false)}
