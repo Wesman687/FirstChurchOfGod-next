@@ -944,9 +944,83 @@
     font-size: 22px;
     line-height: 1.7;
     text-align: center;
-    padding: 24px 0px;
+    padding: 0px 0px 64px;
 }
-
+.meetings-container {
+    text-align: center;
+    padding: 32px 20px;
+    margin-bottom: 64px;
+  }
+  
+  .meetings-container h1 {
+    font-size: 2rem;
+    color: #222;
+    margin-bottom: 20px;
+    font-weight: bold;
+  }
+  
+  .meeting-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  
+  .meeting-item {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    width: 280px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    border-top: 5px solid #3799AB; /* Blue top border */
+  }
+  .meeting-item h4 {
+    margin: 0;
+  }
+  
+  .meeting-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    border-top: 5px solid #f4a261; /* Orange hover effect */
+  }
+  
+  .meeting-item h3 {
+    font-size: 1.3rem;
+    color: #3799AB; /* Blue titles */
+    margin-bottom: 10px;
+  }
+  
+  .meeting-item p {
+    font-size: 1rem;
+    color: #555;
+  }
+  
+  .meeting-item h3::after {
+    content: "";
+    display: block;
+    width: 50px;
+    height: 3px;
+    background: #f4a261; /* Orange underline */
+    margin: 5px auto;
+    border-radius: 2px;
+  }
+  
+  @media (max-width: 768px) {
+    .meeting-wrapper {
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .meeting-item {
+      width: 90%;
+    }
+  }
+  
+  
 .home-welcome-subtitle {
     color: #3799AB;
 }
