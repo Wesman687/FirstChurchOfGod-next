@@ -36,7 +36,7 @@ function Contacts() {
                                         </div>
                                         <div className="contact-label-wrap-text">
                                             <span className="contact-label">Phone number:</span>
-                                            <span className="contact-label2"><a href="tel:13863252814">386-546-0143</a></span>
+                                            <span className="contact-label2"><a href="tel:13863252814">386-325-2814</a></span>
                                         </div>
 
                                     </div>
@@ -57,7 +57,7 @@ function Contacts() {
                                         </div>
                                         <div className="contact-label-wrap-text">
                                             <span className="contact-label">We are open:</span>
-                                            <span className="contact-label2">Sunday 10AM - 2PM, Wed 2PM-4:40PM</span>
+                                            <span className="contact-label2">Sunday 10AM - 2PM, Wed 6PM-7:00PM</span>
                                         </div>
                                     </div>
 
