@@ -13,7 +13,7 @@ function HomeMeetings() {
           </div>
           <div className="meeting-item">
             <h3>Bible Study</h3>
-            <h4>Wednesday</h4>
+            <h4>Thursday</h4>
             <p>6:00pm</p>
           </div>
           <div className="meeting-item">
@@ -21,11 +21,11 @@ function HomeMeetings() {
             <h4>Saturday</h4>
             <p>9:30am</p>
           </div>
-          <div className="meeting-item">
+          {/* <div className="meeting-item">
             <h3>Christian Art Camp</h3>
             <h4>Sunday</h4>
             <p>12-1:30pm</p>
-          </div>
+          </div> */}
           <div className="meeting-item">
             <h3>Christian Womans Connection</h3>
             <h4>Last Monday of the month</h4>
