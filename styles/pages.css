@@ -50,6 +50,13 @@
     padding: 32px 0;
     margin-bottom: 64px;
 }
+.bstudy-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 64px;
+    margin: 24px;
+}
 
 .home-bottom-wrapper {
     max-width: 90vw;

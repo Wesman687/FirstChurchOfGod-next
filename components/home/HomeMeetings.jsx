@@ -1,4 +1,6 @@
 import React from "react";
+import bstudy from "../../images/bstudy.png"
+import Image from "next/image";
 
 function HomeMeetings() {
   return (
@@ -32,6 +34,9 @@ function HomeMeetings() {
             <p>1:00pm</p>
           </div>
         </div>
+      </div>
+      <div className="bstudy-container">
+        <Image src={bstudy} width={650} alt="" />
       </div>
     </div>
   );

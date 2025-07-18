@@ -6,7 +6,7 @@ export default async function handler(req, res) {
     try {
       console.log("📨 Incoming request:", req.body); // ✅ Debugging
   
-      const response = await fetch("http://209.38.61.69:5000/send-email", {
+      const response = await fetch("http://15.204.248.186:8000/send-email", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(req.body),
