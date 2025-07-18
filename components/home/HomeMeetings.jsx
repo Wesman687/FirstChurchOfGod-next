@@ -36,7 +36,7 @@ function HomeMeetings() {
         </div>
       </div>
       <div className="bstudy-container">
-        <Image src={bstudy} width={650} alt="" />
+        <Image className="bstudy-img" src={bstudy} width={650} alt="" />
       </div>
     </div>
   );
