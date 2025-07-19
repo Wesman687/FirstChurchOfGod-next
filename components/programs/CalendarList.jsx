@@ -236,7 +236,7 @@ function useIsMobile(breakpoint = 768) {
 
   return (
     <>      
-    <div style={{ width: '100%', height: 'calc(100vh - 100px)', overflowX: 'auto', overflowY: 'hidden' }}>
+    <div style={{ width: '100%', height: 'calc(100vh - 150px)', overflowX: 'auto', overflowY: 'hidden' }}>
         <FullCalendar
           ref={calendarRef}
           plugins={[dayGridPlugin, interactionPlugin, listPlugin]}
@@ -251,9 +251,10 @@ function useIsMobile(breakpoint = 768) {
           events={events}
           eventContent={eventContent} 
           eventClick={handleEventClick} // Attach eventClick handler
-          height="auto"  // Grows to fit content; use '100%' if you want it to fill the parent div
+          height="100%"  // Grows to fit content; use '100%' if you want it to fill the parent div
 contentHeight="auto"  // Ensures inner content expands without fixed pixels
 aspectRatio={isMobile ? 0.8 : 1.35}  // Makes it taller/narrower on mobile to fit better (lower ratio = taller)
+fixedWeekCount={false}
         />        
       </div>
       <Modal
