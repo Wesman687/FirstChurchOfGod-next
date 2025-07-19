@@ -716,7 +716,12 @@
   .fc-col-header-cell {
 	background-image: linear-gradient(90deg, #4245fffa, #1102e9f6, #4245fffa);
   }
-  
+ .fc-list-table td {
+	width: 100%;
+  }
+  .fc-day, .fc-event {
+	width: 100%;
+  }
   .fc-toolbar {
 	background-color: #cce8ff93; /* Customize toolbar background */
 	border-bottom: 1px solid #ddd;
@@ -760,3 +765,25 @@
 	border: none !important;
 	box-shadow: none !important;
   }
+
+  @media (max-width: 768px) {
+  .fc .fc-daygrid-day {
+    min-width: 40px;  /* Prevent columns from being too narrow */
+    font-size: 12px;  /* Smaller text for better fit */
+  }
+  	.calendar-container {
+		padding: 64px 6px 0px;
+	}
+  .fc .fc-col-header-cell {
+    font-size: 8px;  /* Shrink header days (Mon, Tue, etc.) */
+  }
+  .fc .fc-scroller {
+    overflow-y: auto !important;  /* Enable vertical scroll if needed */
+  }
+  .fc-toolbar-title {
+	font-size: 18px !important;
+  }
+  .fc-view {
+    background-color: white !important;  /* Force white background to avoid any grey */
+  }
+}

@@ -1,16 +1,16 @@
 import FullCalendar from '@fullcalendar/react'; // must go before plugins
-import dayGridPlugin from '@fullcalendar/daygrid'; // month view
-import timeGridPlugin from '@fullcalendar/timegrid'; // daily and weekly views
-import listPlugin from '@fullcalendar/list'; // list view (weekly and daily)
+import dayGridPlugin from '@fullcalendar/daygrid'; // ✅ the only view you want
 import interactionPlugin from '@fullcalendar/interaction'; // for selectable feature
+import listPlugin from '@fullcalendar/list';
 import { useEffect, useRef, useState } from 'react';
-import { createTheme, CssBaseline, Modal } from '@mui/material';
+import {  Modal } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { closeEventModal, openEventModal } from '@/redux/modalSlice';
 import { toast } from 'react-toastify';
 import { ColorPicker } from './ColorPicker';
 import { addDoc, collection, deleteDoc, doc, getDocs, onSnapshot, query, where } from 'firebase/firestore';
 import { db } from '@/firebase';
+import { useLayoutEffect } from 'react';
 
 
 const FullCalendarComponent = () => {
@@ -26,6 +26,33 @@ const FullCalendarComponent = () => {
   const [textColor, setTextColor] = useState('#000000');
   const [bgColor, setBgColor] = useState('#FFFFFF');
   const [selectedEvent, setSelectedEvent] = useState(null); // Store the selected event for deletion
+  const [currentView, setCurrentView] = useState('dayGridMonth');
+  const isMobile = useIsMobile();
+
+useLayoutEffect(() => {
+  if (calendarRef.current) {
+    const calendarApi = calendarRef.current.getApi();
+    const newView = isMobile ? 'listWeek' : 'dayGridMonth';
+    if (calendarApi.view.type !== newView) {
+      calendarApi.changeView(newView);
+    }
+  }
+}, [isMobile]);
+  
+
+function useIsMobile(breakpoint = 768) {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < breakpoint);
+    checkMobile();
+
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, [breakpoint]);
+
+  return isMobile;
+}
   
   const handleEventClick = async (clickInfo) => {
     if (!user.isAdmin) {
@@ -205,114 +232,113 @@ const FullCalendarComponent = () => {
     })
     return unsubscribe
   }, [])
+  // Example in useEffect after fetching events
+
   return (
-      <div>
-        
+    <>      
+    <div style={{ width: '100%', height: 'calc(100vh - 100px)', overflowX: 'auto', overflowY: 'hidden' }}>
         <FullCalendar
           ref={calendarRef}
-          plugins={[dayGridPlugin, timeGridPlugin, listPlugin, interactionPlugin]}
-          initialView="dayGridMonth"
+          plugins={[dayGridPlugin, interactionPlugin, listPlugin]}
+          initialView={'dayGridMonth'}
           selectable={true}
           select={handleDateSelect} // Use select for date selection
           headerToolbar={{
             left: 'prev,next today',
             center: 'title',
-            right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek,listDay',
-          }}
-          views={{
-            dayGridMonth: { buttonText: 'Month' },
-            timeGridWeek: { buttonText: 'Week' },
-            timeGridDay: { buttonText: 'Day' },
-            listWeek: { buttonText: 'Weekly List' },
-            listDay: { buttonText: 'Daily List' },
+            right: isMobile ? 'listWeek,dayGridWeek' : 'dayGridMonth,dayGridWeek'
           }}
           events={events}
           eventContent={eventContent} 
           eventClick={handleEventClick} // Attach eventClick handler
-        />
-        <Modal
-          open={isOpen}
-          onClose={() => dispatch(closeEventModal())}
-          className="settings__modal contact__modal"
-        >
-          <div className="login__container">
-            <div className="login">
-              <div className="login-form calender-container">
-                <div className="modal">
-                  <form onSubmit={handleFormSubmit}>
-                    <label className='calendar_label'>
-                      Event Title:
+          height="auto"  // Grows to fit content; use '100%' if you want it to fill the parent div
+contentHeight="auto"  // Ensures inner content expands without fixed pixels
+aspectRatio={isMobile ? 0.8 : 1.35}  // Makes it taller/narrower on mobile to fit better (lower ratio = taller)
+        />        
+      </div>
+      <Modal
+      open={isOpen}
+      onClose={() => dispatch(closeEventModal())}
+      className="settings__modal contact__modal"
+    >
+      <div className="login__container">
+        <div className="login">
+          <div className="login-form calender-container">
+            <div className="modal">
+              <form onSubmit={handleFormSubmit}>
+                <label className='calendar_label'>
+                  Event Title:
+                  <input
+                    type="text"
+                    value={newEventData.title}
+                    onChange={(e) => setNewEventData({ ...newEventData, title: e.target.value })}
+                    required
+                  />
+                </label>
+                <label className='calendar_label'>
+                  Description:
+                  <input
+                    type="text"
+                    value={newEventData.description}
+                    onChange={(e) => setNewEventData({ ...newEventData, description: e.target.value })}
+                  />
+                </label>
+                <label className='calendar_label'>
+                  Location:
+                  <input
+                    type="text"
+                    value={newEventData.location}
+                    onChange={(e) => setNewEventData({ ...newEventData, location: e.target.value })}
+                  />
+                </label>
+                <div className='time-inputs'>
+                  {!disableTime && <label className='calendar_label'>
+                    Start Time:
+                    <div className='calender-am-pm'>
                       <input
                         type="text"
-                        value={newEventData.title}
-                        onChange={(e) => setNewEventData({ ...newEventData, title: e.target.value })}
-                        required
+                        value={newEventData.startTime}
+                        placeholder='4:00'
+                        onChange={(e) => setNewEventData({ ...newEventData, startTime: e.target.value })}
                       />
-                    </label>
-                    <label className='calendar_label'>
-                      Description:
-                      <input
-                        type="text"
-                        value={newEventData.description}
-                        onChange={(e) => setNewEventData({ ...newEventData, description: e.target.value })}
-                      />
-                    </label>
-                    <label className='calendar_label'>
-                      Location:
-                      <input
-                        type="text"
-                        value={newEventData.location}
-                        onChange={(e) => setNewEventData({ ...newEventData, location: e.target.value })}
-                      />
-                    </label>
-                    <div className='time-inputs'>
-                      {!disableTime && <label className='calendar_label'>
-                        Start Time:
-                        <div className='calender-am-pm'>
-                          <input
-                            type="text"
-                            value={newEventData.startTime}
-                            placeholder='4:00'
-                            onChange={(e) => setNewEventData({ ...newEventData, startTime: e.target.value })}
-                          />
-                          <select className='calendar-am-select' default={startAMPM} onChange={(e) => setStartAMPM(e.target.value)}>
-                            <option value={'AM'}>AM</option>
-                            <option value={'PM'}>PM</option>
-                          </select>
-                        </div>
-                      </label>}                      
+                      <select className='calendar-am-select' default={startAMPM} onChange={(e) => setStartAMPM(e.target.value)}>
+                        <option value={'AM'}>AM</option>
+                        <option value={'PM'}>PM</option>
+                      </select>
                     </div>
-                    <div style={{ padding: '2px', backgroundColor: bgColor, color: textColor }}>
-                      <ColorPicker onColorSelect={handleTextColorChange} defaultColor={textColor} />
-                      <ColorPicker onColorSelect={handleBgColorChange} defaultColor={bgColor} />
-                      <p>Select text and background colors!</p>
-                    </div>
-                        <div className='calendar-button-container'>
-                    {selectedEvent ?
-                      <>
-                        <button type="button" className="red-button" onClick={handleEventRemove}>
-                          Delete Event
-                        </button>
-                        <button type="button" className="cancel-button filter-edit-button" onClick={() => {
-                          dispatch(closeEventModal())
-                          setSelectedEvent(null)
-                          setNewEventData('')
-                        }}>
-                          Cancel
-                        </button>
-                      </>
-                      : <><button type="submit" className='filter-edit-button'>Add Event</button>
-                        <button type="button" className='red-button' onClick={() => dispatch(closeEventModal())}>
-                          Cancel
-                        </button></>}
-                        </div>
-                  </form>
+                  </label>}                      
                 </div>
-              </div>
+                <div style={{ padding: '2px', backgroundColor: bgColor, color: textColor }}>
+                  <ColorPicker onColorSelect={handleTextColorChange} defaultColor={textColor} />
+                  <ColorPicker onColorSelect={handleBgColorChange} defaultColor={bgColor} />
+                  <p>Select text and background colors!</p>
+                </div>
+                    <div className='calendar-button-container'>
+                {selectedEvent ?
+                  <>
+                    <button type="button" className="red-button" onClick={handleEventRemove}>
+                      Delete Event
+                    </button>
+                    <button type="button" className="cancel-button filter-edit-button" onClick={() => {
+                      dispatch(closeEventModal())
+                      setSelectedEvent(null)
+                      setNewEventData('')
+                    }}>
+                      Cancel
+                    </button>
+                  </>
+                  : <><button type="submit" className='filter-edit-button'>Add Event</button>
+                    <button type="button" className='red-button' onClick={() => dispatch(closeEventModal())}>
+                      Cancel
+                    </button></>}
+                    </div>
+              </form>
             </div>
           </div>
-        </Modal>
+        </div>
       </div>
+    </Modal>
+    </>
   );
 };
 

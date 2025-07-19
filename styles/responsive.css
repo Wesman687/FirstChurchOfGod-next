@@ -1,10 +1,15 @@
 /* Responsive styles for various components */
+/* Responsive calendar tweaks */
+.fc {
+    font-size: 0.9rem;
+  }
 
 /* General styles for smaller screens */
 @media (max-width: 768px) {
     .home-container {
         padding: 64px 16px 0;
     }
+
     .home-bottom-wrapper {
         flex-direction: column;
         align-items: center;
