@@ -6,15 +6,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import { toast } from 'react-toastify'
 
 function CalendarPage() {
-    const user = useSelector(state => state.user)
-    const dispatch = useDispatch()
-    const router = useRouter()
-    useEffect(()=>{
-        if (!user.isMember){
-            toast.warning('Only Members can view this page.')
-            router.push('/')
-        }
-    },[router, user.isMember])
   return (
     <Layout>
         

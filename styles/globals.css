@@ -642,5 +642,7 @@ textarea::-webkit-input-placeholder {
   background-color: transparent;
   border: 0;
 }
-
+.calendar_label {
+	color: white !important;
+}
 

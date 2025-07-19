@@ -9,7 +9,7 @@ function HomeBottom() {
                 <div className="home-bottom-email">
                     <h4 className="">Email Us</h4>
                     <h4 className="">
-                        info@yoursite.com
+                        info@youremail.com
                     </h4>
                 </div>
                 <div className="home-bottom-button "><Login defaultState={'Sign Up'} classes={"login-link-outline"}/></div>

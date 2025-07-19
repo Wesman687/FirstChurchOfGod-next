@@ -14,9 +14,14 @@ function HomeMeetings() {
             <p>10:00am - 11:30am</p>
           </div>
           <div className="meeting-item">
+            <h3>Bible Reading</h3>
+            <h4>Sunday</h4>
+            <p>9:15am - 10:00am</p>
+          </div>
+          <div className="meeting-item">
             <h3>Bible Study</h3>
             <h4>Thursday</h4>
-            <p>6:00pm</p>
+            <p>5:30pm</p>
           </div>
           <div className="meeting-item">
             <h3>Bible Study</h3>

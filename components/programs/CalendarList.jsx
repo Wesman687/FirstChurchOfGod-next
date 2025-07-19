@@ -26,8 +26,11 @@ const FullCalendarComponent = () => {
   const [textColor, setTextColor] = useState('#000000');
   const [bgColor, setBgColor] = useState('#FFFFFF');
   const [selectedEvent, setSelectedEvent] = useState(null); // Store the selected event for deletion
-
+  
   const handleEventClick = async (clickInfo) => {
+    if (!user.isAdmin) {
+      return;
+    }
     setSelectedEvent(clickInfo.event); // Store the event object for deletion
     setNewEventData(events.filter((item) => item.id == clickInfo.event._def.publicId).map((item) => ({
       id: item.id,
@@ -237,7 +240,7 @@ const FullCalendarComponent = () => {
               <div className="login-form calender-container">
                 <div className="modal">
                   <form onSubmit={handleFormSubmit}>
-                    <label>
+                    <label className='calendar_label'>
                       Event Title:
                       <input
                         type="text"
@@ -246,7 +249,7 @@ const FullCalendarComponent = () => {
                         required
                       />
                     </label>
-                    <label>
+                    <label className='calendar_label'>
                       Description:
                       <input
                         type="text"
@@ -254,7 +257,7 @@ const FullCalendarComponent = () => {
                         onChange={(e) => setNewEventData({ ...newEventData, description: e.target.value })}
                       />
                     </label>
-                    <label>
+                    <label className='calendar_label'>
                       Location:
                       <input
                         type="text"
@@ -263,7 +266,7 @@ const FullCalendarComponent = () => {
                       />
                     </label>
                     <div className='time-inputs'>
-                      {!disableTime && <label>
+                      {!disableTime && <label className='calendar_label'>
                         Start Time:
                         <div className='calender-am-pm'>
                           <input
