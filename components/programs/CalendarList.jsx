@@ -76,7 +76,7 @@ function useIsMobile(breakpoint = 768) {
     );
     const data = await getDocs(docRef);
     if (data.empty) {
-      console.log("nothing");
+      return null; // Return null instead of logging
     }
     const eventInfo = data.docs[0]
     return eventInfo

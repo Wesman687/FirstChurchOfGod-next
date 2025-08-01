@@ -9,15 +9,15 @@ import RingSpinner from '../RingSpinner'
 function Testimonial() {
     const [loading, setLoading] = useState(false)
     const [testimonials, setTestimonials] = useState([])
-    console.log(testimonials)
+    
     useEffect(()=>{
         setLoading(true)
         const q = query(collection(db, 'testimonial'))        
         const unsubscribe = onSnapshot(q, (snapshot) =>{
             const data = snapshot.docs
             setTestimonials(data.map((item)=> item.data()))
+            setLoading(false)
         })
-        setLoading(false)
         return unsubscribe
     },[])
     return (

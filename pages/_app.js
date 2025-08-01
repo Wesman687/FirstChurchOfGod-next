@@ -19,27 +19,21 @@ import '@/styles/prayerandpost.css'
 import "@/styles/pages.css"
 import "@/styles/videos.css"
 import "@/styles/gallery-enhanced.css"
+import "@/styles/weekly-events.css"
+import "@/styles/enhanced-ui.css"
 // Remove list import since it has no CSS
 
 import { Provider } from 'react-redux';
 import { store } from '@/redux/store';
+import ErrorBoundary from '@/components/ErrorBoundary';
 
 export default function App({ Component, pageProps }) {
   return (
-    <Provider store={store}>
-      <Component {...pageProps} />
-      <ToastContainer
-        position="top-center"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="colored"
-      />
-    </Provider>
+    <ErrorBoundary>
+      <Provider store={store}>
+        <Component {...pageProps} />
+        <ToastContainer />
+      </Provider>
+    </ErrorBoundary>
   );
 }

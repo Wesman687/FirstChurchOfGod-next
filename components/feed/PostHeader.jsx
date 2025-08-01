@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 import ChevronUpIcon from '../icons/ChevronUpIcon'
 import DotsIcon from '../icons/DotsIcon'
+import Image from 'next/image'
 
 function PostHeader({ timeStamp, name, photoUrl, username, setCollapsePost, confirmRemoveMember, setEdit, edit, dotsOn: existingdotsOn, owner }) {
     const user = useSelector(state => state.user)
@@ -17,7 +18,7 @@ function PostHeader({ timeStamp, name, photoUrl, username, setCollapsePost, conf
                     </div>}
                     <div className='posts-owner-photoandname'>
 
-                        {photoUrl && <img src={photoUrl} className='posts-owner-photourl' alt="" />}
+                        {photoUrl && <Image src={photoUrl} className='posts-owner-photourl' alt="User profile" width={40} height={40} />}
                         <h4>{name}</h4>
                         <label>@{username}</label>
                     </div>

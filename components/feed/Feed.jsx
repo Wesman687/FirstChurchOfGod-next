@@ -24,7 +24,6 @@ function Feed() {
           id: doc.id,
           ...doc.data()
         }));
-        console.log(data)
         setRefreshCounter(prev => prev + 1);
         setPosts(data);
         setLoading(false);

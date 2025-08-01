@@ -22,14 +22,29 @@ export default function Nav() {
     setPathName(window.location.pathname);
   }, []);
 
+  // ✅ Update pathname when router changes
+  useEffect(() => {
+    const handleRouteChange = (url) => {
+      setPathName(url);
+    };
+
+    router.events.on('routeChangeComplete', handleRouteChange);
+    
+    // Cleanup function
+    return () => {
+      router.events.off('routeChangeComplete', handleRouteChange);
+    };
+  }, [router.events]);
+
   // ✅ Handle closing animation
   const handleCloseMenu = () => {
       setMenuOpen(false);
       setIsClosing(false);
   };
 
-  // ✅ Navigate & close menu
+  // ✅ Also update pathname immediately when using handleLink
   const handleLink = (link) => {
+    setPathName(link); // Update pathname immediately for instant UI feedback
     router.push(link);
     if (menuOpen) {
       handleCloseMenu();
@@ -98,7 +113,7 @@ export default function Nav() {
               <div className="nav_link admin">
                 {user.firstName ? (
                   <>
-                    <img src={user.photoUrl} className="displayed-photourl" alt="User" />
+                    <Image src={user.photoUrl} className="displayed-photourl" alt="User" width={40} height={40} />
                   </>
                 ) : (
                   <Login classes={"menu-item"}/>
@@ -132,7 +147,7 @@ export default function Nav() {
                 )}
                 {user.email && (
                 <div className="nav-member-mobile">
-                  <img src={user.photoUrl} className="displayed-photourl-mobile" alt="User" />
+                  <Image src={user.photoUrl} className="displayed-photourl-mobile" alt="User" width={40} height={40} />
                   <div className="nav-member-mobile-sub">
                     <div>
                       <p className={pathname == "/members" ? "nav-member-mobile-active"  : "sb__link"} onClick={() => handleLink("/members")}>Member Area</p>

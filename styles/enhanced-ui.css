@@ -1,0 +1,173 @@
+/* Enhanced Loading States */
+.loading-state {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100px;
+}
+
+.loading-small {
+  min-height: 50px;
+}
+
+.loading-medium {
+  min-height: 100px;
+}
+
+.loading-large {
+  min-height: 200px;
+}
+
+.loading-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.8);
+  z-index: 1000;
+}
+
+.loading-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.loading-message {
+  color: #666;
+  font-size: 14px;
+  margin: 0;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* Improved Form States */
+.form-field {
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.form-field.error input,
+.form-field.error textarea,
+.form-field.error select {
+  border-color: #ff4444;
+  box-shadow: 0 0 5px rgba(255, 68, 68, 0.3);
+}
+
+.form-field.success input,
+.form-field.success textarea,
+.form-field.success select {
+  border-color: #4CAF50;
+  box-shadow: 0 0 5px rgba(76, 175, 80, 0.3);
+}
+
+.field-error {
+  color: #ff4444;
+  font-size: 12px;
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.field-success {
+  color: #4CAF50;
+  font-size: 12px;
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* Button Loading States */
+.btn-loading {
+  position: relative;
+  color: transparent !important;
+  pointer-events: none;
+}
+
+.btn-loading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  margin: -10px 0 0 -10px;
+  border: 2px solid transparent;
+  border-top: 2px solid currentColor;
+  border-radius: 50%;
+  animation: button-spin 1s linear infinite;
+}
+
+@keyframes button-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Enhanced Image Optimization */
+.optimized-image {
+  transition: opacity 0.3s ease;
+}
+
+.optimized-image.loading {
+  opacity: 0.5;
+}
+
+.optimized-image.loaded {
+  opacity: 1;
+}
+
+/* Progressive Enhancement */
+@media (prefers-reduced-motion: reduce) {
+  .loading-message,
+  .btn-loading::after,
+  .optimized-image {
+    animation: none;
+    transition: none;
+  }
+}
+
+/* Focus Management */
+.focus-trap {
+  outline: none;
+}
+
+.focus-visible {
+  outline: 2px solid #4CAF50;
+  outline-offset: 2px;
+}
+
+/* Error Boundaries */
+.error-boundary {
+  padding: 20px;
+  text-align: center;
+  border: 1px solid #ff4444;
+  border-radius: 8px;
+  background: #fff5f5;
+  color: #cc0000;
+}
+
+.error-boundary h3 {
+  margin: 0 0 10px 0;
+}
+
+.error-boundary button {
+  margin-top: 15px;
+  padding: 8px 16px;
+  background: #ff4444;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.error-boundary button:hover {
+  background: #cc0000;
+}
