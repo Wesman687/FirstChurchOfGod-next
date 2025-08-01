@@ -1,5 +1,6 @@
 // pages/admin.js
 import React, { useState, useEffect } from 'react';
+import PeopleMentionsAdmin from '@/components/admin/PeopleMentionsAdmin';
 
 const AdminPage = () => {
   const [sermons, setSermons] = useState([]);
@@ -117,6 +118,9 @@ const AdminPage = () => {
           </ul>
         </div>
       )}
+
+      {/* Gallery People Mentions Admin Section */}
+      <PeopleMentionsAdmin />
     </div>
   );
 };

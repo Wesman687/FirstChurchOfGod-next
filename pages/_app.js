@@ -18,6 +18,7 @@ import '@/styles/modals.css'
 import '@/styles/prayerandpost.css'
 import "@/styles/pages.css"
 import "@/styles/videos.css"
+import "@/styles/gallery-enhanced.css"
 // Remove list import since it has no CSS
 
 import { Provider } from 'react-redux';
