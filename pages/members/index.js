@@ -5,7 +5,7 @@ import CampRegistration from '@/components/members/CampRegistration';
 import HomeComment from '@/components/members/HomeComment';
 import ManageMembers from '@/components/members/ManageMembers';
 import MyPrayerRequest from '@/components/members/MyPrayerRequest';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 
 function Members() {
@@ -25,6 +25,7 @@ function Members() {
         { key: "prayerRequest", label: "My Prayer Request" },
         { key: "campRegistration", label: "Camp Registration" },
     ];
+
 
     return (
         <Layout>

@@ -48,7 +48,7 @@ function PublicImageUpload() {
       
       if (user.isAdmin) {
         // Admin uploads go directly to the gallery
-        const imageRef = ref(storage, `images/${string}`);
+        const imageRef = ref(storage, `user/images/${string}`);
         await uploadString(imageRef, image, "data_url");
         const downloadURL = await getDownloadURL(imageRef);
 
@@ -92,7 +92,7 @@ function PublicImageUpload() {
         }
       } else {
         // Member uploads go to pending approval
-        const imageRef = ref(storage, `pending-images/${string}`);
+        const imageRef = ref(storage, `user/pending-images/${string}`);
         await uploadString(imageRef, image, "data_url");
         const downloadURL = await getDownloadURL(imageRef);
 

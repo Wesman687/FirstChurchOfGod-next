@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+
+# Block admin areas
+Disallow: /admin/
+Disallow: /api/
+
+# Block unnecessary files
+Disallow: /_next/
+Disallow: /utils/
+
+Sitemap: https://firstchurchofgod.org/sitemap.xml
