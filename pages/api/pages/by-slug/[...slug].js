@@ -1,5 +1,5 @@
-import dbConnect from '../../../lib/db';
-import Page from '../../../models/Page';
+import dbConnect from '../../../../lib/db';
+import Page from '../../../../models/Page';
 
 export default async function handler(req, res) {
   const { slug } = req.query;

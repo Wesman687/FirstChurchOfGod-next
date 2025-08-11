@@ -146,7 +146,7 @@ export default async function handler(req, res) {
 // Basic email notification function
 async function sendNotificationEmail(formType, data, submissionId) {
   try {
-    const churchEmailAPI = process.env.NEXT_PUBLIC_EMAIL_API;
+    const churchEmailAPI = process.env.EMAIL_API_URL;
     
     if (!churchEmailAPI) {
       console.log('📧 Email API not configured, skipping email notification');

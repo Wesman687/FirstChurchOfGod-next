@@ -283,7 +283,7 @@ async function sendNotificationEmail(formType, data, submissionId) {
       console.log('📧 Enhanced email failed, trying legacy method...', enhancedError.message);
       
       // Fallback to legacy church email API
-      const churchEmailAPI = process.env.NEXT_PUBLIC_EMAIL_API;
+      const churchEmailAPI = process.env.EMAIL_API_URL;
       
       if (!churchEmailAPI) {
         console.log('📧 No email API configured, skipping email notification');
