@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { openLoginModal, closeLoginModal } from "@/redux/modalSlice.js";
+import Image from "next/image";
 import {
   onAuthStateChanged,
   signInWithEmailAndPassword,
@@ -165,7 +166,7 @@ const Login = ({ defaultState, classes }) => {
     });
 
     return () => unsubscribe();
-  }, []);
+  }, [dispatch]);
   useEffect(() => {
     if (isOpen) {
         document.body.style.overflow = "hidden"; // ✅ Disable scrolling
@@ -247,7 +248,13 @@ const Login = ({ defaultState, classes }) => {
                               {/* ✅ Display Image Preview */}
                               {photoUrl && (
                                 <div className="image-preview">
-                                  <img src={photoUrl} alt="User Preview" />
+                                  <Image 
+                                    src={photoUrl} 
+                                    alt="User Preview" 
+                                    width={150} 
+                                    height={150}
+                                    style={{ objectFit: 'cover' }}
+                                  />
                                 </div>
                               )}
                               <div className="login-file-button">

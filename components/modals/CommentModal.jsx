@@ -1,5 +1,5 @@
 import { Modal } from '@mui/material';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import RingSpinner from '../RingSpinner';
 import XIcon from '../icons/XIcon';
 import { useDispatch, useSelector } from 'react-redux';
@@ -23,7 +23,7 @@ function CommentModal() {
     const isOpen = useSelector(state => state.modals.commentModalOpen);
     const commentDetails = useSelector(state => state.modals.commentDetails);
 
-    const fetchData = async () => {
+    const fetchData = useCallback(async () => {
         try {
             if (isOpen && commentDetails.id) {
                 setLoading(true);
@@ -56,12 +56,11 @@ function CommentModal() {
         } finally {
             setLoading(false);
         }
-    };
+    }, [isOpen, commentDetails.id]);
+    
     useEffect(() => {
-        
-
         fetchData();
-    }, [isOpen, commentDetails.id, fetchData]);
+    }, [fetchData]);
     return (
         <Modal
             open={isOpen}

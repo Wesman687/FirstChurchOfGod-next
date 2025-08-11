@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
 import Layout from '../../components/Layout';
+import { dbConnect } from '../../lib/db';
+import Page from '../../models/Page';
 import { 
   HeroBlock, 
   RichTextBlock, 
@@ -108,11 +110,11 @@ export default function DynamicCMSPage({ page, notFound }) {
 // This function gets called at build time for static generation
 export async function getStaticPaths() {
   try {
-    const response = await fetch(`${process.env.NEXTAUTH_URL || 'http://localhost:3000'}/api/pages`);
-    const pages = response.ok ? await response.json() : [];
+    await dbConnect();
+    const pages = await Page.find({ status: 'published' }, 'slug').lean();
 
     const paths = pages
-      .filter(page => page.status === 'published')
+      .filter(page => page.slug)
       .map(page => ({
         params: { slug: page.slug.split('/').filter(Boolean) }
       }));
@@ -135,26 +137,29 @@ export async function getStaticProps({ params }) {
   try {
     const slug = params.slug ? params.slug.join('/') : '';
     
-    const response = await fetch(`${process.env.NEXTAUTH_URL || 'http://localhost:3000'}/api/pages/by-slug/${slug}`);
-    
-    if (!response.ok) {
+    await dbConnect();
+    const page = await Page.findOne({ 
+      slug: slug,
+      status: 'published' 
+    }).lean();
+
+    if (!page) {
       return {
         notFound: true,
       };
     }
 
-    const page = await response.json();
-
-    // Only show published pages in production
-    if (page.status !== 'published' && process.env.NODE_ENV === 'production') {
-      return {
-        notFound: true,
-      };
-    }
+    // Convert MongoDB ObjectId to string for serialization
+    const serializedPage = {
+      ...page,
+      _id: page._id.toString(),
+      createdAt: page.createdAt?.toISOString(),
+      updatedAt: page.updatedAt?.toISOString(),
+    };
 
     return {
       props: {
-        page,
+        page: serializedPage,
       },
       revalidate: 60, // Revalidate every minute for ISR
     };
