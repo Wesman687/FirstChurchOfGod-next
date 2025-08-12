@@ -90,14 +90,16 @@ export default function DynamicCMSPage({ page, notFound }) {
         {page.seo?.keywords && (
           <meta name="keywords" content={page.seo.keywords} />
         )}
-        <meta property="og:title" content={page.seo?.title || page.title} />
-        {page.seo?.description && (
-          <meta property="og:description" content={page.seo.description} />
-        )}
-        {page.seo?.image && (
-          <meta property="og:image" content={page.seo.image} />
-        )}
+        <meta property="og:title" content={`${page.seo?.title || page.title} - First Church of God`} />
+        <meta property="og:description" content={page.seo?.description || "Join us for worship at First Church of God in Palatka, FL."} />
+        <meta property="og:url" content={`https://www.palatka-firstchurchofgod.org/cms/${page.slug}`} />
+        <meta property="og:image" content={page.seo?.image || "https://www.palatka-firstchurchofgod.org/images/og-card.png"} />
         <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="First Church of God" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={`${page.seo?.title || page.title} - First Church of God`} />
+        <meta name="twitter:description" content={page.seo?.description || "Join us for worship at First Church of God in Palatka, FL."} />
+        <meta name="twitter:image" content={page.seo?.image || "https://www.palatka-firstchurchofgod.org/images/og-card.png"} />
       </Head>
 
       <main>

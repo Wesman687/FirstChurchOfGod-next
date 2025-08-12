@@ -9,4 +9,4 @@ Disallow: /api/
 Disallow: /_next/
 Disallow: /utils/
 
-Sitemap: https://firstchurchofgod.org/sitemap.xml
+Sitemap: https://www.palatka-firstchurchofgod.org/sitemap.xml

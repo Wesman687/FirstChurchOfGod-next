@@ -1,9 +1,9 @@
 import os
 from datetime import datetime
 
-BASE_URL = "https://firstchurchofgod.org"
-PAGES_DIR = "../pages"
-OUTPUT_PATH = "../public/sitemap.xml"
+BASE_URL = "https://www.palatka-firstchurchofgod.org"
+PAGES_DIR = "pages"
+OUTPUT_PATH = "public/sitemap.xml"
 
 EXCLUDE = {"_app.js", "_document.js", "_error.js", "api", "fonts", "[...slug].js"}
 

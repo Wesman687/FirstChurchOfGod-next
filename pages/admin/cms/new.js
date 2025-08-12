@@ -2093,20 +2093,20 @@ export default function NewPage() {
         <meta name="description" content="Create a new page for First Church of God with our professional drag-and-drop CMS. Easily build, style, and publish beautiful pages." />
         <meta name="keywords" content="First Church of God, CMS, page builder, drag and drop, church website, form builder, image library, template library" />
         <meta name="robots" content="index,follow" />
-        <link rel="canonical" href="https://firstchurchofgod.org/admin/cms/new" />
+        <link rel="canonical" href="https://www.palatka-firstchurchofgod.org/admin/cms/new" />
 
         {/* Open Graph Meta Tags */}
         <meta property="og:title" content="Create New Page - First Church of God" />
         <meta property="og:description" content="Create a new page for First Church of God with our professional drag-and-drop CMS. Easily build, style, and publish beautiful pages." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://firstchurchofgod.org/admin/cms/new" />
-        <meta property="og:image" content="https://firstchurchofgod.org/images/og-card.png" />
+        <meta property="og:url" content="https://www.palatka-firstchurchofgod.org/admin/cms/new" />
+        <meta property="og:image" content="https://www.palatka-firstchurchofgod.org/images/og-card.png" />
 
         {/* Twitter Card Meta Tags */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Create New Page - First Church of God" />
         <meta name="twitter:description" content="Create a new page for First Church of God with our professional drag-and-drop CMS. Easily build, style, and publish beautiful pages." />
-        <meta name="twitter:image" content="https://firstchurchofgod.org/images/og-card.png" />
+        <meta name="twitter:image" content="https://www.palatka-firstchurchofgod.org/images/og-card.png" />
         <meta name="twitter:site" content="@FirstChurchOfGod" />
       </Head>
 
