@@ -14,7 +14,7 @@ export default function Document() {
         <meta property="og:title" content="First Church of God - Palatka, FL" />
         <meta property="og:description" content="Join us for worship at First Church of God in Palatka, FL. Sunday service 10am-1:30pm, Wednesday 6pm, Saturday Bible Study 9:30am." />
         <meta property="og:url" content="https://www.palatka-firstchurchofgod.org" />
-        <meta property="og:image" content="https://www.palatka-firstchurchofgod.org/images/og-card.png" />
+        <meta property="og:image" content="https://www.palatka-firstchurchofgod.org/images/og-card.jpg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:alt" content="First Church of God - Palatka, FL" />
@@ -24,7 +24,7 @@ export default function Document() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="First Church of God - Palatka, FL" />
         <meta name="twitter:description" content="Join us for worship at First Church of God in Palatka, FL. Sunday service 10am-1:30pm, Wednesday 6pm, Saturday Bible Study 9:30am." />
-        <meta name="twitter:image" content="https://www.palatka-firstchurchofgod.org/images/og-card.png" />
+        <meta name="twitter:image" content="https://www.palatka-firstchurchofgod.org/images/og-card.jpg" />
         <meta name="twitter:site" content="@FirstChurchOfGod" />
         
         {/* Additional SEO */}

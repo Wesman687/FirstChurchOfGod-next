@@ -2100,13 +2100,13 @@ export default function NewPage() {
         <meta property="og:description" content="Create a new page for First Church of God with our professional drag-and-drop CMS. Easily build, style, and publish beautiful pages." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://www.palatka-firstchurchofgod.org/admin/cms/new" />
-        <meta property="og:image" content="https://www.palatka-firstchurchofgod.org/images/og-card.png" />
+        <meta property="og:image" content="https://www.palatka-firstchurchofgod.org/images/og-card.jpg" />
 
         {/* Twitter Card Meta Tags */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Create New Page - First Church of God" />
         <meta name="twitter:description" content="Create a new page for First Church of God with our professional drag-and-drop CMS. Easily build, style, and publish beautiful pages." />
-        <meta name="twitter:image" content="https://www.palatka-firstchurchofgod.org/images/og-card.png" />
+        <meta name="twitter:image" content="https://www.palatka-firstchurchofgod.org/images/og-card.jpg" />
         <meta name="twitter:site" content="@FirstChurchOfGod" />
       </Head>
 
