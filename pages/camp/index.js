@@ -1,4 +1,5 @@
 import Layout from "@/components/Layout";
+import CampHead from "@/components/CampHead";
 import React, { useState } from "react";
 import art_camp from "@/images/art_banner.jpg";
 import art_camp2 from "@/images/art_camp2.jpg";
@@ -11,7 +12,14 @@ import { useSelector } from "react-redux";
 function Index() {
   const user = useSelector((state) => state.user);
   return (
-    <Layout>
+    <>
+      <CampHead 
+        title="Art Camp 2025 - First Church of God | Free Summer Camp for Kids"
+        description="🎨 Join our FREE Art Camp 2025! Ages 3-18 welcome. Creative activities, Bible stories, worship, and lunch included. August 25-29 at First Church of God, East Palatka, FL. Register now!"
+        image="/images/art_camp2.jpg"
+        url="/camp"
+      />
+      <Layout>
       <div className="camp-container">
         <div className="camp-banner">
           <Image
@@ -152,8 +160,8 @@ function Index() {
           </div>
         </div>
       </div>
-
-    </Layout>
+      </Layout>
+    </>
   );
 }
 
