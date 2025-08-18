@@ -1,0 +1,22 @@
+{
+  "recommendations": [
+    "esbenp.prettier-vscode",
+    "ms-vscode.vscode-typescript-next",
+    "bradlc.vscode-tailwindcss",
+    "ms-vscode.vscode-json",
+    "formulahendry.auto-rename-tag",
+    "christian-kohler.path-intellisense",
+    "ms-vscode.vscode-eslint",
+    "ms-python.python",
+    "ms-python.flake8",
+    "ms-python.black-formatter",
+    "ritwickdey.liveserver",
+    "formulahendry.auto-close-tag",
+    "christian-kohler.npm-intellisense",
+    "ms-vscode.vscode-css-peek",
+    "ms-vscode.vscode-html-css-support",
+    "ms-vscode.vscode-react-refactor",
+    "steoates.autoimport-es6-ts",
+    "zignd.html-css-class-completion"
+  ]
+}

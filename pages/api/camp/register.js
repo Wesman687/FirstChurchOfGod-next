@@ -1,54 +1,117 @@
 import { connectToMongo } from "@/server/lib/mongo";
 import { ObjectId } from "mongodb";
+import {
+  getCampCollectionName,
+  validateCampRegistration,
+} from "@/lib/campUtils";
 
 export default async function handler(req, res) {
-    try {
-        const db = await connectToMongo();
-        const collection = db.collection("march2025");
+    const dbName = "campDatabase";
 
-        if (req.method === "POST") {
-            const formData = req.body;
-            console.log("📥 Received Data:", formData);
+  try {
+    const db = await connectToMongo(dbName);
 
-            if (!formData.childName || !formData.email || !formData.phone) {
-                console.error("❌ Validation Failed:", formData);
-                return res.status(400).json({ error: "Missing required fields." });
-            }
+    // ✅ Use dynamic collection name or allow override via query param
+    const collectionName = req.query.session || getCampCollectionName();
+    const collection = db.collection(collectionName);
 
-            const result = await collection.insertOne({formData, createdAt: new Date()});
-            console.log("✅ Registration Success:", result);
-            return res.status(201).json({ message: "Registration successful!", id: result.insertedId });
+    if (req.method === "POST") {
+      const formData = req.body;
+      console.log("📥 Received Data:", formData);
+      console.log("📁 Using Collection:", collectionName);
 
-        } else if (req.method === "GET") {
-            const registrations = await collection.find().toArray();
-            return res.status(200).json(registrations);
+      // ✅ Use comprehensive validation
+      const validation = validateCampRegistration(formData);
+      if (!validation.isValid) {
+        console.error("❌ Validation Failed:", validation.errors);
+        return res.status(400).json({
+          error: "Validation failed",
+          details: validation.errors,
+        });
+      }
 
-        } else if (req.method === "DELETE") {
-            const { id } = req.body; // 🛑 Expecting `id` in request body
-            if (!id) {
-                return res.status(400).json({ error: "Missing ID for deletion." });
-            }
+      // ✅ Add session/period info to the document
+      const registrationData = {
+        ...formData,
+        session: collectionName,
+        registrationDate: new Date(),
+        createdAt: new Date(),
+      };
 
-            const result = await collection.deleteOne({ _id: new ObjectId(id) });
-            if (result.deletedCount === 0) {
-                return res.status(404).json({ error: "Registration not found." });
-            }
+      const result = await collection.insertOne(registrationData);
+      console.log("✅ Registration Success:", result);
+      return res.status(201).json({
+        message: "Registration successful!",
+        id: result.insertedId,
+        session: collectionName,
+      });
+    } else if (req.method === "GET") {
+      // ✅ Support filtering by session and other parameters
+      const filter = {};
+      if (req.query.childName)
+        filter.childName = new RegExp(req.query.childName, "i");
+      if (req.query.email) filter.email = new RegExp(req.query.email, "i");
 
-            return res.status(200).json({ message: "Registration deleted successfully!" });
+      const registrations = await collection
+        .find(filter)
+        .sort({ createdAt: -1 })
+        .toArray();
+      console.log(
+        `📊 Retrieved ${registrations.length} registrations from ${collectionName}`
+      );
+      return res.status(200).json({
+        registrations,
+        session: collectionName,
+        count: registrations.length,
+      });
+    } else if (req.method === "DELETE") {
+      const { id } = req.body;
+      if (!id) {
+        return res.status(400).json({ error: "Missing ID for deletion." });
+      }
 
-        } else if (req.method === "PUT") {
-            const { id, ...updatedData } = req.body;
-            const result = await collection.updateOne(
-                { _id: id },
-                { $set: updatedData }
-            );
-            return res.status(200).json({ message: "Updated successfully", result });
-        }
-        else {
-            return res.status(405).json({ error: "Method not allowed" });
-        }
-    } catch (error) {
-        console.error("❌ Error in API:", error);
-        return res.status(500).json({ error: error.message });
+      const result = await collection.deleteOne({ _id: new ObjectId(id) });
+      if (result.deletedCount === 0) {
+        return res.status(404).json({ error: "Registration not found." });
+      }
+
+      console.log(`🗑️ Deleted registration ${id} from ${collectionName}`);
+      return res.status(200).json({
+        message: "Registration deleted successfully!",
+        session: collectionName,
+      });
+    } else if (req.method === "PUT") {
+      const { id, ...updatedData } = req.body;
+
+      // ✅ Add update timestamp
+      const updatePayload = {
+        ...updatedData,
+        updatedAt: new Date(),
+      };
+
+      const result = await collection.updateOne(
+        { _id: new ObjectId(id) },
+        { $set: updatePayload }
+      );
+
+      console.log(`📝 Updated registration ${id} in ${collectionName}`);
+      return res.status(200).json({
+        message: "Updated successfully",
+        result,
+        session: collectionName,
+      });
+    } else {
+      return res.status(405).json({
+        error: "Method not allowed",
+        allowed: ["GET", "POST", "PUT", "DELETE"],
+        session: collectionName,
+      });
     }
+  } catch (error) {
+    console.error("❌ Error in Camp Registration API:", error);
+    return res.status(500).json({
+      error: error.message,
+      timestamp: new Date().toISOString(),
+    });
+  }
 }

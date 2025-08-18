@@ -55,7 +55,7 @@ function Members() {
             </div>
 
             {/* ✅ Render active section */}
-            <div className="responsive-section">
+            <div className="responsive-section" style={{ minHeight: "65vh", padding: "20px" }}>
                 {sections[activeSection]}
             </div>
         </Layout>

@@ -96,15 +96,16 @@ export default function Nav() {
               <li className={pathname === "/cwc" ? "current-link" : "menu-item"} onClick={() => handleLink("/cwc")}>
                 CWC
               </li>
-              {/* <li className={pathname === "/camp" ? "current-link" : "menu-item"} onClick={() => handleLink("/camp")}>
-                Camp
-              </li> */}
+              <li className={pathname === "/camp" ? "current-link" : "menu-item"} onClick={() => handleLink("/camp")}>
+                Art Camp
+              </li>
               <li className={pathname === "/gallery" ? "current-link" : "menu-item"} onClick={() => handleLink("/gallery")}>
                 Gallery
               </li>
               <li className={pathname === "/videos" ? "current-link" : "menu-item"} onClick={() => handleLink("/videos")}>
                 Videos 
               </li>
+
               <li className={pathname === "/calendar" ? "current-link" : "menu-item"} onClick={() => handleLink("/calendar")}>
                 Calendar 
               </li>

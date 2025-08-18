@@ -12,9 +12,11 @@ function HomeWelcome() {
     return (
         <div className="home-container">
             <div className="content_wrap">
-                {/* <Link href='/camp'>
-                    <Image width={250} src={art} alt='art' className='art-sign-up' />
-                </Link>                 */}
+                    <Link href="/camp" className="art-sign-up-link">
+                        <Image width={250} src={art} alt='art' className='art-sign-up' />
+                    </Link>
+                    
+        
                 <div className="columns_wrap welcome_wrapper">
                     <div className=" home-welcome-image-wrapper">
                             <Image width={650} height={350}  src={ChurchImage} className='home-welcome-image' alt="" />
