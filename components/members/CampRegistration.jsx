@@ -2,6 +2,37 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import RingSpinner from "../RingSpinner";
 
+// Custom hook for responsive design
+const useResponsive = () => {
+  const [screenSize, setScreenSize] = useState({
+    isMobile: false,
+    isTablet: false,
+    isDesktop: true
+  });
+
+  useEffect(() => {
+    const handleResize = () => {
+      const width = window.innerWidth;
+      setScreenSize({
+        isMobile: width <= 768,
+        isTablet: width > 768 && width <= 1024,
+        isDesktop: width > 1024
+      });
+    };
+
+    // Initial check
+    handleResize();
+    
+    // Add event listener
+    window.addEventListener('resize', handleResize);
+    
+    // Cleanup
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  return screenSize;
+};
+
 export default function CampRegistration() {
   const [registrations, setRegistrations] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -10,6 +41,9 @@ export default function CampRegistration() {
   const [searchTerm, setSearchTerm] = useState("");
   const [editingCard, setEditingCard] = useState(null);
   const [editData, setEditData] = useState({});
+  
+  // Use responsive hook
+  const { isMobile, isTablet, isDesktop } = useResponsive();
 
   // Initialize sessions on component mount
   useEffect(() => {
@@ -237,8 +271,8 @@ export default function CampRegistration() {
         key={registration._id}
         style={{
           backgroundColor: isEditing ? "#f8f9ff" : "#ffffff",
-          borderRadius: "16px",
-          padding: "24px",
+          borderRadius: isMobile ? "12px" : "16px",
+          padding: isMobile ? "16px" : "24px",
           boxShadow: isEditing
             ? "0 6px 30px rgba(102, 126, 234, 0.2)"
             : "0 4px 20px rgba(0,0,0,0.08)",
@@ -252,26 +286,30 @@ export default function CampRegistration() {
         <div
           style={{
             position: "absolute",
-            top: "20px",
-            right: "20px",
+            top: isMobile ? "12px" : "20px",
+            right: isMobile ? "12px" : "20px",
             backgroundColor: ageGroup.color,
             color: "white",
-            padding: "8px 16px",
-            borderRadius: "24px",
-            fontSize: "0.85rem",
+            padding: isMobile ? "6px 12px" : "8px 16px",
+            borderRadius: "20px",
+            fontSize: isMobile ? "0.75rem" : "0.85rem",
             fontWeight: "700",
             display: "flex",
             alignItems: "center",
-            gap: "6px",
+            gap: "4px",
             boxShadow: "0 2px 8px rgba(0,0,0,0.15)",
+            zIndex: 1
           }}
         >
-          <span style={{ fontSize: "1rem" }}>{ageGroup.icon}</span>
-          {ageGroup.label}
+          <span style={{ fontSize: isMobile ? "0.9rem" : "1rem" }}>{ageGroup.icon}</span>
+          {isMobile ? ageGroup.label.split(' ')[0] : ageGroup.label}
         </div>
 
         {/* Header Section */}
-        <div style={{ marginBottom: "24px", paddingRight: "120px" }}>
+        <div style={{ 
+          marginBottom: isMobile ? "16px" : "24px", 
+          paddingRight: isMobile ? "80px" : "120px" 
+        }}>
           {isEditing ? (
             <div
               style={{
@@ -371,9 +409,13 @@ export default function CampRegistration() {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "1fr 1fr 1fr",
-            gap: "24px",
-            marginBottom: "24px",
+            gridTemplateColumns: isMobile 
+              ? "1fr" 
+              : isTablet 
+                ? "1fr 1fr" 
+                : "1fr 1fr 1fr",
+            gap: isMobile ? "16px" : "24px",
+            marginBottom: isMobile ? "16px" : "24px",
           }}
         >
           {/* Parent Info Column */}
@@ -1091,7 +1133,7 @@ export default function CampRegistration() {
       style={{
         maxWidth: "1200px",
         margin: "0 auto",
-        padding: "20px",
+        padding: isMobile ? "12px" : "20px",
         fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
       }}
     >
@@ -1099,10 +1141,10 @@ export default function CampRegistration() {
       {selectedSession && (
         <div
           style={{
-            marginBottom: "30px",
+            marginBottom: isMobile ? "20px" : "30px",
             background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
-            borderRadius: "16px",
-            padding: "24px",
+            borderRadius: isMobile ? "12px" : "16px",
+            padding: isMobile ? "16px" : "24px",
             color: "white",
             boxShadow: "0 8px 32px rgba(102, 126, 234, 0.3)",
           }}
@@ -1110,21 +1152,23 @@ export default function CampRegistration() {
           <div
             style={{
               display: "flex",
-              alignItems: "center",
+              alignItems: isMobile ? "flex-start" : "center",
               justifyContent: "space-between",
+              flexDirection: isMobile ? "column" : "row",
               flexWrap: "wrap",
-              gap: "16px",
+              gap: isMobile ? "12px" : "16px",
             }}
           >
             <div>
               <h1
                 style={{
                   margin: "0 0 8px 0",
-                  fontSize: "2rem",
+                  fontSize: isMobile ? "1.5rem" : isTablet ? "1.8rem" : "2rem",
                   fontWeight: "700",
                   display: "flex",
                   alignItems: "center",
-                  gap: "12px",
+                  gap: isMobile ? "8px" : "12px",
+                  flexWrap: "wrap"
                 }}
               >
                 <span>👥</span>
@@ -1133,7 +1177,7 @@ export default function CampRegistration() {
               <p
                 style={{
                   margin: "0",
-                  fontSize: "1.1rem",
+                  fontSize: isMobile ? "0.95rem" : "1.1rem",
                   opacity: "0.9",
                   fontWeight: "400",
                 }}
@@ -1150,7 +1194,13 @@ export default function CampRegistration() {
 
             {/* Age group breakdown */}
             {!loading && registrations.length > 0 && (
-              <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
+              <div style={{ 
+                display: "flex", 
+                gap: isMobile ? "8px" : "12px", 
+                flexWrap: "wrap",
+                justifyContent: isMobile ? "flex-start" : "flex-end",
+                width: "100%"
+              }}>
                 {(() => {
                   const ageGroups = registrations.reduce((acc, reg) => {
                     const data = reg.formData || reg;
@@ -1160,7 +1210,6 @@ export default function CampRegistration() {
                   }, {});
 
                   return Object.entries(ageGroups).map(([group, count]) => {
-                    const groupInfo = getAgeGroup(999); // Get default icons
                     const groupIcon =
                       group === "Little Ones"
                         ? "👶"
@@ -1175,9 +1224,9 @@ export default function CampRegistration() {
                         key={group}
                         style={{
                           backgroundColor: "rgba(255,255,255,0.2)",
-                          padding: "8px 16px",
+                          padding: isMobile ? "6px 12px" : "8px 16px",
                           borderRadius: "24px",
-                          fontSize: "0.9rem",
+                          fontSize: isMobile ? "0.8rem" : "0.9rem",
                           fontWeight: "600",
                           display: "flex",
                           alignItems: "center",
@@ -1185,7 +1234,7 @@ export default function CampRegistration() {
                         }}
                       >
                         <span>{groupIcon}</span>
-                        {group}: {count}
+                        {isMobile ? `${group.split(' ')[0]}: ${count}` : `${group}: ${count}`}
                       </div>
                     );
                   });
@@ -1201,9 +1250,9 @@ export default function CampRegistration() {
         style={{
           display: "flex",
           flexDirection: "column",
-          gap: "16px",
-          marginBottom: "24px",
-          padding: "20px",
+          gap: isMobile ? "12px" : "16px",
+          marginBottom: isMobile ? "16px" : "24px",
+          padding: isMobile ? "16px" : "20px",
           backgroundColor: "#ffffff",
           borderRadius: "12px",
           border: "1px solid #e9ecef",
@@ -1214,8 +1263,9 @@ export default function CampRegistration() {
         <div
           style={{
             display: "flex",
-            alignItems: "center",
-            gap: "12px",
+            alignItems: isMobile ? "flex-start" : "center",
+            flexDirection: isMobile ? "column" : "row",
+            gap: isMobile ? "8px" : "12px",
             flexWrap: "wrap",
           }}
         >
@@ -1223,7 +1273,7 @@ export default function CampRegistration() {
             style={{
               fontWeight: "600",
               color: "#495057",
-              minWidth: "100px",
+              minWidth: isMobile ? "auto" : "100px",
               fontSize: "0.95rem",
             }}
           >
@@ -1233,11 +1283,12 @@ export default function CampRegistration() {
             value={selectedSession}
             onChange={(e) => handleSessionChange(e.target.value)}
             style={{
-              padding: "10px 14px",
+              padding: isMobile ? "12px 14px" : "10px 14px",
               borderRadius: "8px",
               border: "1px solid #ced4da",
               backgroundColor: "white",
-              minWidth: "280px",
+              minWidth: isMobile ? "100%" : "280px",
+              width: isMobile ? "100%" : "auto",
               fontSize: "0.95rem",
               color: "#495057",
             }}
@@ -1245,8 +1296,7 @@ export default function CampRegistration() {
             <option value="">Select a camp session...</option>
             {availableSessions.map((session) => (
               <option key={session.value} value={session.value}>
-                {getSessionDisplayName(session.value)} (
-                {session.registrationCount} registrations)
+                {getSessionDisplayName(session.value)} ({session.registrationCount} registrations)
               </option>
             ))}
           </select>
@@ -1256,8 +1306,9 @@ export default function CampRegistration() {
         <div
           style={{
             display: "flex",
-            alignItems: "center",
-            gap: "12px",
+            alignItems: isMobile ? "flex-start" : "center",
+            flexDirection: isMobile ? "column" : "row",
+            gap: isMobile ? "8px" : "12px",
             flexWrap: "wrap",
           }}
         >
@@ -1265,23 +1316,30 @@ export default function CampRegistration() {
             style={{
               fontWeight: "600",
               color: "#495057",
-              minWidth: "100px",
+              minWidth: isMobile ? "auto" : "100px",
               fontSize: "0.95rem",
             }}
           >
             Search:
           </label>
-          <div style={{ display: "flex", gap: "8px", alignItems: "center" }}>
+          <div style={{ 
+            display: "flex", 
+            gap: "8px", 
+            alignItems: "center",
+            width: isMobile ? "100%" : "auto",
+            flexDirection: isMobile ? "column" : "row"
+          }}>
             <input
               type="text"
               placeholder="Search by child name..."
               value={searchTerm}
               onChange={handleSearch}
               style={{
-                padding: "10px 14px",
+                padding: isMobile ? "12px 14px" : "10px 14px",
                 borderRadius: "8px",
                 border: "1px solid #ced4da",
-                minWidth: "280px",
+                minWidth: isMobile ? "100%" : "280px",
+                width: isMobile ? "100%" : "auto",
                 fontSize: "0.95rem",
               }}
             />
@@ -1289,7 +1347,7 @@ export default function CampRegistration() {
               <button
                 onClick={() => setSearchTerm("")}
                 style={{
-                  padding: "10px 16px",
+                  padding: isMobile ? "12px 16px" : "10px 16px",
                   backgroundColor: "#6c757d",
                   color: "white",
                   border: "none",
@@ -1297,6 +1355,7 @@ export default function CampRegistration() {
                   cursor: "pointer",
                   fontSize: "0.9rem",
                   fontWeight: "500",
+                  width: isMobile ? "100%" : "auto",
                 }}
               >
                 Clear
@@ -1324,14 +1383,18 @@ export default function CampRegistration() {
         <div
           style={{
             textAlign: "center",
-            padding: "80px 20px",
+            padding: isMobile ? "40px 16px" : "80px 20px",
             backgroundColor: "#f8f9fa",
-            borderRadius: "16px",
+            borderRadius: isMobile ? "12px" : "16px",
             border: "2px dashed #dee2e6",
           }}
         >
           <div
-            style={{ fontSize: "4rem", marginBottom: "20px", opacity: "0.6" }}
+            style={{ 
+              fontSize: isMobile ? "3rem" : "4rem", 
+              marginBottom: isMobile ? "16px" : "20px", 
+              opacity: "0.6" 
+            }}
           >
             {!selectedSession ? "📋" : searchTerm ? "🔍" : "👥"}
           </div>
@@ -1339,7 +1402,7 @@ export default function CampRegistration() {
             style={{
               margin: "0 0 12px 0",
               color: "#6c757d",
-              fontSize: "1.4rem",
+              fontSize: isMobile ? "1.2rem" : "1.4rem",
               fontWeight: "600",
             }}
           >
@@ -1353,10 +1416,11 @@ export default function CampRegistration() {
             style={{
               margin: "0",
               color: "#adb5bd",
-              fontSize: "1.1rem",
+              fontSize: isMobile ? "1rem" : "1.1rem",
               lineHeight: "1.5",
-              maxWidth: "500px",
+              maxWidth: isMobile ? "300px" : "500px",
               margin: "0 auto",
+              padding: isMobile ? "0 8px" : "0"
             }}
           >
             {!selectedSession
